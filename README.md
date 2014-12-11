@@ -8,10 +8,10 @@ Let's just jump into the code. Here's the header file.
 
 ```
 // MyView.h
-#import <YOLayout/YOUIView.h>
+#import <YOLayout/YOView.h>
 
 //! A view that sizes vertically based on the height of a label and an image view
-@interface MyView : YOUIView
+@interface MyView : YOView
 @end
 ```
 

@@ -1,19 +1,19 @@
 //
-//  YOUIView.m
+//  YOView.m
 //  YOLayout
 //
 //  Created by Gabriel Handford on 10/29/13.
 //  Copyright (c) 2014 YOLayout. All rights reserved.
 //
 
-#import "YOUIView.h"
+#import "YOView.h"
 #import "YOCGUtils.h"
 
-@interface YOUIView ()
+@interface YOView ()
 @property NSMutableArray *observeAttributes;
 @end
 
-@implementation YOUIView
+@implementation YOView
 
 - (void)_sharedInit {
   self.autoresizesSubviews = NO;

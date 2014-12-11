@@ -133,7 +133,7 @@
     // Here we assert the size passed into sizeThatFits returns the same width, unless you explicitly override this behavior.
     // This is because most views are sized based on a width. If you had a view (a button, for example) with a variable width, then you should specify the
     // YOLayoutOptionsVariableWidth to override this check.
-    // This check only applies to YOUIView subclasses.
+    // This check only applies to YOView subclasses.
     if (((options & YOLayoutOptionsVariableWidth) != YOLayoutOptionsVariableWidth)
         && ((options & YOLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio) != YOLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio)
         && ((options & YOLayoutOptionsFixedWidth) != YOLayoutOptionsFixedWidth)

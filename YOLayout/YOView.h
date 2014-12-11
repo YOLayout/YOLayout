@@ -1,5 +1,5 @@
 //
-//  YOUIView.h
+//  YOView.h
 //  YOLayout
 //
 //  Created by Gabriel Handford on 10/29/13.
@@ -11,7 +11,7 @@
 /*!
  View with custom, programatic layout (via YOLayout).
  
- Instead of subclassing UIView, you can subclass YOUIView and implement
+ Instead of subclassing UIView, you can subclass YOView and implement
  sharedInit and layout:size:. See YOLayout for more details.
  
  
@@ -28,7 +28,7 @@
  
  
  */
-@interface YOUIView : UIView <YOLayoutView> { }
+@interface YOView : UIView <YOLayoutView> { }
 
 @property YOLayout *layout;
 
