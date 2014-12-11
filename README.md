@@ -19,28 +19,34 @@ Here's the implementation file. This view's height can change based on the Dynam
 ```
 // MyView.m
 #import "MyView.h"
-
-@implementation MyView {
-    UIImageView *_imageView;
-    DynamicHeightSubview *_dynamicHeightSubview;
-}
+ 
+@interface MyView ()
+@property UIImageView *imageView;
+@property DynamicHeightSubview *dynamicHeightSubview;
+@end
+ 
+@implementation MyView
 
 - (void)sharedInit {
     self.layout = [YOLayout layoutWithView:self];
-
+ 
     _imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MyImage.png"]];
+    [self addSubview:_imageView];
     _dynamicHeightSubview = [[DynamicHeightSubview alloc] init];
+    [self addSubview:_dynamicHeightSubview];
 }
-
+ 
 - (CGSize)layout:(id<YOLayout>)layout size:(CGSize)size {
-    // Layout _imageView at its native size (the image's size) 10pt inset from the left and top
-	CGRect rect = [layout setOrigin:CGPointMake(10, 10) view:_imageView];
-    // Layout _dynamicHeightSubview 10pt to the right of _imageView and 10pt to the right of the bounds. Size vertically to fit.
-    rect = [layout setFrame:CGRectMake(CGRectGetMaxX(rect) + 10, rect.origin.y, size.width - (CGRectGetMaxX(rect) + 10), 0) sizeToFit:YES];
-    // This view's height is the bottom of _dynamicHeightSubview + 10pt padding at the bottom
-    return CGSizeMake(size.width, CGRectGetMaxY(rect) + 10);
+    CGFloat x = 10;
+    CGFloat y = 10;
+    
+    x += [layout setOrigin:CGPointMake(x, y) view:_imageView].size.width + 10;
+    
+    y += [layout setFrame:CGRectMake(x, y, size.width - x - 10, 0) sizeThatFits:YES].size.height;
+    
+    return CGSizeMake(size.width, y);
 }
-
+ 
 @end
 ```
 
