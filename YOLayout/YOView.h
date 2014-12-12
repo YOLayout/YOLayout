@@ -11,22 +11,17 @@
 /*!
  View with custom, programatic layout (via YOLayout).
  
- Instead of subclassing UIView, you can subclass YOView and implement
- sharedInit and layout:size:. See YOLayout for more details.
- 
- 
+ Instead of subclassing UIView, you can subclass YOView and set the layout property.
+ See YOLayout for more details.
+
       - (void)sharedInit {
          [super sharedInit];
-         self.layout = [YOLayout layoutForView:self];
+         self.layout = [YOLayout layoutForView:self layoutBlock:^(id<YOLayout> layout, CGSize size) {
+           [layout setFrame:CGRectMake(0, 0, size.width, 30)];
+           return CGSizeMake(size.width, 30);
+         }];
          self.backgroundColor = [UIColor whiteColor];
       }
- 
-      - (CGSize)layout:(id<YOLayout>)layout size:(CGSize)size {
-         [layout setFrame:CGRectMake(0, 0, size.width, 30)];
-         return CGSizeMake(size.width, 30);
-      }
- 
- 
  */
 @interface YOView : UIView <YOLayoutView> { }
 
@@ -36,6 +31,12 @@
  Subclasses can override this method to perform initialization tasks that occur during both initWithFrame: and initWithCoder:
  */
 - (void)sharedInit;
+
+/*!
+ Set the layout block for this view. A YOLayout object will be generated as well, if necessary
+ Note: This is a method, not a parameter for easy autocompletion of the block type.
+ */
+- (void)setLayoutBlock:(YOLayoutBlock)layoutBlock;
 
 /*!
  Set if needs refresh.

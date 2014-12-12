@@ -10,7 +10,7 @@ Let's just jump into the code. Here's the header file.
 // MyView.h
 #import <YOLayout/YOView.h>
 
-//! A view that sizes vertically based on the height of a label and an image view
+//! A view that sizes vertically based the size of its subviews
 @interface MyView : YOView
 @end
 ```
@@ -19,34 +19,33 @@ Here's the implementation file. This view's height can change based on the Dynam
 ```Objective-C
 // MyView.m
 #import "MyView.h"
- 
-@interface MyView ()
-@property UIImageView *imageView;
-@property DynamicHeightSubview *dynamicHeightSubview;
-@end
- 
+
 @implementation MyView
 
+// sharedInit is called from both initWithFrame: and initWithCoder:
 - (void)sharedInit {
-    self.layout = [YOLayout layoutWithView:self];
+    // Create this view's subviews
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MyImage.png"]];
+    [self addSubview:imageView];
+    DynamicHeightSubview *dynamicHeightSubview = [[DynamicHeightSubview alloc] init];
+    [self addSubview:dynamicHeightSubview];
  
-    _imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MyImage.png"]];
-    [self addSubview:_imageView];
-    _dynamicHeightSubview = [[DynamicHeightSubview alloc] init];
-    [self addSubview:_dynamicHeightSubview];
+    // Define the layout using code, and math!
+    [self setLayoutBlock:^(id<YOLayout> layout, CGSize size) {
+        CGFloat x = 10;
+        CGFloat y = 10;
+ 
+        // Instead of setting frames directly, we use the corresponding layout methods.
+        // These methods don't actually change the subviews' frames when the view is just sizing.
+        x += [layout setOrigin:CGPointMake(x, y) view:_imageView].size.width + 10;
+
+        y += [layout setFrame:CGRectMake(x, y, size.width - x - 10, 0) sizeThatFits:YES].size.height;
+
+        // The size this view should be
+        return CGSizeMake(size.width, y);
+    }];
 }
- 
-- (CGSize)layout:(id<YOLayout>)layout size:(CGSize)size {
-    CGFloat x = 10;
-    CGFloat y = 10;
-    
-    x += [layout setOrigin:CGPointMake(x, y) view:_imageView].size.width + 10;
-    
-    y += [layout setFrame:CGRectMake(x, y, size.width - x - 10, 0) sizeThatFits:YES].size.height;
-    
-    return CGSizeMake(size.width, y);
-}
- 
+
 @end
 ```
 

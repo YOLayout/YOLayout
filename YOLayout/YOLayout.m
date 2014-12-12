@@ -16,23 +16,24 @@
   return nil;
 }
 
-- (id)initWithView:(UIView *)view {
+- (id)initWithView:(UIView *)view layoutBlock:(YOLayoutBlock)layoutBlock {
   if ((self = [super init])) {
-    
-    if (![view respondsToSelector:@selector(layout:size:)]) {
-      [NSException raise:NSObjectNotAvailableException format:@"Layout is not supported for this view. Implement layout:size:."];
+
+    if (!layoutBlock) {
+      [NSException raise:NSObjectNotAvailableException format:@"layoutBlock is required"];
       return nil;
     }
-    
+
     _view = view;
+    _layoutBlock = layoutBlock;
     _needsLayout = YES;
     _needsSizing = YES;
   }
   return self;
 }
 
-+ (YOLayout *)layoutForView:(UIView *)view {
-  return [[YOLayout alloc] initWithView:view];
++ (YOLayout *)layoutForView:(UIView *)view layoutBlock:(YOLayoutBlock)layoutBlock {
+  return [[YOLayout alloc] initWithView:view layoutBlock:layoutBlock];
 }
 
 - (CGSize)_layout:(CGSize)size sizing:(BOOL)sizing {
@@ -45,7 +46,7 @@
   
   _sizing = sizing;
   _cachedSize = size;
-  CGSize layoutSize = [(id<YOLayoutView>)_view layout:self size:size];
+  CGSize layoutSize = self.layoutBlock(self, size);
   _cachedLayoutSize = layoutSize;
   if (!_sizing) {
     _needsLayout = NO;
@@ -142,7 +143,7 @@
     }
     
     if (frame.size.width > 0 && (options & YOLayoutOptionsVariableWidth) != YOLayoutOptionsVariableWidth) {
-      NSAssert(sizeThatFits.width > 0, @"sizeThatFits: on view returned 0 width; Make sure that layout:size: doesn't return a zero width size");
+      NSAssert(sizeThatFits.width > 0, @"sizeThatFits: on view returned 0 width; Make sure that layoutBlock doesn't return a zero width size");
     }
     
     frame.size = sizeThatFits;
@@ -261,13 +262,11 @@
 
 void YOLayoutAssert(UIView *view, YOLayout *layout) {
 #if DEBUG
-  BOOL hasLayoutMethod = ([view respondsToSelector:@selector(layout:size:)]);
-  
-  if (hasLayoutMethod && !layout) {
+  if (layout.layoutBlock && !layout) {
     [NSException raise:NSObjectNotAvailableException format:@"Missing layout instance for %@", view];
   }
-  if (!hasLayoutMethod && layout) {
-    [NSException raise:NSObjectNotAvailableException format:@"Missing layout:size: for %@", view];
+  if (!layout.layoutBlock && layout) {
+    [NSException raise:NSObjectNotAvailableException format:@"Missing layout.layoutBlock for %@", view];
   }
 #endif
 }

@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 YOLayout. All rights reserved.
 //
 
+@import UIKit;
+
 typedef enum {
   YOLayoutOptionsSizeToFit = 1 << 0, // Size to fit the view
   YOLayoutOptionsVariableWidth = 1 << 1,
@@ -204,24 +206,6 @@ typedef enum {
  */
 @property id <YOLayout>layout;
 
-@optional
-
-/*!
- Layout or size the current view, with the specified size as a hint.
- Return the size used. The returned size.width should match the width that was
- passed in.
- 
- You should never setFrame on subviews in this method. Instead use the methods
- in layout in order to setFrame, and use what those methods return to layout other
- subviews. This is because setFrame calls are no-ops when the view is only sizing.
- 
- This method must be implemented if self.layout is not nil.
- 
- @param layout Layout
- @param size Size to layout in
- */
-- (CGSize)layout:(id<YOLayout>)layout size:(CGSize)size;
-
 @end
 
 /*!
@@ -253,6 +237,23 @@ typedef enum {
 
 
 /*!
+ Block containing logic to layout or size the current view, with the specified
+ size as a hint. Return the size used.
+
+ You should never setFrame on subviews in this block. Instead use the methods
+ in layout in order to setFrame, and use what those methods return to layout other
+ subviews. This is because setFrame calls are no-ops when the view is only sizing.
+
+ This block must be implemented.
+
+ @param layout Layout
+ @param size Size to layout in
+ @result size Size of the view being laid out
+ */
+typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
+
+
+/*!
  YOLayout is a way to size and layout views without having to implement layoutSubview and
  sizeToFit separately.
  
@@ -261,12 +262,9 @@ typedef enum {
  YOLayout calculates a size that best fits the receiver’s subviews,
  without altering the subviews frames, or affecting layoutSubviews call hierarchy.
  
- Instead of defining both sizeThatFits: and layoutSubviews, you define a single method called:
- 
- - (CGSize)layout:(id<YOLayout>)layout size:(CGSize)size;
- 
- Then in this method you use the layout instance to set the subview frames (if sizing).
- 
+ Instead of defining both sizeThatFits: and layoutSubviews, you create a block named layoutBlock.
+ In this block you use the layout instance to set the subview frames (if sizing).
+
  This prevents your code from altering subviews when you are sizing (for sizeThatFits:).
  
  For example,
@@ -303,6 +301,8 @@ typedef enum {
 
 @property (readonly, nonatomic, getter=isSizing) BOOL sizing;
 @property (weak) UIView *view;
+//! Block containing logic to layout or size the current view. See the discussion above the YOLayoutBlock typedef for more info.
+@property (nonatomic, copy) YOLayoutBlock layoutBlock;
 
 /*!
  Set a custon/fixed size that fits.
@@ -316,15 +316,18 @@ typedef enum {
  Create layout for view.
  
  @param view View for layout (weak reference).
+ @param layoutBlock Block containing layout code. See the discussion above the YOLayoutBlock typedef for more info.
  */
-- (id)initWithView:(UIView *)view;
+- (id)initWithView:(UIView *)view layoutBlock:(CGSize (^)(id<YOLayout>, CGSize))layoutBlock;
 
 /*!
  Default layout.
+
  @param view View for layout (weak reference).
+ @param layoutBlock Block containing layout code. See the discussion above the YOLayoutBlock typedef for more info.
  @result Layout
  */
-+ (YOLayout *)layoutForView:(UIView *)view;
++ (YOLayout *)layoutForView:(UIView *)view layoutBlock:(CGSize (^)(id<YOLayout> layout, CGSize size))layoutBlock;
 
 /*!
  Add subview.
