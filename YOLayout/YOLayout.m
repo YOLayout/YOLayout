@@ -63,11 +63,7 @@
 }
 
 - (CGSize)layoutSubviews:(CGSize)size {
-  CGSize layoutSize = [self _layout:size sizing:NO];
-  for (id view in _subviews) {
-    if ([view respondsToSelector:@selector(layoutIfNeeded)]) [view layoutIfNeeded];
-  }
-  return layoutSize;
+  return [self _layout:size sizing:NO];
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
@@ -221,43 +217,6 @@
     if (needsLayout) [view setNeedsLayout];
   }
   return frame;
-}
-
-- (void)addSubview:(id)view {
-#if YP_DEBUG
-  if (![view respondsToSelector:@selector(drawInRect:)]) {
-    [NSException raise:NSInvalidArgumentException format:@"Subview should implement the method - (void)drawInRect:(CGRect)rect;"];
-    return;
-  }
-  if (![view respondsToSelector:@selector(frame)]) {
-    [NSException raise:NSInvalidArgumentException format:@"Subview should implement the method - (CGRect)frame;"];
-    return;
-  }
-#endif
-  if (!_subviews) _subviews = [[NSMutableArray alloc] init];
-  [_subviews addObject:view];
-}
-
-- (void)clear {
-  _view = nil;
-  [_subviews removeAllObjects];
-}
-
-- (void)removeSubview:(id)view {
-  [_subviews removeObject:view];
-}
-
-- (void)drawSubviewsInRect:(CGRect)rect {
-  for (id view in _subviews) {
-    BOOL isHidden = NO;
-    if ([view respondsToSelector:@selector(isHidden)]) {
-      isHidden = [view isHidden];
-    }
-    
-    if (!isHidden) {
-      [view drawInRect:CGRectOffset([view frame], rect.origin.x, rect.origin.y)];
-    }
-  }
 }
 
 void YOLayoutAssert(UIView *view, YOLayout *layout) {

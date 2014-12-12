@@ -100,27 +100,12 @@
   [self setNeedsLayout];
 }
 
-#pragma mark Refersh
-
-- (void)refresh { }
-
-- (void)refreshIfNeeded {
-  if (self.needsRefresh) {
-    self.needsRefresh = NO;
-    [self refresh];
-  }
-}
-
-#pragma mark Drawing/Layout
+#pragma mark Layout
 
 - (void)layoutView {
   NSAssert(_layout, @"Missing layout instance");
   [_layout setNeedsLayout];
   [_layout layoutSubviews:self.frame.size];
-}
-
-- (void)drawInRect:(CGRect)rect {
-  [_layout drawSubviewsInRect:rect];
 }
 
 @end

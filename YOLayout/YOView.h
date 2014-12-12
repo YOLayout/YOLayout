@@ -39,12 +39,6 @@
 - (void)setLayoutBlock:(YOLayoutBlock)layoutBlock;
 
 /*!
- Set if needs refresh.
- If visible, will immediately trigger refresh. Otherwise will call refresh when becoming visible.
- */
-@property BOOL needsRefresh;
-
-/*!
  Force the layout, if using YOLayout.
  You can use this instead of setNeedsLayout + layoutIfNeeded.
  This is also useful when using animations and setNeedsLayout + layoutIfNeeded don't work as expected.
@@ -60,14 +54,8 @@
 #pragma mark Attributes
 
 /*!
- Add a list of attributed that will call setNeedsDisplay and setNeedsLayout on change.
+ Add a list of attributes that will call setNeedsDisplay and setNeedsLayout on change.
  */
 - (void)setAttributesNeedUpdate:(NSArray *)attributes;
-
-#pragma mark Refresh
-
-- (void)refresh;
-
-- (void)refreshIfNeeded;
 
 @end

@@ -45,18 +45,6 @@ typedef enum {
   
 } YOLayoutOptions;
 
-@protocol YOLayoutView;
-/*!
- Informal protocol for views laid out by YOLayout.
- */
-@protocol YOLView <YOLayoutView>
-
-@property (assign, nonatomic) CGRect frame;
-
-- (void)setNeedsLayout;
-
-@end
-
 
 @protocol YOLayout <NSObject>
 
@@ -208,25 +196,11 @@ typedef enum {
 
 @end
 
-/*!
- Subviews added to YOLayout need to implement these methods.
- */
-@protocol YOLayoutDrawable <NSObject>
 
 /*!
- @result Size of drawable
+ UIViews can also use custom layouts even if they aren't in the view hierarchy (can't do that with Auto Layout!). They can then be drawn directly using drawInRect:
  */
-- (CGRect)frame;
-
-/*!
- @result Whether drawable is hidden
- */
-- (BOOL)isHidden;
-
-/*!
- @result Set needs layout
- */
-- (void)layoutIfNeeded;
+@protocol YODrawable <YOLayout>
 
 /*!
  @result Draw the drawable
@@ -288,13 +262,10 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
  a view sizes to fit with max and default width (when 0).
  */
 @interface YOLayout : NSObject <YOLayout> {
-  
   BOOL _needsLayout;
   BOOL _needsSizing;
   CGSize _cachedSize;
   CGSize _cachedLayoutSize;
-  
-  NSMutableArray *_subviews; // For manual subview handling
   
   CGSize _sizeThatFits;
 }
@@ -328,43 +299,6 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
  @result Layout
  */
 + (YOLayout *)layoutForView:(UIView *)view layoutBlock:(CGSize (^)(id<YOLayout> layout, CGSize size))layoutBlock;
-
-/*!
- Add subview.
- 
- Call YOLayout#drawSubviews in the superview drawRect: method to
- draw YOLayout managed subviews.
- 
- Subviews managed by the layout don't automatically handle re-display,
- or touches. Layout managed subviews are intended for simple views
- or views in table view cells that need better scrolling performance.
- For resizing you may need to adjust the contentMode.
- 
- @param view View to add. Must respond to:
- drawInRect:(CGRect)rect
- (CGRect)frame
- */
-- (void)addSubview:(id)view;
-
-/*!
- Remove subview.
- 
- @param view View to remove
- */
-- (void)removeSubview:(id)view;
-
-/*!
- Draw subviews that were added.
- Each view is drawn at their view frame.
- 
- @param rect Offset to draw in; TODO(gabe): Use rect.size?
- */
-- (void)drawSubviewsInRect:(CGRect)rect;
-
-/*!
- Remove view reference and all subviews.
- */
-- (void)clear;
 
 /*!
  Assert layout parameters are correct.
