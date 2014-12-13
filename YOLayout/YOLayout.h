@@ -289,7 +289,7 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
  @param view View for layout (weak reference).
  @param layoutBlock Block containing layout code. See the discussion above the YOLayoutBlock typedef for more info.
  */
-- (id)initWithView:(UIView *)view layoutBlock:(CGSize (^)(id<YOLayout>, CGSize))layoutBlock;
+- (id)initWithView:(UIView *)view layoutBlock:(YOLayoutBlock)layoutBlock;
 
 /*!
  Default layout.
@@ -298,7 +298,7 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
  @param layoutBlock Block containing layout code. See the discussion above the YOLayoutBlock typedef for more info.
  @result Layout
  */
-+ (YOLayout *)layoutForView:(UIView *)view layoutBlock:(CGSize (^)(id<YOLayout> layout, CGSize size))layoutBlock;
++ (YOLayout *)layoutForView:(UIView *)view layoutBlock:(YOLayoutBlock)layoutBlock;
 
 /*!
  Assert layout parameters are correct.
