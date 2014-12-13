@@ -33,12 +33,6 @@
 - (void)sharedInit;
 
 /*!
- Set the layout block for this view. A YOLayout object will be generated as well, if necessary
- Note: This is a method, not a parameter for easy autocompletion of the block type.
- */
-- (void)setLayoutBlock:(YOLayoutBlock)layoutBlock;
-
-/*!
  Force the layout, if using YOLayout.
  You can use this instead of setNeedsLayout + layoutIfNeeded.
  This is also useful when using animations and setNeedsLayout + layoutIfNeeded don't work as expected.

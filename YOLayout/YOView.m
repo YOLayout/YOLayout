@@ -44,14 +44,6 @@
   }
 }
 
-- (void)setLayoutBlock:(YOLayoutBlock)layoutBlock {
-  if (!self.layout) {
-    self.layout = [YOLayout layoutForView:self layoutBlock:layoutBlock];
-  } else {
-    self.layout.layoutBlock = layoutBlock;
-  }
-}
-
 - (void)setAttributesNeedUpdate:(NSArray *)attributes {
   if (!_observeAttributes) _observeAttributes = [NSMutableArray array];
   [_observeAttributes addObjectsFromArray:attributes];

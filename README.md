@@ -31,7 +31,8 @@ Here's the implementation file. This view's height can change based on the Dynam
     [self addSubview:dynamicHeightSubview];
  
     // Define the layout using code, and math!
-    [self setLayoutBlock:^(id<YOLayout> layout, MyView *self, CGSize size) {
+
+    self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
         CGFloat x = 10;
         CGFloat y = 10;
  
@@ -49,7 +50,7 @@ Here's the implementation file. This view's height can change based on the Dynam
 @end
 ```
 
-If you're following along closely, you may have noticed that there's no reason you _need_ to create a new YOView subclass to use YOLayout. For example, you can create simple YOViews inside view controllers.
+If you're following along closely, you may have noticed that there's no reason you _need_ to create a new YOView subclass to use YOLayout. For simple views you can instantiate a YOView and set its layout without creating a new YOView subclass.
 
 ## FAQ
 
@@ -69,7 +70,7 @@ Auto Layout in code is a step in the right direction but carries several disadva
 
 The core problem with writing your layout code in `layoutSubviews` is the massive duplication of layout code you have to write in both `layoutSubviews` and `sizeThatFits:`. When you have multiple subviews that themselves may size themselves dynamically, this code gets repetitive and tricky to maintain. You can't call `layoutIfNeeded` in `sizeThatFits:` without the risk of infinite recursion if a superview uses your `sizeThatFits:` method in its `layoutSubviews`.
 
-### Will it lay out views not in the view hierarchy?
+### Will it lay out views that aren't in the view hierarchy?
 
 You probably weren't asking this question, but you should have! One of the neat things about YOLayout is that layouts also work for views that get drawn in `drawRect:`. Because YOLayout works independently from the view hierarchy, you can easily switch between adding a subview to the hierarchy, or just drawing it in `drawRect:` without having to change your layout code. Try to do that with Auto Layout!
 
@@ -83,7 +84,6 @@ YOLayout is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
     pod "YOLayout"
-
 
 ## License
 

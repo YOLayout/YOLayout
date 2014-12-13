@@ -198,9 +198,9 @@ typedef enum {
 
 
 /*!
- UIViews can also use custom layouts even if they aren't in the view hierarchy (can't do that with Auto Layout!). They can then be drawn directly using drawInRect:
+ UIViews can also use custom layouts even if they aren't in the view hierarchy (can't do that with Auto Layout!). This protocol presents a convention for how to create drawable views. To create a drawable view, simply create a YOView that implements drawInRect:. Then superviews can draw the view in their drawRect method.
  */
-@protocol YODrawable <YOLayout>
+@protocol YODrawableView <YOLayoutView>
 
 /*!
  @result Draw the drawable
@@ -271,7 +271,6 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
 }
 
 @property (readonly, nonatomic, getter=isSizing) BOOL sizing;
-@property (weak) UIView *view;
 //! Block containing logic to layout or size the current view. See the discussion above the YOLayoutBlock typedef for more info.
 @property (nonatomic, copy) YOLayoutBlock layoutBlock;
 
@@ -284,12 +283,11 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
 @property (assign, nonatomic) CGSize sizeThatFits;
 
 /*!
- Create layout for view.
- 
- @param view View for layout (weak reference).
+ Create layout.
+
  @param layoutBlock Block containing layout code. See the discussion above the YOLayoutBlock typedef for more info.
  */
-- (id)initWithView:(UIView *)view layoutBlock:(YOLayoutBlock)layoutBlock;
+- (id)initWithLayoutBlock:(YOLayoutBlock)layoutBlock;
 
 /*!
  Default layout.
@@ -298,7 +296,7 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
  @param layoutBlock Block containing layout code. See the discussion above the YOLayoutBlock typedef for more info.
  @result Layout
  */
-+ (YOLayout *)layoutForView:(UIView *)view layoutBlock:(YOLayoutBlock)layoutBlock;
++ (YOLayout *)layoutWithLayoutBlock:(YOLayoutBlock)layoutBlock;
 
 /*!
  Assert layout parameters are correct.

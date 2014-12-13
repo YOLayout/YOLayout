@@ -16,7 +16,7 @@
   return nil;
 }
 
-- (id)initWithView:(UIView *)view layoutBlock:(YOLayoutBlock)layoutBlock {
+- (id)initWithLayoutBlock:(YOLayoutBlock)layoutBlock {
   if ((self = [super init])) {
 
     if (!layoutBlock) {
@@ -24,7 +24,6 @@
       return nil;
     }
 
-    _view = view;
     _layoutBlock = layoutBlock;
     _needsLayout = YES;
     _needsSizing = YES;
@@ -32,18 +31,16 @@
   return self;
 }
 
-+ (YOLayout *)layoutForView:(UIView *)view layoutBlock:(YOLayoutBlock)layoutBlock {
-  return [[YOLayout alloc] initWithView:view layoutBlock:layoutBlock];
++ (YOLayout *)layoutWithLayoutBlock:(YOLayoutBlock)layoutBlock {
+  return [[YOLayout alloc] initWithLayoutBlock:layoutBlock];
 }
 
 - (CGSize)_layout:(CGSize)size sizing:(BOOL)sizing {
-  if (!_view) return size;
-  
   // Disable caching
 //  if (YOCGSizeIsEqual(size, _cachedSize) && ((!_needsSizing && sizing) || (!_needsLayout && !sizing))) {
 //    return _cachedLayoutSize;
 //  }
-  
+
   _sizing = sizing;
   _cachedSize = size;
   CGSize layoutSize = self.layoutBlock(self, size);
