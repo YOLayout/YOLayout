@@ -12,12 +12,12 @@
 
 - (CGSize)sizeThatFits:(CGSize)size
 {
-    if (self.numberOfLines == 1) {
-        return [super sizeThatFits:size];
-    } else {
-        CGRect textRect = [self.attributedText boundingRectWithSize:size options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) context:nil];
-        return CGSizeMake(ceilf(textRect.size.width), ceilf(textRect.size.height));
-    }
+  if (self.numberOfLines == 1) {
+    return [super sizeThatFits:size];
+  } else {
+    CGRect textRect = [self.attributedText boundingRectWithSize:size options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) context:nil];
+    return CGSizeMake(ceilf(textRect.size.width), ceilf(textRect.size.height));
+  }
 }
 
 @end
