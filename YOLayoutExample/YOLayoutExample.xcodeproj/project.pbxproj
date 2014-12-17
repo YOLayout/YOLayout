@@ -1,0 +1,512 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		426C0FC21A41578800F2577C /* YOLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FC11A41578800F2577C /* YOLabel.m */; };
+		426C0FCA1A41606800F2577C /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC71A41606800F2577C /* information.png */; };
+		426C0FCB1A41606800F2577C /* information@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC81A41606800F2577C /* information@2x.png */; };
+		426C0FCC1A41606800F2577C /* information@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC91A41606800F2577C /* information@3x.png */; };
+		426C0FCF1A41629200F2577C /* LayoutExampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FCE1A41629200F2577C /* LayoutExampleTableViewController.m */; };
+		426C0FD51A416CBE00F2577C /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FD41A416CBE00F2577C /* GridView.m */; };
+		426C0FE11A41714900F2577C /* DrawableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FD81A41714900F2577C /* DrawableView.m */; };
+		426C0FE21A41714900F2577C /* DrawableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FD91A41714900F2577C /* DrawableView.xib */; };
+		426C0FE31A41714900F2577C /* DrawableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FDB1A41714900F2577C /* DrawableViewController.m */; };
+		426C0FE41A41714900F2577C /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FDE1A41714900F2577C /* TableViewCell.m */; };
+		426C0FE51A41714900F2577C /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FE01A41714900F2577C /* TableViewController.m */; };
+		426C0FE71A41725000F2577C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FE61A41725000F2577C /* LaunchScreen.xib */; };
+		42C08D5C1A413749009B7E9E /* LogoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C08D5B1A413749009B7E9E /* LogoView.m */; };
+		42F5C2F41A3CAF3E00E37B78 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C2F31A3CAF3E00E37B78 /* main.m */; };
+		42F5C2F71A3CAF3E00E37B78 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C2F61A3CAF3E00E37B78 /* AppDelegate.m */; };
+		42F5C30E1A3CAF3E00E37B78 /* YOLayoutExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C30D1A3CAF3E00E37B78 /* YOLayoutExampleTests.m */; };
+		42F5C31E1A3CAF7A00E37B78 /* YOCGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */; };
+		42F5C31F1A3CAF7A00E37B78 /* YOLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C31B1A3CAF7A00E37B78 /* YOLayout.m */; };
+		42F5C3201A3CAF7A00E37B78 /* YOView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C31D1A3CAF7A00E37B78 /* YOView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		42F5C3081A3CAF3E00E37B78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 42F5C2E61A3CAF3E00E37B78 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42F5C2ED1A3CAF3E00E37B78;
+			remoteInfo = YOLayoutExample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		426C0FC01A41578800F2577C /* YOLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOLabel.h; path = ../YOLayout/YOLabel.h; sourceTree = "<group>"; };
+		426C0FC11A41578800F2577C /* YOLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOLabel.m; path = ../YOLayout/YOLabel.m; sourceTree = "<group>"; };
+		426C0FC71A41606800F2577C /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
+		426C0FC81A41606800F2577C /* information@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information@2x.png"; sourceTree = "<group>"; };
+		426C0FC91A41606800F2577C /* information@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information@3x.png"; sourceTree = "<group>"; };
+		426C0FCD1A41629200F2577C /* LayoutExampleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutExampleTableViewController.h; sourceTree = "<group>"; };
+		426C0FCE1A41629200F2577C /* LayoutExampleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutExampleTableViewController.m; sourceTree = "<group>"; };
+		426C0FD31A416CBE00F2577C /* GridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridView.h; sourceTree = "<group>"; };
+		426C0FD41A416CBE00F2577C /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
+		426C0FD71A41714900F2577C /* DrawableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawableView.h; sourceTree = "<group>"; };
+		426C0FD81A41714900F2577C /* DrawableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawableView.m; sourceTree = "<group>"; };
+		426C0FD91A41714900F2577C /* DrawableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawableView.xib; sourceTree = "<group>"; };
+		426C0FDA1A41714900F2577C /* DrawableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawableViewController.h; sourceTree = "<group>"; };
+		426C0FDB1A41714900F2577C /* DrawableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawableViewController.m; sourceTree = "<group>"; };
+		426C0FDD1A41714900F2577C /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		426C0FDE1A41714900F2577C /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		426C0FDF1A41714900F2577C /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		426C0FE01A41714900F2577C /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		426C0FE61A41725000F2577C /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		42C08D5A1A413749009B7E9E /* LogoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoView.h; sourceTree = "<group>"; };
+		42C08D5B1A413749009B7E9E /* LogoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoView.m; sourceTree = "<group>"; };
+		42F5C2EE1A3CAF3E00E37B78 /* YOLayoutExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YOLayoutExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		42F5C2F21A3CAF3E00E37B78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42F5C2F31A3CAF3E00E37B78 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		42F5C2F51A3CAF3E00E37B78 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		42F5C2F61A3CAF3E00E37B78 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		42F5C3071A3CAF3E00E37B78 /* YOLayoutExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YOLayoutExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		42F5C30C1A3CAF3E00E37B78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42F5C30D1A3CAF3E00E37B78 /* YOLayoutExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YOLayoutExampleTests.m; sourceTree = "<group>"; };
+		42F5C3181A3CAF7A00E37B78 /* YOCGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOCGUtils.h; path = ../YOLayout/YOCGUtils.h; sourceTree = "<group>"; };
+		42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOCGUtils.m; path = ../YOLayout/YOCGUtils.m; sourceTree = "<group>"; };
+		42F5C31A1A3CAF7A00E37B78 /* YOLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOLayout.h; path = ../YOLayout/YOLayout.h; sourceTree = "<group>"; };
+		42F5C31B1A3CAF7A00E37B78 /* YOLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOLayout.m; path = ../YOLayout/YOLayout.m; sourceTree = "<group>"; };
+		42F5C31C1A3CAF7A00E37B78 /* YOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOView.h; path = ../YOLayout/YOView.h; sourceTree = "<group>"; };
+		42F5C31D1A3CAF7A00E37B78 /* YOView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOView.m; path = ../YOLayout/YOView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		42F5C2EB1A3CAF3E00E37B78 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42F5C3041A3CAF3E00E37B78 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		426C0FC61A41606800F2577C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				426C0FC71A41606800F2577C /* information.png */,
+				426C0FC81A41606800F2577C /* information@2x.png */,
+				426C0FC91A41606800F2577C /* information@3x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		426C0FD61A41714900F2577C /* DrawableViews */ = {
+			isa = PBXGroup;
+			children = (
+				426C0FD71A41714900F2577C /* DrawableView.h */,
+				426C0FD81A41714900F2577C /* DrawableView.m */,
+				426C0FD91A41714900F2577C /* DrawableView.xib */,
+				426C0FDA1A41714900F2577C /* DrawableViewController.h */,
+				426C0FDB1A41714900F2577C /* DrawableViewController.m */,
+			);
+			path = DrawableViews;
+			sourceTree = "<group>";
+		};
+		426C0FDC1A41714900F2577C /* DynamicTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				426C0FDD1A41714900F2577C /* TableViewCell.h */,
+				426C0FDE1A41714900F2577C /* TableViewCell.m */,
+				426C0FDF1A41714900F2577C /* TableViewController.h */,
+				426C0FE01A41714900F2577C /* TableViewController.m */,
+			);
+			path = DynamicTableViewCells;
+			sourceTree = "<group>";
+		};
+		42F5C2E51A3CAF3E00E37B78 = {
+			isa = PBXGroup;
+			children = (
+				426C0FC61A41606800F2577C /* Resources */,
+				42F5C3171A3CAF5400E37B78 /* YOLayout */,
+				42F5C2F01A3CAF3E00E37B78 /* YOLayoutExample */,
+				42F5C30A1A3CAF3E00E37B78 /* YOLayoutExampleTests */,
+				42F5C2EF1A3CAF3E00E37B78 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		42F5C2EF1A3CAF3E00E37B78 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				42F5C2EE1A3CAF3E00E37B78 /* YOLayoutExample.app */,
+				42F5C3071A3CAF3E00E37B78 /* YOLayoutExampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		42F5C2F01A3CAF3E00E37B78 /* YOLayoutExample */ = {
+			isa = PBXGroup;
+			children = (
+				426C0FDC1A41714900F2577C /* DynamicTableViewCells */,
+				426C0FD61A41714900F2577C /* DrawableViews */,
+				42F5C2F51A3CAF3E00E37B78 /* AppDelegate.h */,
+				42F5C2F61A3CAF3E00E37B78 /* AppDelegate.m */,
+				426C0FCD1A41629200F2577C /* LayoutExampleTableViewController.h */,
+				426C0FCE1A41629200F2577C /* LayoutExampleTableViewController.m */,
+				42F5C2F11A3CAF3E00E37B78 /* Supporting Files */,
+				42C08D5A1A413749009B7E9E /* LogoView.h */,
+				42C08D5B1A413749009B7E9E /* LogoView.m */,
+				426C0FD31A416CBE00F2577C /* GridView.h */,
+				426C0FD41A416CBE00F2577C /* GridView.m */,
+				426C0FE61A41725000F2577C /* LaunchScreen.xib */,
+			);
+			path = YOLayoutExample;
+			sourceTree = "<group>";
+		};
+		42F5C2F11A3CAF3E00E37B78 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				42F5C2F21A3CAF3E00E37B78 /* Info.plist */,
+				42F5C2F31A3CAF3E00E37B78 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		42F5C30A1A3CAF3E00E37B78 /* YOLayoutExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				42F5C30D1A3CAF3E00E37B78 /* YOLayoutExampleTests.m */,
+				42F5C30B1A3CAF3E00E37B78 /* Supporting Files */,
+			);
+			path = YOLayoutExampleTests;
+			sourceTree = "<group>";
+		};
+		42F5C30B1A3CAF3E00E37B78 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				42F5C30C1A3CAF3E00E37B78 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		42F5C3171A3CAF5400E37B78 /* YOLayout */ = {
+			isa = PBXGroup;
+			children = (
+				42F5C3181A3CAF7A00E37B78 /* YOCGUtils.h */,
+				42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */,
+				426C0FC01A41578800F2577C /* YOLabel.h */,
+				426C0FC11A41578800F2577C /* YOLabel.m */,
+				42F5C31A1A3CAF7A00E37B78 /* YOLayout.h */,
+				42F5C31B1A3CAF7A00E37B78 /* YOLayout.m */,
+				42F5C31C1A3CAF7A00E37B78 /* YOView.h */,
+				42F5C31D1A3CAF7A00E37B78 /* YOView.m */,
+			);
+			name = YOLayout;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		42F5C2ED1A3CAF3E00E37B78 /* YOLayoutExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42F5C3111A3CAF3E00E37B78 /* Build configuration list for PBXNativeTarget "YOLayoutExample" */;
+			buildPhases = (
+				42F5C2EA1A3CAF3E00E37B78 /* Sources */,
+				42F5C2EB1A3CAF3E00E37B78 /* Frameworks */,
+				42F5C2EC1A3CAF3E00E37B78 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YOLayoutExample;
+			productName = YOLayoutExample;
+			productReference = 42F5C2EE1A3CAF3E00E37B78 /* YOLayoutExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		42F5C3061A3CAF3E00E37B78 /* YOLayoutExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42F5C3141A3CAF3E00E37B78 /* Build configuration list for PBXNativeTarget "YOLayoutExampleTests" */;
+			buildPhases = (
+				42F5C3031A3CAF3E00E37B78 /* Sources */,
+				42F5C3041A3CAF3E00E37B78 /* Frameworks */,
+				42F5C3051A3CAF3E00E37B78 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				42F5C3091A3CAF3E00E37B78 /* PBXTargetDependency */,
+			);
+			name = YOLayoutExampleTests;
+			productName = YOLayoutExampleTests;
+			productReference = 42F5C3071A3CAF3E00E37B78 /* YOLayoutExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		42F5C2E61A3CAF3E00E37B78 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = YOLayout;
+				TargetAttributes = {
+					42F5C2ED1A3CAF3E00E37B78 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					42F5C3061A3CAF3E00E37B78 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 42F5C2ED1A3CAF3E00E37B78;
+					};
+				};
+			};
+			buildConfigurationList = 42F5C2E91A3CAF3E00E37B78 /* Build configuration list for PBXProject "YOLayoutExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 42F5C2E51A3CAF3E00E37B78;
+			productRefGroup = 42F5C2EF1A3CAF3E00E37B78 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42F5C2ED1A3CAF3E00E37B78 /* YOLayoutExample */,
+				42F5C3061A3CAF3E00E37B78 /* YOLayoutExampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		42F5C2EC1A3CAF3E00E37B78 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				426C0FCA1A41606800F2577C /* information.png in Resources */,
+				426C0FCB1A41606800F2577C /* information@2x.png in Resources */,
+				426C0FCC1A41606800F2577C /* information@3x.png in Resources */,
+				426C0FE21A41714900F2577C /* DrawableView.xib in Resources */,
+				426C0FE71A41725000F2577C /* LaunchScreen.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42F5C3051A3CAF3E00E37B78 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		42F5C2EA1A3CAF3E00E37B78 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42F5C31E1A3CAF7A00E37B78 /* YOCGUtils.m in Sources */,
+				426C0FE41A41714900F2577C /* TableViewCell.m in Sources */,
+				42F5C3201A3CAF7A00E37B78 /* YOView.m in Sources */,
+				42F5C2F71A3CAF3E00E37B78 /* AppDelegate.m in Sources */,
+				426C0FCF1A41629200F2577C /* LayoutExampleTableViewController.m in Sources */,
+				426C0FE11A41714900F2577C /* DrawableView.m in Sources */,
+				426C0FE31A41714900F2577C /* DrawableViewController.m in Sources */,
+				426C0FE51A41714900F2577C /* TableViewController.m in Sources */,
+				42F5C31F1A3CAF7A00E37B78 /* YOLayout.m in Sources */,
+				42C08D5C1A413749009B7E9E /* LogoView.m in Sources */,
+				426C0FD51A416CBE00F2577C /* GridView.m in Sources */,
+				426C0FC21A41578800F2577C /* YOLabel.m in Sources */,
+				42F5C2F41A3CAF3E00E37B78 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42F5C3031A3CAF3E00E37B78 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42F5C30E1A3CAF3E00E37B78 /* YOLayoutExampleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		42F5C3091A3CAF3E00E37B78 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42F5C2ED1A3CAF3E00E37B78 /* YOLayoutExample */;
+			targetProxy = 42F5C3081A3CAF3E00E37B78 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		42F5C30F1A3CAF3E00E37B78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		42F5C3101A3CAF3E00E37B78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		42F5C3121A3CAF3E00E37B78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = YOLayoutExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		42F5C3131A3CAF3E00E37B78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = YOLayoutExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		42F5C3151A3CAF3E00E37B78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = YOLayoutExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YOLayoutExample.app/YOLayoutExample";
+			};
+			name = Debug;
+		};
+		42F5C3161A3CAF3E00E37B78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = YOLayoutExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YOLayoutExample.app/YOLayoutExample";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		42F5C2E91A3CAF3E00E37B78 /* Build configuration list for PBXProject "YOLayoutExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42F5C30F1A3CAF3E00E37B78 /* Debug */,
+				42F5C3101A3CAF3E00E37B78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42F5C3111A3CAF3E00E37B78 /* Build configuration list for PBXNativeTarget "YOLayoutExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42F5C3121A3CAF3E00E37B78 /* Debug */,
+				42F5C3131A3CAF3E00E37B78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42F5C3141A3CAF3E00E37B78 /* Build configuration list for PBXNativeTarget "YOLayoutExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42F5C3151A3CAF3E00E37B78 /* Debug */,
+				42F5C3161A3CAF3E00E37B78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 42F5C2E61A3CAF3E00E37B78 /* Project object */;
+}
