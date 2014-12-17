@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		426C0FC21A41578800F2577C /* YOLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FC11A41578800F2577C /* YOLabel.m */; };
 		426C0FCA1A41606800F2577C /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC71A41606800F2577C /* information.png */; };
 		426C0FCB1A41606800F2577C /* information@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC81A41606800F2577C /* information@2x.png */; };
 		426C0FCC1A41606800F2577C /* information@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC91A41606800F2577C /* information@3x.png */; };
@@ -39,8 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		426C0FC01A41578800F2577C /* YOLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOLabel.h; path = ../YOLayout/YOLabel.h; sourceTree = "<group>"; };
-		426C0FC11A41578800F2577C /* YOLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOLabel.m; path = ../YOLayout/YOLabel.m; sourceTree = "<group>"; };
 		426C0FC71A41606800F2577C /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
 		426C0FC81A41606800F2577C /* information@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information@2x.png"; sourceTree = "<group>"; };
 		426C0FC91A41606800F2577C /* information@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information@3x.png"; sourceTree = "<group>"; };
@@ -197,8 +194,6 @@
 			children = (
 				42F5C3181A3CAF7A00E37B78 /* YOCGUtils.h */,
 				42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */,
-				426C0FC01A41578800F2577C /* YOLabel.h */,
-				426C0FC11A41578800F2577C /* YOLabel.m */,
 				42F5C31A1A3CAF7A00E37B78 /* YOLayout.h */,
 				42F5C31B1A3CAF7A00E37B78 /* YOLayout.m */,
 				42F5C31C1A3CAF7A00E37B78 /* YOView.h */,
@@ -320,7 +315,6 @@
 				42F5C31F1A3CAF7A00E37B78 /* YOLayout.m in Sources */,
 				42C08D5C1A413749009B7E9E /* LogoView.m in Sources */,
 				426C0FD51A416CBE00F2577C /* GridView.m in Sources */,
-				426C0FC21A41578800F2577C /* YOLabel.m in Sources */,
 				42F5C2F41A3CAF3E00E37B78 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

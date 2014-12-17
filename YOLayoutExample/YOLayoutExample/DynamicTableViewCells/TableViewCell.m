@@ -7,10 +7,9 @@
 //
 
 #import "TableViewCell.h"
-#import "YOLabel.h"
 
 @interface TableViewCellView ()
-@property (strong, nonatomic) YOLabel *label;
+@property (strong, nonatomic) UILabel *label;
 @property (strong, nonatomic) UIImageView *iconImageView;
 - (void)setString:(NSString *)string;
 @end
@@ -21,7 +20,7 @@
     self.iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"information.png"]];
     [self addSubview:self.iconImageView];
     
-    self.label = [[YOLabel alloc] init];
+    self.label = [[UILabel alloc] init];
     // To make a label wrap, you need to set numberOfLines != 1 and lineBreakMode
     self.label.numberOfLines = 0;
     self.label.lineBreakMode = NSLineBreakByWordWrapping;

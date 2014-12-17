@@ -8,7 +8,6 @@
 
 #import "DrawableViewController.h"
 #import "DrawableView.h"
-#import "YOLabel.h"
 #import "GridView.h"
 
 @interface DrawableViewController ()
@@ -29,7 +28,7 @@
     YOView *view = [[YOView alloc] init];
     view.backgroundColor = [UIColor whiteColor];
     
-    YOLabel *label = [[YOLabel alloc] init];
+    UILabel *label = [[UILabel alloc] init];
     label.text = @"The following view draws 10 logos in drawRect: based on the available width. Try rotating into landscape and see how the grid changes";
     label.numberOfLines = 0;
     label.lineBreakMode = NSLineBreakByWordWrapping;
@@ -41,7 +40,7 @@
     drawableView.backgroundColor = [UIColor colorWithWhite:0.97 alpha:1.0];
     [view addSubview:drawableView];
 
-    YOLabel *label2 = [[YOLabel alloc] init];
+    UILabel *label2 = [[UILabel alloc] init];
     label2.text = @"The following view's subviews are part of the view hierarchy but are otherwise laid out exactly like the above view";
     label2.numberOfLines = 0;
     label2.lineBreakMode = NSLineBreakByWordWrapping;
