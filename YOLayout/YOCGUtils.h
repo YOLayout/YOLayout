@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 YOLayout. All rights reserved.
 //
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 
 
 CGPoint YOCGPointToCenterY(CGSize size, CGSize inSize);
