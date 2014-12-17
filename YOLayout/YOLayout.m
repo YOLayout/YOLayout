@@ -17,13 +17,9 @@
 }
 
 - (id)initWithLayoutBlock:(YOLayoutBlock)layoutBlock {
+  NSParameterAssert(layoutBlock);
+
   if ((self = [super init])) {
-
-    if (!layoutBlock) {
-      [NSException raise:NSObjectNotAvailableException format:@"layoutBlock is required"];
-      return nil;
-    }
-
     _layoutBlock = layoutBlock;
     _needsLayout = YES;
     _needsSizing = YES;
@@ -214,17 +210,6 @@
     if (needsLayout) [view setNeedsLayout];
   }
   return frame;
-}
-
-void YOLayoutAssert(UIView *view, YOLayout *layout) {
-#if DEBUG
-  if (layout.layoutBlock && !layout) {
-    [NSException raise:NSObjectNotAvailableException format:@"Missing layout instance for %@", view];
-  }
-  if (!layout.layoutBlock && layout) {
-    [NSException raise:NSObjectNotAvailableException format:@"Missing layout.layoutBlock for %@", view];
-  }
-#endif
 }
 
 @end

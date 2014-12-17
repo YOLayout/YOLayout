@@ -8,6 +8,7 @@
 
 @import UIKit;
 
+
 typedef enum {
   YOLayoutOptionsSizeToFit = 1 << 0, // Size to fit the view
   YOLayoutOptionsVariableWidth = 1 << 1,
@@ -297,10 +298,5 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
  @result Layout
  */
 + (YOLayout *)layoutWithLayoutBlock:(YOLayoutBlock)layoutBlock;
-
-/*!
- Assert layout parameters are correct.
- */
-void YOLayoutAssert(UIView *view, id<YOLayout> layout);
 
 @end

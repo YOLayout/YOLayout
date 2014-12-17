@@ -8,6 +8,7 @@
 
 #include "YOCGUtils.h"
 
+
 #define YOCGIsEqualWithAccuracy(n1, n2, accuracy) (n1 >= (n2-accuracy) && n1 <= (n2+accuracy))
 
 CGPoint YOCGPointToCenterY(CGSize size, CGSize inSize) {

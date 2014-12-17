@@ -68,14 +68,12 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  YOLayoutAssert(self, _layout);
   if (_layout) {
     [_layout layoutSubviews:self.frame.size];
   }
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
-  YOLayoutAssert(self, _layout);
   if (_layout) {
     return [_layout sizeThatFits:size];
   }
