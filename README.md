@@ -1,4 +1,6 @@
-# YOLayout
+<p align="center" >
+  <img src="https://raw.github.com/YOLayout/YOLayout/assets/Logo.png" alt="YOLayout" title="YOLayout">
+</p>
 
 A simple frame-based layout framework. All the performance of frame-based layout with an API simpler to use than Auto Layout. Have full control over your layouts. Stop wasting your time with IB and Auto Layout, after all, [YOLO!](http://en.wikipedia.org/wiki/YOLO_%28motto%29)
 
