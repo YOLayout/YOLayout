@@ -37,7 +37,7 @@
         x += imageViewSize.width + 10;
 
         // Lay out the text
-        CGSize textSize = [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 1000) view:weakSelf.label options:YOLayoutOptionsSizeToFit | YOLayoutOptionsFixedWidth].size;
+        CGSize textSize = [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 1000) view:weakSelf.label options:YOLayoutOptionsSizeToFit].size;
 
         // Increment by whichever view is taller, the image or the text
         y += MAX(imageViewSize.height, textSize.height);

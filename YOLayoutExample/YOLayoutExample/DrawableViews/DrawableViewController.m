@@ -57,9 +57,9 @@
         CGFloat y = insets.right;
         CGFloat contentWidth = size.width - insets.left - insets.right;
 
+        // Size the views to fit, and center horizontally
         y += [layout setFrame:CGRectMake(x, y, contentWidth, 1000) view:label options:YOLayoutOptionsSizeToFit | YOLayoutOptionsCenterHorizontal].size.height + 10;
 
-        // Size the view to fit, and center it horizontally
         y += [layout setFrame:CGRectMake(x, y, contentWidth, 0) view:drawableView options:YOLayoutOptionsSizeToFit | YOLayoutOptionsCenterHorizontal | YOLayoutOptionsVariableWidth].size.height + 10;
 
         y += [layout setFrame:CGRectMake(x, y, contentWidth, 1000) view:label2 options:YOLayoutOptionsSizeToFit | YOLayoutOptionsCenterHorizontal].size.height + 10;
