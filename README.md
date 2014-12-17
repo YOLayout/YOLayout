@@ -6,7 +6,7 @@ A simple frame-based layout framework. All the performance of frame-based layout
 
 ## Usage
 
-Let's just jump into the code. Here's the header file.
+Let's just jump into the code. Here's the header file for a view that uses YOLayout.
 
 ```Objective-C
 // MyView.h
