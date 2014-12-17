@@ -11,6 +11,12 @@
 
 #define YOCGIsEqualWithAccuracy(n1, n2, accuracy) (n1 >= (n2-accuracy) && n1 <= (n2+accuracy))
 
+CGPoint YOCGPointToCenterX(CGSize size, CGSize inSize) {
+  CGPoint p = CGPointMake(roundf((inSize.width - size.width) / 2.0f), 0);
+  if (p.x < 0.0f) p.x = 0.0f;
+  return p;
+}
+
 CGPoint YOCGPointToCenterY(CGSize size, CGSize inSize) {
     CGPoint p = CGPointMake(0, roundf((inSize.height - size.height) / 2.0f));
     if (p.y < 0.0f) p.y = 0.0f;
@@ -34,6 +40,11 @@ BOOL YOCGSizeIsEqual(CGSize size1, CGSize size2) {
     return (YOCGIsEqualWithAccuracy(size1.height, size2.height, 0.0001) && YOCGIsEqualWithAccuracy(size1.width, size2.width, 0.0001));
 }
 
+CGRect YOCGRectSetX(CGRect rect, CGFloat x) {
+  rect.origin.x = x;
+  return rect;
+}
+
 CGRect YOCGRectSetY(CGRect rect, CGFloat y) {
     rect.origin.y = y;
     return rect;
@@ -47,6 +58,11 @@ CGRect YOCGRectRightAlignWithRect(CGRect rect, CGRect inRect) {
 CGRect YOCGRectToCenterInRect(CGSize size, CGRect inRect) {
     CGPoint p = YOCGPointToCenter(size, inRect.size);
     return CGRectMake(p.x + inRect.origin.x, p.y + inRect.origin.y, size.width, size.height);
+}
+
+CGRect YOCGRectToCenterXInRect(CGRect rect, CGRect inRect) {
+  CGPoint p = YOCGPointToCenterX(rect.size, inRect.size);
+  return YOCGRectSetX(rect, p.x + inRect.origin.x);
 }
 
 CGRect YOCGRectToCenterYInRect(CGRect rect, CGRect inRect) {

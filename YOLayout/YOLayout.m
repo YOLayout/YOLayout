@@ -154,9 +154,13 @@
   if ((options & YOLayoutOptionsCenter) == YOLayoutOptionsCenter) {
     frame = YOCGRectToCenterInRect(sizeForAlign, rect);
   }
-  
+
   if ((options & YOLayoutOptionsCenterVertical) == YOLayoutOptionsCenterVertical) {
     frame = YOCGRectToCenterYInRect(frame, originalFrame);
+  }
+
+  if ((options & YOLayoutOptionsCenterHorizontal) == YOLayoutOptionsCenterHorizontal) {
+    frame = YOCGRectToCenterXInRect(frame, originalFrame);
   }
   
   if ((options & YOLayoutOptionsRightAlign) == YOLayoutOptionsRightAlign) {

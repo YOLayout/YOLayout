@@ -19,6 +19,8 @@ CGRect YOCGRectRightAlignWithRect(CGRect rect, CGRect inRect);
 
 CGRect YOCGRectToCenterInRect(CGSize size, CGRect inRect);
 
+CGRect YOCGRectToCenterXInRect(CGRect rect, CGRect inRect);
+
 CGRect YOCGRectToCenterYInRect(CGRect rect, CGRect inRect);
 
 BOOL YOCGRectIsEqual(CGRect rect1, CGRect rect2);
