@@ -40,6 +40,10 @@ BOOL YOCGSizeIsEqual(CGSize size1, CGSize size2) {
   return (YOCGIsEqualWithAccuracy(size1.height, size2.height, 0.0001) && YOCGIsEqualWithAccuracy(size1.width, size2.width, 0.0001));
 }
 
+BOOL YOCGRectIsEqual(CGRect rect1, CGRect rect2) {
+    return (YOCGPointIsEqual(rect1.origin, rect2.origin) && YOCGSizeIsEqual(rect1.size, rect2.size));
+}
+
 CGRect YOCGRectSetX(CGRect rect, CGFloat x) {
   rect.origin.x = x;
   return rect;
@@ -69,8 +73,3 @@ CGRect YOCGRectToCenterYInRect(CGRect rect, CGRect inRect) {
   CGPoint p = YOCGPointToCenterY(rect.size, inRect.size);
   return YOCGRectSetY(rect, p.y + inRect.origin.y);
 }
-
-BOOL YOCGRectIsEqual(CGRect rect1, CGRect rect2) {
-  return (YOCGPointIsEqual(rect1.origin, rect2.origin) && YOCGSizeIsEqual(rect1.size, rect2.size));
-}
-

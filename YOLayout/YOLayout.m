@@ -12,7 +12,7 @@
 @implementation YOLayout
 
 - (id)init {
-  [NSException raise:NSDestinationInvalidException format:@"Layout must be associated with a view; Use initWithView:"];
+  [NSException raise:NSDestinationInvalidException format:@"Layout must be associated with a view; Use initWithLayoutBlock:"];
   return nil;
 }
 
@@ -32,10 +32,9 @@
 }
 
 - (CGSize)_layout:(CGSize)size sizing:(BOOL)sizing {
-  // Disable caching
-//  if (YOCGSizeIsEqual(size, _cachedSize) && ((!_needsSizing && sizing) || (!_needsLayout && !sizing))) {
-//    return _cachedLayoutSize;
-//  }
+  if (YOCGSizeIsEqual(size, _cachedSize) && ((!_needsSizing && sizing) || (!_needsLayout && !sizing))) {
+    return _cachedLayoutSize;
+  }
 
   _sizing = sizing;
   _cachedSize = size;
