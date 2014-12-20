@@ -86,10 +86,6 @@
   [_layout setNeedsLayout];
 }
 
-- (void)notifyNeedsLayout:(BOOL)animated {
-  [self setNeedsLayout];
-}
-
 #pragma mark Layout
 
 - (void)layoutView {

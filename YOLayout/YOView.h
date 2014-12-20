@@ -39,12 +39,6 @@
  */
 - (void)layoutView;
 
-/*!
- Calls needsLayoutBlock, in the case where you want to make the superview trigger an layout update.
- @param animated YES if the layout should animate
- */
-- (void)notifyNeedsLayout:(BOOL)animated;
-
 #pragma mark Attributes
 
 /*!
