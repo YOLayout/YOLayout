@@ -16,8 +16,10 @@
 
       - (void)sharedInit {
          [super sharedInit];
+         UIView *subview = [[UIView alloc] init];
+         [self addSubview:subview];
          self.layout = [YOLayout layoutForView:self layoutBlock:^(id<YOLayout> layout, CGSize size) {
-           [layout setFrame:CGRectMake(0, 0, size.width, 30)];
+           [layout setFrame:CGRectMake(0, 0, size.width, 30) view:subview];
            return CGSizeMake(size.width, 30);
          }];
          self.backgroundColor = [UIColor whiteColor];

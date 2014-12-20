@@ -58,13 +58,13 @@
         CGFloat contentWidth = size.width - insets.left - insets.right;
 
         // Size the views to fit, and center horizontally
-        y += [layout setFrame:CGRectMake(x, y, contentWidth, 1000) view:label options:YOLayoutOptionsSizeToFit | YOLayoutOptionsCenterHorizontal].size.height + 10;
+        y += [layout setFrame:CGRectMake(x, y, contentWidth, 1000) view:label options:YOLayoutOptionsSizeToFit | YOLayoutOptionsAlignCenterHorizontal].size.height + 10;
 
-        y += [layout setFrame:CGRectMake(x, y, contentWidth, 0) view:drawableView options:YOLayoutOptionsSizeToFit | YOLayoutOptionsCenterHorizontal | YOLayoutOptionsVariableWidth].size.height + 10;
+        y += [layout setFrame:CGRectMake(x, y, contentWidth, 0) view:drawableView options:YOLayoutOptionsSizeToFit | YOLayoutOptionsAlignCenterHorizontal].size.height + 10;
 
-        y += [layout setFrame:CGRectMake(x, y, contentWidth, 1000) view:label2 options:YOLayoutOptionsSizeToFit | YOLayoutOptionsCenterHorizontal].size.height + 10;
+        y += [layout setFrame:CGRectMake(x, y, contentWidth, 1000) view:label2 options:YOLayoutOptionsSizeToFit | YOLayoutOptionsAlignCenterHorizontal].size.height + 10;
 
-        [layout setFrame:CGRectMake(x, y, contentWidth, 0) view:gridView options:YOLayoutOptionsSizeToFit | YOLayoutOptionsCenterHorizontal | YOLayoutOptionsVariableWidth];
+        [layout setFrame:CGRectMake(x, y, contentWidth, 0) view:gridView options:YOLayoutOptionsSizeToFit | YOLayoutOptionsAlignCenterHorizontal];
 
         return size;
     }];

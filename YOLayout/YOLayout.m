@@ -75,7 +75,7 @@
 - (CGRect)setFrameInRect:(CGRect)inRect view:(id)view {
   CGSize sizeThatFits = [view sizeThatFits:CGSizeMake(inRect.size.width, inRect.size.height)];
   if (inRect.size.height == 0) inRect.size.height = sizeThatFits.height;
-  return [self setFrame:CGRectMake(0, 0, sizeThatFits.width, sizeThatFits.height) inRect:inRect view:view options:YOLayoutOptionsCenter];
+  return [self setFrame:CGRectMake(0, 0, sizeThatFits.width, sizeThatFits.height) inRect:inRect view:view options:YOLayoutOptionsAlignCenter];
 }
 
 - (CGRect)setFrame:(CGRect)frame inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
@@ -83,19 +83,19 @@
   if ([view isHidden]) return CGRectZero;
 
   CGRect originalFrame = frame;
-  BOOL sizeToFit = ((options & YOLayoutOptionsSizeToFit) == YOLayoutOptionsSizeToFit)
-  || ((options & YOLayoutOptionsVariableWidth) == YOLayoutOptionsVariableWidth)
+  BOOL sizeToFit = ((options & YOLayoutOptionsSizeToFitHorizontal) == YOLayoutOptionsSizeToFitHorizontal)
+  || ((options & YOLayoutOptionsSizeToFitVertical) == YOLayoutOptionsSizeToFitVertical)
   || ((options & YOLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio) == YOLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio);
-  
+
   CGSize sizeThatFits = CGSizeZero;
   if (sizeToFit) {
     sizeThatFits = [view sizeThatFits:frame.size];
     
     // If size that fits returns a larger width, then we'll need to constrain it.
-    if (((options & YOLayoutOptionsSizeToFitConstrainWidth) == YOLayoutOptionsSizeToFitConstrainWidth) && sizeThatFits.width > frame.size.width) {
+    if (((options & YOLayoutOptionsSizeToFitConstrainWidth) != YOLayoutOptionsSizeToFitConstrainWidth) && sizeThatFits.width > frame.size.width) {
       sizeThatFits.width = frame.size.width;
     }
-    
+
     // If size that fits returns a larger width or height, constrain it, but also maintain the aspect ratio from sizeThatFits
     if (((options & YOLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio) == YOLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio) && (sizeThatFits.height > frame.size.height || sizeThatFits.width > frame.size.width)) {
       CGFloat aspectRatio = sizeThatFits.width / sizeThatFits.height;
@@ -109,7 +109,7 @@
         sizeThatFits.width = roundf(frame.size.height * aspectRatio);
       }
     }
-    
+
     if (sizeThatFits.width == 0 && ((options & YOLayoutOptionsSizeToFitDefaultSize) == YOLayoutOptionsSizeToFitDefaultSize)) {
       sizeThatFits.width = frame.size.width;
     }
@@ -117,56 +117,34 @@
     if (sizeThatFits.height == 0 && ((options & YOLayoutOptionsSizeToFitDefaultSize) == YOLayoutOptionsSizeToFitDefaultSize)) {
       sizeThatFits.height = frame.size.height;
     }
-    
-    // If size that fits returns different width than passed in, it can cause weirdness when sizeToFit is called multiple times in succession.
-    // Here we assert the size passed into sizeThatFits returns the same width, unless you explicitly override this behavior.
-    // This is because most views are sized based on a width. If you had a view (a button, for example) with a variable width, then you should specify the
-    // YOLayoutOptionsVariableWidth to override this check.
-    // This check only applies to YOView subclasses.
-    if (((options & YOLayoutOptionsVariableWidth) != YOLayoutOptionsVariableWidth)
-        && ((options & YOLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio) != YOLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio)
-        && ((options & YOLayoutOptionsFixedWidth) != YOLayoutOptionsFixedWidth)
-        && sizeThatFits.width != frame.size.width && [view conformsToProtocol:@protocol(YOLayoutView)]) {
-      NSAssert(NO, @"sizeThatFits: returned width different from passed in width. If you have a variable width view, you can pass in the option YOLayoutOptionsVariableWidth to avoid this check.");
-    }
-    
-    if (frame.size.width > 0 && (options & YOLayoutOptionsVariableWidth) != YOLayoutOptionsVariableWidth) {
-      NSAssert(sizeThatFits.width > 0, @"sizeThatFits: on view returned 0 width; Make sure that layoutBlock doesn't return a zero width size");
-    }
-    
+
     frame.size = sizeThatFits;
   }
   
-  if ((options & YOLayoutOptionsFixedWidth) == YOLayoutOptionsFixedWidth) {
+  if ((options & YOLayoutOptionsSizeToFitHorizontal) != YOLayoutOptionsSizeToFitHorizontal) {
     frame.size.width = originalFrame.size.width;
   }
   
-  if ((options & YOLayoutOptionsFixedHeight) == YOLayoutOptionsFixedHeight) {
+  if ((options & YOLayoutOptionsSizeToFitVertical) != YOLayoutOptionsSizeToFitVertical) {
     frame.size.height = originalFrame.size.height;
   }
-
   
-  CGSize sizeForAlign = frame.size;
   CGRect rect = originalFrame;
   if (!CGRectIsEmpty(inRect)) rect = inRect;
   
-  if ((options & YOLayoutOptionsCenter) == YOLayoutOptionsCenter) {
-    frame = YOCGRectToCenterInRect(sizeForAlign, rect);
-  }
-
-  if ((options & YOLayoutOptionsCenterVertical) == YOLayoutOptionsCenterVertical) {
+  if ((options & YOLayoutOptionsAlignCenterVertical) == YOLayoutOptionsAlignCenterVertical) {
     frame = YOCGRectToCenterYInRect(frame, originalFrame);
   }
 
-  if ((options & YOLayoutOptionsCenterHorizontal) == YOLayoutOptionsCenterHorizontal) {
+  if ((options & YOLayoutOptionsAlignCenterHorizontal) == YOLayoutOptionsAlignCenterHorizontal) {
     frame = YOCGRectToCenterXInRect(frame, originalFrame);
   }
-  
-  if ((options & YOLayoutOptionsRightAlign) == YOLayoutOptionsRightAlign) {
+
+  if ((options & YOLayoutOptionsAlignRight) == YOLayoutOptionsAlignRight) {
     frame = YOCGRectRightAlignWithRect(frame, rect);
   }
 
-  if ((options & YOLayoutOptionsBottomAlign) == YOLayoutOptionsBottomAlign) {
+  if ((options & YOLayoutOptionsAlignBottom) == YOLayoutOptionsAlignBottom) {
     frame = YOCGRectBottomAlignWithRect(frame, rect);
   }
 

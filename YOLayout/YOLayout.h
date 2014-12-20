@@ -10,42 +10,36 @@
 
 
 typedef enum {
-  YOLayoutOptionsSizeToFit = 1 << 0, // Size to fit the view
-  YOLayoutOptionsVariableWidth = 1 << 1,
-
-  // Alignment
-  // Center the view in the specified size (horizontal + vertical). If you use this with YOLayoutOptionsSizeToFit then the origin width is maintained.
-  YOLayoutOptionsCenter = 1 << 2,
-  YOLayoutOptionsCenterHorizontal = 1 << 3, // Center horizontally
-  YOLayoutOptionsCenterVertical = 1 << 4, // Center vertically
-  YOLayoutOptionsRightAlign = 1 << 5, // After sizing, aligns the view with the right of the passed in rect
-  YOLayoutOptionsBottomAlign = 1 << 6, // After sizing, aligns the view with the bottom of the passed in rect
+  // SIZING
+  // Size the view to fit vertically
+  YOLayoutOptionsSizeToFitVertical = 1 << 0,
+  YOLayoutOptionsSizeToFitHorizontal = 1 << 1,
+  YOLayoutOptionsSizeToFit = YOLayoutOptionsSizeToFitVertical | YOLayoutOptionsSizeToFitHorizontal,
 
   // Whether sizeToFit is constrained to the width specified.
   // For example UILabel sizeToFit may return a larger width than was specified,
   // and this will constrain it.
-  YOLayoutOptionsSizeToFitConstrainWidth = 1 << 8,
-  
+  YOLayoutOptionsSizeToFitConstrainWidth = 1 << 2,
+
   // Whether the size specified is the default. Using this option will
   // use the specified width and/or height (if not 0) when the sizeToFit
   // returns a 0 width.
   // This is useful for an image view that has to load its data and may
   // initially return 0 for sizeThatFits.
-  // This option is only available when using
-  YOLayoutOptionsSizeToFitDefaultSize = 1 << 9,
-  
+  YOLayoutOptionsSizeToFitDefaultSize = 1 << 3,
+
   // Whether sizeToFit is constrained to the size specified.
   // This is useful for an image view that may need to be constrained to a max
   // size, but still maintain its aspect ratio.
-  YOLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio = 1 << 10,
-  
-  // Whether width specified will be set as the width. Using this option will
-  // use the specified width regardless of the width returned by sizeThatFits.
-  YOLayoutOptionsFixedWidth = 1 << 11,
-  // Whether width specified will be set as the height. Using this option will
-  // use the specified width regardless of the height returned by sizeThatFits.
-  YOLayoutOptionsFixedHeight = 1 << 12,
-  
+  YOLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio = 1 << 4,
+
+  // ALIGNMENT
+  // Center the view in the specified size. If you use this with YOLayoutOptionsSizeToFit then the origin width is maintained.
+  YOLayoutOptionsAlignCenterVertical = 1 << 5, // Center vertically
+  YOLayoutOptionsAlignCenterHorizontal = 1 << 6, // Center horizontally
+  YOLayoutOptionsAlignCenter = YOLayoutOptionsAlignCenterVertical | YOLayoutOptionsAlignCenterHorizontal,
+  YOLayoutOptionsAlignRight = 1 << 7, // After sizing, aligns the view with the right of the passed in rect
+  YOLayoutOptionsAlignBottom = 1 << 8, // After sizing, aligns the view with the bottom of the passed in rect
 } YOLayoutOptions;
 
 
