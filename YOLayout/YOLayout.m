@@ -90,8 +90,13 @@
     sizeThatFits = [view sizeThatFits:frame.size];
     
     // If size that fits returns a larger width, then we'll need to constrain it.
-    if (((options & YOLayoutOptionsSizeToFitConstrainWidth) != YOLayoutOptionsSizeToFitConstrainWidth) && sizeThatFits.width > frame.size.width) {
+    if (((options & YOLayoutOptionsSizeToFitConstrainWidth) == YOLayoutOptionsSizeToFitConstrainWidth) && sizeThatFits.width > frame.size.width) {
       sizeThatFits.width = frame.size.width;
+    }
+
+    // If size that fits returns a larger height, then we'll need to constrain it.
+    if (((options & YOLayoutOptionsSizeToFitConstrainHeight) == YOLayoutOptionsSizeToFitConstrainHeight) && sizeThatFits.height > frame.size.height) {
+      sizeThatFits.height = frame.size.height;
     }
 
     // If size that fits returns a larger width or height, constrain it, but also maintain the aspect ratio from sizeThatFits

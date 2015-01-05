@@ -13,33 +13,37 @@ typedef enum {
   // SIZING
   // Size the view to fit vertically
   YOLayoutOptionsSizeToFitVertical = 1 << 0,
+  // Size the view to fit horizontally
   YOLayoutOptionsSizeToFitHorizontal = 1 << 1,
   YOLayoutOptionsSizeToFit = YOLayoutOptionsSizeToFitVertical | YOLayoutOptionsSizeToFitHorizontal,
 
-  // Whether sizeToFit is constrained to the width specified.
+  // Constrain sizeThatFit's width to the pased in frame
   // For example UILabel sizeToFit may return a larger width than was specified,
   // and this will constrain it.
   YOLayoutOptionsSizeToFitConstrainWidth = 1 << 2,
+
+  // Constrain sizeThatFit's height to the pased in frame
+  YOLayoutOptionsSizeToFitConstrainHeight = 1 << 3,
+
+  // Constrain sizeThatFits to the size specified but maintain the original aspect ratio.
+  // This is useful for an image view that may need to be constrained to a max
+  // size, but still maintain its aspect ratio.
+  YOLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio = 1 << 4,
 
   // Whether the size specified is the default. Using this option will
   // use the specified width and/or height (if not 0) when the sizeToFit
   // returns a 0 width.
   // This is useful for an image view that has to load its data and may
   // initially return 0 for sizeThatFits.
-  YOLayoutOptionsSizeToFitDefaultSize = 1 << 3,
-
-  // Whether sizeToFit is constrained to the size specified.
-  // This is useful for an image view that may need to be constrained to a max
-  // size, but still maintain its aspect ratio.
-  YOLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio = 1 << 4,
+  YOLayoutOptionsSizeToFitDefaultSize = 1 << 5,
 
   // ALIGNMENT
   // Center the view in the specified size. If you use this with YOLayoutOptionsSizeToFit then the origin width is maintained.
-  YOLayoutOptionsAlignCenterVertical = 1 << 5, // Center vertically
-  YOLayoutOptionsAlignCenterHorizontal = 1 << 6, // Center horizontally
+  YOLayoutOptionsAlignCenterVertical = 1 << 10, // Center vertically
+  YOLayoutOptionsAlignCenterHorizontal = 1 << 11, // Center horizontally
   YOLayoutOptionsAlignCenter = YOLayoutOptionsAlignCenterVertical | YOLayoutOptionsAlignCenterHorizontal,
-  YOLayoutOptionsAlignRight = 1 << 7, // After sizing, aligns the view with the right of the passed in rect
-  YOLayoutOptionsAlignBottom = 1 << 8, // After sizing, aligns the view with the bottom of the passed in rect
+  YOLayoutOptionsAlignRight = 1 << 12, // After sizing, aligns the view with the right of the passed in rect
+  YOLayoutOptionsAlignBottom = 1 << 13, // After sizing, aligns the view with the bottom of the passed in rect
 } YOLayoutOptions;
 
 
