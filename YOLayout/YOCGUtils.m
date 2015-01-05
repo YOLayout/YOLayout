@@ -59,6 +59,11 @@ CGRect YOCGRectRightAlignWithRect(CGRect rect, CGRect inRect) {
   return CGRectMake(x, rect.origin.y, rect.size.width, rect.size.height);
 }
 
+CGRect YOCGRectBottomAlignWithRect(CGRect rect, CGRect inRect) {
+  CGFloat y = inRect.origin.y + inRect.size.height - rect.size.height;
+  return CGRectMake(rect.origin.x, y, rect.size.width, rect.size.height);
+}
+
 CGRect YOCGRectToCenterInRect(CGSize size, CGRect inRect) {
   CGPoint p = YOCGPointToCenter(size, inRect.size);
   return CGRectMake(p.x + inRect.origin.x, p.y + inRect.origin.y, size.width, size.height);

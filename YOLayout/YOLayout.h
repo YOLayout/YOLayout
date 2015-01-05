@@ -19,6 +19,7 @@ typedef enum {
   YOLayoutOptionsCenterHorizontal = 1 << 3, // Center horizontally
   YOLayoutOptionsCenterVertical = 1 << 4, // Center vertically
   YOLayoutOptionsRightAlign = 1 << 5, // After sizing, aligns the view with the right of the passed in rect
+  YOLayoutOptionsBottomAlign = 1 << 6, // After sizing, aligns the view with the bottom of the passed in rect
 
   // Whether sizeToFit is constrained to the width specified.
   // For example UILabel sizeToFit may return a larger width than was specified,

@@ -165,7 +165,11 @@
   if ((options & YOLayoutOptionsRightAlign) == YOLayoutOptionsRightAlign) {
     frame = YOCGRectRightAlignWithRect(frame, rect);
   }
-  
+
+  if ((options & YOLayoutOptionsBottomAlign) == YOLayoutOptionsBottomAlign) {
+    frame = YOCGRectBottomAlignWithRect(frame, rect);
+  }
+
   [self setFrame:frame view:view];
   return frame;
 }
