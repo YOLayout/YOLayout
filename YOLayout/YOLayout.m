@@ -79,8 +79,6 @@
 }
 
 - (CGRect)setFrame:(CGRect)frame inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
-  
-  if ([view isHidden]) return CGRectZero;
 
   CGRect originalFrame = frame;
   BOOL sizeToFit = ((options & YOLayoutOptionsSizeToFitHorizontal) == YOLayoutOptionsSizeToFitHorizontal)
