@@ -27,7 +27,7 @@
     [self addSubview:self.label];
 
     __weak typeof(self) weakSelf = self;
-    self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+    self.layout = [YOLayout layoutWithView:self layoutBlock:^CGSize(id<YOLayout> layout, UIView *view, CGSize size) {
         UIEdgeInsets insets = UIEdgeInsetsMake(10, 10, 10, 10);
         CGFloat x = insets.left;
         CGFloat y = insets.top;

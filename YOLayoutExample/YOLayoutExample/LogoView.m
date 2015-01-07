@@ -11,10 +11,10 @@
 @implementation LogoView
 
 - (void)sharedInit {
-    self.backgroundColor = [UIColor whiteColor];
+  self.backgroundColor = [UIColor whiteColor];
 
-    // Size to an aspect ratio of 4.090909091:1
-    self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+  // Size to an aspect ratio of 4.090909091:1
+  self.layout = [YOLayout layoutWithView:self layoutBlock:^CGSize(id<YOLayout> layout, UIView *view, CGSize size) {
         return CGSizeMake(size.width, ceilf(size.width * 0.244444444));
     }];
 }
