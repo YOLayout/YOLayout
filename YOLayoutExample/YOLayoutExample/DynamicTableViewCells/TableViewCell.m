@@ -9,14 +9,15 @@
 #import "TableViewCell.h"
 
 @interface TableViewCellView ()
-@property (strong, nonatomic) UILabel *label;
-@property (strong, nonatomic) UIImageView *iconImageView;
+@property UILabel *label;
+@property UIImageView *iconImageView;
 - (void)setString:(NSString *)string;
 @end
 
 @implementation TableViewCellView
 
 - (void)sharedInit {
+    [super sharedInit];
     self.iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"information.png"]];
     [self addSubview:self.iconImageView];
     
@@ -26,18 +27,18 @@
     self.label.lineBreakMode = NSLineBreakByWordWrapping;
     [self addSubview:self.label];
 
-    __weak typeof(self) weakSelf = self;
+    YOSelf yself = self;
     self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
         UIEdgeInsets insets = UIEdgeInsetsMake(10, 10, 10, 10);
         CGFloat x = insets.left;
         CGFloat y = insets.top;
         
         // iconImageView's size is set by the UIImage when using initWithImage:
-        CGSize imageViewSize = [layout setOrigin:CGPointMake(x, y) view:weakSelf.iconImageView].size;
+        CGSize imageViewSize = [layout setOrigin:CGPointMake(x, y) view:yself.iconImageView].size;
         x += imageViewSize.width + 10;
 
         // Lay out the text
-        CGSize textSize = [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 1000) view:weakSelf.label options:YOLayoutOptionsSizeToFit].size;
+        CGSize textSize = [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 1000) view:yself.label options:YOLayoutOptionsSizeToFit].size;
 
         // Increment by whichever view is taller, the image or the text
         y += MAX(imageViewSize.height, textSize.height);
