@@ -17,25 +17,25 @@ typedef enum {
   YOLayoutOptionsSizeToFitHorizontal = 1 << 1,
   YOLayoutOptionsSizeToFit = YOLayoutOptionsSizeToFitVertical | YOLayoutOptionsSizeToFitHorizontal,
 
-  // Constrain sizeThatFit's width to the pased in frame
+  // Constrain sizeThatFit's width to the passed in frame
   // For example UILabel sizeToFit may return a larger width than was specified,
   // and this will constrain it.
-  YOLayoutOptionsSizeToFitConstrainWidth = 1 << 2,
+  YOLayoutOptionsConstrainWidth = 1 << 2,
 
-  // Constrain sizeThatFit's height to the pased in frame
-  YOLayoutOptionsSizeToFitConstrainHeight = 1 << 3,
+  // Constrain sizeThatFit's height to the passed in frame
+  YOLayoutOptionsConstrainHeight = 1 << 3,
 
   // Constrain sizeThatFits to the size specified but maintain the original aspect ratio.
   // This is useful for an image view that may need to be constrained to a max
   // size, but still maintain its aspect ratio.
-  YOLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio = 1 << 4,
+  YOLayoutOptionsConstrainSizeMaintainAspectRatio = 1 << 4,
 
   // Whether the size specified is the default. Using this option will
   // use the specified width and/or height (if not 0) when the sizeToFit
   // returns a 0 width.
   // This is useful for an image view that has to load its data and may
   // initially return 0 for sizeThatFits.
-  YOLayoutOptionsSizeToFitDefaultSize = 1 << 5,
+  YOLayoutOptionsDefaultSize = 1 << 5,
 
   // ALIGNMENT
   // Center the view in the specified size. If you use this with YOLayoutOptionsSizeToFit then the origin width is maintained.

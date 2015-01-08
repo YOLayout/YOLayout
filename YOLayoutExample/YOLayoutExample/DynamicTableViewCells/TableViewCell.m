@@ -9,9 +9,9 @@
 #import "TableViewCell.h"
 
 @interface TableViewCellView ()
-@property (strong, nonatomic) UILabel *label;
+@property (strong, nonatomic) UILabel *label1;
+@property (strong, nonatomic) UILabel *label2;
 @property (strong, nonatomic) UIImageView *iconImageView;
-- (void)setString:(NSString *)string;
 @end
 
 @implementation TableViewCellView
@@ -20,11 +20,18 @@
     self.iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"information.png"]];
     [self addSubview:self.iconImageView];
     
-    self.label = [[UILabel alloc] init];
+    self.label1 = [[UILabel alloc] init];
+    self.label1.numberOfLines = 1;
+    self.label1.lineBreakMode = NSLineBreakByTruncatingTail;
+    self.label1.font = [UIFont boldSystemFontOfSize:16];
+    [self addSubview:self.label1];
+
+    self.label2 = [[UILabel alloc] init];
     // To make a label wrap, you need to set numberOfLines != 1 and lineBreakMode
-    self.label.numberOfLines = 0;
-    self.label.lineBreakMode = NSLineBreakByWordWrapping;
-    [self addSubview:self.label];
+    self.label2.numberOfLines = 0;
+    self.label2.font = [UIFont systemFontOfSize:16];
+    self.label2.lineBreakMode = NSLineBreakByWordWrapping;
+    [self addSubview:self.label2];
 
     __weak typeof(self) weakSelf = self;
     self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
@@ -33,22 +40,26 @@
         CGFloat y = insets.top;
         
         // iconImageView's size is set by the UIImage when using initWithImage:
-        CGSize imageViewSize = [layout setOrigin:CGPointMake(x, y) view:weakSelf.iconImageView].size;
-        x += imageViewSize.width + 10;
+        CGRect imageViewFrame = [layout setOrigin:CGPointMake(x, y) view:weakSelf.iconImageView];
+        x += imageViewFrame.size.width + 10;
 
-        // Lay out the text
-        CGSize textSize = [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 1000) view:weakSelf.label options:YOLayoutOptionsSizeToFit].size;
+        if (![weakSelf.label1.text isEqualToString:@""]) {
+          y += [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 0) view:weakSelf.label1 sizeToFit:YES].size.height;
+        }
 
-        // Increment by whichever view is taller, the image or the text
-        y += MAX(imageViewSize.height, textSize.height);
+        y += [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 1000) view:weakSelf.label2 sizeToFit:YES].size.height;
+
+        // Ensure the y position is at least as high as the image view
+        if (y < (imageViewFrame.origin.y + imageViewFrame.size.height)) y = (imageViewFrame.origin.y + imageViewFrame.size.height);
 
         // The height depends on the height of the items in the layout
         return CGSizeMake(size.width, y + insets.bottom);
     }];
 }
 
-- (void)setString:(NSString *)string {
-    self.label.text = string;
+- (void)setText:(NSString *)text description:(NSString *)description {
+    self.label1.text = text;
+    self.label2.text = description;
     [self setNeedsLayout];
 }
 
@@ -70,9 +81,8 @@
     return self;
 }
 
-- (void)setString:(NSString *)string {
-    _string = string;
-    [self.view setString:string];
+- (void)setText:(NSString *)text description:(NSString *)description {
+    [self.view setText:text description:description];
 }
 
 @end

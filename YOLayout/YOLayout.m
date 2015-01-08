@@ -65,7 +65,17 @@
 }
 
 - (CGRect)setFrame:(CGRect)frame view:(id)view sizeToFit:(BOOL)sizeToFit {
-  return [self setFrame:frame view:view options:(sizeToFit ? YOLayoutOptionsSizeToFit : 0)];
+
+  YOLayoutOptions options = 0;
+  // If UILabel and 1 line, we need to fix size to fit options to constrain width,
+  // since UILabel will return a size > the width we specify.
+  if (sizeToFit && [view isKindOfClass:UILabel.class] && ((UILabel *)view).numberOfLines == 1) {
+    options = YOLayoutOptionsSizeToFit | YOLayoutOptionsConstrainWidth;
+  } else {
+    options = YOLayoutOptionsSizeToFit;
+  }
+
+  return [self setFrame:frame view:view options:options];
 }
 
 - (CGRect)setFrame:(CGRect)frame view:(id)view options:(YOLayoutOptions)options {
@@ -81,26 +91,25 @@
 - (CGRect)setFrame:(CGRect)frame inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
 
   CGRect originalFrame = frame;
-  BOOL sizeToFit = ((options & YOLayoutOptionsSizeToFitHorizontal) == YOLayoutOptionsSizeToFitHorizontal)
-  || ((options & YOLayoutOptionsSizeToFitVertical) == YOLayoutOptionsSizeToFitVertical)
-  || ((options & YOLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio) == YOLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio);
+  BOOL sizeToFit = ((options & YOLayoutOptionsSizeToFitHorizontal) != 0)
+    || ((options & YOLayoutOptionsSizeToFitVertical) != 0);
 
   CGSize sizeThatFits = CGSizeZero;
   if (sizeToFit) {
     sizeThatFits = [view sizeThatFits:frame.size];
     
     // If size that fits returns a larger width, then we'll need to constrain it.
-    if (((options & YOLayoutOptionsSizeToFitConstrainWidth) == YOLayoutOptionsSizeToFitConstrainWidth) && sizeThatFits.width > frame.size.width) {
+    if (((options & YOLayoutOptionsConstrainWidth) != 0) && sizeThatFits.width > frame.size.width) {
       sizeThatFits.width = frame.size.width;
     }
 
     // If size that fits returns a larger height, then we'll need to constrain it.
-    if (((options & YOLayoutOptionsSizeToFitConstrainHeight) == YOLayoutOptionsSizeToFitConstrainHeight) && sizeThatFits.height > frame.size.height) {
+    if (((options & YOLayoutOptionsConstrainHeight) != 0) && sizeThatFits.height > frame.size.height) {
       sizeThatFits.height = frame.size.height;
     }
 
     // If size that fits returns a larger width or height, constrain it, but also maintain the aspect ratio from sizeThatFits
-    if (((options & YOLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio) == YOLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio) && (sizeThatFits.height > frame.size.height || sizeThatFits.width > frame.size.width)) {
+    if (((options & YOLayoutOptionsConstrainSizeMaintainAspectRatio) != 0) && (sizeThatFits.height > frame.size.height || sizeThatFits.width > frame.size.width)) {
       CGFloat aspectRatio = sizeThatFits.width / sizeThatFits.height;
       // If we're going to constrain by width
       if (sizeThatFits.width / frame.size.width > sizeThatFits.height / frame.size.height) {
@@ -113,41 +122,41 @@
       }
     }
 
-    if (sizeThatFits.width == 0 && ((options & YOLayoutOptionsSizeToFitDefaultSize) == YOLayoutOptionsSizeToFitDefaultSize)) {
+    if (sizeThatFits.width == 0 && ((options & YOLayoutOptionsDefaultSize) != 0)) {
       sizeThatFits.width = frame.size.width;
     }
     
-    if (sizeThatFits.height == 0 && ((options & YOLayoutOptionsSizeToFitDefaultSize) == YOLayoutOptionsSizeToFitDefaultSize)) {
+    if (sizeThatFits.height == 0 && ((options & YOLayoutOptionsDefaultSize) != 0)) {
       sizeThatFits.height = frame.size.height;
     }
 
     frame.size = sizeThatFits;
   }
   
-  if ((options & YOLayoutOptionsSizeToFitHorizontal) != YOLayoutOptionsSizeToFitHorizontal) {
+  if ((options & YOLayoutOptionsSizeToFitHorizontal) == 0) {
     frame.size.width = originalFrame.size.width;
   }
   
-  if ((options & YOLayoutOptionsSizeToFitVertical) != YOLayoutOptionsSizeToFitVertical) {
+  if ((options & YOLayoutOptionsSizeToFitVertical) == 0) {
     frame.size.height = originalFrame.size.height;
   }
   
   CGRect rect = originalFrame;
   if (!CGRectIsEmpty(inRect)) rect = inRect;
   
-  if ((options & YOLayoutOptionsAlignCenterVertical) == YOLayoutOptionsAlignCenterVertical) {
+  if ((options & YOLayoutOptionsAlignCenterVertical) != 0) {
     frame = YOCGRectToCenterYInRect(frame, originalFrame);
   }
 
-  if ((options & YOLayoutOptionsAlignCenterHorizontal) == YOLayoutOptionsAlignCenterHorizontal) {
+  if ((options & YOLayoutOptionsAlignCenterHorizontal) != 0) {
     frame = YOCGRectToCenterXInRect(frame, originalFrame);
   }
 
-  if ((options & YOLayoutOptionsAlignRight) == YOLayoutOptionsAlignRight) {
+  if ((options & YOLayoutOptionsAlignRight) != 0) {
     frame = YOCGRectRightAlignWithRect(frame, rect);
   }
 
-  if ((options & YOLayoutOptionsAlignBottom) == YOLayoutOptionsAlignBottom) {
+  if ((options & YOLayoutOptionsAlignBottom) != 0) {
     frame = YOCGRectBottomAlignWithRect(frame, rect);
   }
 
