@@ -41,6 +41,13 @@
 - (CGSize)sizeThatFits:(CGSize)size;
 
 /*!
+ Set size to size that fits current frame size.
+ If the view is variable height (usually the case), this will set the re-set the height based on the current frame width.
+ If the view is variable width, this will set the re-set the width based on the current frame height;
+ */
+- (void)sizeToFit;
+
+/*!
  Set needs layout.
  */
 - (void)setNeedsLayout;

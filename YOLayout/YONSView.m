@@ -52,6 +52,10 @@
   }
 }
 
+- (void)sizeToFit {
+  [self setFrameSize:[self sizeThatFits:self.frame.size]];
+}
+
 - (CGSize)sizeThatFits:(CGSize)size {
   return [_viewLayout sizeThatFits:size];
 }
