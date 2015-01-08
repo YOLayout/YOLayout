@@ -9,10 +9,9 @@
 #import "YOView.h"
 
 @interface TableViewCellView : YOView
-
 @end
 
 @interface TableViewCell : UITableViewCell
-@property (strong, nonatomic) TableViewCellView *view;
-@property (strong ,nonatomic) NSString *string;
+@property TableViewCellView *view;
+@property NSString *string;
 @end
