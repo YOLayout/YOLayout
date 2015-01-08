@@ -10,7 +10,7 @@ Let's just jump into the code. Here's the header file for a view that uses YOLay
 
 ```Objective-C
 // MyView.h
-#import <YOLayout/YOLayout.h>
+#import <YOLayout/YOView.h>
 
 //! A view that sizes vertically based the size of its subviews
 @interface MyView : YOView
