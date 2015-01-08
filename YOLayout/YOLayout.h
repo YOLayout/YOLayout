@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 YOLayout. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 
 #define YOWeakObject(o) __typeof__(o) __weak
@@ -169,7 +169,7 @@ typedef enum {
 /*!
  @deprecated Use setY:frame:view:
  */
-- (CGRect)setY:(CGFloat)y view:(UIView *)view;
+- (CGRect)setY:(CGFloat)y view:(id)view;
 
 /*!
  If layout is required. Otherwise cached value may be returned.
