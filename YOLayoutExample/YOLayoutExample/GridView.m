@@ -11,16 +11,15 @@
 
 @implementation GridView
 
-//! sharedInit is a convenience method of YOView which is called from both initWithCoder: and initWithFrame:. It eliminates the need to duplicate code in both those places.
 - (void)sharedInit {
-    // Create the views
+    [super sharedInit];
+
     for (NSInteger i = 0; i < 10; i++) {
         LogoView *logoView = [[LogoView alloc] init];
         logoView.backgroundColor = [UIColor colorWithWhite:0.97 alpha:1.0];
         [self addSubview:logoView];
     }
     
-    // Instantiate the layout
     self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
         CGFloat x = 0;
         CGFloat y = 0;

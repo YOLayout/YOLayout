@@ -9,6 +9,13 @@
 #import "YOLayout.h"
 #import "YOCGUtils.h"
 
+@interface YOLayout ()
+@property BOOL needsLayout;
+@property BOOL needsSizing;
+@property CGSize cachedSize;
+@property CGSize cachedLayoutSize;
+@end
+
 @implementation YOLayout
 
 - (id)init {

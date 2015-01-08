@@ -14,7 +14,7 @@
 
 @interface TableViewCell : UITableViewCell
 
-@property (strong, nonatomic) TableViewCellView *view;
+@property TableViewCellView *view;
 
 - (void)setText:(NSString *)text description:(NSString *)description;
 

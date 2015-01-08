@@ -17,6 +17,7 @@
 @implementation TableViewCellView
 
 - (void)sharedInit {
+    [super sharedInit];
     self.iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"information.png"]];
     [self addSubview:self.iconImageView];
     
@@ -33,21 +34,21 @@
     self.label2.lineBreakMode = NSLineBreakByWordWrapping;
     [self addSubview:self.label2];
 
-    __weak typeof(self) weakSelf = self;
+    YOSelf yself = self;
     self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
         UIEdgeInsets insets = UIEdgeInsetsMake(10, 10, 10, 10);
         CGFloat x = insets.left;
         CGFloat y = insets.top;
         
         // iconImageView's size is set by the UIImage when using initWithImage:
-        CGRect imageViewFrame = [layout setOrigin:CGPointMake(x, y) view:weakSelf.iconImageView];
+        CGRect imageViewFrame = [layout setOrigin:CGPointMake(x, y) view:yself.iconImageView];
         x += imageViewFrame.size.width + 10;
 
-        if (![weakSelf.label1.text isEqualToString:@""]) {
-          y += [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 0) view:weakSelf.label1 sizeToFit:YES].size.height;
+        if (![yself.label1.text isEqualToString:@""]) {
+          y += [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 0) view:yself.label1 sizeToFit:YES].size.height;
         }
 
-        y += [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 1000) view:weakSelf.label2 sizeToFit:YES].size.height;
+        y += [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 1000) view:yself.label2 sizeToFit:YES].size.height;
 
         // Ensure the y position is at least as high as the image view
         if (y < (imageViewFrame.origin.y + imageViewFrame.size.height)) y = (imageViewFrame.origin.y + imageViewFrame.size.height);
