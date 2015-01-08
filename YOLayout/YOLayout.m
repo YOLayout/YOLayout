@@ -9,6 +9,14 @@
 #import "YOLayout.h"
 #import "YOCGUtils.h"
 
+@interface YOLayout ()
+@property BOOL needsLayout;
+@property BOOL needsSizing;
+@property CGSize cachedSize;
+@property CGSize cachedLayoutSize;
+@property (weak) UIView *view;
+@end
+
 @implementation YOLayout
 
 - (id)init {
@@ -16,10 +24,11 @@
   return nil;
 }
 
-- (id)initWithLayoutBlock:(YOLayoutBlock)layoutBlock {
+- (id)initWithView:(UIView *)view layoutBlock:(YOLayoutBlock)layoutBlock {
   NSParameterAssert(layoutBlock);
 
   if ((self = [super init])) {
+    _view = view;
     _layoutBlock = layoutBlock;
     _needsLayout = YES;
     _needsSizing = YES;
@@ -27,8 +36,8 @@
   return self;
 }
 
-+ (YOLayout *)layoutWithLayoutBlock:(YOLayoutBlock)layoutBlock {
-  return [[YOLayout alloc] initWithLayoutBlock:layoutBlock];
++ (YOLayout *)layoutWithView:(UIView *)view layoutBlock:(YOLayoutBlock)layoutBlock {
+  return [[YOLayout alloc] initWithView:view layoutBlock:layoutBlock];
 }
 
 - (CGSize)_layout:(CGSize)size sizing:(BOOL)sizing {
@@ -38,7 +47,7 @@
 
   _sizing = sizing;
   _cachedSize = size;
-  CGSize layoutSize = self.layoutBlock(self, size);
+  CGSize layoutSize = self.layoutBlock(self, _view, size);
   _cachedLayoutSize = layoutSize;
   if (!_sizing) {
     _needsLayout = NO;

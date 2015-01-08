@@ -21,7 +21,7 @@
     }
     
     // Instantiate the layout
-    self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+    self.layout = [YOLayout layoutWithView:self layoutBlock:^CGSize(id<YOLayout> layout, GridView *view, CGSize size) {
         CGFloat x = 0;
         CGFloat y = 0;
         CGFloat maxWidth = 0;

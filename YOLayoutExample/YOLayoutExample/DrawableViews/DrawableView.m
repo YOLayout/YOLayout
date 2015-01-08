@@ -29,7 +29,7 @@
     }
 
     // Instantiate the layout
-    self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+    self.layout = [YOLayout layoutWithView:self layoutBlock:^CGSize(id<YOLayout> layout, DrawableView *view, CGSize size) {
         CGFloat x = 0;
         CGFloat y = 0;
         CGFloat maxWidth = 0;

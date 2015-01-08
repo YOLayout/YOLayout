@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 typedef enum {
   // SIZING
   // Size the view to fit vertically
@@ -225,7 +224,7 @@ typedef enum {
  @param size Size to layout in
  @result size Size of the view being laid out
  */
-typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
+typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, id/*UIView*/ view, CGSize size);
 
 
 /*!
@@ -262,18 +261,11 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
  You can combine YOLayoutOptionsSizeToFit, YOLayoutOptionsConstraintWidth, and YOLayoutOptionsDefaultWidth to make sure
  a view sizes to fit with max and default width (when 0).
  */
-@interface YOLayout : NSObject <YOLayout> {
-  BOOL _needsLayout;
-  BOOL _needsSizing;
-  CGSize _cachedSize;
-  CGSize _cachedLayoutSize;
-  
-  CGSize _sizeThatFits;
-}
+@interface YOLayout : NSObject <YOLayout>
 
-@property (readonly, nonatomic, getter=isSizing) BOOL sizing;
+@property (readonly, getter=isSizing) BOOL sizing;
 //! Block containing logic to layout or size the current view. See the discussion above the YOLayoutBlock typedef for more info.
-@property (nonatomic, copy) YOLayoutBlock layoutBlock;
+@property (copy) YOLayoutBlock layoutBlock;
 
 /*!
  Set a custon/fixed size that fits.
@@ -281,14 +273,15 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
  Defaults to CGSizeZero, which is unset.
  If height is not set (is 0), then we will use this size value for sizeThatFits:.
  */
-@property (assign, nonatomic) CGSize sizeThatFits;
+@property CGSize sizeThatFits;
 
 /*!
  Create layout.
 
+ @param view View for layout (weak reference).
  @param layoutBlock Block containing layout code. See the discussion above the YOLayoutBlock typedef for more info.
  */
-- (id)initWithLayoutBlock:(YOLayoutBlock)layoutBlock;
+- (id)initWithView:(UIView *)view layoutBlock:(YOLayoutBlock)layoutBlock;
 
 /*!
  Default layout.
@@ -297,6 +290,6 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
  @param layoutBlock Block containing layout code. See the discussion above the YOLayoutBlock typedef for more info.
  @result Layout
  */
-+ (YOLayout *)layoutWithLayoutBlock:(YOLayoutBlock)layoutBlock;
++ (YOLayout *)layoutWithView:(UIView *)view layoutBlock:(YOLayoutBlock)layoutBlock;
 
 @end

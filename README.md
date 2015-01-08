@@ -14,6 +14,7 @@ Let's just jump into the code. Here's the header file for a view that uses YOLay
 
 //! A view that sizes vertically based the size of its subviews
 @interface MyView : YOView
+@property UIImageView *imageView;
 @end
 ```
 
@@ -28,20 +29,20 @@ Here's the implementation file. This view's height can change based on the Dynam
 - (void)sharedInit {
     [super sharedInit];
     // Create this view's subviews
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MyImage.png"]];
+    _imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MyImage.png"]];
     [self addSubview:imageView];
     DynamicHeightSubview *dynamicHeightSubview = [[DynamicHeightSubview alloc] init];
     [self addSubview:dynamicHeightSubview];
- 
+
     // Define the layout using code, and math!
 
-    self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+    self.layout = [YOLayout layoutWithView:self layoutBlock:^CGSize(id<YOLayout> layout, MyView *view, CGSize size) {
         CGFloat x = 10;
         CGFloat y = 10;
- 
+
         // Instead of setting frames directly, we use the corresponding layout methods.
         // These methods don't actually change the subviews' frames when the view is just sizing.
-        x += [layout setOrigin:CGPointMake(x, y) view:imageView].size.width + 10;
+        x += [layout setOrigin:CGPointMake(x, y) view:view.imageView].size.width + 10;
 
         y += [layout setFrame:CGRectMake(x, y, size.width - x - 10, 0) view:dynamicHeightSubview sizeToFit:YES].size.height;
 
