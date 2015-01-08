@@ -24,9 +24,9 @@ Here's the implementation file. This view's height can change based on the Dynam
 
 @implementation MyView
 
-// sharedInit is called from both initWithFrame: and initWithCoder:
-- (void)sharedInit {
-    [super sharedInit];
+// viewInit is called from both initWithFrame: and initWithCoder:
+- (void)viewInit {
+    [super viewInit];
     // Create this view's subviews
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MyImage.png"]];
     [self addSubview:imageView];
