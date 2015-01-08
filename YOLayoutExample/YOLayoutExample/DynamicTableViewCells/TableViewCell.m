@@ -16,8 +16,8 @@
 
 @implementation TableViewCellView
 
-- (void)sharedInit {
-    [super sharedInit];
+- (void)viewInit {
+    [super viewInit];
     self.iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"information.png"]];
     [self addSubview:self.iconImageView];
     

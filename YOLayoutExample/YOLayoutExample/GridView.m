@@ -11,9 +11,8 @@
 
 @implementation GridView
 
-- (void)sharedInit {
-    [super sharedInit];
-
+- (void)viewInit {
+    [super viewInit];
     for (NSInteger i = 0; i < 10; i++) {
         LogoView *logoView = [[LogoView alloc] init];
         logoView.backgroundColor = [UIColor colorWithWhite:0.97 alpha:1.0];
