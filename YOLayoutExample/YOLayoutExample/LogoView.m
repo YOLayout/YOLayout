@@ -14,7 +14,7 @@
   self.backgroundColor = [UIColor whiteColor];
 
   // Size to an aspect ratio of 4.090909091:1
-  self.layout = [YOLayout layoutWithView:self layoutBlock:^CGSize(id<YOLayout> layout, UIView *view, CGSize size) {
+  self.layout = [YOLayout layoutWithView:self layoutBlock:^CGSize(id<YOLayout> layout, LogoView *view, CGSize size) {
         return CGSizeMake(size.width, ceilf(size.width * 0.244444444));
     }];
 }
