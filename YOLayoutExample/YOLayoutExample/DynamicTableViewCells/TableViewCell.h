@@ -11,7 +11,11 @@
 @interface TableViewCellView : YOView
 @end
 
+
 @interface TableViewCell : UITableViewCell
+
 @property TableViewCellView *view;
-@property NSString *string;
+
+- (void)setText:(NSString *)text description:(NSString *)description;
+
 @end
