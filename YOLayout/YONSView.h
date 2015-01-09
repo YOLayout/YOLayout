@@ -26,7 +26,7 @@
    }];
  }
  */
-@interface YONSView : NSView { }
+@interface YONSView : NSView
 
 @property YOLayout *viewLayout;
 
