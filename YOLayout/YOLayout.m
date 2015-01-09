@@ -202,7 +202,7 @@
     [view setFrame:frame];
     // Since we are applying the frame, the subview will need to
     // apply their layout next at this frame
-    if (needsLayout) [view setNeedsLayout];
+    if (needsLayout && [view respondsToSelector:@selector(setNeedsLayout)]) [view setNeedsLayout];
   }
   return frame;
 }
