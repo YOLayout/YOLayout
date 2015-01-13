@@ -1,5 +1,5 @@
 //
-//  YOLayout.h
+//  YOCGUtils.h
 //  YOLayout
 //
 //  Created by Gabriel Handford on 10/29/13.
