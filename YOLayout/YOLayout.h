@@ -57,9 +57,9 @@ typedef enum {
   YOLayoutOptionsAlignCenterHorizontal = 1 << 11,
   //! After sizing, center vertically and horizontally in the passed in rect
   YOLayoutOptionsAlignCenter = YOLayoutOptionsAlignCenterVertical | YOLayoutOptionsAlignCenterHorizontal,
-  // After sizing, aligns the view with the right of the passed in rect
+  //! After sizing, aligns the view with the right of the passed in rect
   YOLayoutOptionsAlignRight = 1 << 12,
-  // After sizing, aligns the view with the bottom of the passed in rect
+  //! After sizing, aligns the view with the bottom of the passed in rect
   YOLayoutOptionsAlignBottom = 1 << 13,
 } YOLayoutOptions;
 
