@@ -125,11 +125,11 @@
       }
     }
 
-    if (sizeThatFits.width == 0 && ((options & YOLayoutOptionsSizeToFitDefaultWidth) == YOLayoutOptionsSizeToFitDefaultWidth)) {
+    if (sizeThatFits.width == 0 && ((options & YOLayoutOptionsSizeToFitDefaultWidth) != 0)) {
       sizeThatFits.width = frame.size.width;
     }
     
-    if (sizeThatFits.height == 0 && ((options & YOLayoutOptionsSizeToFitDefaultHeight) == YOLayoutOptionsSizeToFitDefaultHeight)) {
+    if (sizeThatFits.height == 0 && ((options & YOLayoutOptionsSizeToFitDefaultHeight) != 0)) {
       sizeThatFits.height = frame.size.height;
     }
 
