@@ -125,11 +125,11 @@
       }
     }
 
-    if (sizeThatFits.width == 0 && ((options & YOLayoutOptionsSizeToFitDefaultSize) == YOLayoutOptionsSizeToFitDefaultSize)) {
+    if (sizeThatFits.width == 0 && ((options & YOLayoutOptionsSizeToFitDefaultWidth) == YOLayoutOptionsSizeToFitDefaultWidth)) {
       sizeThatFits.width = frame.size.width;
     }
     
-    if (sizeThatFits.height == 0 && ((options & YOLayoutOptionsSizeToFitDefaultSize) == YOLayoutOptionsSizeToFitDefaultSize)) {
+    if (sizeThatFits.height == 0 && ((options & YOLayoutOptionsSizeToFitDefaultHeight) == YOLayoutOptionsSizeToFitDefaultHeight)) {
       sizeThatFits.height = frame.size.height;
     }
 

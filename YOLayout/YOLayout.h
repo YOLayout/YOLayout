@@ -35,10 +35,12 @@ typedef enum {
 
   // Whether the size specified is the default. Using this option will
   // use the specified width and/or height (if not 0) when the sizeToFit
-  // returns a 0 width.
+  // returns a 0 width and/or height.
   // This is useful for an image view that has to load its data and may
   // initially return 0 for sizeThatFits.
-  YOLayoutOptionsSizeToFitDefaultSize = 1 << 5,
+  YOLayoutOptionsSizeToFitDefaultHeight = 1 << 5,
+  YOLayoutOptionsSizeToFitDefaultWidth = 1 << 6,
+  YOLayoutOptionsSizeToFitDefault = YOLayoutOptionsSizeToFitDefaultHeight | YOLayoutOptionsSizeToFitDefaultWidth,
 
   // ALIGNMENT
   // Center the view in the specified size. If you use this with YOLayoutOptionsSizeToFit then the origin width is maintained.
