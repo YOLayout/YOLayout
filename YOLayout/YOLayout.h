@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 YOLayout. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
-
 
 #define YOWeakObject(o) __typeof__(o) __weak
 #define YOSelf YOWeakObject(self)

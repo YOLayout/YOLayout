@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 YOLayout. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
-
 
 CGPoint YOCGPointToCenterY(CGSize size, CGSize inSize);
 

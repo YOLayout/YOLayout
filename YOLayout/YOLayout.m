@@ -9,6 +9,11 @@
 #import "YOLayout.h"
 #import "YOCGUtils.h"
 
+@protocol YOView <NSObject>
+- (CGRect)frame;
+- (void)setFrame:(CGRect)frame;
+@end
+
 @interface YOLayout ()
 @property BOOL needsLayout;
 @property BOOL needsSizing;

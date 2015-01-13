@@ -13,5 +13,5 @@
 
 @interface TableViewCell : UITableViewCell
 @property TableViewCellView *view;
-@property NSString *string;
+@property (nonatomic) NSString *string;
 @end
