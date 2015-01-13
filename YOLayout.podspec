@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "YOLayout"
-  s.version      = "0.0.5"
+  s.version      = "0.0.6"
   s.summary      = "Layout framework."
   s.homepage     = "https://github.com/YOLayout/YOLayout"
   s.license      = "MIT"
