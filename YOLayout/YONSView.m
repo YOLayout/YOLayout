@@ -61,6 +61,7 @@
 }
 
 - (void)setNeedsLayout {
+  [_viewLayout setNeedsLayout];
   dispatch_async(dispatch_get_main_queue(), ^{
     [self layout];
   });
