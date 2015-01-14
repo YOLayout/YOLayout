@@ -76,18 +76,8 @@
   return [self _layout:size sizing:YES];
 }
 
-- (CGRect)setFrame:(CGRect)frame view:(id)view sizeToFit:(BOOL)sizeToFit {
-
-  YOLayoutOptions options = 0;
-  // If UILabel and 1 line, we need to fix size to fit options to constrain width,
-  // since UILabel will return a size > the width we specify.
-  if (sizeToFit && [view isKindOfClass:UILabel.class] && ((UILabel *)view).numberOfLines == 1) {
-    options = YOLayoutOptionsSizeToFit | YOLayoutOptionsConstrainWidth;
-  } else {
-    options = YOLayoutOptionsSizeToFit;
-  }
-
-  return [self setFrame:frame view:view options:options];
+- (CGRect)sizeToFitVerticalInFrame:(CGRect)frame view:(id)view {
+  return [self setFrame:frame view:view options:YOLayoutOptionsSizeToFitVertical];
 }
 
 - (CGRect)setFrame:(CGRect)frame view:(id)view options:(YOLayoutOptions)options {
@@ -191,7 +181,7 @@
 }
 
 - (CGRect)setOrigin:(CGPoint)origin view:(id)view sizeToFit:(BOOL)sizeToFit {
-  return [self setFrame:CGRectMake(origin.x, origin.y, [view frame].size.width, [view frame].size.height) view:view sizeToFit:sizeToFit];
+  return [self setFrame:CGRectMake(origin.x, origin.y, [view frame].size.width, [view frame].size.height) view:view options:sizeToFit ? YOLayoutOptionsSizeToFit : 0];
 }
 
 - (CGRect)setSize:(CGSize)size view:(id)view {
@@ -199,7 +189,7 @@
 }
 
 - (CGRect)setSize:(CGSize)size view:(id)view sizeToFit:(BOOL)sizeToFit {
-  return [self setFrame:CGRectMake([view frame].origin.x, [view frame].origin.y, size.width, size.height) view:view sizeToFit:sizeToFit];
+  return [self setFrame:CGRectMake([view frame].origin.x, [view frame].origin.y, size.width, size.height) view:view options:sizeToFit ? YOLayoutOptionsSizeToFit : 0];
 }
 
 - (CGRect)setY:(CGFloat)y view:(id)view {

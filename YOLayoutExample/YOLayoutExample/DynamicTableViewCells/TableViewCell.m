@@ -45,10 +45,10 @@
         x += imageViewFrame.size.width + 10;
 
         if (![yself.label1.text isEqualToString:@""]) {
-          y += [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 0) view:yself.label1 sizeToFit:YES].size.height;
+          y += [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 0) view:yself.label1 options:YOLayoutOptionsSizeToFitVertical].size.height;
         }
 
-        y += [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 1000) view:yself.label2 sizeToFit:YES].size.height;
+        y += [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 1000) view:yself.label2 options:YOLayoutOptionsSizeToFitVertical].size.height;
 
         // Ensure the y position is at least as high as the image view
         if (y < (imageViewFrame.origin.y + imageViewFrame.size.height)) y = (imageViewFrame.origin.y + imageViewFrame.size.height);

@@ -27,7 +27,7 @@
         // Lay out each view at 150pt wide with as many columns as will fit and as many rows as necessary
         CGFloat subviewWidth = 150;
         for (UIView *subview in self.subviews) {
-            CGSize subviewSize = [layout setFrame:CGRectMake(x, y, subviewWidth, 0) view:subview sizeToFit:YES].size;
+            CGSize subviewSize = [layout setFrame:CGRectMake(x, y, subviewWidth, 0) view:subview options:YOLayoutOptionsSizeToFitVertical].size;
             x += subviewSize.width;
             // Wrap when there's not enough horizontal space to render another view
             if ((x + subviewWidth) > size.width && ![subview isEqual:[self.subviews lastObject]]) {
