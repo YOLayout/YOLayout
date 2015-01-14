@@ -15,25 +15,25 @@
 
 @implementation YOView
 
-- (void)_sharedInit {
+- (void)_viewInit {
   self.autoresizesSubviews = NO;
   self.autoresizingMask = UIViewAutoresizingNone;
 }
 
-- (void)sharedInit { }
+- (void)viewInit { }
 
 - (id)initWithFrame:(CGRect)frame {
   if ((self = [super initWithFrame:frame])) {
-    [self _sharedInit];
-    [self sharedInit];
+    [self _viewInit];
+    [self viewInit];
   }
   return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
   if ((self = [super initWithCoder:aDecoder])) {
-    [self _sharedInit];
-    [self sharedInit];
+    [self _viewInit];
+    [self viewInit];
   }
   return self;
 }

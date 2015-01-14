@@ -6,47 +6,61 @@
 //  Copyright (c) 2014 YOLayout. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
+#import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 #define YOWeakObject(o) __typeof__(o) __weak
 #define YOSelf YOWeakObject(self)
 
 typedef enum {
   // SIZING
-  // Size the view to fit vertically
+  //! Size the view to fit vertically
   YOLayoutOptionsSizeToFitVertical = 1 << 0,
-  // Size the view to fit horizontally
+  //! Size the view to fit horizontally
   YOLayoutOptionsSizeToFitHorizontal = 1 << 1,
+  //! Size the view to fit both horizontally and vertically
   YOLayoutOptionsSizeToFit = YOLayoutOptionsSizeToFitVertical | YOLayoutOptionsSizeToFitHorizontal,
 
-  // Constrain sizeThatFit's width to the passed in frame
-  // For example UILabel sizeToFit may return a larger width than was specified,
-  // and this will constrain it.
+  /*!
+   Constrain sizeThatFit's width to the passed in frame.
+
+   For example, UILabel sizeThatFits: may return a larger width than was specified, and this will constrain it.
+   */
   YOLayoutOptionsConstrainWidth = 1 << 2,
-
-  // Constrain sizeThatFit's height to the passed in frame
+  //! Constrain sizeThatFit's height to the passed in frame
   YOLayoutOptionsConstrainHeight = 1 << 3,
+  //! Constrain sizeThatFit's height and width
+  YOLayoutOptionsConstrainSize = YOLayoutOptionsConstrainWidth | YOLayoutOptionsConstrainHeight,
 
-  // Constrain sizeThatFits to the size specified but maintain the original aspect ratio.
-  // This is useful for an image view that may need to be constrained to a max
-  // size, but still maintain its aspect ratio.
+  /*!
+   Constrain sizeThatFits to the size specified but maintain the original aspect ratio.
+
+   This is useful for an image view that may need to be constrained to a max size, but still maintain its aspect ratio.
+   */
   YOLayoutOptionsConstrainSizeMaintainAspectRatio = 1 << 4,
 
-  // Whether the size specified is the default. Using this option will
-  // use the specified width and/or height (if not 0) when the sizeToFit
-  // returns a 0 width.
-  // This is useful for an image view that has to load its data and may
-  // initially return 0 for sizeThatFits.
-  YOLayoutOptionsDefaultSize = 1 << 5,
+  //! Whether the height specified is the default. Using this option will use the specified height when sizeThatFits: returns a 0 height.
+  YOLayoutOptionsDefaultHeight = 1 << 5,
+  //! Whether the width specified is the default. Using this option will use the specified width when sizeThatFits: returns a 0 width.
+  YOLayoutOptionsDefaultWidth = 1 << 6,
+  /*!
+   Whether the size specified is the default. Using this option will use the specified width and/or height when sizeThatFits: returns a 0 width and/or height, respectively.
+
+   This is useful for an image view that has to load its data and may initially return 0 for sizeThatFits.
+   */
+  YOLayoutOptionsDefaultSize = YOLayoutOptionsDefaultHeight | YOLayoutOptionsDefaultWidth,
 
   // ALIGNMENT
-  // Center the view in the specified size. If you use this with YOLayoutOptionsSizeToFit then the origin width is maintained.
-  YOLayoutOptionsAlignCenterVertical = 1 << 10, // Center vertically
-  YOLayoutOptionsAlignCenterHorizontal = 1 << 11, // Center horizontally
+  //! After sizing, center vertically in the passed in rect
+  YOLayoutOptionsAlignCenterVertical = 1 << 10,
+  //! After sizing, center horizontally in the passed in rect
+  YOLayoutOptionsAlignCenterHorizontal = 1 << 11,
+  //! After sizing, center vertically and horizontally in the passed in rect
   YOLayoutOptionsAlignCenter = YOLayoutOptionsAlignCenterVertical | YOLayoutOptionsAlignCenterHorizontal,
-  YOLayoutOptionsAlignRight = 1 << 12, // After sizing, aligns the view with the right of the passed in rect
-  YOLayoutOptionsAlignBottom = 1 << 13, // After sizing, aligns the view with the bottom of the passed in rect
+  //! After sizing, aligns the view with the right of the passed in rect
+  YOLayoutOptionsAlignRight = 1 << 12,
+  //! After sizing, aligns the view with the bottom of the passed in rect
+  YOLayoutOptionsAlignBottom = 1 << 13,
 } YOLayoutOptions;
 
 
@@ -169,7 +183,7 @@ typedef enum {
 /*!
  @deprecated Use setY:frame:view:
  */
-- (CGRect)setY:(CGFloat)y view:(UIView *)view;
+- (CGRect)setY:(CGFloat)y view:(id)view;
 
 /*!
  If layout is required. Otherwise cached value may be returned.

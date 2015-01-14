@@ -9,6 +9,11 @@
 #import "YOLayout.h"
 #import "YOCGUtils.h"
 
+@protocol YOView <NSObject>
+- (CGRect)frame;
+- (void)setFrame:(CGRect)frame;
+@end
+
 @interface YOLayout ()
 @property BOOL needsLayout;
 @property BOOL needsSizing;
@@ -129,11 +134,11 @@
       }
     }
 
-    if (sizeThatFits.width == 0 && ((options & YOLayoutOptionsDefaultSize) != 0)) {
+    if (sizeThatFits.width == 0 && ((options & YOLayoutOptionsDefaultWidth) != 0)) {
       sizeThatFits.width = frame.size.width;
     }
     
-    if (sizeThatFits.height == 0 && ((options & YOLayoutOptionsDefaultSize) != 0)) {
+    if (sizeThatFits.height == 0 && ((options & YOLayoutOptionsDefaultHeight) != 0)) {
       sizeThatFits.height = frame.size.height;
     }
 
@@ -211,7 +216,7 @@
     [view setFrame:frame];
     // Since we are applying the frame, the subview will need to
     // apply their layout next at this frame
-    if (needsLayout) [view setNeedsLayout];
+    if (needsLayout && [view respondsToSelector:@selector(setNeedsLayout)]) [view setNeedsLayout];
   }
   return frame;
 }

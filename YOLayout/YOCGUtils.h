@@ -1,13 +1,13 @@
 //
-//  YOLayout.h
+//  YOCGUtils.h
 //  YOLayout
 //
 //  Created by Gabriel Handford on 10/29/13.
 //  Copyright (c) 2014 YOLayout. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
+#import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 CGPoint YOCGPointToCenterY(CGSize size, CGSize inSize);
 

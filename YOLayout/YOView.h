@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 YOLayout. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
 #import "YOLayout.h"
 
 /*!
@@ -14,11 +16,11 @@
  Instead of subclassing UIView, you can subclass YOView and set the layout property.
  See YOLayout for more details.
 
-      - (void)sharedInit {
-         [super sharedInit];
+      - (void)viewInit {
+         [super viewInit];
          UIView *subview = [[UIView alloc] init];
          [self addSubview:subview];
-         self.layout = [YOLayout layoutForView:self layoutBlock:^(id<YOLayout> layout, CGSize size) {
+         self.layout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
            [layout setFrame:CGRectMake(0, 0, size.width, 30) view:subview];
            return CGSizeMake(size.width, 30);
          }];
@@ -32,7 +34,7 @@
 /*!
  Subclasses can override this method to perform initialization tasks that occur during both initWithFrame: and initWithCoder:
  */
-- (void)sharedInit;
+- (void)viewInit;
 
 /*!
  Force the layout, if using YOLayout.

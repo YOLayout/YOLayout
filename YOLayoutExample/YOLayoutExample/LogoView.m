@@ -10,7 +10,8 @@
 
 @implementation LogoView
 
-- (void)sharedInit {
+- (void)viewInit {
+  [super viewInit];
     self.backgroundColor = [UIColor whiteColor];
 
     // Size to an aspect ratio of 4.090909091:1
