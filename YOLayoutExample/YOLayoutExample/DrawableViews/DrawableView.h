@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 YOLayout. All rights reserved.
 //
 
-#import "YOView.h"
+#import "YOLayout.h"
 
 /*!
  A view that uses YOLayout to lay out drawable subviews in a grid based on the width.

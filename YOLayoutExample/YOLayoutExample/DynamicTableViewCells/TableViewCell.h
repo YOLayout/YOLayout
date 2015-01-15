@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 YOLayout. All rights reserved.
 //
 
-#import "YOView.h"
+#import "YOLayout.h"
 
 @interface TableViewCellView : YOView
 @end

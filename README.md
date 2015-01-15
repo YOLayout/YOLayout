@@ -10,7 +10,7 @@ Let's just jump into the code. Here's the header file for a view that uses YOLay
 
 ```Objective-C
 // MyView.h
-#import <YOLayout/YOView.h>
+#import <YOLayout/YOLayout.h>
 
 //! A view that sizes vertically based the size of its subviews
 @interface MyView : YOView
@@ -57,6 +57,29 @@ Here's the implementation file. This view's height can change based on the Dynam
 ```
 
 If you're following along closely, you may have noticed that there's no reason you _need_ to create a new YOView subclass to use YOLayout. For simple views you can instantiate a YOView and set its layout without creating a new YOView subclass.
+
+## Cocoa
+
+Cocoa is supported also by subclassing `YONSView`. When using YOLayout in Cocoa, it acts just like UIKit.
+Because layout is reserved for NSView, the layout property is called `viewLayout`.
+
+```objc
+#import <YOLayout/YOLayout.h>
+
+@interface MyNSView : YONSView
+@end
+
+@implementation MyNSView
+
+- (void)viewInit {
+    [super viewInit];
+    self.viewLayout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+        
+    }];
+}
+
+@end
+```
 
 ## FAQ
 

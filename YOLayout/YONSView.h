@@ -8,7 +8,7 @@
 
 #import <AppKit/AppKit.h>
 
-#import "YOLayout.h"
+#import "YOLayout_IMP.h"
 
 /*!
  View with custom, programatic layout (via YOLayout).
