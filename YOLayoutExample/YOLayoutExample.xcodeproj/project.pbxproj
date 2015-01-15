@@ -40,6 +40,7 @@
 /* Begin PBXFileReference section */
 		00086CB81A6745010000460F /* YOLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOLayout.h; path = ../YOLayout/YOLayout.h; sourceTree = "<group>"; };
 		00086CB91A6745970000460F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		00086CBA1A674A080000460F /* YOLayout.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = YOLayout.podspec; path = ../YOLayout.podspec; sourceTree = "<group>"; };
 		00358D4E1A5F3B0C0052B016 /* YONSView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YONSView.h; path = ../YOLayout/YONSView.h; sourceTree = "<group>"; };
 		00358D4F1A5F3B0C0052B016 /* YONSView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = YONSView.m; path = ../YOLayout/YONSView.m; sourceTree = "<group>"; };
 		426C0FC71A41606800F2577C /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
@@ -131,6 +132,7 @@
 		42F5C2E51A3CAF3E00E37B78 = {
 			isa = PBXGroup;
 			children = (
+				00086CBA1A674A080000460F /* YOLayout.podspec */,
 				00086CB91A6745970000460F /* README.md */,
 				426C0FC61A41606800F2577C /* Resources */,
 				42F5C3171A3CAF5400E37B78 /* YOLayout */,
