@@ -19,7 +19,7 @@ Let's just jump into the code. Here's the header file for a view that uses YOLay
 @end
 ```
 
-Here's the implementation file. This view's height can change based on the DynamicHeightSubview's height at layout.
+Here's the implementation file. This view's height can change based on the MyCustomView's height at layout.
 ```Objective-C
 // MyView.m
 #import "MyView.h"
