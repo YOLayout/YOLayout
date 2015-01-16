@@ -39,16 +39,16 @@ Here's the implementation file. This view's height can change based on the Dynam
 
     YOSelf yself = self; // Weak self reference
     self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
-        CGFloat x = 10;
         CGFloat y = 10;
 
         // Instead of setting frames directly, we use the corresponding layout methods.
         // These methods don't actually change the subviews' frames when the view is just sizing.
-        x += [layout setOrigin:CGPointMake(x, y) view:yself.imageView].size.width + 10;
+        [layout setFrame:CGRectMake(10, y, size.width - 20) view:yself.imageView].size.width + 10;
 
-        y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - 10, 0) view:yself.myCustomView].size.height;
+        // This sizes the view to fit vertically
+        y += [layout sizeToFitVerticalInFrame:CGRectMake(10, y, size.width - 20, 0) view:yself.myCustomView].size.height + 10;
 
-        // The size this view should be
+        // Return the size, which is dependent on our custom view height (y)
         return CGSizeMake(size.width, y);
     }];
 }
