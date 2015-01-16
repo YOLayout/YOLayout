@@ -58,7 +58,7 @@ Here's the implementation file. This view's height can change based on the Dynam
 
 If you're following along closely, you may have noticed that there's no reason you _need_ to create a new YOView subclass to use YOLayout. For simple views you can instantiate a YOView and set its layout without creating a new YOView subclass.
 
-## Cocoa
+## NSView
 
 Cocoa is supported also by subclassing `YONSView`. When using YOLayout in Cocoa, it acts just like UIKit.
 Because layout is reserved for NSView, the layout property is called `viewLayout`.
