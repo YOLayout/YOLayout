@@ -46,7 +46,7 @@ Here's the implementation file. This view's height can change based on the Dynam
         // These methods don't actually change the subviews' frames when the view is just sizing.
         x += [layout setOrigin:CGPointMake(x, y) view:yself.imageView].size.width + 10;
 
-        y += [layout setFrame:CGRectMake(x, y, size.width - x - 10, 0) view:yself.myCustomView sizeToFit:YES].size.height;
+        y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - 10, 0) view:yself.myCustomView].size.height;
 
         // The size this view should be
         return CGSizeMake(size.width, y);
