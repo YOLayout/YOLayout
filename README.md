@@ -45,7 +45,7 @@ Here's the implementation file. This view's height can change based on the MyCus
         // These methods don't actually change the subviews' frames when the view is just sizing.
         [layout setFrame:CGRectMake(10, y, size.width - 20) view:yself.imageView].size.width + 10;
 
-        // This sizes the view to fit vertically
+        // This sizes the view to fit vertically. Height is 0 because it depends on myCustomView's content.
         y += [layout sizeToFitVerticalInFrame:CGRectMake(10, y, size.width - 20, 0) view:yself.myCustomView].size.height + 10;
 
         // Return the size, which is dependent on our custom view height (y)
