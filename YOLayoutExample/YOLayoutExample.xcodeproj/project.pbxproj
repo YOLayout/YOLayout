@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00086CBE1A674B960000460F /* YOView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00086CBD1A674B960000460F /* YOView.m */; };
+		00086CBF1A674B960000460F /* YOView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00086CBD1A674B960000460F /* YOView.m */; };
 		426C0FCA1A41606800F2577C /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC71A41606800F2577C /* information.png */; };
 		426C0FCB1A41606800F2577C /* information@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC81A41606800F2577C /* information@2x.png */; };
 		426C0FCC1A41606800F2577C /* information@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC91A41606800F2577C /* information@3x.png */; };
@@ -23,8 +25,7 @@
 		42F5C2F71A3CAF3E00E37B78 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C2F61A3CAF3E00E37B78 /* AppDelegate.m */; };
 		42F5C30E1A3CAF3E00E37B78 /* YOLayoutExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C30D1A3CAF3E00E37B78 /* YOLayoutExampleTests.m */; };
 		42F5C31E1A3CAF7A00E37B78 /* YOCGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */; };
-		42F5C31F1A3CAF7A00E37B78 /* YOLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C31B1A3CAF7A00E37B78 /* YOLayout.m */; };
-		42F5C3201A3CAF7A00E37B78 /* YOView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C31D1A3CAF7A00E37B78 /* YOView.m */; };
+		42F5C31F1A3CAF7A00E37B78 /* YOLayout_IMP.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C31B1A3CAF7A00E37B78 /* YOLayout_IMP.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00358D4E1A5F3B0C0052B016 /* YONSView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YONSView.h; path = ../YOLayout/YONSView.h; sourceTree = "<group>"; };
-		00358D4F1A5F3B0C0052B016 /* YONSView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = YONSView.m; path = ../YOLayout/YONSView.m; sourceTree = "<group>"; };
+		00086CB81A6745010000460F /* YOLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOLayout.h; path = ../YOLayout/YOLayout.h; sourceTree = "<group>"; };
+		00086CB91A6745970000460F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		00086CBA1A674A080000460F /* YOLayout.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = YOLayout.podspec; path = ../YOLayout.podspec; sourceTree = "<group>"; };
+		00086CBC1A674B960000460F /* YOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOView.h; sourceTree = "<group>"; };
+		00086CBD1A674B960000460F /* YOView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOView.m; sourceTree = "<group>"; };
 		426C0FC71A41606800F2577C /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
 		426C0FC81A41606800F2577C /* information@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information@2x.png"; sourceTree = "<group>"; };
 		426C0FC91A41606800F2577C /* information@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information@3x.png"; sourceTree = "<group>"; };
@@ -69,10 +73,8 @@
 		42F5C30D1A3CAF3E00E37B78 /* YOLayoutExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YOLayoutExampleTests.m; sourceTree = "<group>"; };
 		42F5C3181A3CAF7A00E37B78 /* YOCGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOCGUtils.h; path = ../YOLayout/YOCGUtils.h; sourceTree = "<group>"; };
 		42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOCGUtils.m; path = ../YOLayout/YOCGUtils.m; sourceTree = "<group>"; };
-		42F5C31A1A3CAF7A00E37B78 /* YOLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOLayout.h; path = ../YOLayout/YOLayout.h; sourceTree = "<group>"; };
-		42F5C31B1A3CAF7A00E37B78 /* YOLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOLayout.m; path = ../YOLayout/YOLayout.m; sourceTree = "<group>"; };
-		42F5C31C1A3CAF7A00E37B78 /* YOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOView.h; path = ../YOLayout/YOView.h; sourceTree = "<group>"; };
-		42F5C31D1A3CAF7A00E37B78 /* YOView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOView.m; path = ../YOLayout/YOView.m; sourceTree = "<group>"; };
+		42F5C31A1A3CAF7A00E37B78 /* YOLayout_IMP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOLayout_IMP.h; path = ../YOLayout/YOLayout_IMP.h; sourceTree = "<group>"; };
+		42F5C31B1A3CAF7A00E37B78 /* YOLayout_IMP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOLayout_IMP.m; path = ../YOLayout/YOLayout_IMP.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00086CBB1A674B960000460F /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				00086CBC1A674B960000460F /* YOView.h */,
+				00086CBD1A674B960000460F /* YOView.m */,
+			);
+			name = UIKit;
+			path = ../YOLayout/UIKit;
+			sourceTree = "<group>";
+		};
 		426C0FC61A41606800F2577C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +141,8 @@
 		42F5C2E51A3CAF3E00E37B78 = {
 			isa = PBXGroup;
 			children = (
+				00086CBA1A674A080000460F /* YOLayout.podspec */,
+				00086CB91A6745970000460F /* README.md */,
 				426C0FC61A41606800F2577C /* Resources */,
 				42F5C3171A3CAF5400E37B78 /* YOLayout */,
 				42F5C2F01A3CAF3E00E37B78 /* YOLayoutExample */,
@@ -194,14 +208,12 @@
 		42F5C3171A3CAF5400E37B78 /* YOLayout */ = {
 			isa = PBXGroup;
 			children = (
+				00086CBB1A674B960000460F /* UIKit */,
+				00086CB81A6745010000460F /* YOLayout.h */,
 				42F5C3181A3CAF7A00E37B78 /* YOCGUtils.h */,
 				42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */,
-				42F5C31A1A3CAF7A00E37B78 /* YOLayout.h */,
-				42F5C31B1A3CAF7A00E37B78 /* YOLayout.m */,
-				42F5C31C1A3CAF7A00E37B78 /* YOView.h */,
-				42F5C31D1A3CAF7A00E37B78 /* YOView.m */,
-				00358D4E1A5F3B0C0052B016 /* YONSView.h */,
-				00358D4F1A5F3B0C0052B016 /* YONSView.m */,
+				42F5C31A1A3CAF7A00E37B78 /* YOLayout_IMP.h */,
+				42F5C31B1A3CAF7A00E37B78 /* YOLayout_IMP.m */,
 			);
 			name = YOLayout;
 			sourceTree = "<group>";
@@ -310,13 +322,13 @@
 			files = (
 				42F5C31E1A3CAF7A00E37B78 /* YOCGUtils.m in Sources */,
 				426C0FE41A41714900F2577C /* TableViewCell.m in Sources */,
-				42F5C3201A3CAF7A00E37B78 /* YOView.m in Sources */,
+				00086CBE1A674B960000460F /* YOView.m in Sources */,
 				42F5C2F71A3CAF3E00E37B78 /* AppDelegate.m in Sources */,
 				426C0FCF1A41629200F2577C /* LayoutExampleTableViewController.m in Sources */,
 				426C0FE11A41714900F2577C /* DrawableView.m in Sources */,
 				426C0FE31A41714900F2577C /* DrawableViewController.m in Sources */,
 				426C0FE51A41714900F2577C /* TableViewController.m in Sources */,
-				42F5C31F1A3CAF7A00E37B78 /* YOLayout.m in Sources */,
+				42F5C31F1A3CAF7A00E37B78 /* YOLayout_IMP.m in Sources */,
 				42C08D5C1A413749009B7E9E /* LogoView.m in Sources */,
 				426C0FD51A416CBE00F2577C /* GridView.m in Sources */,
 				42F5C2F41A3CAF3E00E37B78 /* main.m in Sources */,
@@ -327,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00086CBF1A674B960000460F /* YOView.m in Sources */,
 				42F5C30E1A3CAF3E00E37B78 /* YOLayoutExampleTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

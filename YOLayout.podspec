@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "YOLayout"
-  s.version      = "0.0.7"
+  s.version      = "0.0.8"
   s.summary      = "Layout framework."
   s.homepage     = "https://github.com/YOLayout/YOLayout"
   s.license      = "MIT"
@@ -21,10 +21,10 @@ Pod::Spec.new do |s|
 
   s.ios.platform = :ios, "7.0"
   s.ios.deployment_target = "7.0"
-  s.ios.source_files = "YOLayout/YOCGUtils.{h,m}", "YOLayout/YOLayout.{h,m}", "YOLayout/YOView.{h,m}"
+  s.ios.source_files = "YOLayout/*.{h,m}", "YOLayout/UIKit/*.{h,m}"
 
   s.osx.platform = :osx, "10.8"
   s.osx.deployment_target = "10.8"
-  s.osx.source_files = "YOLayout/YOCGUtils.{h,m}", "YOLayout/YOLayout.{h,m}", "YOLayout/YONSView.{h,m}"
+  s.osx.source_files = "YOLayout/*.{h,m}", "YOLayout/AppKit/*.{h,m}"
 
 end

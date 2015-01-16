@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 YOLayout. All rights reserved.
 //
 
-#import "YOLayout.h"
+#import "YOLayout_IMP.h"
 #import "YOCGUtils.h"
 
 @protocol YOView <NSObject>

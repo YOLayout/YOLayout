@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 YOLayout. All rights reserved.
 //
 
-#import "YOView.h"
+#import "YOLayout.h"
 
 IB_DESIGNABLE
 @interface LogoView : YOView <YODrawableView>
