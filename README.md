@@ -107,7 +107,7 @@ YOLayout is a great fit for custom drawn controls. Views that render in `drawRec
 
 ### Do I have to use YOLayout for all my views?
 
-No, just use `layoutSubviews` (UIKit) or `layout` (AppKit) like you normally would. YOLayout doesn't override behavior.
+Nope. If your layout is really simple, or it doesn't have dynamic sizing, just use `layoutSubviews` (UIKit) or `layout` (AppKit) like you normally would. YOLayout doesn't do anything special to override behavior and is compatible with existing layout methods.
 
 ## Dependencies
 
