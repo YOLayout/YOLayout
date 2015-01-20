@@ -105,6 +105,10 @@ You probably weren't asking this question, but you should have! One of the neat 
 
 YOLayout is a great fit for custom drawn controls. Views that render in `drawRect:` can use the [`IB_DESIGNABLE`](https://developer.apple.com/library/ios/recipes/xcode_help-IB_objects_media/chapters/CreatingaLiveViewofaCustomObject.html) attribute to be rendered live in interface builder. Open up the example project (`pod try YOLayout`) and take a look at [DrawableView.m](https://github.com/YOLayout/YOLayout/blob/master/YOLayoutExample/YOLayoutExample/DrawableViews/DrawableView.m) and DrawableView.xib.
 
+### Do I have to use YOLayout for all my views?
+
+No, just use `layoutSubviews` (UIKit) or `layout` (AppKit) like you normally would. YOLayout doesn't override behavior.
+
 ## Dependencies
 
 There are none!
