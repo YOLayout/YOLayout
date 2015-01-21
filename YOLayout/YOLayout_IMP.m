@@ -87,7 +87,7 @@
 
 - (CGRect)centerWithSize:(CGSize)size frame:(CGRect)frame view:(id)view {
   YOLayoutOptions options = YOLayoutOptionsAlignCenter;
-  if (size.height == 0) options |= YOLayoutOptionsSizeToFit;
+  if (size.width == 0 || size.height == 0) options |= YOLayoutOptionsSizeToFit;
   return [self setSize:size inRect:frame view:view options:options];
 }
 
