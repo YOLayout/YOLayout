@@ -18,9 +18,15 @@
   self.window.titlebarAppearsTransparent = YES;
   self.window.movableByWindowBackground = YES;
 
-  [self.window setContentSize:CGSizeMake(400, 400)];
+  [self.window setContentSize:CGSizeMake(600, 600)];
 
   YONSTestView *testView = [[YONSTestView alloc] init];
+
+//  NSScrollView *scrollView = [[NSScrollView alloc] init];
+//  [scrollView setHasVerticalScroller:YES];
+//  [scrollView setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+//  [scrollView setDocumentView:testView];
+
   self.window.contentView = testView;
 }
 

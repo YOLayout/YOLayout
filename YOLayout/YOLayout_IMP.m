@@ -92,7 +92,9 @@
 }
 
 - (CGRect)centerWithSize:(CGSize)size frame:(CGRect)frame view:(id)view {
-  return [self setFrame:CGRectMake(0, 0, size.width, size.height) inRect:frame view:view options:YOLayoutOptionsAlignCenter];
+  YOLayoutOptions options = YOLayoutOptionsAlignCenter;
+  if (size.height == 0) options |= YOLayoutOptionsSizeToFit;
+  return [self setFrame:CGRectMake(0, 0, size.width, size.height) inRect:frame view:view options:options];
 }
 
 - (CGRect)setFrame:(CGRect)frame inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
@@ -147,20 +149,21 @@
   if ((options & YOLayoutOptionsSizeToFitVertical) == 0) {
     frame.size.height = originalFrame.size.height;
   }
-  
-  CGRect rect = originalFrame;
-  if (!CGRectIsEmpty(inRect)) rect = inRect;
+
+  // If we passed in 0 for inRect height, then lets set it to the frame height.
+  // This usually happens if we are sizing to fit, and is needed to align below.
+  if (inRect.size.height == 0) inRect.size.height = frame.size.height;
   
   if ((options & YOLayoutOptionsAlignCenter) != 0) {
-    frame = YOCGRectToCenterInRect(frame, rect);
+    frame = YOCGRectToCenterInRect(frame, inRect);
   }
 
   if ((options & YOLayoutOptionsAlignRight) != 0) {
-    frame = YOCGRectRightAlignWithRect(frame, rect);
+    frame = YOCGRectRightAlignWithRect(frame, inRect);
   }
 
   if ((options & YOLayoutOptionsAlignBottom) != 0) {
-    frame = YOCGRectBottomAlignWithRect(frame, rect);
+    frame = YOCGRectBottomAlignWithRect(frame, inRect);
   }
 
   [self setFrame:frame view:view];
