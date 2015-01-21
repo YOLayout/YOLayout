@@ -23,7 +23,7 @@ CGRect YOCGRectRightAlignWithRect(CGRect rect, CGRect inRect);
 
 CGRect YOCGRectBottomAlignWithRect(CGRect rect, CGRect inRect);
 
-CGRect YOCGRectToCenterInRect(CGSize size, CGRect inRect);
+CGRect YOCGRectToCenterInRect(CGRect rect, CGRect inRect);
 
 CGRect YOCGRectToCenterXInRect(CGRect rect, CGRect inRect);
 

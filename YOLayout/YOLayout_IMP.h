@@ -51,12 +51,8 @@ typedef enum {
   YOLayoutOptionsDefaultSize = YOLayoutOptionsDefaultHeight | YOLayoutOptionsDefaultWidth,
 
   // ALIGNMENT
-  //! After sizing, center vertically in the passed in rect
-  YOLayoutOptionsAlignCenterVertical = 1 << 10,
-  //! After sizing, center horizontally in the passed in rect
-  YOLayoutOptionsAlignCenterHorizontal = 1 << 11,
-  //! After sizing, center vertically and horizontally in the passed in rect
-  YOLayoutOptionsAlignCenter = YOLayoutOptionsAlignCenterVertical | YOLayoutOptionsAlignCenterHorizontal,
+  //! Center vertically and horizontally in the passed in rect
+  YOLayoutOptionsAlignCenter = 1 << 10,
   //! After sizing, aligns the view with the right of the passed in rect
   YOLayoutOptionsAlignRight = 1 << 12,
   //! After sizing, aligns the view with the bottom of the passed in rect
@@ -122,6 +118,16 @@ typedef enum {
  @result The view frame.
  */
 - (CGRect)setFrame:(CGRect)frame view:(id)view options:(YOLayoutOptions)options;
+
+/*!
+ Center view with size in frame.
+ 
+ @param size Desired size
+ @param frame In frame
+ @param view View
+ @result The view frame.
+ */
+- (CGRect)centerWithSize:(CGSize)size frame:(CGRect)frame view:(id)view;
 
 /*!
  Set the (sub)view frame.
@@ -307,5 +313,15 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
  @result Layout
  */
 + (YOLayout *)layoutWithLayoutBlock:(YOLayoutBlock)layoutBlock;
+
+#pragma mark Common Layouts
+
++ (YOLayout *)vertical:(id)view;
+
++ (YOLayout *)fill:(id)view;
+
++ (YOLayoutBlock)verticalLayout:(id)view;
+
++ (YOLayoutBlock)fillLayout:(id)view;
 
 @end

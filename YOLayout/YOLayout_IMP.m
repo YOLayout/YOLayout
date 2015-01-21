@@ -12,6 +12,7 @@
 @protocol YOView <NSObject>
 - (CGRect)frame;
 - (void)setFrame:(CGRect)frame;
+- (NSArray *)subviews;
 @end
 
 @interface YOLayout ()
@@ -90,6 +91,10 @@
   return [self setFrame:CGRectMake(0, 0, sizeThatFits.width, sizeThatFits.height) inRect:inRect view:view options:YOLayoutOptionsAlignCenter];
 }
 
+- (CGRect)centerWithSize:(CGSize)size frame:(CGRect)frame view:(id)view {
+  return [self setFrame:CGRectMake(0, 0, size.width, size.height) inRect:frame view:view options:YOLayoutOptionsAlignCenter];
+}
+
 - (CGRect)setFrame:(CGRect)frame inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
 
   CGRect originalFrame = frame;
@@ -146,12 +151,8 @@
   CGRect rect = originalFrame;
   if (!CGRectIsEmpty(inRect)) rect = inRect;
   
-  if ((options & YOLayoutOptionsAlignCenterVertical) != 0) {
-    frame = YOCGRectToCenterYInRect(frame, originalFrame);
-  }
-
-  if ((options & YOLayoutOptionsAlignCenterHorizontal) != 0) {
-    frame = YOCGRectToCenterXInRect(frame, originalFrame);
+  if ((options & YOLayoutOptionsAlignCenter) != 0) {
+    frame = YOCGRectToCenterInRect(frame, rect);
   }
 
   if ((options & YOLayoutOptionsAlignRight) != 0) {
@@ -209,6 +210,36 @@
     if (needsLayout && [view respondsToSelector:@selector(setNeedsLayout)]) [view setNeedsLayout];
   }
   return frame;
+}
+
+#pragma mark Common Layouts
+
++ (YOLayout *)vertical:(id)view {
+  return [self layoutWithLayoutBlock:[YOLayout verticalLayout:view]];
+}
+
++ (YOLayoutBlock)verticalLayout:(id)view {
+  return ^CGSize(id<YOLayout> layout, CGSize size) {
+    NSArray *subviews = [view subviews];
+    CGFloat y = 0;
+    for (id subview in subviews) {
+      y += [layout sizeToFitVerticalInFrame:CGRectMake(0, y, size.width, 0) view:subview].size.height;
+    }
+    return CGSizeMake(size.width, y);
+  };
+}
+
++ (YOLayout *)fill:(id)view {
+  return [self layoutWithLayoutBlock:[YOLayout fillLayout:view]];
+}
+
++ (YOLayoutBlock)fillLayout:(id)view {
+  return ^CGSize(id<YOLayout> layout, CGSize size) {
+    NSArray *subviews = [view subviews];
+    NSAssert(subviews.count <= 1, @"This layout only supports a single subview");
+    if ([subviews firstObject]) [layout setFrame:CGRectMake(0, 0, size.width, size.height) view:subviews[0]];
+    return size;
+  };
 }
 
 @end

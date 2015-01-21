@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		00086CBE1A674B960000460F /* YOView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00086CBD1A674B960000460F /* YOView.m */; };
 		00086CBF1A674B960000460F /* YOView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00086CBD1A674B960000460F /* YOView.m */; };
+		00D52F2C1A6F0B8A00DEB5F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F2B1A6F0B8A00DEB5F5 /* AppDelegate.m */; };
+		00D52F2E1A6F0B8A00DEB5F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F2D1A6F0B8A00DEB5F5 /* main.m */; };
+		00D52F301A6F0B8A00DEB5F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00D52F2F1A6F0B8A00DEB5F5 /* Images.xcassets */; };
+		00D52F331A6F0B8A00DEB5F5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00D52F311A6F0B8A00DEB5F5 /* MainMenu.xib */; };
+		00D52F491A6F0BA200DEB5F5 /* YONSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F481A6F0BA200DEB5F5 /* YONSView.m */; };
+		00D52F4A1A6F0BB500DEB5F5 /* YOCGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */; };
+		00D52F4B1A6F0BB700DEB5F5 /* YOLayout_IMP.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C31B1A3CAF7A00E37B78 /* YOLayout_IMP.m */; };
+		00D52F521A6F2BA600DEB5F5 /* YONSTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F511A6F2BA600DEB5F5 /* YONSTestView.m */; };
+		00D52F581A6F2C6100DEB5F5 /* YONSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F561A6F2C6100DEB5F5 /* YONSLabel.m */; };
+		00D52F5B1A6F2CA200DEB5F5 /* YONSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F5A1A6F2CA200DEB5F5 /* YONSButton.m */; };
+		00D52F5D1A6F2E2D00DEB5F5 /* YOTestWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00D52F5C1A6F2E2D00DEB5F5 /* YOTestWindowController.xib */; };
+		00D52F601A6F2E4300DEB5F5 /* YOTestWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F5F1A6F2E4300DEB5F5 /* YOTestWindowController.m */; };
 		426C0FCA1A41606800F2577C /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC71A41606800F2577C /* information.png */; };
 		426C0FCB1A41606800F2577C /* information@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC81A41606800F2577C /* information@2x.png */; };
 		426C0FCC1A41606800F2577C /* information@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC91A41606800F2577C /* information@3x.png */; };
@@ -44,6 +56,24 @@
 		00086CBA1A674A080000460F /* YOLayout.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = YOLayout.podspec; path = ../YOLayout.podspec; sourceTree = "<group>"; };
 		00086CBC1A674B960000460F /* YOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOView.h; sourceTree = "<group>"; };
 		00086CBD1A674B960000460F /* YOView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOView.m; sourceTree = "<group>"; };
+		00D52F261A6F0B8A00DEB5F5 /* YOLayoutExampleOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YOLayoutExampleOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		00D52F291A6F0B8A00DEB5F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00D52F2A1A6F0B8A00DEB5F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		00D52F2B1A6F0B8A00DEB5F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		00D52F2D1A6F0B8A00DEB5F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		00D52F2F1A6F0B8A00DEB5F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		00D52F321A6F0B8A00DEB5F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		00D52F471A6F0BA200DEB5F5 /* YONSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YONSView.h; sourceTree = "<group>"; };
+		00D52F481A6F0BA200DEB5F5 /* YONSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YONSView.m; sourceTree = "<group>"; };
+		00D52F501A6F2BA600DEB5F5 /* YONSTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YONSTestView.h; sourceTree = "<group>"; };
+		00D52F511A6F2BA600DEB5F5 /* YONSTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YONSTestView.m; sourceTree = "<group>"; };
+		00D52F561A6F2C6100DEB5F5 /* YONSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YONSLabel.m; sourceTree = "<group>"; };
+		00D52F571A6F2C6100DEB5F5 /* YONSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YONSLabel.h; sourceTree = "<group>"; };
+		00D52F591A6F2CA200DEB5F5 /* YONSButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YONSButton.h; sourceTree = "<group>"; };
+		00D52F5A1A6F2CA200DEB5F5 /* YONSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YONSButton.m; sourceTree = "<group>"; };
+		00D52F5C1A6F2E2D00DEB5F5 /* YOTestWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YOTestWindowController.xib; sourceTree = "<group>"; };
+		00D52F5E1A6F2E4300DEB5F5 /* YOTestWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOTestWindowController.h; sourceTree = "<group>"; };
+		00D52F5F1A6F2E4300DEB5F5 /* YOTestWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOTestWindowController.m; sourceTree = "<group>"; };
 		426C0FC71A41606800F2577C /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
 		426C0FC81A41606800F2577C /* information@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information@2x.png"; sourceTree = "<group>"; };
 		426C0FC91A41606800F2577C /* information@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information@3x.png"; sourceTree = "<group>"; };
@@ -78,6 +108,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		00D52F231A6F0B8A00DEB5F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		42F5C2EB1A3CAF3E00E37B78 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -103,6 +140,46 @@
 			);
 			name = UIKit;
 			path = ../YOLayout/UIKit;
+			sourceTree = "<group>";
+		};
+		00D52F271A6F0B8A00DEB5F5 /* YOLayoutExampleOSX */ = {
+			isa = PBXGroup;
+			children = (
+				00D52F2A1A6F0B8A00DEB5F5 /* AppDelegate.h */,
+				00D52F2B1A6F0B8A00DEB5F5 /* AppDelegate.m */,
+				00D52F2F1A6F0B8A00DEB5F5 /* Images.xcassets */,
+				00D52F311A6F0B8A00DEB5F5 /* MainMenu.xib */,
+				00D52F281A6F0B8A00DEB5F5 /* Supporting Files */,
+				00D52F501A6F2BA600DEB5F5 /* YONSTestView.h */,
+				00D52F511A6F2BA600DEB5F5 /* YONSTestView.m */,
+				00D52F591A6F2CA200DEB5F5 /* YONSButton.h */,
+				00D52F5A1A6F2CA200DEB5F5 /* YONSButton.m */,
+				00D52F571A6F2C6100DEB5F5 /* YONSLabel.h */,
+				00D52F561A6F2C6100DEB5F5 /* YONSLabel.m */,
+				00D52F5E1A6F2E4300DEB5F5 /* YOTestWindowController.h */,
+				00D52F5F1A6F2E4300DEB5F5 /* YOTestWindowController.m */,
+				00D52F5C1A6F2E2D00DEB5F5 /* YOTestWindowController.xib */,
+			);
+			path = YOLayoutExampleOSX;
+			sourceTree = "<group>";
+		};
+		00D52F281A6F0B8A00DEB5F5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00D52F291A6F0B8A00DEB5F5 /* Info.plist */,
+				00D52F2D1A6F0B8A00DEB5F5 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		00D52F461A6F0BA200DEB5F5 /* AppKit */ = {
+			isa = PBXGroup;
+			children = (
+				00D52F471A6F0BA200DEB5F5 /* YONSView.h */,
+				00D52F481A6F0BA200DEB5F5 /* YONSView.m */,
+			);
+			name = AppKit;
+			path = ../YOLayout/AppKit;
 			sourceTree = "<group>";
 		};
 		426C0FC61A41606800F2577C /* Resources */ = {
@@ -147,6 +224,7 @@
 				42F5C3171A3CAF5400E37B78 /* YOLayout */,
 				42F5C2F01A3CAF3E00E37B78 /* YOLayoutExample */,
 				42F5C30A1A3CAF3E00E37B78 /* YOLayoutExampleTests */,
+				00D52F271A6F0B8A00DEB5F5 /* YOLayoutExampleOSX */,
 				42F5C2EF1A3CAF3E00E37B78 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -156,6 +234,7 @@
 			children = (
 				42F5C2EE1A3CAF3E00E37B78 /* YOLayoutExample.app */,
 				42F5C3071A3CAF3E00E37B78 /* YOLayoutExampleTests.xctest */,
+				00D52F261A6F0B8A00DEB5F5 /* YOLayoutExampleOSX.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -208,6 +287,7 @@
 		42F5C3171A3CAF5400E37B78 /* YOLayout */ = {
 			isa = PBXGroup;
 			children = (
+				00D52F461A6F0BA200DEB5F5 /* AppKit */,
 				00086CBB1A674B960000460F /* UIKit */,
 				00086CB81A6745010000460F /* YOLayout.h */,
 				42F5C3181A3CAF7A00E37B78 /* YOCGUtils.h */,
@@ -221,6 +301,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		00D52F251A6F0B8A00DEB5F5 /* YOLayoutExampleOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00D52F441A6F0B8A00DEB5F5 /* Build configuration list for PBXNativeTarget "YOLayoutExampleOSX" */;
+			buildPhases = (
+				00D52F221A6F0B8A00DEB5F5 /* Sources */,
+				00D52F231A6F0B8A00DEB5F5 /* Frameworks */,
+				00D52F241A6F0B8A00DEB5F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YOLayoutExampleOSX;
+			productName = YOLayoutExampleOSX;
+			productReference = 00D52F261A6F0B8A00DEB5F5 /* YOLayoutExampleOSX.app */;
+			productType = "com.apple.product-type.application";
+		};
 		42F5C2ED1A3CAF3E00E37B78 /* YOLayoutExample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 42F5C3111A3CAF3E00E37B78 /* Build configuration list for PBXNativeTarget "YOLayoutExample" */;
@@ -265,6 +362,9 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = YOLayout;
 				TargetAttributes = {
+					00D52F251A6F0B8A00DEB5F5 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
 					42F5C2ED1A3CAF3E00E37B78 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
@@ -289,11 +389,22 @@
 			targets = (
 				42F5C2ED1A3CAF3E00E37B78 /* YOLayoutExample */,
 				42F5C3061A3CAF3E00E37B78 /* YOLayoutExampleTests */,
+				00D52F251A6F0B8A00DEB5F5 /* YOLayoutExampleOSX */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		00D52F241A6F0B8A00DEB5F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00D52F301A6F0B8A00DEB5F5 /* Images.xcassets in Resources */,
+				00D52F5D1A6F2E2D00DEB5F5 /* YOTestWindowController.xib in Resources */,
+				00D52F331A6F0B8A00DEB5F5 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		42F5C2EC1A3CAF3E00E37B78 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -316,6 +427,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		00D52F221A6F0B8A00DEB5F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00D52F2E1A6F0B8A00DEB5F5 /* main.m in Sources */,
+				00D52F4B1A6F0BB700DEB5F5 /* YOLayout_IMP.m in Sources */,
+				00D52F4A1A6F0BB500DEB5F5 /* YOCGUtils.m in Sources */,
+				00D52F601A6F2E4300DEB5F5 /* YOTestWindowController.m in Sources */,
+				00D52F581A6F2C6100DEB5F5 /* YONSLabel.m in Sources */,
+				00D52F5B1A6F2CA200DEB5F5 /* YONSButton.m in Sources */,
+				00D52F491A6F0BA200DEB5F5 /* YONSView.m in Sources */,
+				00D52F2C1A6F0B8A00DEB5F5 /* AppDelegate.m in Sources */,
+				00D52F521A6F2BA600DEB5F5 /* YONSTestView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		42F5C2EA1A3CAF3E00E37B78 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -354,7 +481,51 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		00D52F311A6F0B8A00DEB5F5 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				00D52F321A6F0B8A00DEB5F5 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		00D52F401A6F0B8A00DEB5F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = YOLayoutExampleOSX/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		00D52F411A6F0B8A00DEB5F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				INFOPLIST_FILE = YOLayoutExampleOSX/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		42F5C30F1A3CAF3E00E37B78 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -490,6 +661,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		00D52F441A6F0B8A00DEB5F5 /* Build configuration list for PBXNativeTarget "YOLayoutExampleOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00D52F401A6F0B8A00DEB5F5 /* Debug */,
+				00D52F411A6F0B8A00DEB5F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		42F5C2E91A3CAF3E00E37B78 /* Build configuration list for PBXProject "YOLayoutExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
