@@ -23,15 +23,6 @@ CGPoint YOCGPointToCenterY(CGSize size, CGSize inSize) {
   return p;
 }
 
-CGPoint YOCGPointToCenter(CGSize size, CGSize inSize) {
-  // We round otherwise views will anti-alias
-  CGPoint p = CGPointMake(roundf((inSize.width - size.width) / 2.0), roundf((inSize.height - size.height) / 2.0f));
-  // Allowing negative values here allows us to center a larger view on a smaller view.
-  // Though set to 0 if inSize.height was 0
-  if (inSize.height == 0.0f) p.y = 0.0f;
-  return p;
-}
-
 BOOL YOCGPointIsEqual(CGPoint p1, CGPoint p2) {
   return (YOCGIsEqualWithAccuracy(p1.x, p2.x, 0.0001) && YOCGIsEqualWithAccuracy(p1.y, p2.y, 0.0001));
 }
@@ -52,29 +43,4 @@ CGRect YOCGRectSetX(CGRect rect, CGFloat x) {
 CGRect YOCGRectSetY(CGRect rect, CGFloat y) {
   rect.origin.y = y;
   return rect;
-}
-
-CGRect YOCGRectRightAlignWithRect(CGRect rect, CGRect inRect) {
-  CGFloat x = inRect.origin.x + inRect.size.width - rect.size.width;
-  return CGRectMake(x, rect.origin.y, rect.size.width, rect.size.height);
-}
-
-CGRect YOCGRectBottomAlignWithRect(CGRect rect, CGRect inRect) {
-  CGFloat y = inRect.origin.y + inRect.size.height - rect.size.height;
-  return CGRectMake(rect.origin.x, y, rect.size.width, rect.size.height);
-}
-
-CGRect YOCGRectToCenterInRect(CGRect rect, CGRect inRect) {
-  CGPoint p = YOCGPointToCenter(rect.size, inRect.size);
-  return CGRectMake(p.x + inRect.origin.x, p.y + inRect.origin.y, rect.size.width, rect.size.height);
-}
-
-CGRect YOCGRectToCenterXInRect(CGRect rect, CGRect inRect) {
-  CGPoint p = YOCGPointToCenterX(rect.size, inRect.size);
-  return YOCGRectSetX(rect, p.x + inRect.origin.x);
-}
-
-CGRect YOCGRectToCenterYInRect(CGRect rect, CGRect inRect) {
-  CGPoint p = YOCGPointToCenterY(rect.size, inRect.size);
-  return YOCGRectSetY(rect, p.y + inRect.origin.y);
 }

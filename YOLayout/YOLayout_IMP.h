@@ -138,21 +138,13 @@ typedef enum {
  If we are calculating sizeThatFits, this doesn't actually set the views frame.
  Use this value instead of view.frame since the views frame might not have been set.
  
- @param frame Frame
+ @param size Size
  @param inRect Rect to optionally position in for YOLayoutOptionsCenter, YOLayoutOptionsCenterVertical, YOLayoutOptionsRightAlign, etc.
  @param view View
  @param options Options for setFrame; See YOLayoutOptions for more info
  @result The view frame.
  */
-- (CGRect)setFrame:(CGRect)frame inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options;
-
-/*!
- Set the (sub)view frame.
- Calls sizeThatFits on the view and then centers it. If inRect.height == 0, we only center horizontally.
- @param inRect The containing rectangle.
- @param view View
- */
-- (CGRect)setFrameInRect:(CGRect)inRect view:(id)view;
+- (CGRect)setSize:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options;
 
 /*!
  Set origin.
