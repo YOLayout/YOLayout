@@ -153,9 +153,13 @@
   // If we passed in 0 for inRect height, then lets set it to the frame height.
   // This usually happens if we are sizing to fit, and is needed to align below.
   if (inRect.size.height == 0) inRect.size.height = frame.size.height;
-  
-  if ((options & YOLayoutOptionsAlignCenter) != 0) {
-    frame = YOCGRectToCenterInRect(frame, inRect);
+
+  if ((options & YOLayoutOptionsAlignCenterHorizontal) != 0) {
+    frame = YOCGRectToCenterXInRect(frame, inRect);
+  }
+
+  if ((options & YOLayoutOptionsAlignCenterVertical) != 0) {
+    frame = YOCGRectToCenterYInRect(frame, inRect);
   }
 
   if ((options & YOLayoutOptionsAlignRight) != 0) {

@@ -51,8 +51,12 @@ typedef enum {
   YOLayoutOptionsDefaultSize = YOLayoutOptionsDefaultHeight | YOLayoutOptionsDefaultWidth,
 
   // ALIGNMENT
-  //! Center vertically and horizontally in the passed in rect
-  YOLayoutOptionsAlignCenter = 1 << 10,
+  //! After sizing, center vertically in the passed in rect
+  YOLayoutOptionsAlignCenterVertical = 1 << 10,
+  //! After sizing, center horizontally in the passed in rect
+  YOLayoutOptionsAlignCenterHorizontal = 1 << 11,
+  //! After sizing, center vertically and horizontally in the passed in rect
+  YOLayoutOptionsAlignCenter = YOLayoutOptionsAlignCenterVertical | YOLayoutOptionsAlignCenterHorizontal,
   //! After sizing, aligns the view with the right of the passed in rect
   YOLayoutOptionsAlignRight = 1 << 12,
   //! After sizing, aligns the view with the bottom of the passed in rect
@@ -316,12 +320,36 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
 
 #pragma mark Common Layouts
 
+/*!
+  A layout which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.
+
+  @param view
+  @param Layout
+ */
 + (YOLayout *)vertical:(id)view;
 
+/*!
+ A layout which makes the subview the full size passed in.
+
+ @param view
+ @param Layout
+ */
 + (YOLayout *)fill:(id)view;
 
+/*!
+ A layout block which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.
+
+ @param view
+ @param Layout block
+ */
 + (YOLayoutBlock)verticalLayout:(id)view;
 
+/*!
+ A layout block which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.
+
+ @param view
+ @param Layout block
+ */
 + (YOLayoutBlock)fillLayout:(id)view;
 
 @end

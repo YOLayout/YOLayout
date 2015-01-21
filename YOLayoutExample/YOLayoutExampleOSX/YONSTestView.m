@@ -47,7 +47,7 @@
     y += [layout centerWithSize:CGSizeMake(300, 44) frame:CGRectMake(x, y, size.width - 40, 44) view:yself.button1].size.height + 20;
 
     // Center with unknown height
-    y += [layout centerWithSize:CGSizeMake(400, 0) frame:CGRectMake(x, y, size.width - 40, 0) view:yself.label2].size.height + 20;    
+    y += [layout centerWithSize:CGSizeMake(400, 0) frame:CGRectMake(x, y, size.width - 40, 0) view:yself.label2].size.height + 20;
 
     return CGSizeMake(size.width, y);
   }];
