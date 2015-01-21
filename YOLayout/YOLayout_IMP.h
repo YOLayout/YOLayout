@@ -124,25 +124,28 @@ typedef enum {
 - (CGRect)setFrame:(CGRect)frame view:(id)view options:(YOLayoutOptions)options;
 
 /*!
- Set the (sub)view frame.
- If we are calculating sizeThatFits, this doesn't actually set the views frame.
- Use this value instead of view.frame since the views frame might not have been set.
+ Center view with size in frame.
  
- @param frame Frame
- @param inRect Rect to optionally position in for YOLayoutOptionsCenter, YOLayoutOptionsCenterVertical, YOLayoutOptionsRightAlign, etc.
+ If the desired size.height == 0, then it will size to fit vertically using the specified width.
+ If the desired size.width == 0, then it will size to fit horizontally using the specified height.
+ 
+ @param size Desired size (or desired width and/or height)
+ @param frame In frame
  @param view View
- @param options Options for setFrame; See YOLayoutOptions for more info
  @result The view frame.
  */
-- (CGRect)setFrame:(CGRect)frame inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options;
+- (CGRect)centerWithSize:(CGSize)size frame:(CGRect)frame view:(id)view;
 
 /*!
- Set the (sub)view frame.
- Calls sizeThatFits on the view and then centers it. If inRect.height == 0, we only center horizontally.
- @param inRect The containing rectangle.
+ Set the size in rect with options.
+ 
+ @param size Desired size (or size hint if using YOLayoutOptionsSizeToFit)
+ @param inRect Rect in which to position the view. `inRect.size` may be different than `size` when using this method with YOLayoutOptionsCenter, YOLayoutOptionsCenterVertical, YOLayoutOptionsRightAlign, etc.
  @param view View
+ @param options Options See YOLayoutOptions for more info
+ @result The view frame.
  */
-- (CGRect)setFrameInRect:(CGRect)inRect view:(id)view;
+- (CGRect)setSize:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options;
 
 /*!
  Set origin.
@@ -307,5 +310,39 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
  @result Layout
  */
 + (YOLayout *)layoutWithLayoutBlock:(YOLayoutBlock)layoutBlock;
+
+#pragma mark Common Layouts
+
+/*!
+  A layout which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.
+
+  @param view
+  @param Layout
+ */
++ (YOLayout *)vertical:(id)view;
+
+/*!
+ A layout which makes the subview the full size passed in.
+
+ @param view
+ @param Layout
+ */
++ (YOLayout *)fill:(id)view;
+
+/*!
+ A layout block which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.
+
+ @param view
+ @param Layout block
+ */
++ (YOLayoutBlock)verticalLayout:(id)view;
+
+/*!
+ A layout block which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.
+
+ @param view
+ @param Layout block
+ */
++ (YOLayoutBlock)fillLayout:(id)view;
 
 @end

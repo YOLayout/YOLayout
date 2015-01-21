@@ -12,6 +12,7 @@
 @protocol YOView <NSObject>
 - (CGRect)frame;
 - (void)setFrame:(CGRect)frame;
+- (NSArray *)subviews;
 @end
 
 @interface YOLayout ()
@@ -81,88 +82,93 @@
 }
 
 - (CGRect)setFrame:(CGRect)frame view:(id)view options:(YOLayoutOptions)options {
-  return [self setFrame:frame inRect:CGRectZero view:view options:options];
+  return [self setSize:frame.size inRect:frame view:view options:options];
 }
 
-- (CGRect)setFrameInRect:(CGRect)inRect view:(id)view {
-  CGSize sizeThatFits = [view sizeThatFits:CGSizeMake(inRect.size.width, inRect.size.height)];
-  if (inRect.size.height == 0) inRect.size.height = sizeThatFits.height;
-  return [self setFrame:CGRectMake(0, 0, sizeThatFits.width, sizeThatFits.height) inRect:inRect view:view options:YOLayoutOptionsAlignCenter];
+- (CGRect)centerWithSize:(CGSize)size frame:(CGRect)frame view:(id)view {
+  YOLayoutOptions options = YOLayoutOptionsAlignCenter;
+  if (size.width == 0 || size.height == 0) options |= YOLayoutOptionsSizeToFit;
+  return [self setSize:size inRect:frame view:view options:options];
 }
 
-- (CGRect)setFrame:(CGRect)frame inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
+- (CGRect)setSize:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
 
-  CGRect originalFrame = frame;
+  CGSize originalSize = size;
   BOOL sizeToFit = ((options & YOLayoutOptionsSizeToFitHorizontal) != 0)
     || ((options & YOLayoutOptionsSizeToFitVertical) != 0);
 
   CGSize sizeThatFits = CGSizeZero;
   if (sizeToFit) {
-    sizeThatFits = [view sizeThatFits:frame.size];
+    sizeThatFits = [view sizeThatFits:size];
     
     // If size that fits returns a larger width, then we'll need to constrain it.
-    if (((options & YOLayoutOptionsConstrainWidth) != 0) && sizeThatFits.width > frame.size.width) {
-      sizeThatFits.width = frame.size.width;
+    if (((options & YOLayoutOptionsConstrainWidth) != 0) && sizeThatFits.width > size.width) {
+      sizeThatFits.width = size.width;
     }
 
     // If size that fits returns a larger height, then we'll need to constrain it.
-    if (((options & YOLayoutOptionsConstrainHeight) != 0) && sizeThatFits.height > frame.size.height) {
-      sizeThatFits.height = frame.size.height;
+    if (((options & YOLayoutOptionsConstrainHeight) != 0) && sizeThatFits.height > size.height) {
+      sizeThatFits.height = size.height;
     }
 
     // If size that fits returns a larger width or height, constrain it, but also maintain the aspect ratio from sizeThatFits
-    if (((options & YOLayoutOptionsConstrainSizeMaintainAspectRatio) != 0) && (sizeThatFits.height > frame.size.height || sizeThatFits.width > frame.size.width)) {
+    if (((options & YOLayoutOptionsConstrainSizeMaintainAspectRatio) != 0) && (sizeThatFits.height > size.height || sizeThatFits.width > size.width)) {
       CGFloat aspectRatio = sizeThatFits.width / sizeThatFits.height;
       // If we're going to constrain by width
-      if (sizeThatFits.width / frame.size.width > sizeThatFits.height / frame.size.height) {
-        sizeThatFits.width = frame.size.width;
-        sizeThatFits.height = roundf(frame.size.width / aspectRatio);
+      if (sizeThatFits.width / size.width > sizeThatFits.height / size.height) {
+        sizeThatFits.width = size.width;
+        sizeThatFits.height = roundf(size.width / aspectRatio);
         // If we're going to constrain by height
       } else {
-        sizeThatFits.height = frame.size.height;
-        sizeThatFits.width = roundf(frame.size.height * aspectRatio);
+        sizeThatFits.height = size.height;
+        sizeThatFits.width = roundf(size.height * aspectRatio);
       }
     }
 
     if (sizeThatFits.width == 0 && ((options & YOLayoutOptionsDefaultWidth) != 0)) {
-      sizeThatFits.width = frame.size.width;
+      sizeThatFits.width = size.width;
     }
     
     if (sizeThatFits.height == 0 && ((options & YOLayoutOptionsDefaultHeight) != 0)) {
-      sizeThatFits.height = frame.size.height;
+      sizeThatFits.height = size.height;
     }
 
-    frame.size = sizeThatFits;
+    size = sizeThatFits;
   }
   
   if ((options & YOLayoutOptionsSizeToFitHorizontal) == 0) {
-    frame.size.width = originalFrame.size.width;
+    size.width = originalSize.width;
   }
   
   if ((options & YOLayoutOptionsSizeToFitVertical) == 0) {
-    frame.size.height = originalFrame.size.height;
-  }
-  
-  CGRect rect = originalFrame;
-  if (!CGRectIsEmpty(inRect)) rect = inRect;
-  
-  if ((options & YOLayoutOptionsAlignCenterVertical) != 0) {
-    frame = YOCGRectToCenterYInRect(frame, originalFrame);
+    size.height = originalSize.height;
   }
 
+  // If we passed in 0 for inRect height or width, then lets set it to the frame height or width.
+  // This usually happens if we are sizing to fit, and is needed to align below.
+  if (inRect.size.width == 0) inRect.size.width = size.width;
+  if (inRect.size.height == 0) inRect.size.height = size.height;
+
+  CGPoint p = inRect.origin;
   if ((options & YOLayoutOptionsAlignCenterHorizontal) != 0) {
-    frame = YOCGRectToCenterXInRect(frame, originalFrame);
+    p.x += YOCGPointToCenterX(size, inRect.size).x;
+  }
+
+  if ((options & YOLayoutOptionsAlignCenterVertical) != 0) {
+    p.y += YOCGPointToCenterY(size, inRect.size).y;
   }
 
   if ((options & YOLayoutOptionsAlignRight) != 0) {
-    frame = YOCGRectRightAlignWithRect(frame, rect);
+    p.x = inRect.origin.x + inRect.size.width - size.width;
   }
 
   if ((options & YOLayoutOptionsAlignBottom) != 0) {
-    frame = YOCGRectBottomAlignWithRect(frame, rect);
+    p.y = inRect.origin.y + inRect.size.height - size.height;
   }
 
+  CGRect frame = CGRectMake(p.x, p.y, size.width, size.height);
   [self setFrame:frame view:view];
+
   return frame;
 }
 
@@ -209,6 +215,36 @@
     if (needsLayout && [view respondsToSelector:@selector(setNeedsLayout)]) [view setNeedsLayout];
   }
   return frame;
+}
+
+#pragma mark Common Layouts
+
++ (YOLayout *)vertical:(id)view {
+  return [self layoutWithLayoutBlock:[YOLayout verticalLayout:view]];
+}
+
++ (YOLayoutBlock)verticalLayout:(id)view {
+  return ^CGSize(id<YOLayout> layout, CGSize size) {
+    NSArray *subviews = [view subviews];
+    CGFloat y = 0;
+    for (id subview in subviews) {
+      y += [layout sizeToFitVerticalInFrame:CGRectMake(0, y, size.width, 0) view:subview].size.height;
+    }
+    return CGSizeMake(size.width, y);
+  };
+}
+
++ (YOLayout *)fill:(id)view {
+  return [self layoutWithLayoutBlock:[YOLayout fillLayout:view]];
+}
+
++ (YOLayoutBlock)fillLayout:(id)view {
+  return ^CGSize(id<YOLayout> layout, CGSize size) {
+    NSArray *subviews = [view subviews];
+    NSAssert(subviews.count <= 1, @"This layout only supports a single subview");
+    if ([subviews firstObject]) [layout setFrame:CGRectMake(0, 0, size.width, size.height) view:subviews[0]];
+    return size;
+  };
 }
 
 @end
