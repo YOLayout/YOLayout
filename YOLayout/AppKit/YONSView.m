@@ -57,6 +57,7 @@
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
+  if (!_viewLayout) return size;
   return [_viewLayout sizeThatFits:size];
 }
 
