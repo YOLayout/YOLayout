@@ -111,7 +111,7 @@ YOLayout is a great fit for custom drawn controls. Views that render in `drawRec
 
 ### What is viewInit?
 
-View init is the unified initializer for views. With YOLayout there is no nead to specify a default size or handle initialization differently if the view is from Interface Builder or from code.
+`- (void)viewInit;` is the unified initializer for views. With YOLayout there is no nead to specify a default size or handle initialization differently if the view is from Interface Builder or from code.
 
 ### Do I have to use YOLayout for all my views?
 
