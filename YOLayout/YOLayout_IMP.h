@@ -91,16 +91,6 @@ typedef enum {
 - (CGRect)setFrame:(CGRect)frame view:(id)view;
 
 /*!
- Set frame for the (sub)view.
- If we are calculating sizeThatFits, this doesn't actually set the views frame.
- 
- @param frame Frame
- @param view View should conform to YOLView informal protocol.
- @param needsLayout If YES, calls setNeedsLayout on view.
- */
-- (CGRect)setFrame:(CGRect)frame view:(id)view needsLayout:(BOOL)needsLayout;
-
-/*!
  Set the (sub)view frame, then size to fit the view vertically.
  If we are calculating sizeThatFits, this doesn't actually set the views frame.
  Use this value instead of view.frame since the views frame might not have been set.
@@ -148,44 +138,22 @@ typedef enum {
 - (CGRect)setSize:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options;
 
 /*!
- Set origin.
+ Set origin. Same as setFrame:view: but uses the existing view.frame.size.
+
+ @param origin Origin
+ @param view View
+ @param options Options
  */
-- (CGRect)setOrigin:(CGPoint)origin view:(id)view;
-- (CGRect)setOrigin:(CGPoint)origin view:(id)view sizeToFit:(BOOL)sizeToFit;
+- (CGRect)setOrigin:(CGPoint)origin view:(id)view options:(YOLayoutOptions)options;
 
 /*!
- Set size.
- */
-- (CGRect)setSize:(CGSize)size view:(id)view;
-- (CGRect)setSize:(CGSize)size view:(id)view sizeToFit:(BOOL)sizeToFit;
-
-/*!
- Set origin, x position.
- Use this value instead of view.frame since the views frame might not have been set.
+ Set size. Same as setFrame:view: but uses the existing view.frame.origin.
  
- @param x X position
- @param frame Frame
- @param view View should conform to YOLView informal protocol.
- @result The view frame.
+ @param size Size
+ @param view View
+ @param options Options
  */
-- (CGRect)setX:(CGFloat)x frame:(CGRect)frame view:(id)view;
-
-/*!
- Set origin, y position.
- 
- Use this value instead of view.frame since the views frame might not have been set.
- 
- @param y Y position
- @param frame Frame
- @param view View should conform to YOLView informal protocol.
- @result The view frame.
- */
-- (CGRect)setY:(CGFloat)y frame:(CGRect)frame view:(id)view;
-
-/*!
- @deprecated Use setY:frame:view:
- */
-- (CGRect)setY:(CGFloat)y view:(id)view;
+- (CGRect)setSize:(CGSize)size view:(id)view options:(YOLayoutOptions)options;
 
 /*!
  If layout is required. Otherwise cached value may be returned.
