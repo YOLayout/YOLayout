@@ -60,7 +60,7 @@ If you're following along closely, you may have noticed that there's no reason y
 
 ## Example Project
 
-The best view to follow and learn YOLayout is by seeing it in action. The example project is located in [YOLayoutExample](https://github.com/YOLayout/YOLayout/tree/master/YOLayoutExample).
+The best way to follow and learn YOLayout is by seeing it in action. Open the example project: [YOLayoutExample](https://github.com/YOLayout/YOLayout/tree/master/YOLayoutExample).
 
 ## NSView
 
