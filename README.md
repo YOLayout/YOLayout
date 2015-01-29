@@ -58,9 +58,13 @@ Here's the implementation file. This view's height can change based on the MyCus
 
 If you're following along closely, you may have noticed that there's no reason you _need_ to create a new YOView subclass to use YOLayout. For simple views you can instantiate a YOView and set its layout without creating a new YOView subclass.
 
+## Example Project
+
+The best view to follow and learn YOLayout is by seeing it in action. The example project is located in [YOLayoutExample](https://github.com/YOLayout/YOLayout/tree/master/YOLayoutExample).
+
 ## NSView
 
-Cocoa is supported also by subclassing `YONSView`. When using YOLayout in Cocoa, it acts just like UIKit.
+Cocoa is supported also by subclassing `YONSView`. When using YOLayout in Cocoa, it acts just like UIKit (top left origin).
 Because layout is reserved for NSView, the layout property is called `viewLayout`.
 
 ```objc
@@ -108,6 +112,19 @@ YOLayout is a great fit for custom drawn controls. Views that render in `drawRec
 ### Do I have to use YOLayout for all my views?
 
 Nope. If your layout is really simple, or it doesn't have dynamic sizing, just use `layoutSubviews` (UIKit) or `layout` (AppKit) like you normally would. YOLayout doesn't do anything special to override behavior and is compatible with existing layout methods.
+
+## Disadvantages of using YOLayout
+
+YOLayout, like most things, has trade-offs. We like using it especially for really complex layouts with lots of different alignments and for things that are dynamically sized. 
+
+But there are downsides:
+
+- You might find yourself hardcoding pixel values for things like padding, a lot.
+- If you are tweaking padding and positioning, you have to re-run the project to visualize those changes, whereas in Interface Builder you would see those changes immediately.
+- Autolayout works really well in certain cases and easier to read than manual layout code.
+- YOLayout is a custom framework whereas Interface Builder and AutoLayout are part of Apple and their SDK.
+
+And probably many more, feel free to tell us why you hate it, by submitting an [issue](https://github.com/YOLayout/YOLayout/issues).
 
 ## Dependencies
 

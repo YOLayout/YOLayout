@@ -172,47 +172,20 @@
   return frame;
 }
 
-- (CGRect)setX:(CGFloat)x frame:(CGRect)frame view:(id)view {
-  frame.origin.x = x;
-  return [self setFrame:frame view:view needsLayout:NO];
-}
-
-- (CGRect)setY:(CGFloat)y frame:(CGRect)frame view:(id)view {
-  frame.origin.y = y;
-  return [self setFrame:frame view:view needsLayout:NO];
-}
-
 - (CGRect)setOrigin:(CGPoint)origin view:(id)view {
   return [self setFrame:CGRectMake(origin.x, origin.y, [view frame].size.width, [view frame].size.height) view:view];
-}
-
-- (CGRect)setOrigin:(CGPoint)origin view:(id)view sizeToFit:(BOOL)sizeToFit {
-  return [self setFrame:CGRectMake(origin.x, origin.y, [view frame].size.width, [view frame].size.height) view:view options:sizeToFit ? YOLayoutOptionsSizeToFit : 0];
 }
 
 - (CGRect)setSize:(CGSize)size view:(id)view {
   return [self setFrame:CGRectMake([view frame].origin.x, [view frame].origin.y, size.width, size.height) view:view];
 }
 
-- (CGRect)setSize:(CGSize)size view:(id)view sizeToFit:(BOOL)sizeToFit {
-  return [self setFrame:CGRectMake([view frame].origin.x, [view frame].origin.y, size.width, size.height) view:view options:sizeToFit ? YOLayoutOptionsSizeToFit : 0];
-}
-
-- (CGRect)setY:(CGFloat)y view:(id)view {
-  return [self setY:y frame:(view ? [view frame] : CGRectZero) view:view];
-}
-
 - (CGRect)setFrame:(CGRect)frame view:(id)view {
-  return [self setFrame:frame view:view needsLayout:YES];
-}
-
-- (CGRect)setFrame:(CGRect)frame view:(id)view needsLayout:(BOOL)needsLayout {
   if (!view) return CGRectZero;
   if (!_sizing) {
     [view setFrame:frame];
-    // Since we are applying the frame, the subview will need to
-    // apply their layout next at this frame
-    if (needsLayout && [view respondsToSelector:@selector(setNeedsLayout)]) [view setNeedsLayout];
+    // Since we are applying the frame, the subview will need to re-layout
+    if ([view respondsToSelector:@selector(setNeedsLayout)]) [view setNeedsLayout];
   }
   return frame;
 }
