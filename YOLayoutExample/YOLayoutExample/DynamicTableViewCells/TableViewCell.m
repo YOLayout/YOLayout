@@ -41,7 +41,7 @@
         CGFloat y = insets.top;
         
         // iconImageView's size is set by the UIImage when using initWithImage:
-        CGRect imageViewFrame = [layout setOrigin:CGPointMake(x, y) view:yself.iconImageView];
+        CGRect imageViewFrame = [layout setOrigin:CGPointMake(x, y) view:yself.iconImageView options:0];
         x += imageViewFrame.size.width + 10;
 
         if (![yself.label1.text isEqualToString:@""]) {

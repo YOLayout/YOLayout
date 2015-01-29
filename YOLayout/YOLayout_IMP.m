@@ -172,12 +172,12 @@
   return frame;
 }
 
-- (CGRect)setOrigin:(CGPoint)origin view:(id)view {
-  return [self setFrame:CGRectMake(origin.x, origin.y, [view frame].size.width, [view frame].size.height) view:view];
+- (CGRect)setOrigin:(CGPoint)origin view:(id)view options:(YOLayoutOptions)options {
+  return [self setFrame:CGRectMake(origin.x, origin.y, [view frame].size.width, [view frame].size.height) view:view options:options];
 }
 
-- (CGRect)setSize:(CGSize)size view:(id)view {
-  return [self setFrame:CGRectMake([view frame].origin.x, [view frame].origin.y, size.width, size.height) view:view];
+- (CGRect)setSize:(CGSize)size view:(id)view options:(YOLayoutOptions)options {
+  return [self setFrame:CGRectMake([view frame].origin.x, [view frame].origin.y, size.width, size.height) view:view options:options];
 }
 
 - (CGRect)setFrame:(CGRect)frame view:(id)view {
