@@ -120,7 +120,7 @@ YOLayout, like most things, has trade-offs. We like using it especially for real
 But there are downsides:
 
 - You might find yourself hardcoding pixel values for things like padding, a lot.
-- If you are tweaking padding and positioning, you have to re-run the project to visualize those changes, whereas in Interface Builder you would see those changes immediately.
+- If you are tweaking padding and positioning, you have to re-run the project to visualize those changes, whereas in Interface Builder you would see those changes immediately. (Unless your view is IB_DESIGNABLE which YOLayout supports.)
 - Autolayout works really well in certain cases and easier to read than manual layout code.
 - YOLayout is a custom framework whereas Interface Builder and AutoLayout are part of Apple and their SDK.
 

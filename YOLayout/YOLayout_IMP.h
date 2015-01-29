@@ -142,13 +142,18 @@ typedef enum {
 
  @param origin Origin
  @param view View
+ @param options Options
  */
-- (CGRect)setOrigin:(CGPoint)origin view:(id)view;
+- (CGRect)setOrigin:(CGPoint)origin view:(id)view options:(YOLayoutOptions)options;
 
 /*!
  Set size. Same as setFrame:view: but uses the existing view.frame.origin.
+ 
+ @param size Size
+ @param view View
+ @param options Options
  */
-- (CGRect)setSize:(CGSize)size view:(id)view;
+- (CGRect)setSize:(CGSize)size view:(id)view options:(YOLayoutOptions)options;
 
 /*!
  If layout is required. Otherwise cached value may be returned.
