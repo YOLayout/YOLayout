@@ -3,16 +3,16 @@
 <plist version="1.0">
 <dict>
     <key>DefaultCompletionName</key>
-    <string>MyView</string>
+    <string>MyCell</string>
     <key>Description</key>
-    <string>A YOView subclass</string>
+    <string>A UITableViewCell subclass with a YOView subclass for its contentView.</string>
     <key>Kind</key>
     <string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
     <key>Options</key>
     <array>
         <dict>
             <key>Description</key>
-            <string>The name of the YOView subclass to create</string>
+            <string>The name of the UITableViewCell subclass to create</string>
             <key>Identifier</key>
             <string>productName</string>
             <key>Name</key>
@@ -30,6 +30,6 @@
         <string>com.apple.platform.iphoneos</string>
     </array>
     <key>Summary</key>
-    <string>A YOView subclass</string>
+    <string>A UITableViewCell subclass with a YOView subclass for its contentView.</string>
 </dict>
 </plist>
