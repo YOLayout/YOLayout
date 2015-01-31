@@ -2,7 +2,7 @@
   <img src="https://raw.github.com/YOLayout/YOLayout/assets/Logo.png" alt="YOLayout" title="YOLayout">
 </p>
 
-A  frame-based layout framework. Avoid Interface Builder and Auto Layout and and take full control over your layouts.
+A frame-based layout framework. Avoid Interface Builder and Auto Layout and take full control over your layouts.
 
 ## Usage
 
