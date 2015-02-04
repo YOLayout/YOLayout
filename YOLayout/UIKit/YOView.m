@@ -64,6 +64,12 @@
   [super setFrame:frame];
 }
 
+- (void)addSubview:(UIView *)subview {
+  NSAssert([subview superview] != self, @"View is already added to this view");
+  NSAssert(![subview superview], @"View already has a superview. You should call removeFromSuperview first.");
+  [super addSubview:subview];
+}
+
 #pragma mark Layout
 
 - (void)layoutSubviews {

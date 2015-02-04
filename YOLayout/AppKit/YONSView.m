@@ -43,6 +43,12 @@
   [super setFrame:frame];
 }
 
+- (void)addSubview:(NSView *)subview {
+  NSAssert([subview superview] != self, @"View is already added to this view");
+  NSAssert(![subview superview], @"View already has a superview");
+  [super addSubview:subview];
+}
+
 #pragma mark Layout
 
 - (void)layout {
