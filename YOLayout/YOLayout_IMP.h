@@ -12,6 +12,29 @@
 #define YOWeakObject(o) __typeof__(o) __weak
 #define YOSelf YOWeakObject(self)
 
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+#else
+typedef struct UIEdgeInsets {
+  CGFloat top, left, bottom, right;
+} UIEdgeInsets;
+
+extern const UIEdgeInsets UIEdgeInsetsZero;
+
+static inline UIEdgeInsets UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right) {
+  UIEdgeInsets insets = {top, left, bottom, right};
+  return insets;
+}
+
+static inline NSString *YONSStringFromCGRect(CGRect rect) {
+  return [NSString stringWithFormat:@"(%@, %@, %@, %@)", @(rect.origin.x), @(rect.origin.y), @(rect.size.width), @(rect.size.height)];
+}
+
+static inline NSString *YONSStringFromCGSize(CGSize size) {
+  return [NSString stringWithFormat:@"(%@, %@)", @(size.width), @(size.height)];
+}
+#endif
+
 typedef enum {
   // SIZING
   //! Size the view to fit vertically
@@ -284,10 +307,12 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
 /*!
   A layout which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.
 
-  @param view
-  @param Layout
+ @param view
+ @param margin Margin around view
+ @param padding Padding in between subviews
+ @param Layout
  */
-+ (YOLayout *)vertical:(id)view;
++ (YOLayout *)vertical:(id)view margin:(UIEdgeInsets)margin padding:(CGFloat)padding;
 
 /*!
  A layout which makes the subview the full size passed in.
@@ -301,9 +326,11 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
  A layout block which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.
 
  @param view
+ @param margin Margin around view
+ @param padding Padding in between subviews
  @param Layout block
  */
-+ (YOLayoutBlock)verticalLayout:(id)view;
++ (YOLayoutBlock)verticalLayout:(id)view margin:(UIEdgeInsets)margin padding:(CGFloat)padding;
 
 /*!
  A layout block which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.

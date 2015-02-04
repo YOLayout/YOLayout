@@ -15,6 +15,8 @@
 - (NSArray *)subviews;
 @end
 
+const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
+
 @interface YOLayout ()
 @property BOOL needsLayout;
 @property BOOL needsSizing;
@@ -192,17 +194,20 @@
 
 #pragma mark Common Layouts
 
-+ (YOLayout *)vertical:(id)view {
-  return [self layoutWithLayoutBlock:[YOLayout verticalLayout:view]];
++ (YOLayout *)vertical:(id)view margin:(UIEdgeInsets)margin padding:(CGFloat)padding {
+  return [self layoutWithLayoutBlock:[YOLayout verticalLayout:view margin:margin padding:padding]];
 }
 
-+ (YOLayoutBlock)verticalLayout:(id)view {
++ (YOLayoutBlock)verticalLayout:(id)view margin:(UIEdgeInsets)margin padding:(CGFloat)padding {
   return ^CGSize(id<YOLayout> layout, CGSize size) {
     NSArray *subviews = [view subviews];
-    CGFloat y = 0;
+    CGFloat y = margin.top;
+    NSInteger index = 0;
     for (id subview in subviews) {
-      y += [layout sizeToFitVerticalInFrame:CGRectMake(0, y, size.width, 0) view:subview].size.height;
+      y += [layout sizeToFitVerticalInFrame:CGRectMake(margin.left, y, size.width - margin.left - margin.right, 0) view:subview].size.height;
+      if (++index != subviews.count) y += padding;
     }
+    y += margin.bottom;
     return CGSizeMake(size.width, y);
   };
 }
