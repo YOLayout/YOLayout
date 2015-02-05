@@ -8,17 +8,29 @@
 
 #import "AppDelegate.h"
 
-#import "YOTestWindowController.h"
+#import "YONSTestView.h"
 
 @interface AppDelegate ()
-@property YOTestWindowController *windowController;
+@property NSWindow *window;
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-  _windowController = [[YOTestWindowController alloc] initWithWindowNibName:@"YOTestWindowController"];
-  [_windowController showWindow:nil];
+  YONSTestView *testView = [[YONSTestView alloc] init];
+  _window = [self windowForContentView:testView];
+  [_window makeKeyAndOrderFront:nil];
+}
+
+- (NSWindow *)windowForContentView:(NSView *)contentView {
+  NSWindow *window = [[NSWindow alloc] init];
+  window.styleMask = NSClosableWindowMask | NSResizableWindowMask | NSFullSizeContentViewWindowMask | NSTitledWindowMask;
+  window.titleVisibility = NSWindowTitleHidden;
+  window.titlebarAppearsTransparent = YES;
+  window.movableByWindowBackground = YES;
+  [window setContentSize:CGSizeMake(600, 600)];
+  [window setContentView:contentView];
+  return window;
 }
 
 @end

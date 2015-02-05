@@ -187,24 +187,25 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
   if (!_sizing) {
     [view setFrame:frame];
     // Since we are applying the frame, the subview will need to re-layout
-    if ([view respondsToSelector:@selector(setNeedsLayout)]) [view setNeedsLayout];
+    if ([view respondsToSelector:@selector(setNeedsLayout)]) [view setNeedsLayout]; // For UIKit (UIView)
+    if ([view respondsToSelector:@selector(setNeedsLayout:)]) [view setNeedsLayout:YES]; // For AppKit (NSView)
   }
   return frame;
 }
 
 #pragma mark Common Layouts
 
-+ (YOLayout *)vertical:(id)view margin:(UIEdgeInsets)margin padding:(CGFloat)padding {
-  return [self layoutWithLayoutBlock:[YOLayout verticalLayout:view margin:margin padding:padding]];
++ (YOLayout *)vertical:(NSArray *)subviews margin:(UIEdgeInsets)margin padding:(CGFloat)padding {
+  return [self layoutWithLayoutBlock:[YOLayout verticalLayout:subviews margin:margin padding:padding]];
 }
 
-+ (YOLayoutBlock)verticalLayout:(id)view margin:(UIEdgeInsets)margin padding:(CGFloat)padding {
++ (YOLayoutBlock)verticalLayout:(NSArray *)subviews margin:(UIEdgeInsets)margin padding:(CGFloat)padding {
   return ^CGSize(id<YOLayout> layout, CGSize size) {
-    NSArray *subviews = [view subviews];
     CGFloat y = margin.top;
     NSInteger index = 0;
     for (id subview in subviews) {
-      y += [layout sizeToFitVerticalInFrame:CGRectMake(margin.left, y, size.width - margin.left - margin.right, 0) view:subview].size.height;
+      CGRect frame = [subview frame];
+      y += [layout sizeToFitVerticalInFrame:CGRectMake(margin.left, y, size.width - margin.left - margin.right, frame.size.height) view:subview].size.height;
       if (++index != subviews.count) y += padding;
     }
     y += margin.bottom;
@@ -212,15 +213,13 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
   };
 }
 
-+ (YOLayout *)fill:(id)view {
-  return [self layoutWithLayoutBlock:[YOLayout fillLayout:view]];
++ (YOLayout *)fill:(id)subview {
+  return [self layoutWithLayoutBlock:[YOLayout fillLayout:subview]];
 }
 
-+ (YOLayoutBlock)fillLayout:(id)view {
++ (YOLayoutBlock)fillLayout:(id)subview {
   return ^CGSize(id<YOLayout> layout, CGSize size) {
-    NSArray *subviews = [view subviews];
-    NSAssert(subviews.count <= 1, @"This layout only supports a single subview");
-    if ([subviews firstObject]) [layout setFrame:CGRectMake(0, 0, size.width, size.height) view:subviews[0]];
+    [layout setFrame:CGRectMake(0, 0, size.width, size.height) view:subview];
     return size;
   };
 }

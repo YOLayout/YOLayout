@@ -35,7 +35,8 @@ static inline NSString *YONSStringFromCGSize(CGSize size) {
 }
 #endif
 
-typedef enum {
+typedef NS_ENUM (NSInteger, YOLayoutOptions) {
+  YOLayoutOptionsNone = 0,
   // SIZING
   //! Size the view to fit vertically
   YOLayoutOptionsSizeToFitVertical = 1 << 0,
@@ -84,7 +85,7 @@ typedef enum {
   YOLayoutOptionsAlignRight = 1 << 12,
   //! After sizing, aligns the view with the bottom of the passed in rect
   YOLayoutOptionsAlignBottom = 1 << 13,
-} YOLayoutOptions;
+};
 
 
 @protocol YOLayout <NSObject>
@@ -307,37 +308,37 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
 /*!
   A layout which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.
 
- @param view
+ @param subviews Subviews to layout
  @param margin Margin around view
  @param padding Padding in between subviews
  @param Layout
  */
-+ (YOLayout *)vertical:(id)view margin:(UIEdgeInsets)margin padding:(CGFloat)padding;
++ (YOLayout *)vertical:(NSArray *)subviews margin:(UIEdgeInsets)margin padding:(CGFloat)padding;
 
 /*!
- A layout which makes the subview the full size passed in.
+ A layout which makes the subview passed in the full size.
 
- @param view
+ @param subview The subview to layout
  @param Layout
  */
-+ (YOLayout *)fill:(id)view;
++ (YOLayout *)fill:(id)subview;
 
 /*!
  A layout block which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.
 
- @param view
+ @param subviews Subviews to layout
  @param margin Margin around view
  @param padding Padding in between subviews
  @param Layout block
  */
-+ (YOLayoutBlock)verticalLayout:(id)view margin:(UIEdgeInsets)margin padding:(CGFloat)padding;
++ (YOLayoutBlock)verticalLayout:(NSArray *)subviews margin:(UIEdgeInsets)margin padding:(CGFloat)padding;
 
 /*!
  A layout block which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.
 
- @param view
+ @param subview Subview to layout
  @param Layout block
  */
-+ (YOLayoutBlock)fillLayout:(id)view;
++ (YOLayoutBlock)fillLayout:(id)subview;
 
 @end

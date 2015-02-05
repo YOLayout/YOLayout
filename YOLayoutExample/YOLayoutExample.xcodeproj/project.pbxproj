@@ -19,8 +19,6 @@
 		00D52F521A6F2BA600DEB5F5 /* YONSTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F511A6F2BA600DEB5F5 /* YONSTestView.m */; };
 		00D52F581A6F2C6100DEB5F5 /* YONSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F561A6F2C6100DEB5F5 /* YONSLabel.m */; };
 		00D52F5B1A6F2CA200DEB5F5 /* YONSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F5A1A6F2CA200DEB5F5 /* YONSButton.m */; };
-		00D52F5D1A6F2E2D00DEB5F5 /* YOTestWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00D52F5C1A6F2E2D00DEB5F5 /* YOTestWindowController.xib */; };
-		00D52F601A6F2E4300DEB5F5 /* YOTestWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F5F1A6F2E4300DEB5F5 /* YOTestWindowController.m */; };
 		426C0FCA1A41606800F2577C /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC71A41606800F2577C /* information.png */; };
 		426C0FCB1A41606800F2577C /* information@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC81A41606800F2577C /* information@2x.png */; };
 		426C0FCC1A41606800F2577C /* information@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC91A41606800F2577C /* information@3x.png */; };
@@ -71,9 +69,6 @@
 		00D52F571A6F2C6100DEB5F5 /* YONSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YONSLabel.h; sourceTree = "<group>"; };
 		00D52F591A6F2CA200DEB5F5 /* YONSButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YONSButton.h; sourceTree = "<group>"; };
 		00D52F5A1A6F2CA200DEB5F5 /* YONSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YONSButton.m; sourceTree = "<group>"; };
-		00D52F5C1A6F2E2D00DEB5F5 /* YOTestWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YOTestWindowController.xib; sourceTree = "<group>"; };
-		00D52F5E1A6F2E4300DEB5F5 /* YOTestWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOTestWindowController.h; sourceTree = "<group>"; };
-		00D52F5F1A6F2E4300DEB5F5 /* YOTestWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOTestWindowController.m; sourceTree = "<group>"; };
 		426C0FC71A41606800F2577C /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
 		426C0FC81A41606800F2577C /* information@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information@2x.png"; sourceTree = "<group>"; };
 		426C0FC91A41606800F2577C /* information@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information@3x.png"; sourceTree = "<group>"; };
@@ -156,9 +151,6 @@
 				00D52F5A1A6F2CA200DEB5F5 /* YONSButton.m */,
 				00D52F571A6F2C6100DEB5F5 /* YONSLabel.h */,
 				00D52F561A6F2C6100DEB5F5 /* YONSLabel.m */,
-				00D52F5E1A6F2E4300DEB5F5 /* YOTestWindowController.h */,
-				00D52F5F1A6F2E4300DEB5F5 /* YOTestWindowController.m */,
-				00D52F5C1A6F2E2D00DEB5F5 /* YOTestWindowController.xib */,
 			);
 			path = YOLayoutExampleOSX;
 			sourceTree = "<group>";
@@ -400,7 +392,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				00D52F301A6F0B8A00DEB5F5 /* Images.xcassets in Resources */,
-				00D52F5D1A6F2E2D00DEB5F5 /* YOTestWindowController.xib in Resources */,
 				00D52F331A6F0B8A00DEB5F5 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,7 +425,6 @@
 				00D52F2E1A6F0B8A00DEB5F5 /* main.m in Sources */,
 				00D52F4B1A6F0BB700DEB5F5 /* YOLayout_IMP.m in Sources */,
 				00D52F4A1A6F0BB500DEB5F5 /* YOCGUtils.m in Sources */,
-				00D52F601A6F2E4300DEB5F5 /* YOTestWindowController.m in Sources */,
 				00D52F581A6F2C6100DEB5F5 /* YONSLabel.m in Sources */,
 				00D52F5B1A6F2CA200DEB5F5 /* YONSButton.m in Sources */,
 				00D52F491A6F0BA200DEB5F5 /* YONSView.m in Sources */,
@@ -668,6 +658,7 @@
 				00D52F411A6F0B8A00DEB5F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		42F5C2E91A3CAF3E00E37B78 /* Build configuration list for PBXProject "YOLayoutExample" */ = {
 			isa = XCConfigurationList;
