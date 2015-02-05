@@ -5,7 +5,7 @@
     <key>DefaultCompletionName</key>
     <string>MyView</string>
     <key>Description</key>
-    <string>A YOView subclass</string>
+    <string>A UIViewController subclass with a YOView subclass as its content.</string>
     <key>Kind</key>
     <string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
     <key>Options</key>
@@ -16,7 +16,7 @@
             <key>Identifier</key>
             <string>productName</string>
             <key>Name</key>
-            <string>Class:</string>
+            <string>View Class:</string>
             <key>NotPersisted</key>
             <true/>
             <key>Required</key>
@@ -30,6 +30,6 @@
         <string>com.apple.platform.iphoneos</string>
     </array>
     <key>Summary</key>
-    <string>A YOView subclass</string>
+    <string>A UIViewController subclass with a YOView subclass as its content.</string>
 </dict>
 </plist>
