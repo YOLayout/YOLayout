@@ -188,7 +188,9 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
     [view setFrame:frame];
     // Since we are applying the frame, the subview will need to re-layout
     if ([view respondsToSelector:@selector(setNeedsLayout)]) [view setNeedsLayout]; // For UIKit (UIView)
-    if ([view respondsToSelector:@selector(setNeedsLayout:)]) [view setNeedsLayout:YES]; // For AppKit (NSView)
+
+    // Don't think we need this
+    //if ([view respondsToSelector:@selector(setNeedsLayout:)]) [view setNeedsLayout:YES]; // For AppKit (NSView)
   }
   return frame;
 }
