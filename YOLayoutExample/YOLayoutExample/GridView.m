@@ -30,13 +30,10 @@
             CGSize subviewSize = [layout setFrame:CGRectMake(x, y, subviewWidth, 0) view:subview options:YOLayoutOptionsSizeToFitVertical].size;
             x += subviewSize.width;
             // Wrap when there's not enough horizontal space to render another view
-            if ((x + subviewWidth) > size.width && ![subview isEqual:[self.subviews lastObject]]) {
+            if ((x + subviewWidth) > size.width || [subview isEqual:[self.subviews lastObject]]) {
                 y += subviewSize.height;
-                maxWidth = x;
+                maxWidth = MAX(maxWidth, x);
                 x = 0;
-            }
-            if ([subview isEqual:self.subviews.lastObject]) {
-                y += subviewSize.height;
             }
         }
 
