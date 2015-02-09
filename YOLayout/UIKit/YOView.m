@@ -60,7 +60,7 @@
 }
 
 - (void)setFrame:(CGRect)frame {
-  if (_layout && !YOCGRectIsEqual(self.frame, frame)) [_layout setNeedsLayout];
+  if (_layout && !YOCGSizeIsEqual(self.frame.size, frame.size)) [_layout setNeedsLayout];
   [super setFrame:frame];
 }
 
