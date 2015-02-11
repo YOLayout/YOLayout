@@ -15,16 +15,12 @@
 
 @implementation YOView
 
-- (void)_viewInit {
-  self.autoresizesSubviews = NO;
-  self.autoresizingMask = UIViewAutoresizingNone;
+- (void)viewInit {
+  // Don't add anything here, in case subclasses forget to call super
 }
-
-- (void)viewInit { }
 
 - (id)initWithFrame:(CGRect)frame {
   if ((self = [super initWithFrame:frame])) {
-    [self _viewInit];
     [self viewInit];
   }
   return self;
@@ -32,7 +28,6 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
   if ((self = [super initWithCoder:aDecoder])) {
-    [self _viewInit];
     [self viewInit];
   }
   return self;
