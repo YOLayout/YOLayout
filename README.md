@@ -8,7 +8,7 @@ A frame-based layout framework. Avoid Interface Builder and Auto Layout and take
 
 Let's just jump into the code. Here's the header file for a view that uses YOLayout.
 
-```Objective-C
+```objc
 // MyView.h
 #import <YOLayout/YOLayout.h>
 
@@ -20,7 +20,7 @@ Let's just jump into the code. Here's the header file for a view that uses YOLay
 ```
 
 Here's the implementation file. This view's height can change based on the MyCustomView's height at layout.
-```Objective-C
+```objc
 // MyView.m
 #import "MyView.h"
 
