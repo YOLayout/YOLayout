@@ -154,12 +154,24 @@ typedef NS_ENUM (NSInteger, YOLayoutOptions) {
  Set the size in rect with options.
  
  @param size Desired size (or size hint if using YOLayoutOptionsSizeToFit)
- @param inRect Rect in which to position the view. `inRect.size` may be different than `size` when using this method with YOLayoutOptionsCenter, YOLayoutOptionsCenterVertical, YOLayoutOptionsRightAlign, etc.
+ @param inRect Rect in which to position the view. `inRect.size` may be different than `size` when using this method with YOLayoutOptionsAlign options.
  @param view View
  @param options Options See YOLayoutOptions for more info
  @result The view frame.
  */
 - (CGRect)setSize:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options;
+
+/*!
+ Get the frame for size in rect with options. Useful for precalculating layout frames before the associated view exists.
+
+ NOTE: This ignores any YOLayoutOption that doesn't begin with YOLayoutOptionAlign
+
+ @param size Desired size
+ @param inRect Rect in which to position the view. `inRect.size` may be different than `size` when using this method with YOLayoutOptionsAlign options.
+ @param options Options See YOLayoutOptions for more info
+ @result The view frame.
+ */
+- (CGRect)alignedRectForSize:(CGSize)size inRect:(CGRect)inRect options:(YOLayoutOptions)options;
 
 /*!
  Set origin. Same as setFrame:view: but uses the existing view.frame.size.
