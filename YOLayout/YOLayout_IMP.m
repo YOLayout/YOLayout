@@ -93,8 +93,33 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
   return [self setSize:size inRect:frame view:view options:options];
 }
 
-- (CGRect)setSize:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
+- (CGRect)alignedRectForSize:(CGSize)size inRect:(CGRect)inRect options:(YOLayoutOptions)options {
+  // If we passed in 0 for inRect height or width, then lets set it to the frame height or width.
+  // This usually happens if we are sizing to fit, and is needed to align below.
+  if (inRect.size.width == 0) inRect.size.width = size.width;
+  if (inRect.size.height == 0) inRect.size.height = size.height;
+  
+  CGPoint p = inRect.origin;
+  if ((options & YOLayoutOptionsAlignCenterHorizontal) != 0) {
+    p.x += YOCGPointToCenterX(size, inRect.size).x;
+  }
+  
+  if ((options & YOLayoutOptionsAlignCenterVertical) != 0) {
+    p.y += YOCGPointToCenterY(size, inRect.size).y;
+  }
+  
+  if ((options & YOLayoutOptionsAlignRight) != 0) {
+    p.x = inRect.origin.x + inRect.size.width - size.width;
+  }
+  
+  if ((options & YOLayoutOptionsAlignBottom) != 0) {
+    p.y = inRect.origin.y + inRect.size.height - size.height;
+  }
+  
+  return CGRectMake(p.x, p.y, size.width, size.height);
+}
 
+- (CGRect)setSize:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
   CGSize originalSize = size;
   BOOL sizeToFit = ((options & YOLayoutOptionsSizeToFitHorizontal) != 0)
     || ((options & YOLayoutOptionsSizeToFitVertical) != 0);
@@ -146,29 +171,7 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
     size.height = originalSize.height;
   }
 
-  // If we passed in 0 for inRect height or width, then lets set it to the frame height or width.
-  // This usually happens if we are sizing to fit, and is needed to align below.
-  if (inRect.size.width == 0) inRect.size.width = size.width;
-  if (inRect.size.height == 0) inRect.size.height = size.height;
-
-  CGPoint p = inRect.origin;
-  if ((options & YOLayoutOptionsAlignCenterHorizontal) != 0) {
-    p.x += YOCGPointToCenterX(size, inRect.size).x;
-  }
-
-  if ((options & YOLayoutOptionsAlignCenterVertical) != 0) {
-    p.y += YOCGPointToCenterY(size, inRect.size).y;
-  }
-
-  if ((options & YOLayoutOptionsAlignRight) != 0) {
-    p.x = inRect.origin.x + inRect.size.width - size.width;
-  }
-
-  if ((options & YOLayoutOptionsAlignBottom) != 0) {
-    p.y = inRect.origin.y + inRect.size.height - size.height;
-  }
-
-  CGRect frame = CGRectMake(p.x, p.y, size.width, size.height);
+  CGRect frame = [self alignedRectForSize:size inRect:inRect options:options];
   [self setFrame:frame view:view];
 
   return frame;
