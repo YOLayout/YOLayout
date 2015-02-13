@@ -81,3 +81,6 @@
 }
 
 @end
+
+@implementation YOView // Alias for YONSView
+@end

@@ -43,11 +43,12 @@
  */
 - (void)layoutView;
 
-#pragma mark Attributes
-
 /*!
  Add a list of attributes that will call setNeedsDisplay and setNeedsLayout on change.
  */
 - (void)setAttributesNeedUpdate:(NSArray *)attributes;
+
+// Alias for layout property (For cross compatibility for iOS and OSX)
+@property YOLayout *viewLayout;
 
 @end

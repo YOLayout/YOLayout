@@ -7,22 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00086CBE1A674B960000460F /* YOView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00086CBD1A674B960000460F /* YOView.m */; };
-		00086CBF1A674B960000460F /* YOView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00086CBD1A674B960000460F /* YOView.m */; };
+		0004F10A1A8D988900CFCA23 /* CompatibilityTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0004F1051A8D988900CFCA23 /* CompatibilityTestView.m */; };
+		0004F10B1A8D988900CFCA23 /* CompatibilityTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0004F1051A8D988900CFCA23 /* CompatibilityTestView.m */; };
+		0004F10C1A8D988900CFCA23 /* YOCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0004F1071A8D988900CFCA23 /* YOCompatibility.m */; };
+		0004F10D1A8D988900CFCA23 /* YOCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0004F1071A8D988900CFCA23 /* YOCompatibility.m */; };
+		0004F1121A8D9D1100CFCA23 /* YOLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0004F1111A8D9D1100CFCA23 /* YOLabel.m */; };
+		0004F11A1A8D9D6000CFCA23 /* YOLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0004F1191A8D9D6000CFCA23 /* YOLabel.m */; };
+		00CE64FB1A8DA5720054FCB8 /* YONSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CE64F11A8DA5720054FCB8 /* YONSView.m */; };
+		00CE64FC1A8DA5720054FCB8 /* YOView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CE64F41A8DA5720054FCB8 /* YOView.m */; };
+		00CE64FE1A8DA5720054FCB8 /* YOCGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CE64F61A8DA5720054FCB8 /* YOCGUtils.m */; };
+		00CE64FF1A8DA5720054FCB8 /* YOCGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CE64F61A8DA5720054FCB8 /* YOCGUtils.m */; };
+		00CE65001A8DA5720054FCB8 /* YOLayout_IMP.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CE64F91A8DA5720054FCB8 /* YOLayout_IMP.m */; };
+		00CE65011A8DA5720054FCB8 /* YOLayout_IMP.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CE64F91A8DA5720054FCB8 /* YOLayout_IMP.m */; };
 		00D52F2C1A6F0B8A00DEB5F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F2B1A6F0B8A00DEB5F5 /* AppDelegate.m */; };
 		00D52F2E1A6F0B8A00DEB5F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F2D1A6F0B8A00DEB5F5 /* main.m */; };
 		00D52F301A6F0B8A00DEB5F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00D52F2F1A6F0B8A00DEB5F5 /* Images.xcassets */; };
 		00D52F331A6F0B8A00DEB5F5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00D52F311A6F0B8A00DEB5F5 /* MainMenu.xib */; };
-		00D52F491A6F0BA200DEB5F5 /* YONSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F481A6F0BA200DEB5F5 /* YONSView.m */; };
-		00D52F4A1A6F0BB500DEB5F5 /* YOCGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */; };
-		00D52F4B1A6F0BB700DEB5F5 /* YOLayout_IMP.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C31B1A3CAF7A00E37B78 /* YOLayout_IMP.m */; };
 		00D52F521A6F2BA600DEB5F5 /* YONSTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F511A6F2BA600DEB5F5 /* YONSTestView.m */; };
-		00D52F581A6F2C6100DEB5F5 /* YONSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F561A6F2C6100DEB5F5 /* YONSLabel.m */; };
 		00D52F5B1A6F2CA200DEB5F5 /* YONSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F5A1A6F2CA200DEB5F5 /* YONSButton.m */; };
+		27F57191A12E36CE4E49D4E5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A87F6830561F8970BC6D4C /* libPods.a */; };
 		426C0FCA1A41606800F2577C /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC71A41606800F2577C /* information.png */; };
 		426C0FCB1A41606800F2577C /* information@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC81A41606800F2577C /* information@2x.png */; };
 		426C0FCC1A41606800F2577C /* information@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC91A41606800F2577C /* information@3x.png */; };
-		426C0FCF1A41629200F2577C /* LayoutExampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FCE1A41629200F2577C /* LayoutExampleTableViewController.m */; };
+		426C0FCF1A41629200F2577C /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FCE1A41629200F2577C /* MainView.m */; };
 		426C0FD51A416CBE00F2577C /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FD41A416CBE00F2577C /* GridView.m */; };
 		426C0FE11A41714900F2577C /* DrawableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FD81A41714900F2577C /* DrawableView.m */; };
 		426C0FE21A41714900F2577C /* DrawableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FD91A41714900F2577C /* DrawableView.xib */; };
@@ -34,8 +41,6 @@
 		42F5C2F41A3CAF3E00E37B78 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C2F31A3CAF3E00E37B78 /* main.m */; };
 		42F5C2F71A3CAF3E00E37B78 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C2F61A3CAF3E00E37B78 /* AppDelegate.m */; };
 		42F5C30E1A3CAF3E00E37B78 /* YOLayoutExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C30D1A3CAF3E00E37B78 /* YOLayoutExampleTests.m */; };
-		42F5C31E1A3CAF7A00E37B78 /* YOCGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */; };
-		42F5C31F1A3CAF7A00E37B78 /* YOLayout_IMP.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C31B1A3CAF7A00E37B78 /* YOLayout_IMP.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,11 +54,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00086CB81A6745010000460F /* YOLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOLayout.h; path = ../YOLayout/YOLayout.h; sourceTree = "<group>"; };
+		0004F1041A8D988900CFCA23 /* CompatibilityTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompatibilityTestView.h; sourceTree = "<group>"; };
+		0004F1051A8D988900CFCA23 /* CompatibilityTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompatibilityTestView.m; sourceTree = "<group>"; };
+		0004F1061A8D988900CFCA23 /* YOCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOCompatibility.h; sourceTree = "<group>"; };
+		0004F1071A8D988900CFCA23 /* YOCompatibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOCompatibility.m; sourceTree = "<group>"; };
+		0004F1111A8D9D1100CFCA23 /* YOLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOLabel.m; sourceTree = "<group>"; };
+		0004F1191A8D9D6000CFCA23 /* YOLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOLabel.m; sourceTree = "<group>"; };
+		0004F11B1A8D9D6700CFCA23 /* YOLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOLabel.h; sourceTree = "<group>"; };
 		00086CB91A6745970000460F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		00086CBA1A674A080000460F /* YOLayout.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = YOLayout.podspec; path = ../YOLayout.podspec; sourceTree = "<group>"; };
-		00086CBC1A674B960000460F /* YOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOView.h; sourceTree = "<group>"; };
-		00086CBD1A674B960000460F /* YOView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOView.m; sourceTree = "<group>"; };
+		00CE64ED1A8DA1600054FCB8 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		00CE64F01A8DA5720054FCB8 /* YONSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YONSView.h; sourceTree = "<group>"; };
+		00CE64F11A8DA5720054FCB8 /* YONSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YONSView.m; sourceTree = "<group>"; };
+		00CE64F31A8DA5720054FCB8 /* YOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOView.h; sourceTree = "<group>"; };
+		00CE64F41A8DA5720054FCB8 /* YOView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOView.m; sourceTree = "<group>"; };
+		00CE64F51A8DA5720054FCB8 /* YOCGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOCGUtils.h; sourceTree = "<group>"; };
+		00CE64F61A8DA5720054FCB8 /* YOCGUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOCGUtils.m; sourceTree = "<group>"; };
+		00CE64F71A8DA5720054FCB8 /* YOLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOLayout.h; sourceTree = "<group>"; };
+		00CE64F81A8DA5720054FCB8 /* YOLayout_IMP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOLayout_IMP.h; sourceTree = "<group>"; };
+		00CE64F91A8DA5720054FCB8 /* YOLayout_IMP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOLayout_IMP.m; sourceTree = "<group>"; };
 		00D52F261A6F0B8A00DEB5F5 /* YOLayoutExampleOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YOLayoutExampleOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D52F291A6F0B8A00DEB5F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00D52F2A1A6F0B8A00DEB5F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -61,19 +80,15 @@
 		00D52F2D1A6F0B8A00DEB5F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		00D52F2F1A6F0B8A00DEB5F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		00D52F321A6F0B8A00DEB5F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		00D52F471A6F0BA200DEB5F5 /* YONSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YONSView.h; sourceTree = "<group>"; };
-		00D52F481A6F0BA200DEB5F5 /* YONSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YONSView.m; sourceTree = "<group>"; };
 		00D52F501A6F2BA600DEB5F5 /* YONSTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YONSTestView.h; sourceTree = "<group>"; };
 		00D52F511A6F2BA600DEB5F5 /* YONSTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YONSTestView.m; sourceTree = "<group>"; };
-		00D52F561A6F2C6100DEB5F5 /* YONSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YONSLabel.m; sourceTree = "<group>"; };
-		00D52F571A6F2C6100DEB5F5 /* YONSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YONSLabel.h; sourceTree = "<group>"; };
 		00D52F591A6F2CA200DEB5F5 /* YONSButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YONSButton.h; sourceTree = "<group>"; };
 		00D52F5A1A6F2CA200DEB5F5 /* YONSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YONSButton.m; sourceTree = "<group>"; };
 		426C0FC71A41606800F2577C /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
 		426C0FC81A41606800F2577C /* information@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information@2x.png"; sourceTree = "<group>"; };
 		426C0FC91A41606800F2577C /* information@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information@3x.png"; sourceTree = "<group>"; };
-		426C0FCD1A41629200F2577C /* LayoutExampleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutExampleTableViewController.h; sourceTree = "<group>"; };
-		426C0FCE1A41629200F2577C /* LayoutExampleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutExampleTableViewController.m; sourceTree = "<group>"; };
+		426C0FCD1A41629200F2577C /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
+		426C0FCE1A41629200F2577C /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
 		426C0FD31A416CBE00F2577C /* GridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridView.h; sourceTree = "<group>"; };
 		426C0FD41A416CBE00F2577C /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
 		426C0FD71A41714900F2577C /* DrawableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawableView.h; sourceTree = "<group>"; };
@@ -96,10 +111,9 @@
 		42F5C3071A3CAF3E00E37B78 /* YOLayoutExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YOLayoutExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		42F5C30C1A3CAF3E00E37B78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42F5C30D1A3CAF3E00E37B78 /* YOLayoutExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YOLayoutExampleTests.m; sourceTree = "<group>"; };
-		42F5C3181A3CAF7A00E37B78 /* YOCGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOCGUtils.h; path = ../YOLayout/YOCGUtils.h; sourceTree = "<group>"; };
-		42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOCGUtils.m; path = ../YOLayout/YOCGUtils.m; sourceTree = "<group>"; };
-		42F5C31A1A3CAF7A00E37B78 /* YOLayout_IMP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOLayout_IMP.h; path = ../YOLayout/YOLayout_IMP.h; sourceTree = "<group>"; };
-		42F5C31B1A3CAF7A00E37B78 /* YOLayout_IMP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOLayout_IMP.m; path = ../YOLayout/YOLayout_IMP.m; sourceTree = "<group>"; };
+		C3500FAE2C7C954830577C63 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D6A87F6830561F8970BC6D4C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC0B17A9B49D4737430AC7B8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F57191A12E36CE4E49D4E5 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,14 +142,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00086CBB1A674B960000460F /* UIKit */ = {
+		0004F1031A8D988900CFCA23 /* YOCompatibility */ = {
 			isa = PBXGroup;
 			children = (
-				00086CBC1A674B960000460F /* YOView.h */,
-				00086CBD1A674B960000460F /* YOView.m */,
+				0004F1161A8D9D2500CFCA23 /* AppKit */,
+				0004F1131A8D9D1D00CFCA23 /* UIKit */,
+				0004F11B1A8D9D6700CFCA23 /* YOLabel.h */,
+				0004F1041A8D988900CFCA23 /* CompatibilityTestView.h */,
+				0004F1051A8D988900CFCA23 /* CompatibilityTestView.m */,
+				0004F1061A8D988900CFCA23 /* YOCompatibility.h */,
+				0004F1071A8D988900CFCA23 /* YOCompatibility.m */,
 			);
-			name = UIKit;
-			path = ../YOLayout/UIKit;
+			path = YOCompatibility;
+			sourceTree = SOURCE_ROOT;
+		};
+		0004F1131A8D9D1D00CFCA23 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				0004F1111A8D9D1100CFCA23 /* YOLabel.m */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		0004F1161A8D9D2500CFCA23 /* AppKit */ = {
+			isa = PBXGroup;
+			children = (
+				0004F1191A8D9D6000CFCA23 /* YOLabel.m */,
+			);
+			path = AppKit;
+			sourceTree = "<group>";
+		};
+		00CE64EE1A8DA5720054FCB8 /* YOLayout */ = {
+			isa = PBXGroup;
+			children = (
+				00CE64EF1A8DA5720054FCB8 /* AppKit */,
+				00CE64F21A8DA5720054FCB8 /* UIKit */,
+				00CE64F51A8DA5720054FCB8 /* YOCGUtils.h */,
+				00CE64F61A8DA5720054FCB8 /* YOCGUtils.m */,
+				00CE64F71A8DA5720054FCB8 /* YOLayout.h */,
+				00CE64F81A8DA5720054FCB8 /* YOLayout_IMP.h */,
+				00CE64F91A8DA5720054FCB8 /* YOLayout_IMP.m */,
+			);
+			name = YOLayout;
+			path = ../YOLayout;
+			sourceTree = "<group>";
+		};
+		00CE64EF1A8DA5720054FCB8 /* AppKit */ = {
+			isa = PBXGroup;
+			children = (
+				00CE64F01A8DA5720054FCB8 /* YONSView.h */,
+				00CE64F11A8DA5720054FCB8 /* YONSView.m */,
+			);
+			path = AppKit;
+			sourceTree = "<group>";
+		};
+		00CE64F21A8DA5720054FCB8 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				00CE64F31A8DA5720054FCB8 /* YOView.h */,
+				00CE64F41A8DA5720054FCB8 /* YOView.m */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		00D52F271A6F0B8A00DEB5F5 /* YOLayoutExampleOSX */ = {
@@ -149,8 +217,6 @@
 				00D52F511A6F2BA600DEB5F5 /* YONSTestView.m */,
 				00D52F591A6F2CA200DEB5F5 /* YONSButton.h */,
 				00D52F5A1A6F2CA200DEB5F5 /* YONSButton.m */,
-				00D52F571A6F2C6100DEB5F5 /* YONSLabel.h */,
-				00D52F561A6F2C6100DEB5F5 /* YONSLabel.m */,
 			);
 			path = YOLayoutExampleOSX;
 			sourceTree = "<group>";
@@ -162,16 +228,6 @@
 				00D52F2D1A6F0B8A00DEB5F5 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		00D52F461A6F0BA200DEB5F5 /* AppKit */ = {
-			isa = PBXGroup;
-			children = (
-				00D52F471A6F0BA200DEB5F5 /* YONSView.h */,
-				00D52F481A6F0BA200DEB5F5 /* YONSView.m */,
-			);
-			name = AppKit;
-			path = ../YOLayout/AppKit;
 			sourceTree = "<group>";
 		};
 		426C0FC61A41606800F2577C /* Resources */ = {
@@ -210,14 +266,17 @@
 		42F5C2E51A3CAF3E00E37B78 = {
 			isa = PBXGroup;
 			children = (
+				00CE64ED1A8DA1600054FCB8 /* Podfile */,
 				00086CBA1A674A080000460F /* YOLayout.podspec */,
 				00086CB91A6745970000460F /* README.md */,
+				00CE64EE1A8DA5720054FCB8 /* YOLayout */,
 				426C0FC61A41606800F2577C /* Resources */,
-				42F5C3171A3CAF5400E37B78 /* YOLayout */,
 				42F5C2F01A3CAF3E00E37B78 /* YOLayoutExample */,
-				42F5C30A1A3CAF3E00E37B78 /* YOLayoutExampleTests */,
 				00D52F271A6F0B8A00DEB5F5 /* YOLayoutExampleOSX */,
+				42F5C30A1A3CAF3E00E37B78 /* YOLayoutExampleTests */,
 				42F5C2EF1A3CAF3E00E37B78 /* Products */,
+				E3B7D65A7B725F5C224931B8 /* Pods */,
+				67A27F2AD344B03BE815EC39 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,12 +293,13 @@
 		42F5C2F01A3CAF3E00E37B78 /* YOLayoutExample */ = {
 			isa = PBXGroup;
 			children = (
+				0004F1031A8D988900CFCA23 /* YOCompatibility */,
 				426C0FDC1A41714900F2577C /* DynamicTableViewCells */,
 				426C0FD61A41714900F2577C /* DrawableViews */,
 				42F5C2F51A3CAF3E00E37B78 /* AppDelegate.h */,
 				42F5C2F61A3CAF3E00E37B78 /* AppDelegate.m */,
-				426C0FCD1A41629200F2577C /* LayoutExampleTableViewController.h */,
-				426C0FCE1A41629200F2577C /* LayoutExampleTableViewController.m */,
+				426C0FCD1A41629200F2577C /* MainView.h */,
+				426C0FCE1A41629200F2577C /* MainView.m */,
 				42F5C2F11A3CAF3E00E37B78 /* Supporting Files */,
 				42C08D5A1A413749009B7E9E /* LogoView.h */,
 				42C08D5B1A413749009B7E9E /* LogoView.m */,
@@ -276,18 +336,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		42F5C3171A3CAF5400E37B78 /* YOLayout */ = {
+		67A27F2AD344B03BE815EC39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				00D52F461A6F0BA200DEB5F5 /* AppKit */,
-				00086CBB1A674B960000460F /* UIKit */,
-				00086CB81A6745010000460F /* YOLayout.h */,
-				42F5C3181A3CAF7A00E37B78 /* YOCGUtils.h */,
-				42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */,
-				42F5C31A1A3CAF7A00E37B78 /* YOLayout_IMP.h */,
-				42F5C31B1A3CAF7A00E37B78 /* YOLayout_IMP.m */,
+				D6A87F6830561F8970BC6D4C /* libPods.a */,
 			);
-			name = YOLayout;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E3B7D65A7B725F5C224931B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FC0B17A9B49D4737430AC7B8 /* Pods.debug.xcconfig */,
+				C3500FAE2C7C954830577C63 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,9 +377,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 42F5C3111A3CAF3E00E37B78 /* Build configuration list for PBXNativeTarget "YOLayoutExample" */;
 			buildPhases = (
+				5E5946032D2113BEF24B231C /* Check Pods Manifest.lock */,
 				42F5C2EA1A3CAF3E00E37B78 /* Sources */,
 				42F5C2EB1A3CAF3E00E37B78 /* Frameworks */,
 				42F5C2EC1A3CAF3E00E37B78 /* Resources */,
+				AB4206016D984E57A2344D75 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -417,19 +482,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5E5946032D2113BEF24B231C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AB4206016D984E57A2344D75 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		00D52F221A6F0B8A00DEB5F5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0004F10B1A8D988900CFCA23 /* CompatibilityTestView.m in Sources */,
+				00CE64FB1A8DA5720054FCB8 /* YONSView.m in Sources */,
 				00D52F2E1A6F0B8A00DEB5F5 /* main.m in Sources */,
-				00D52F4B1A6F0BB700DEB5F5 /* YOLayout_IMP.m in Sources */,
-				00D52F4A1A6F0BB500DEB5F5 /* YOCGUtils.m in Sources */,
-				00D52F581A6F2C6100DEB5F5 /* YONSLabel.m in Sources */,
+				0004F10D1A8D988900CFCA23 /* YOCompatibility.m in Sources */,
+				00CE65011A8DA5720054FCB8 /* YOLayout_IMP.m in Sources */,
 				00D52F5B1A6F2CA200DEB5F5 /* YONSButton.m in Sources */,
-				00D52F491A6F0BA200DEB5F5 /* YONSView.m in Sources */,
 				00D52F2C1A6F0B8A00DEB5F5 /* AppDelegate.m in Sources */,
+				0004F11A1A8D9D6000CFCA23 /* YOLabel.m in Sources */,
 				00D52F521A6F2BA600DEB5F5 /* YONSTestView.m in Sources */,
+				00CE64FF1A8DA5720054FCB8 /* YOCGUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,15 +537,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42F5C31E1A3CAF7A00E37B78 /* YOCGUtils.m in Sources */,
+				00CE64FC1A8DA5720054FCB8 /* YOView.m in Sources */,
 				426C0FE41A41714900F2577C /* TableViewCell.m in Sources */,
-				00086CBE1A674B960000460F /* YOView.m in Sources */,
 				42F5C2F71A3CAF3E00E37B78 /* AppDelegate.m in Sources */,
-				426C0FCF1A41629200F2577C /* LayoutExampleTableViewController.m in Sources */,
+				0004F10A1A8D988900CFCA23 /* CompatibilityTestView.m in Sources */,
+				00CE65001A8DA5720054FCB8 /* YOLayout_IMP.m in Sources */,
+				426C0FCF1A41629200F2577C /* MainView.m in Sources */,
 				426C0FE11A41714900F2577C /* DrawableView.m in Sources */,
 				426C0FE31A41714900F2577C /* DrawableViewController.m in Sources */,
+				0004F1121A8D9D1100CFCA23 /* YOLabel.m in Sources */,
+				00CE64FE1A8DA5720054FCB8 /* YOCGUtils.m in Sources */,
+				0004F10C1A8D988900CFCA23 /* YOCompatibility.m in Sources */,
 				426C0FE51A41714900F2577C /* TableViewController.m in Sources */,
-				42F5C31F1A3CAF7A00E37B78 /* YOLayout_IMP.m in Sources */,
 				42C08D5C1A413749009B7E9E /* LogoView.m in Sources */,
 				426C0FD51A416CBE00F2577C /* GridView.m in Sources */,
 				42F5C2F41A3CAF3E00E37B78 /* main.m in Sources */,
@@ -456,7 +559,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00086CBF1A674B960000460F /* YOView.m in Sources */,
 				42F5C30E1A3CAF3E00E37B78 /* YOLayoutExampleTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,6 +698,7 @@
 		};
 		42F5C3121A3CAF3E00E37B78 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC0B17A9B49D4737430AC7B8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YOLayoutExample/Info.plist;
@@ -606,6 +709,7 @@
 		};
 		42F5C3131A3CAF3E00E37B78 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3500FAE2C7C954830577C63 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YOLayoutExample/Info.plist;

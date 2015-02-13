@@ -60,3 +60,6 @@
 - (void)layoutView;
 
 @end
+
+@interface YOView : YONSView // Alias for YONSView
+@end

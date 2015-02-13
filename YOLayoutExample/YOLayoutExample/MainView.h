@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-//! This is not a real YOLayout example. It's just the menu for the example app. This is not the class you are looking for.
-@interface LayoutExampleTableViewController : UITableViewController
+#import <YOCView/YOCView.h>
+
+@interface MainView : YOCView
 
 @end

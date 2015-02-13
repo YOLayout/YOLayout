@@ -1,8 +1,8 @@
 //
-//  YONSTestView.h
+//  CompatibilityTestView.h
 //  YOLayoutExample
 //
-//  Created by Gabriel on 1/20/15.
+//  Created by Gabriel on 2/12/15.
 //  Copyright (c) 2015 YOLayout. All rights reserved.
 //
 
@@ -10,6 +10,6 @@
 
 #import "YOLayout.h"
 
-@interface YONSTestView : YOView
+@interface CompatibilityTestView : YOView
 
 @end

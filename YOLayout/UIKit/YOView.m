@@ -70,8 +70,6 @@
   [super addSubview:subview];
 }
 
-#pragma mark Layout
-
 - (void)layoutSubviews {
   [super layoutSubviews];
   if (_layout) {
@@ -92,12 +90,19 @@
   [_layout setNeedsLayout];
 }
 
-#pragma mark Layout
-
 - (void)layoutView {
   NSAssert(_layout, @"Missing layout instance");
   [_layout setNeedsLayout];
   [_layout layoutSubviews:self.frame.size];
+}
+
+// Alias for layout property (for cross compatibility on iOS and OSX)
+- (YOLayout *)viewLayout {
+  return self.layout;
+}
+
+- (void)setViewLayout:(YOLayout *)viewLayout {
+  self.layout = viewLayout;
 }
 
 @end

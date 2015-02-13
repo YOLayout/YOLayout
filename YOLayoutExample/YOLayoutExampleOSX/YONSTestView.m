@@ -8,14 +8,14 @@
 
 #import "YONSTestView.h"
 
-#import "YONSLabel.h"
+#import "YOLabel.h"
 #import "YONSButton.h"
 
 @interface YONSTestView ()
-@property YONSLabel *label1;
+@property YOLabel *label1;
 @property YONSButton *button1;
-@property YONSLabel *label2;
-@property YONSLabel *label3;
+@property YOLabel *label2;
+@property YOLabel *label3;
 @end
 
 @implementation YONSTestView
@@ -23,7 +23,7 @@
 - (void)viewInit {
   [super viewInit];
 
-  _label1 = [[YONSLabel alloc] init];
+  _label1 = [[YOLabel alloc] init];
   [_label1 setText:@"Text (sizeToFitVerticalInFrame): Single-origin coffee quinoa pickled, 90's street art tilde Truffaut Shoreditch butcher sustainable +1 tousled church-key. " font:[NSFont systemFontOfSize:16] color:[NSColor blackColor] alignment:NSCenterTextAlignment];
   [self addSubview:_label1];
 
@@ -31,11 +31,11 @@
   self.button1.targetBlock = ^{ };
   [self addSubview:_button1];
 
-  _label2 = [[YONSLabel alloc] init];
+  _label2 = [[YOLabel alloc] init];
   [_label2 setText:@"Text (centerwithSize, unknown height) Seitan umami Brooklyn cold-pressed street art, forage heirloom. PBR&B typewriter salvia" font:[NSFont systemFontOfSize:16] color:[NSColor blackColor] alignment:NSCenterTextAlignment];
   [self addSubview:_label2];
 
-  _label3 = [[YONSLabel alloc] init];
+  _label3 = [[YOLabel alloc] init];
   [_label3 setText:@"Text (right/bottom align) Seitan umami Brooklyn cold-pressed street art, forage heirloom. PBR&B typewriter salvia" font:[NSFont systemFontOfSize:16] color:[NSColor blackColor] alignment:NSRightTextAlignment];
   [self addSubview:_label3];
 

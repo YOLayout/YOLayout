@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 YOLayout. All rights reserved.
 //
 
-#import "YONSLabel.h"
+#import "YOLabel.h"
 
-@interface YONSLabel ()
+@interface YOLabel ()
 @property NSTextView *textView;
 @end
 
-@implementation YONSLabel
+@implementation YOLabel
 
 - (void)viewInit {
   [super viewInit];
@@ -26,13 +26,13 @@
 
   YOSelf yself = self;
   self.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
-    CGSize textSize = [YONSLabel sizeThatFits:size textView:yself.textView];
+    CGSize textSize = [YOLabel sizeThatFits:size textView:yself.textView];
     [layout setFrame:CGRectIntegral(CGRectMake(0, size.height/2.0 - textSize.height/2.0, size.width, textSize.height + 20)) view:yself.textView];
     return size;
   }];
 }
 
-- (void)setText:(NSString *)text font:(NSFont *)font color:(NSColor *)color alignment:(NSTextAlignment)alignment {
+- (void)setText:(NSString *)text font:(YOFont *)font color:(YOColor *)color alignment:(YOTextAlignment)alignment {
   NSParameterAssert(font);
   NSParameterAssert(color);
   if (!text) text = @"";
@@ -41,14 +41,13 @@
   [str setAttributes:attributes range:NSMakeRange(0, str.length)];
 
   NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-  paragraphStyle.alignment = alignment;
+  paragraphStyle.alignment = (NSTextAlignment)alignment;
   [str addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, str.length)];
   [self setAttributedText:str];
 }
 
 - (void)setAttributedText:(NSAttributedString *)attributedText {
-  _attributedText = attributedText;
-  if (_attributedText) {
+  if (attributedText) {
     NSAssert(_textView.textStorage, @"No text storage");
     [_textView.textStorage setAttributedString:attributedText];
   }
@@ -70,7 +69,7 @@
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
-  return [YONSLabel sizeThatFits:size textView:_textView];
+  return [YOLabel sizeThatFits:size textView:_textView];
 }
 
 @end
