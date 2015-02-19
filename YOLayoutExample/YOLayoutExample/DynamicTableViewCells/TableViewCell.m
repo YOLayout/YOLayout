@@ -42,14 +42,11 @@
     CGRect imageViewFrame = [layout setOrigin:CGPointMake(x, y) view:imageView options:0];
     x += imageViewFrame.size.width + 10;
 
-    if (![yself.titleLabel.text isEqualToString:@""]) {
-      y += [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 0) view:yself.titleLabel options:YOLayoutOptionsSizeToFitVertical].size.height;
-    }
-
-    y += [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 1000) view:yself.descriptionLabel options:YOLayoutOptionsSizeToFitVertical].size.height;
+    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - insets.right, 0) view:yself.titleLabel].size.height;
+    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - insets.right, 1000) view:yself.descriptionLabel].size.height;
 
     // Ensure the y position is at least as high as the image view
-    if (y < (imageViewFrame.origin.y + imageViewFrame.size.height)) y = (imageViewFrame.origin.y + imageViewFrame.size.height);
+    y = MAX(y, (imageViewFrame.origin.y + imageViewFrame.size.height));
 
     // The height depends on the height of the items in the layout
     return CGSizeMake(size.width, y + insets.bottom);

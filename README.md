@@ -19,6 +19,7 @@ Let's just jump into the code.
 Here is an example of a view with an image, title label, and multi-line description label with a dynamic height.
 
 ```objc
+// TableViewCellView.m
 @interface TableViewCellView ()
 @property UILabel *titleLabel;
 @property UILabel *descriptionLabel;
@@ -45,7 +46,7 @@ Here is an example of a view with an image, title label, and multi-line descript
 
   YOSelf yself = self;
   self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
-    UIEdgeInsets insets = UIEdgeInsetsMake(10, 10, 10, 10);
+    UIEdgeInsets insets = UIEdgeInsetsMake(10, 10, 10, 10); // Insets for padding
     CGFloat x = insets.left;
     CGFloat y = insets.top;
 
@@ -53,14 +54,11 @@ Here is an example of a view with an image, title label, and multi-line descript
     CGRect imageViewFrame = [layout setOrigin:CGPointMake(x, y) view:imageView options:0];
     x += imageViewFrame.size.width + 10;
 
-    if (![yself.titleLabel.text isEqualToString:@""]) {
-      y += [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 0) view:yself.titleLabel options:YOLayoutOptionsSizeToFitVertical].size.height;
-    }
-
-    y += [layout setFrame:CGRectMake(x, y, size.width - x - insets.right, 1000) view:yself.descriptionLabel options:YOLayoutOptionsSizeToFitVertical].size.height;
+    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - insets.right, 0) view:yself.titleLabel].size.height;
+    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - insets.right, 1000) view:yself.descriptionLabel].size.height;
 
     // Ensure the y position is at least as high as the image view
-    if (y < (imageViewFrame.origin.y + imageViewFrame.size.height)) y = (imageViewFrame.origin.y + imageViewFrame.size.height);
+    y = MAX(y, (imageViewFrame.origin.y + imageViewFrame.size.height));
 
     // The height depends on the height of the items in the layout
     return CGSizeMake(size.width, y + insets.bottom);
