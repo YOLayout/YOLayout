@@ -66,6 +66,8 @@ Here is an example of a view with an image, title label, and multi-line descript
 }
 ```
 
+![TableViewCell.png](https://raw.githubusercontent.com/YOLayout/YOLayout/examples/YOLayoutExample/YOLayoutExample/DynamicTableViewCells/TableViewCell.png)
+
 If you're following along closely, you may have noticed that there's no reason you _need_ to create a new YOView subclass to use YOLayout. For simple views you can instantiate a YOView and set its layout without creating a new YOView subclass.
 
 Here is an example of a border layout, with a dynamic top and bottom view, and the center view fills the remaining space:
@@ -125,6 +127,8 @@ Here is an example of a border layout, with a dynamic top and bottom view, and t
   }];
 }
 ```
+
+![BorderView.png](https://raw.githubusercontent.com/YOLayout/YOLayout/examples/YOLayoutExample/YOLayoutExample/BorderView/BorderView.png)
 
 ## Example Project
 
