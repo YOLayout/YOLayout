@@ -10,6 +10,7 @@
 #import "LogoView.h"
 #import "TableViewController.h"
 #import "DrawableViewController.h"
+#import "BorderViewController.h"
 
 @interface LayoutExampleTableViewController ()
 
@@ -20,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"YOLayout Example";
+    self.title = @"YOLayout Examples";
 }
 
 #pragma mark - Table view data source
@@ -30,7 +31,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -42,10 +43,14 @@
             cell.detailTextLabel.text = @"Use YOLayout to create dynamic height cells";
             break;
             
-        default:
+        case 1:
             cell.textLabel.text = @"Drawable View Example";
             cell.detailTextLabel.text = @"Use YOLayout with drawRect:";
+            break;
 
+        case 2:
+            cell.textLabel.text = @"Border Layout Example";
+            cell.detailTextLabel.text = @"Dynamic top and bottom view with center filling the remaining space.";
             break;
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -67,6 +72,13 @@
             [self.navigationController pushViewController:drawableViewController animated:YES];
             break;
         }
+        case 2:
+        {
+            BorderViewController *borderViewController = [[BorderViewController alloc] init];
+            [self.navigationController pushViewController:borderViewController animated:YES];
+            break;
+        }
+
         default:
             break;
     }
