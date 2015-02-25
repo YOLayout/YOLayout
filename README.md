@@ -6,57 +6,129 @@ A frame-based layout framework. Avoid Interface Builder and Auto Layout and take
 
 ## Usage
 
-Let's just jump into the code. Here's the header file for a view that uses YOLayout.
+Let's just jump into the code.
 
 ```objc
-// MyView.h
+// TableViewCellView.h
 #import <YOLayout/YOLayout.h>
 
-//! A view that sizes vertically based the size of its subviews
-@interface MyView : YOView
-@property UIImageView *imageView;
-@property MyCustomView *myCustomView;
+@interface TableViewCellView : YOView // Subclass YOView
 @end
 ```
 
-Here's the implementation file. This view's height can change based on the MyCustomView's height at layout.
+Here is an example of a view with an image, title label, and multi-line description label with a dynamic height.
+
 ```objc
-// MyView.m
-#import "MyView.h"
-
-@implementation MyView
-
-// viewInit is called from both initWithFrame: and initWithCoder:
-- (void)viewInit {
-    [super viewInit];
-    // Create this view's subviews
-    self.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MyImage.png"]];
-    [self addSubview:self.imageView];
-    self.myCustomView = [[MyCustomView alloc] init];
-    [self addSubview:self.myCustomView];
-
-    // Define the layout using code, and math!
-
-    YOSelf yself = self; // Weak self reference
-    self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
-        CGFloat y = 10;
-
-        // Instead of setting frames directly, we use the corresponding layout methods.
-        // These methods don't actually change the subviews' frames when the view is just sizing.
-        [layout setFrame:CGRectMake(10, y, size.width - 20) view:yself.imageView].size.width + 10;
-
-        // This sizes the view to fit vertically. Height is 0 because it depends on myCustomView's content.
-        y += [layout sizeToFitVerticalInFrame:CGRectMake(10, y, size.width - 20, 0) view:yself.myCustomView].size.height + 10;
-
-        // Return the size, which is dependent on our custom view height (y)
-        return CGSizeMake(size.width, y);
-    }];
-}
-
+// TableViewCellView.m
+@interface TableViewCellView ()
+@property UILabel *titleLabel;
+@property UILabel *descriptionLabel;
 @end
+
+@implementation TableViewCellView
+
+- (void)viewInit {
+  [super viewInit];
+  UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"information.png"]];
+  [self addSubview:imageView];
+
+  self.titleLabel = [[UILabel alloc] init];
+  self.titleLabel.numberOfLines = 1;
+  self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+  self.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+  [self addSubview:self.titleLabel];
+
+  self.descriptionLabel = [[UILabel alloc] init];
+  self.descriptionLabel.font = [UIFont systemFontOfSize:16];
+  self.descriptionLabel.numberOfLines = 0; // Multi-line label (word wrapping
+  self.descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
+  [self addSubview:self.descriptionLabel];
+
+  YOSelf yself = self;
+  self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+    UIEdgeInsets insets = UIEdgeInsetsMake(10, 10, 10, 10); // Insets for padding
+    CGFloat x = insets.left;
+    CGFloat y = insets.top;
+
+    // imageView's size is set by the UIImage when using initWithImage:
+    CGRect imageViewFrame = [layout setOrigin:CGPointMake(x, y) view:imageView options:0];
+    x += imageViewFrame.size.width + 10;
+
+    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - insets.right, 0) view:yself.titleLabel].size.height;
+    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - insets.right, 1000) view:yself.descriptionLabel].size.height;
+
+    // Ensure the y position is at least as high as the image view
+    y = MAX(y, (imageViewFrame.origin.y + imageViewFrame.size.height));
+
+    // The height depends on the height of the items in the layout
+    return CGSizeMake(size.width, y + insets.bottom);
+  }];
+}
 ```
+
+![TableViewCell.png](https://raw.githubusercontent.com/YOLayout/YOLayout/examples/YOLayoutExample/YOLayoutExample/DynamicTableViewCells/TableViewCell.png)
 
 If you're following along closely, you may have noticed that there's no reason you _need_ to create a new YOView subclass to use YOLayout. For simple views you can instantiate a YOView and set its layout without creating a new YOView subclass.
+
+Here is an example of a border layout, with a dynamic top and bottom view, and the center view fills the remaining space:
+
+```objc
+- (void)viewInit {
+  [super viewInit];
+  self.backgroundColor = [UIColor lightGrayColor];
+
+  UILabel *topView = [[UILabel alloc] init];
+  topView.font = [UIFont systemFontOfSize:20];
+  topView.text = @"Top View";
+  topView.numberOfLines = 0;
+  topView.textAlignment = NSTextAlignmentCenter;
+  topView.backgroundColor = [UIColor redColor];
+  [self addSubview:topView];
+
+  UILabel *centerView = [[UILabel alloc] init];
+  centerView.font = [UIFont systemFontOfSize:20];
+  centerView.text = @"Center View";
+  centerView.numberOfLines = 0;
+  centerView.textAlignment = NSTextAlignmentCenter;
+  centerView.backgroundColor = [UIColor blueColor];
+  centerView.textColor = [UIColor whiteColor];
+  [self addSubview:centerView];
+
+  UILabel *bottomView = [[UILabel alloc] init];
+  bottomView.font = [UIFont systemFontOfSize:20];
+  bottomView.text = @"Bottom View";
+  bottomView.numberOfLines = 0;
+  bottomView.textAlignment = NSTextAlignmentCenter;
+  bottomView.backgroundColor = [UIColor orangeColor];
+  [self addSubview:bottomView];
+
+  UIEdgeInsets margin = UIEdgeInsetsMake(20, 20, 20, 20);
+  CGFloat padding = 10;
+
+  self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+    // Size inset by margin
+    CGSize sizeInset = CGSizeMake(size.width - margin.left - margin.right, size.height - margin.top - margin.bottom);
+
+    CGSize topSize = [topView sizeThatFits:sizeInset];
+    CGSize bottomSize = [bottomView sizeThatFits:sizeInset];
+
+    // Calculate the height to fill the center
+    CGFloat centerHeight = sizeInset.height - topSize.height - bottomSize.height - (padding * 2);
+
+    // Size and position the views
+    CGFloat y = margin.top;
+    y += [layout setFrame:CGRectMake(margin.left, y, sizeInset.width, topSize.height) view:topView].size.height + padding;
+
+    y += [layout setFrame:CGRectMake(margin.left, y, sizeInset.width, centerHeight) view:centerView].size.height + padding;
+
+    y += [layout setFrame:CGRectMake(margin.left, y, sizeInset.width, bottomSize.height) view:bottomView].size.height;
+
+    return size;
+  }];
+}
+```
+
+![BorderView.png](https://raw.githubusercontent.com/YOLayout/YOLayout/examples/YOLayoutExample/YOLayoutExample/BorderView/BorderView.png)
 
 ## Example Project
 
@@ -78,7 +150,7 @@ Because layout is reserved for NSView, the layout property is called `viewLayout
 - (void)viewInit {
     [super viewInit];
     self.viewLayout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
-        
+
     }];
 }
 
@@ -119,7 +191,7 @@ Nope. If your layout is really simple, or it doesn't have dynamic sizing, just u
 
 ## Disadvantages of using YOLayout
 
-YOLayout, like most things, has trade-offs. We like using it especially for really complex layouts with lots of different alignments and for things that are dynamically sized. 
+YOLayout, like most things, has trade-offs. We like using it especially for really complex layouts with lots of different alignments and for things that are dynamically sized.
 
 But there are downsides:
 

@@ -21,7 +21,8 @@
 
     self.title = @"Dynamic Height Cells";
 
-    self.data = @[@[@"", @"This is a short string (no title)"],
+    self.data = @[@[@"This is the title label", @"This is the description label and this is multi-line to demonstrate a dynamic height."],
+                  @[@"", @"This is a short string (no title)"],
                   @[@"Title", @"This is a short string"],
                   @[@"This is a super long title that should truncate properly", @"This is a longer string that keeps going and will wrap at least once"], // This tests the UILabel constrain width option workaround
                   @[@"Title", @"This string is way too long and wraps a bunch of times because it does not end but instead keeps on going so that we can demonstrate how sizing is no problem even if the text goes on and and on."],
