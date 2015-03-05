@@ -59,4 +59,12 @@
  */
 - (void)layoutView;
 
+//
+// Helpers to make views a little more like UIKit
+//
+
+@property BOOL clipToBounds; // Writable alias for wantsDefaultClipping
+@property NSInteger flag; // Instead of tag (writable)
+@property (nonatomic) NSColor *backgroundColor;
+
 @end
