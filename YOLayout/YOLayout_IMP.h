@@ -303,17 +303,7 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
  */
 + (YOLayout *)layoutWithLayoutBlock:(YOLayoutBlock)layoutBlock;
 
-#pragma mark Common Layouts
-
-/*!
-  A layout which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.
-
- @param subviews Subviews to layout
- @param margin Margin around view
- @param padding Padding in between subviews
- @param Layout
- */
-+ (YOLayout *)vertical:(NSArray *)subviews margin:(UIEdgeInsets)margin padding:(CGFloat)padding;
+#pragma mark -
 
 /*!
  A layout which makes the subview passed in the full size.
@@ -324,17 +314,7 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
 + (YOLayout *)fill:(id)subview;
 
 /*!
- A layout block which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.
-
- @param subviews Subviews to layout
- @param margin Margin around view
- @param padding Padding in between subviews
- @param Layout block
- */
-+ (YOLayoutBlock)verticalLayout:(NSArray *)subviews margin:(UIEdgeInsets)margin padding:(CGFloat)padding;
-
-/*!
- A layout block which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.
+ A layout block which makes the subview passed in the full size.
 
  @param subview Subview to layout
  @param Layout block

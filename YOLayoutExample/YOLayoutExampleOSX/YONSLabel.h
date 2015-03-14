@@ -16,4 +16,6 @@
 
 - (void)setText:(NSString *)text font:(NSFont *)font color:(NSColor *)color alignment:(NSTextAlignment)alignment;
 
++ (CGSize)sizeThatFits:(CGSize)size attributedString:(NSAttributedString *)attributedString;
+
 @end

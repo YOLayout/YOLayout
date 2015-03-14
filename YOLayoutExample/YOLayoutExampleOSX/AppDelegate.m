@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "YONSTestView.h"
+#import "YOBoxTestView.h"
 
 @interface AppDelegate ()
 @property NSWindow *window;
@@ -17,8 +18,14 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-  YONSTestView *testView = [[YONSTestView alloc] init];
-  _window = [self windowForContentView:testView];
+  YOVBox *contentView = [YOVBox box];
+  YONSTestView *testView1 = [[YONSTestView alloc] init];
+  [contentView addSubview:testView1];
+
+  YOBoxTestView *boxView = [[YOBoxTestView alloc] init];
+  [contentView addSubview:boxView];
+
+  _window = [self windowForContentView:contentView];
   [_window makeKeyAndOrderFront:nil];
 }
 

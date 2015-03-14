@@ -138,11 +138,11 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
     size = sizeThatFits;
   }
   
-  if ((options & YOLayoutOptionsSizeToFitHorizontal) == 0) {
+  if ((options & YOLayoutOptionsSizeToFitHorizontal) == 0 && originalSize.width > 0) {
     size.width = originalSize.width;
   }
   
-  if ((options & YOLayoutOptionsSizeToFitVertical) == 0) {
+  if ((options & YOLayoutOptionsSizeToFitVertical) == 0 && originalSize.height > 0) {
     size.height = originalSize.height;
   }
 
@@ -195,25 +195,7 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
   return frame;
 }
 
-#pragma mark Common Layouts
-
-+ (YOLayout *)vertical:(NSArray *)subviews margin:(UIEdgeInsets)margin padding:(CGFloat)padding {
-  return [self layoutWithLayoutBlock:[YOLayout verticalLayout:subviews margin:margin padding:padding]];
-}
-
-+ (YOLayoutBlock)verticalLayout:(NSArray *)subviews margin:(UIEdgeInsets)margin padding:(CGFloat)padding {
-  return ^CGSize(id<YOLayout> layout, CGSize size) {
-    CGFloat y = margin.top;
-    NSInteger index = 0;
-    for (id subview in subviews) {
-      CGRect frame = [subview frame];
-      y += [layout sizeToFitVerticalInFrame:CGRectMake(margin.left, y, size.width - margin.left - margin.right, frame.size.height) view:subview].size.height;
-      if (++index != subviews.count) y += padding;
-    }
-    y += margin.bottom;
-    return CGSizeMake(size.width, y);
-  };
-}
+#pragma mark -
 
 + (YOLayout *)fill:(id)subview {
   return [self layoutWithLayoutBlock:[YOLayout fillLayout:subview]];
