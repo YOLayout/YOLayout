@@ -27,7 +27,7 @@
   [label2 setText:@"PBR&B Intelligentsia shabby chic. Messenger bag flexitarian cold-pressed VHS 90's. Tofu chillwave pour-over Marfa cold-pressed, kogi bespoke High Life semiotics readymade authentic wolf sriracha craft beer. Next level direct trade shabby chic vegan cliche. Mlkshk butcher church-key cornhole 3 wolf moon, YOLO cold-pressed cronut " font:[NSFont systemFontOfSize:14] color:NSColor.blackColor alignment:NSLeftTextAlignment];
   [contentView addSubview:label2];
 
-  YOHBox *buttons = [YOHBox box:@{@"spacing": @(10), @"insets": @[@(0), @(40), @(20), @(40)]}];
+  YOHBox *buttons = [YOHBox box:@{@"spacing": @(10), @"insets": YOBoxInsets(0, 40, 20, 40)}];
 
   YONSButton *button1 = [YONSButton buttonWithText:@"Button"];
   [buttons addSubview:button1];
