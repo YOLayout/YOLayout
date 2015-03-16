@@ -115,6 +115,16 @@ typedef NS_ENUM (NSInteger, YOLayoutOptions) {
 - (CGRect)setFrame:(CGRect)frame view:(id)view;
 
 /*!
+ Size to fit the view.
+ If we are only sizing, this doesn't modify views frame.
+ 
+ @param frame Frame
+ @param view View should conform to YOLView informal protocol.
+ @result The view frame.
+ */
+- (CGRect)sizeToFitInFrame:(CGRect)frame view:(id)view;
+
+/*!
  Size to fit the view vertically.
  If we are only sizing, this doesn't modify views frame.
 

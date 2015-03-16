@@ -31,9 +31,6 @@
 
 @property YOLayout *viewLayout;
 
-// Deprecated
-@property YOLayout *layout;
-
 /*!
  Subclasses can override this method to perform initialization tasks that occur during both initWithFrame: and initWithCoder:
  */

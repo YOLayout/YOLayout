@@ -76,7 +76,3 @@
 }
 
 @end
-
-// Deprecated
-@implementation YONSView
-@end

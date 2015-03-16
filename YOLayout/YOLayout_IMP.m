@@ -87,6 +87,10 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
   return [self setFrame:frame view:view options:YOLayoutOptionsSizeToFitHorizontal];
 }
 
+- (CGRect)sizeToFitInFrame:(CGRect)frame view:(id)view {
+  return [self setFrame:frame view:view options:YOLayoutOptionsSizeToFit];
+}
+
 - (CGRect)setFrame:(CGRect)frame view:(id)view options:(YOLayoutOptions)options {
   return [self setSize:frame.size inRect:frame view:view options:options];
 }
@@ -142,11 +146,11 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
     size = sizeThatFits;
   }
   
-  if ((options & YOLayoutOptionsSizeToFitHorizontal) == 0 && originalSize.width > 0) {
+  if ((options & YOLayoutOptionsSizeToFitHorizontal) == 0) {
     size.width = originalSize.width;
   }
   
-  if ((options & YOLayoutOptionsSizeToFitVertical) == 0 && originalSize.height > 0) {
+  if ((options & YOLayoutOptionsSizeToFitVertical) == 0) {
     size.height = originalSize.height;
   }
 
@@ -191,10 +195,9 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
   if (!_sizing) {
     [view setFrame:frame];
     // Since we are applying the frame, the subview will need to re-layout
-    if ([view respondsToSelector:@selector(setNeedsLayout)]) [view setNeedsLayout]; // For UIKit (UIView)
-
-    // Don't think we need this
-    //if ([view respondsToSelector:@selector(setNeedsLayout:)]) [view setNeedsLayout:YES]; // For AppKit (NSView)
+    if ([view respondsToSelector:@selector(setNeedsLayout)]) {
+      [view setNeedsLayout];
+    }
   }
   return frame;
 }

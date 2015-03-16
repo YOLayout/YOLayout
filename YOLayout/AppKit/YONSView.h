@@ -63,7 +63,3 @@
 - (void)layoutView;
 
 @end
-
-// Deprecated
-@interface YONSView : YOView
-@end
