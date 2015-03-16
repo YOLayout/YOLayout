@@ -14,7 +14,7 @@
   [super viewInit];
 
   YOSelf yself = self;
-  self.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
+  self.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {\
     CGFloat x = yself.insets.left;
     NSInteger index = 0;
     CGFloat y = yself.insets.top;
@@ -22,7 +22,7 @@
     NSArray *subviews = [yself subviews];
     for (id subview in subviews) {
       CGRect frame = [subview frame];
-      CGRect viewFrame = [layout setFrame:CGRectMake(x, y, frame.size.width - yself.insets.left - yself.insets.right, size.height - yself.insets.top - yself.insets.bottom) view:subview options:YOLayoutOptionsSizeToFitHorizontal];
+      CGRect viewFrame = [layout sizeToFitHorizontalInFrame:CGRectMake(x, y, frame.size.width - yself.insets.left - yself.insets.right, size.height - yself.insets.top - yself.insets.bottom) view:subview];
       x += viewFrame.size.width;
       maxHeight = MAX(viewFrame.size.height, maxHeight);
       if (++index != subviews.count) x += yself.spacing;

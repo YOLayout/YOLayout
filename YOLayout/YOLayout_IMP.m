@@ -83,6 +83,10 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
   return [self setFrame:frame view:view options:YOLayoutOptionsSizeToFitVertical];
 }
 
+- (CGRect)sizeToFitHorizontalInFrame:(CGRect)frame view:(id)view {
+  return [self setFrame:frame view:view options:YOLayoutOptionsSizeToFitHorizontal];
+}
+
 - (CGRect)setFrame:(CGRect)frame view:(id)view options:(YOLayoutOptions)options {
   return [self setSize:frame.size inRect:frame view:view options:options];
 }
