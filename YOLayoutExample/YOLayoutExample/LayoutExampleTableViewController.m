@@ -11,6 +11,7 @@
 #import "TableViewController.h"
 #import "DrawableViewController.h"
 #import "BorderViewController.h"
+#import "YOLayoutExample-swift.h"
 
 @interface LayoutExampleTableViewController ()
 
@@ -31,7 +32,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -52,6 +53,14 @@
             cell.textLabel.text = @"Border Layout Example";
             cell.detailTextLabel.text = @"Dynamic top and bottom view with center filling the remaining space.";
             break;
+
+        case 3:
+            cell.textLabel.text = @"Swift Example";
+            cell.detailTextLabel.text = @"Use YOLayout with swift";
+            break;
+
+        default:
+            return nil;
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
@@ -78,7 +87,12 @@
             [self.navigationController pushViewController:borderViewController animated:YES];
             break;
         }
-
+        case 3:
+        {
+            SwiftViewController *swiftViewController = [[SwiftViewController alloc] init];
+            [self.navigationController pushViewController:swiftViewController animated:YES];
+            break;
+        }
         default:
             break;
     }
