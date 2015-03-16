@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define YOBoxInsets(TOP, RIGHT, BOTTOM, LEFT) (@[@(TOP), @(RIGHT), @(BOTTOM), @(LEFT)])
+#define YOBoxInsets(TOP, RIGHT, BOTTOM, LEFT) (@[@(TOP), @(LEFT), @(BOTTOM), @(RIGHT)])
 
 #if TARGET_OS_IPHONE
 #import "YOView.h"

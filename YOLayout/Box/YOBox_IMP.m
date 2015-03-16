@@ -28,7 +28,7 @@
         [NSException raise:NSInvalidArgumentException format:@"Invalid insets"];
         return;
       }
-      self.insets = UIEdgeInsetsMake([insets[0] floatValue], [insets[3] floatValue], [insets[2] floatValue], [insets[1] floatValue]);
+      self.insets = UIEdgeInsetsMake([insets[0] floatValue], [insets[1] floatValue], [insets[2] floatValue], [insets[3] floatValue]);
     } else {
       self.insets = UIEdgeInsetsMake([insets floatValue], [insets floatValue], [insets floatValue], [insets floatValue]);
     }
