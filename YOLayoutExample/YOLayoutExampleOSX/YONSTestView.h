@@ -10,6 +10,6 @@
 
 #import "YOLayout.h"
 
-@interface YONSTestView : YONSView
+@interface YONSTestView : YOView
 
 @end

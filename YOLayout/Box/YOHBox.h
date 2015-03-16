@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "YOBox.h"
+#import "YOBox_IMP.h"
 
 @interface YOHBox : YOBox
 

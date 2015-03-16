@@ -9,7 +9,7 @@
 #import "YONSView.h"
 #import "YOCGUtils.h"
 
-@implementation YONSView
+@implementation YOView
 
 - (void)viewInit {
   // Don't add anything here, in case subclasses forget to call super
@@ -75,4 +75,8 @@
   });
 }
 
+@end
+
+// Deprecated
+@implementation YONSView
 @end

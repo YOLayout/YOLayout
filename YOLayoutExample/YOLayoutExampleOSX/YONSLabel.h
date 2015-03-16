@@ -10,7 +10,7 @@
 
 #import "YOLayout.h"
 
-@interface YONSLabel : YONSView
+@interface YONSLabel : YOView
 
 @property (nonatomic) NSAttributedString *attributedText;
 

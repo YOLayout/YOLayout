@@ -55,7 +55,7 @@
 }
 
 - (void)setFrame:(CGRect)frame {
-  if (_layout && !YOCGSizeIsEqual(self.frame.size, frame.size)) [_layout setNeedsLayout];
+  if (_viewLayout && !YOCGSizeIsEqual(self.frame.size, frame.size)) [_viewLayout setNeedsLayout];
   [super setFrame:frame];
 }
 
@@ -69,14 +69,14 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  if (_layout) {
-    [_layout layoutSubviews:self.frame.size];
+  if (_viewLayout) {
+    [_viewLayout layoutSubviews:self.frame.size];
   }
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
-  if (_layout) {
-    return [_layout sizeThatFits:size];
+  if (_viewLayout) {
+    return [_viewLayout sizeThatFits:size];
   }
   return [super sizeThatFits:size];
 }
@@ -84,15 +84,25 @@
 - (void)setNeedsLayout {
   [super setNeedsLayout];
   [self setNeedsDisplay];
-  [_layout setNeedsLayout];
+  [_viewLayout setNeedsLayout];
 }
 
 #pragma mark Layout
 
 - (void)layoutView {
-  NSAssert(_layout, @"Missing layout instance");
-  [_layout setNeedsLayout];
-  [_layout layoutSubviews:self.frame.size];
+  NSAssert(_viewLayout, @"Missing layout instance");
+  [_viewLayout setNeedsLayout];
+  [_viewLayout layoutSubviews:self.frame.size];
+}
+
+#pragma Deprecated
+
+- (void)setLayout:(YOLayout *)layout {
+  self.viewLayout = layout;
+}
+
+- (YOLayout *)layout {
+  return self.viewLayout;
 }
 
 @end

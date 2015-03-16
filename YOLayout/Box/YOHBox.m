@@ -14,11 +14,7 @@
   [super viewInit];
 
   YOSelf yself = self;
-#if TARGET_OS_IPHONE
-  self.layout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
-#else
   self.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
-#endif
     CGFloat x = yself.insets.left;
     NSInteger index = 0;
     CGFloat y = yself.insets.top;

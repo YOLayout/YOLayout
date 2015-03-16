@@ -13,7 +13,7 @@
 /*!
  View with custom, programatic layout (via YOLayout).
 
- Instead of subclassing NSView, you can subclass YONSView and set the layout property.
+ Instead of subclassing NSView, you can subclass YOView and set the viewLayout property.
  See YOLayout for more details.
 
  - (void)viewInit {
@@ -26,8 +26,11 @@
    }];
  }
  */
-@interface YONSView : NSView
+@interface YOView : NSView
 
+/*!
+ View layout.
+ */
 @property YOLayout *viewLayout;
 
 /*!
@@ -59,4 +62,8 @@
  */
 - (void)layoutView;
 
+@end
+
+// Deprecated
+@interface YONSView : YOView
 @end

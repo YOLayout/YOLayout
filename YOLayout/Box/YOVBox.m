@@ -14,12 +14,7 @@
   [super viewInit];
 
   YOSelf yself = self;
-#if TARGET_OS_IPHONE
-  self.layout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
-#else
-    self.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
-#endif
-
+  self.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
     CGFloat y = yself.insets.top;
     NSInteger index = 0;
     NSArray *subviews = [yself subviews];

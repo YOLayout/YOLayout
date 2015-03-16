@@ -25,6 +25,10 @@ Pod::Spec.new do |s|
 
   s.osx.platform = :osx, "10.8"
   s.osx.deployment_target = "10.8"
-  s.osx.source_files = "YOLayout/*.{h,m}", "YOLayout/AppKit/*.{h,m}", "YOLayout/Box/*.{h,m}"
+  s.osx.source_files = "YOLayout/*.{h,m}", "YOLayout/AppKit/*.{h,m}"
+
+  s.subspec "Box" do |sub|
+    sub.source_files = "YOLayout/Box/*.{h,m}"
+  end
 
 end

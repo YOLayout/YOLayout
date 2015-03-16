@@ -20,7 +20,7 @@
          [super viewInit];
          UIView *subview = [[UIView alloc] init];
          [self addSubview:subview];
-         self.layout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
+         self.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
            [layout setFrame:CGRectMake(0, 0, size.width, 30) view:subview];
            return CGSizeMake(size.width, 30);
          }];
@@ -29,6 +29,9 @@
  */
 @interface YOView : UIView <YOLayoutView> { }
 
+@property YOLayout *viewLayout;
+
+// Deprecated
 @property YOLayout *layout;
 
 /*!

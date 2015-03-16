@@ -45,7 +45,7 @@ Here is an example of a view with an image, title label, and multi-line descript
   [self addSubview:self.descriptionLabel];
 
   YOSelf yself = self;
-  self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+  self.viewLayout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
     UIEdgeInsets insets = UIEdgeInsetsMake(10, 10, 10, 10); // Insets for padding
     CGFloat x = insets.left;
     CGFloat y = insets.top;
@@ -105,7 +105,7 @@ Here is an example of a border layout, with a dynamic top and bottom view, and t
   UIEdgeInsets margin = UIEdgeInsetsMake(20, 20, 20, 20);
   CGFloat padding = 10;
 
-  self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+  self.viewLayout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
     // Size inset by margin
     CGSize sizeInset = CGSizeMake(size.width - margin.left - margin.right, size.height - margin.top - margin.bottom);
 
@@ -132,30 +132,11 @@ Here is an example of a border layout, with a dynamic top and bottom view, and t
 
 ## Example Project
 
-The best way to follow and learn YOLayout is by seeing it in action. Open the example project: [YOLayoutExample](https://github.com/YOLayout/YOLayout/tree/master/YOLayoutExample). It contains both a iOS and OS X targets.
+The best way to follow and learn YOLayout is by seeing it in action. Open the example project: [YOLayoutExample](https://github.com/YOLayout/YOLayout/tree/master/YOLayoutExample). It contains both a iOS and OSX targets.
 
 ## NSView
 
-Cocoa is supported also by subclassing `YONSView`. When using YOLayout in Cocoa, it acts just like UIKit (top left origin).
-Because layout is reserved for NSView, the layout property is called `viewLayout`.
-
-```objc
-#import <YOLayout/YOLayout.h>
-
-@interface MyNSView : YONSView
-@end
-
-@implementation MyNSView
-
-- (void)viewInit {
-    [super viewInit];
-    self.viewLayout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
-
-    }];
-}
-
-@end
-```
+NSView and Cocoa is supported. YOLayout makes layout consistent for both UIKit and Cocoa.
 
 ## FAQ
 

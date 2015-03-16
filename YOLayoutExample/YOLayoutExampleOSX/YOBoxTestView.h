@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "YOLayout.h"
+#import "YOBox.h"
 
 @interface YOBoxTestView : YOVBox
 

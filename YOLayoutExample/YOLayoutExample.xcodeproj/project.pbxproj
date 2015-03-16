@@ -13,8 +13,8 @@
 		0025351C1AB39A4200583913 /* YOHBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 002535181AB39A4200583913 /* YOHBox.m */; };
 		0025351D1AB39A4200583913 /* YOVBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 0025351A1AB39A4200583913 /* YOVBox.m */; };
 		0025351E1AB39A4200583913 /* YOVBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 0025351A1AB39A4200583913 /* YOVBox.m */; };
-		002535211AB39CDD00583913 /* YOBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 002535201AB39CDD00583913 /* YOBox.m */; };
-		002535221AB39CDD00583913 /* YOBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 002535201AB39CDD00583913 /* YOBox.m */; };
+		002535211AB39CDD00583913 /* YOBox_IMP.m in Sources */ = {isa = PBXBuildFile; fileRef = 002535201AB39CDD00583913 /* YOBox_IMP.m */; };
+		002535221AB39CDD00583913 /* YOBox_IMP.m in Sources */ = {isa = PBXBuildFile; fileRef = 002535201AB39CDD00583913 /* YOBox_IMP.m */; };
 		002535251AB39D9C00583913 /* YOBoxTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 002535241AB39D9C00583913 /* YOBoxTestView.m */; };
 		0056694C1A9673D800CA236E /* BorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0056694B1A9673D800CA236E /* BorderView.m */; };
 		0056694F1A9673E600CA236E /* BorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0056694E1A9673E600CA236E /* BorderViewController.m */; };
@@ -67,10 +67,11 @@
 		002535181AB39A4200583913 /* YOHBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOHBox.m; sourceTree = "<group>"; };
 		002535191AB39A4200583913 /* YOVBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOVBox.h; sourceTree = "<group>"; };
 		0025351A1AB39A4200583913 /* YOVBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOVBox.m; sourceTree = "<group>"; };
-		0025351F1AB39CDD00583913 /* YOBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOBox.h; sourceTree = "<group>"; };
-		002535201AB39CDD00583913 /* YOBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOBox.m; sourceTree = "<group>"; };
+		0025351F1AB39CDD00583913 /* YOBox_IMP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOBox_IMP.h; sourceTree = "<group>"; };
+		002535201AB39CDD00583913 /* YOBox_IMP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOBox_IMP.m; sourceTree = "<group>"; };
 		002535231AB39D9C00583913 /* YOBoxTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOBoxTestView.h; sourceTree = "<group>"; };
 		002535241AB39D9C00583913 /* YOBoxTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOBoxTestView.m; sourceTree = "<group>"; };
+		002535261AB7529300583913 /* YOBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOBox.h; sourceTree = "<group>"; };
 		0056694A1A9673D800CA236E /* BorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderView.h; sourceTree = "<group>"; };
 		0056694B1A9673D800CA236E /* BorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderView.m; sourceTree = "<group>"; };
 		0056694D1A9673E600CA236E /* BorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderViewController.h; sourceTree = "<group>"; };
@@ -161,8 +162,9 @@
 		002535161AB39A4200583913 /* Box */ = {
 			isa = PBXGroup;
 			children = (
-				0025351F1AB39CDD00583913 /* YOBox.h */,
-				002535201AB39CDD00583913 /* YOBox.m */,
+				002535261AB7529300583913 /* YOBox.h */,
+				0025351F1AB39CDD00583913 /* YOBox_IMP.h */,
+				002535201AB39CDD00583913 /* YOBox_IMP.m */,
 				002535171AB39A4200583913 /* YOHBox.h */,
 				002535181AB39A4200583913 /* YOHBox.m */,
 				002535191AB39A4200583913 /* YOVBox.h */,
@@ -479,7 +481,7 @@
 				00D52F581A6F2C6100DEB5F5 /* YONSLabel.m in Sources */,
 				00D52F5B1A6F2CA200DEB5F5 /* YONSButton.m in Sources */,
 				002535251AB39D9C00583913 /* YOBoxTestView.m in Sources */,
-				002535221AB39CDD00583913 /* YOBox.m in Sources */,
+				002535221AB39CDD00583913 /* YOBox_IMP.m in Sources */,
 				0025351C1AB39A4200583913 /* YOHBox.m in Sources */,
 				00D52F491A6F0BA200DEB5F5 /* YONSView.m in Sources */,
 				00D52F2C1A6F0B8A00DEB5F5 /* AppDelegate.m in Sources */,
@@ -506,7 +508,7 @@
 				42F5C31F1A3CAF7A00E37B78 /* YOLayout_IMP.m in Sources */,
 				42C08D5C1A413749009B7E9E /* LogoView.m in Sources */,
 				426C0FD51A416CBE00F2577C /* GridView.m in Sources */,
-				002535211AB39CDD00583913 /* YOBox.m in Sources */,
+				002535211AB39CDD00583913 /* YOBox_IMP.m in Sources */,
 				42F5C2F41A3CAF3E00E37B78 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
