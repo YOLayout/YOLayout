@@ -21,9 +21,7 @@
     CGFloat maxHeight = 0;
     NSArray *subviews = [yself subviews];
     for (id subview in subviews) {
-      CGRect frame = [subview frame];
-      CGFloat height = size.height - yself.insets.top - yself.insets.bottom;
-      CGRect viewFrame = [layout sizeToFitInFrame:CGRectMake(x, y, frame.size.width - yself.insets.left - yself.insets.right, MAX(height, 0)) view:subview];
+      CGRect viewFrame = [layout sizeToFitInFrame:CGRectMake(x, y, size.width, size.height) view:subview];
       x += viewFrame.size.width;
       maxHeight = MAX(viewFrame.size.height, maxHeight);
       if (++index != subviews.count) x += yself.spacing;
@@ -31,7 +29,8 @@
     }
     x += yself.insets.right;
     y += maxHeight + yself.insets.bottom;
-    return CGSizeMake(x, MAX(y, size.height));
+
+    return CGSizeMake(MAX(x, size.width), MAX(y, size.height));
   }];
 }
 
