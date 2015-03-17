@@ -197,6 +197,53 @@ it, simply add the following line to your Podfile:
 
     pod "YOLayout"
 
+
+## Box Model
+
+The YOLayout/Box subspec has a box model YOVBox and YOHBox. This is an example of an application of YOLayout that you might find useful.
+
+```
+pod "YOLayout/Box"
+```
+
+```objc
+- (void)viewInit {
+  [super viewInit];
+  self.backgroundColor = UIColor.whiteColor;
+
+  YOVBox *contentView = [YOVBox box:@{@"spacing": @(10), @"insets": @(20)}];
+  [self addSubview:contentView];
+
+  UILabel *label1 = [[UILabel alloc] init];
+  label1.text = @"Box Model Test";
+  label1.font = [UIFont boldSystemFontOfSize:20];
+  label1.textAlignment = NSTextAlignmentCenter;
+  [contentView addSubview:label1];
+
+  UILabel *label2 = [[UILabel alloc] init];
+  label2.font = [UIFont systemFontOfSize:14];
+  label2.numberOfLines = 0;
+  label2.text = @"PBR&B Intelligentsia shabby chic. Messenger bag flexitarian cold-pressed VHS 90's. Tofu chillwave pour-over Marfa cold-pressed, kogi bespoke High Life semiotics readymade authentic wolf sriracha craft beer. Next level direct trade shabby chic vegan cliche. Mlkshk butcher church-key cornhole 3 wolf moon, YOLO cold-pressed cronut";
+  [contentView addSubview:label2];
+
+  YOHBox *buttons = [YOHBox box:@{@"spacing": @(20), @"insets": YOBoxInsets(20, 0, 20, 0)}];
+
+  UIButton *button1 = [self buttonWithText:@"Button"];
+  [buttons addSubview:button1];
+
+  UIButton *button2 = [self buttonWithText:@"Button (2)"];
+  [buttons addSubview:button2];
+
+  UIButton *button3 = [self buttonWithText:@"Button"];
+  [buttons addSubview:button3];
+
+  [contentView addSubview:buttons];
+}
+
+```
+
+![BoxView.png](https://raw.githubusercontent.com/YOLayout/YOLayout/examples/YOLayoutExample/YOLayoutExample/BoxView/BoxView.png)
+
 ## License
 
 YOLayout is available under the MIT license. See the LICENSE file for more info.
