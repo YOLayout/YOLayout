@@ -35,6 +35,7 @@
   window.titleVisibility = NSWindowTitleHidden;
   window.titlebarAppearsTransparent = YES;
   window.movableByWindowBackground = YES;
+  [contentView setFrame:CGRectMake(0, 0, 600, 600)];
   [window setContentSize:CGSizeMake(600, 600)];
   [window setContentView:contentView];
   return window;

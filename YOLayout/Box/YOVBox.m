@@ -20,7 +20,8 @@
     NSArray *subviews = [yself subviews];
     for (id subview in subviews) {
       CGRect frame = [subview frame];
-      y += [layout sizeToFitVerticalInFrame:CGRectMake(yself.insets.left, y, size.width - yself.insets.left - yself.insets.right, frame.size.height) view:subview].size.height;
+      CGRect inFrame = CGRectMake(yself.insets.left, y, size.width - yself.insets.left - yself.insets.right, frame.size.height);      
+      y += [layout sizeToFitVerticalInFrame:inFrame view:subview].size.height;
       if (++index != subviews.count) y += yself.spacing;
     }
     y += yself.insets.bottom;
