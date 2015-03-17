@@ -2,6 +2,9 @@
   <img src="https://raw.github.com/YOLayout/YOLayout/assets/Logo.png" alt="YOLayout" title="YOLayout">
 </p>
 
+[![Version](http://cocoapod-badges.herokuapp.com/v/YOLayout/badge.png)](http://cocoadocs.org/docsets/YOLayout)
+[![Platform](http://cocoapod-badges.herokuapp.com/p/YOLayout/badge.png)](http://cocoadocs.org/docsets/YOLayout)
+
 A frame-based layout framework. Avoid Interface Builder and Auto Layout and take full control over your layouts.
 
 ## Usage

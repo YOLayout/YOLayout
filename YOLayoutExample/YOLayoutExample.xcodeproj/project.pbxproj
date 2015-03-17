@@ -30,6 +30,8 @@
 		00D52F521A6F2BA600DEB5F5 /* YONSTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F511A6F2BA600DEB5F5 /* YONSTestView.m */; };
 		00D52F581A6F2C6100DEB5F5 /* YONSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F561A6F2C6100DEB5F5 /* YONSLabel.m */; };
 		00D52F5B1A6F2CA200DEB5F5 /* YONSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F5A1A6F2CA200DEB5F5 /* YONSButton.m */; };
+		4255D4A71AB35116004CB409 /* CircleLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4255D4A51AB35116004CB409 /* CircleLayoutView.swift */; };
+		4255D4A81AB35116004CB409 /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4255D4A61AB35116004CB409 /* SwiftViewController.swift */; };
 		426C0FCA1A41606800F2577C /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC71A41606800F2577C /* information.png */; };
 		426C0FCB1A41606800F2577C /* information@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC81A41606800F2577C /* information@2x.png */; };
 		426C0FCC1A41606800F2577C /* information@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FC91A41606800F2577C /* information@3x.png */; };
@@ -97,6 +99,9 @@
 		00D52F571A6F2C6100DEB5F5 /* YONSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YONSLabel.h; sourceTree = "<group>"; };
 		00D52F591A6F2CA200DEB5F5 /* YONSButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YONSButton.h; sourceTree = "<group>"; };
 		00D52F5A1A6F2CA200DEB5F5 /* YONSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YONSButton.m; sourceTree = "<group>"; };
+		4255D4A41AB35115004CB409 /* YOLayoutExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YOLayoutExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		4255D4A51AB35116004CB409 /* CircleLayoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleLayoutView.swift; path = SwiftView/CircleLayoutView.swift; sourceTree = "<group>"; };
+		4255D4A61AB35116004CB409 /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftViewController.swift; path = SwiftView/SwiftViewController.swift; sourceTree = "<group>"; };
 		426C0FC71A41606800F2577C /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
 		426C0FC81A41606800F2577C /* information@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information@2x.png"; sourceTree = "<group>"; };
 		426C0FC91A41606800F2577C /* information@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "information@3x.png"; sourceTree = "<group>"; };
@@ -241,6 +246,15 @@
 			path = ../YOLayout/AppKit;
 			sourceTree = "<group>";
 		};
+		4255D4A31AB350DE004CB409 /* SwiftView */ = {
+			isa = PBXGroup;
+			children = (
+				4255D4A51AB35116004CB409 /* CircleLayoutView.swift */,
+				4255D4A61AB35116004CB409 /* SwiftViewController.swift */,
+			);
+			name = SwiftView;
+			sourceTree = "<group>";
+		};
 		426C0FC61A41606800F2577C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +315,7 @@
 		42F5C2F01A3CAF3E00E37B78 /* YOLayoutExample */ = {
 			isa = PBXGroup;
 			children = (
+				4255D4A31AB350DE004CB409 /* SwiftView */,
 				426C0FDC1A41714900F2577C /* DynamicTableViewCells */,
 				005669491A9673D800CA236E /* BorderView */,
 				426C0FD61A41714900F2577C /* DrawableViews */,
@@ -315,6 +330,7 @@
 				426C0FD31A416CBE00F2577C /* GridView.h */,
 				426C0FD41A416CBE00F2577C /* GridView.m */,
 				426C0FE61A41725000F2577C /* LaunchScreen.xib */,
+				4255D4A41AB35115004CB409 /* YOLayoutExample-Bridging-Header.h */,
 			);
 			path = YOLayoutExample;
 			sourceTree = "<group>";
@@ -512,6 +528,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				002535311AB7589200583913 /* BoxView.m in Sources */,
+				4255D4A81AB35116004CB409 /* SwiftViewController.swift in Sources */,
 				0056694C1A9673D800CA236E /* BorderView.m in Sources */,
 				002535341AB7589D00583913 /* BoxViewController.m in Sources */,
 				42F5C31E1A3CAF7A00E37B78 /* YOCGUtils.m in Sources */,
@@ -527,6 +544,7 @@
 				426C0FE51A41714900F2577C /* TableViewController.m in Sources */,
 				42F5C31F1A3CAF7A00E37B78 /* YOLayout_IMP.m in Sources */,
 				42C08D5C1A413749009B7E9E /* LogoView.m in Sources */,
+				4255D4A71AB35116004CB409 /* CircleLayoutView.swift in Sources */,
 				426C0FD51A416CBE00F2577C /* GridView.m in Sources */,
 				002535211AB39CDD00583913 /* YOBox_IMP.m in Sources */,
 				42F5C2F41A3CAF3E00E37B78 /* main.m in Sources */,
@@ -679,9 +697,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = YOLayoutExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "YOLayoutExample/YOLayoutExample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -689,9 +710,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = YOLayoutExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "YOLayoutExample/YOLayoutExample-Bridging-Header.h";
 			};
 			name = Release;
 		};

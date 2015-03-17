@@ -12,6 +12,7 @@
 #import "DrawableViewController.h"
 #import "BorderViewController.h"
 #import "BoxViewController.h"
+#import "YOLayoutExample-swift.h"
 
 @interface LayoutExampleTableViewController ()
 
@@ -32,7 +33,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -43,7 +44,7 @@
             cell.textLabel.text = @"Table View Example";
             cell.detailTextLabel.text = @"Use YOLayout to create dynamic height cells";
             break;
-            
+
         case 1:
             cell.textLabel.text = @"Drawable View Example";
             cell.detailTextLabel.text = @"Use YOLayout with drawRect:";
@@ -59,9 +60,16 @@
             cell.detailTextLabel.text = @"VBox and HBox";
             break;
 
+        case 4:
+            cell.textLabel.text = @"Swift Example";
+            cell.detailTextLabel.text = @"Use YOLayout with swift";
+            break;
+
+        default:
+            return nil;
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
+
     return cell;
 }
 
@@ -92,6 +100,12 @@
             break;
         }
 
+        case 4:
+        {
+            SwiftViewController *swiftViewController = [[SwiftViewController alloc] init];
+            [self.navigationController pushViewController:swiftViewController animated:YES];
+            break;
+        }
         default:
             break;
     }

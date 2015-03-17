@@ -35,7 +35,7 @@ static inline NSString *YONSStringFromCGSize(CGSize size) {
 }
 #endif
 
-typedef NS_ENUM (NSInteger, YOLayoutOptions) {
+typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
   YOLayoutOptionsNone = 0,
   // SIZING
   //! Size the view to fit vertically
