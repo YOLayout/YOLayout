@@ -204,11 +204,14 @@ The `YOLayout/Box` subspec has a box model `YOVBox` and `YOHBox`. This is an exa
 
 `YOVBox` is for vertical layout, and `YOHBox` is for horizontal layout. For example:
 
-```
-#import <YOLayout/YOBox.h>
-```
-
 ```objc
+#import <YOLayout/YOBox.h>
+
+@interface BoxExample : YOVBox
+@end
+
+@implementation BoxExample
+
 - (void)viewInit {
   [super viewInit];
   self.backgroundColor = UIColor.whiteColor;
@@ -242,6 +245,7 @@ The `YOLayout/Box` subspec has a box model `YOVBox` and `YOHBox`. This is an exa
   [contentView addSubview:buttons];
 }
 
+@end
 ```
 
 ![BoxView.png](https://raw.githubusercontent.com/YOLayout/YOLayout/master/YOLayoutExample/YOLayoutExample/BoxView/BoxView.png)
