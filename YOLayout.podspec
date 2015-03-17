@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "YOLayout"
-  s.version      = "0.1.4"
+  s.version      = "0.1.5"
   s.summary      = "Layout framework."
   s.homepage     = "https://github.com/YOLayout/YOLayout"
   s.license      = "MIT"
@@ -28,7 +28,8 @@ Pod::Spec.new do |s|
   s.osx.source_files = "YOLayout/*.{h,m}", "YOLayout/AppKit/*.{h,m}"
 
   s.subspec "Box" do |sub|
-    sub.source_files = "YOLayout/Box/*.{h,m}"
+    sub.osx.source_files = "YOLayout/*.{h,m}", "YOLayout/AppKit/*.{h,m}", "YOLayout/Box/*.{h,m}"
+    sub.ios.source_files = "YOLayout/*.{h,m}", "YOLayout/UIKit/*.{h,m}", "YOLayout/Box/*.{h,m}"
   end
 
 end
