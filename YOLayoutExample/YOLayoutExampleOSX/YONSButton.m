@@ -7,6 +7,7 @@
 //
 
 #import "YONSButton.h"
+#import "YONSLabel.h"
 
 @implementation YONSButton
 
@@ -20,7 +21,7 @@
 
 + (instancetype)buttonWithText:(NSString *)text {
   YONSButton *button = [[YONSButton alloc] init];
-  [button setText:text font:[NSFont systemFontOfSize:20] color:[NSColor blackColor] alignment:NSCenterTextAlignment];
+  [button setText:text font:[NSFont systemFontOfSize:18] color:[NSColor blackColor] alignment:NSCenterTextAlignment];
   return button;
 }
 
@@ -29,6 +30,13 @@
   button.image = image;
   button.bordered = NO;
   return button;
+}
+
+- (CGSize)sizeThatFits:(NSSize)size {
+  CGSize sizeThatFits = [YONSLabel sizeThatFits:size attributedString:self.attributedTitle];
+  sizeThatFits.height += 20;
+  sizeThatFits.width += 40;
+  return sizeThatFits;
 }
 
 - (void)setText:(NSString *)text font:(NSFont *)font color:(NSColor *)color alignment:(NSTextAlignment)alignment {
@@ -54,6 +62,5 @@
 - (void)_performTargetBlock {
   if (self.targetBlock) self.targetBlock();
 }
-
 
 @end

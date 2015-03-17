@@ -1,15 +1,15 @@
 //
-//  YONSTestView.h
+//  YOVBox.h
 //  YOLayoutExample
 //
-//  Created by Gabriel on 1/20/15.
+//  Created by Gabriel on 3/13/15.
 //  Copyright (c) 2015 YOLayout. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-#import "YOLayout.h"
+#import "YOBox_IMP.h"
 
-@interface YONSTestView : YOView
+@interface YOVBox : YOBox
 
 @end

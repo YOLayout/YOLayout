@@ -20,7 +20,7 @@
          [super viewInit];
          UIView *subview = [[UIView alloc] init];
          [self addSubview:subview];
-         self.layout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
+         self.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
            [layout setFrame:CGRectMake(0, 0, size.width, 30) view:subview];
            return CGSizeMake(size.width, 30);
          }];
@@ -29,7 +29,7 @@
  */
 @interface YOView : UIView <YOLayoutView> { }
 
-@property YOLayout *layout;
+@property YOLayout *viewLayout;
 
 /*!
  Subclasses can override this method to perform initialization tasks that occur during both initWithFrame: and initWithCoder:

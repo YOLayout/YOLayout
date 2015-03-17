@@ -26,10 +26,14 @@
 
   YOSelf yself = self;
   self.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
-    CGSize textSize = [YONSLabel sizeThatFits:size textView:yself.textView];
+    CGSize textSize = [YONSLabel sizeThatFits:size attributedString:yself.textView.attributedString];
     [layout setFrame:CGRectIntegral(CGRectMake(0, size.height/2.0 - textSize.height/2.0, size.width, textSize.height + 20)) view:yself.textView];
     return size;
   }];
+}
+
+- (CGSize)sizeThatFits:(CGSize)size {
+  return [YONSLabel sizeThatFits:size attributedString:_textView.attributedString];
 }
 
 - (void)setText:(NSString *)text font:(NSFont *)font color:(NSColor *)color alignment:(NSTextAlignment)alignment {
@@ -55,22 +59,23 @@
   [self setNeedsLayout];
 }
 
-+ (CGSize)sizeThatFits:(CGSize)size textView:(NSTextView *)textView {
-  NSTextStorage *textStorage = [[NSTextStorage alloc] initWithAttributedString:textView.attributedString];
-  NSTextContainer *textContainer = [[NSTextContainer alloc] initWithContainerSize:NSMakeSize(size.width, FLT_MAX)];
++ (CGSize)sizeThatFits:(CGSize)size attributedString:(NSAttributedString *)attributedString {
+  if (size.height == 0) size.height = CGFLOAT_MAX;
+  if (size.width == 0) size.width = CGFLOAT_MAX;
+  NSTextStorage *textStorage = [[NSTextStorage alloc] initWithAttributedString:attributedString];
+  NSTextContainer *textContainer = [[NSTextContainer alloc] initWithContainerSize:size];
+  [textContainer setLineFragmentPadding:0.0];
   NSLayoutManager *layoutManager = [[NSLayoutManager alloc] init];
   [layoutManager addTextContainer:textContainer];
   [textStorage addLayoutManager:layoutManager];
 
   // Force layout
   (void)[layoutManager glyphRangeForTextContainer:textContainer];
-
   NSRect rect = [layoutManager usedRectForTextContainer:textContainer];
-  return CGRectIntegral(rect).size;
-}
 
-- (CGSize)sizeThatFits:(CGSize)size {
-  return [YONSLabel sizeThatFits:size textView:_textView];
+  //NSRect rect = [attributedString boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin];
+
+  return CGRectIntegral(rect).size;
 }
 
 @end

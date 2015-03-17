@@ -107,7 +107,7 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
 
 /*!
  Set frame for the (sub)view.
- If we are calculating sizeThatFits, this doesn't actually set the views frame.
+ If we are only sizing, this doesn't modify views frame.
  
  @param frame Frame
  @param view View should conform to YOLView informal protocol.
@@ -115,10 +115,19 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
 - (CGRect)setFrame:(CGRect)frame view:(id)view;
 
 /*!
- Set the (sub)view frame, then size to fit the view vertically.
- If we are calculating sizeThatFits, this doesn't actually set the views frame.
- Use this value instead of view.frame since the views frame might not have been set.
+ Size to fit the view.
+ If we are only sizing, this doesn't modify views frame.
  
+ @param frame Frame
+ @param view View should conform to YOLView informal protocol.
+ @result The view frame.
+ */
+- (CGRect)sizeToFitInFrame:(CGRect)frame view:(id)view;
+
+/*!
+ Size to fit the view vertically.
+ If we are only sizing, this doesn't modify views frame.
+
  @param frame Frame
  @param view View should conform to YOLView informal protocol.
  @result The view frame.
@@ -126,10 +135,19 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
 - (CGRect)sizeToFitVerticalInFrame:(CGRect)frame view:(id)view;
 
 /*!
+ Size to fit the view horizontally.
+ If we are only sizing, this doesn't modify views frame.
+
+ @param frame Frame
+ @param view View should conform to YOLView informal protocol.
+ @result The view frame.
+ */
+- (CGRect)sizeToFitHorizontalInFrame:(CGRect)frame view:(id)view;
+
+/*!
  Set the (sub)view frame.
- If we are calculating sizeThatFits, this doesn't actually set the views frame.
- Use this value instead of view.frame since the views frame might not have been set.
- 
+ If we are only sizing, this doesn't modify views frame.
+
  @param frame Frame
  @param view View should conform to YOLView informal protocol.
  @param options Options for setFrame; See YOLayoutOptions for more info
@@ -154,7 +172,7 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
  Set the size in rect with options.
  
  @param size Desired size (or size hint if using YOLayoutOptionsSizeToFit)
- @param inRect Rect in which to position the view. `inRect.size` may be different than `size` when using this method with YOLayoutOptionsCenter, YOLayoutOptionsCenterVertical, YOLayoutOptionsRightAlign, etc.
+ @param inRect Rect in which to position the view. `inRect.size` may be different than `size` when using this method with YOLayoutOptionsAlignCenter, YOLayoutOptionsAlignCenterVertical, YOLayoutOptionsAlignRight, etc.
  @param view View
  @param options Options See YOLayoutOptions for more info
  @result The view frame.
@@ -303,17 +321,7 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
  */
 + (YOLayout *)layoutWithLayoutBlock:(YOLayoutBlock)layoutBlock;
 
-#pragma mark Common Layouts
-
-/*!
-  A layout which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.
-
- @param subviews Subviews to layout
- @param margin Margin around view
- @param padding Padding in between subviews
- @param Layout
- */
-+ (YOLayout *)vertical:(NSArray *)subviews margin:(UIEdgeInsets)margin padding:(CGFloat)padding;
+#pragma mark -
 
 /*!
  A layout which makes the subview passed in the full size.
@@ -324,17 +332,7 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
 + (YOLayout *)fill:(id)subview;
 
 /*!
- A layout block which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.
-
- @param subviews Subviews to layout
- @param margin Margin around view
- @param padding Padding in between subviews
- @param Layout block
- */
-+ (YOLayoutBlock)verticalLayout:(NSArray *)subviews margin:(UIEdgeInsets)margin padding:(CGFloat)padding;
-
-/*!
- A layout block which lays out subviews from top to bottom using sizeToFitVerticalInFrame:.
+ A layout block which makes the subview passed in the full size.
 
  @param subview Subview to layout
  @param Layout block

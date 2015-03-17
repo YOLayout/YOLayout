@@ -10,10 +10,12 @@
 
 #import "YOLayout.h"
 
-@interface YONSLabel : YONSView
+@interface YONSLabel : YOView
 
 @property (nonatomic) NSAttributedString *attributedText;
 
 - (void)setText:(NSString *)text font:(NSFont *)font color:(NSColor *)color alignment:(NSTextAlignment)alignment;
+
++ (CGSize)sizeThatFits:(CGSize)size attributedString:(NSAttributedString *)attributedString;
 
 @end
