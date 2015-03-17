@@ -69,7 +69,7 @@ Here is an example of a view with an image, title label, and multi-line descript
 }
 ```
 
-![TableViewCell.png](https://raw.githubusercontent.com/YOLayout/YOLayout/examples/YOLayoutExample/YOLayoutExample/DynamicTableViewCells/TableViewCell.png)
+![TableViewCell.png](https://raw.githubusercontent.com/YOLayout/YOLayout/master/YOLayoutExample/YOLayoutExample/DynamicTableViewCells/TableViewCell.png)
 
 If you're following along closely, you may have noticed that there's no reason you _need_ to create a new YOView subclass to use YOLayout. For simple views you can instantiate a YOView and set its layout without creating a new YOView subclass.
 
@@ -131,7 +131,7 @@ Here is an example of a border layout, with a dynamic top and bottom view, and t
 }
 ```
 
-![BorderView.png](https://raw.githubusercontent.com/YOLayout/YOLayout/examples/YOLayoutExample/YOLayoutExample/BorderView/BorderView.png)
+![BorderView.png](https://raw.githubusercontent.com/YOLayout/YOLayout/master/YOLayoutExample/YOLayoutExample/BorderView/BorderView.png)
 
 ## Example Project
 
@@ -200,11 +200,11 @@ it, simply add the following line to your Podfile:
 
 ## Box Model
 
-The YOLayout/Box subspec has a box model YOVBox and YOHBox. This is an example of an application of YOLayout that you might find useful.
+The `YOLayout/Box` subspec has a box model `YOVBox` and `YOHBox`. This is an example of an application of YOLayout that you might find useful.
 
-```
-pod "YOLayout/Box"
-```
+`YOVBox` is for vertical layout, and `YOHBox` is for horizontal layout. For example:
+
+#import <YOLayout/YOBox.h>
 
 ```objc
 - (void)viewInit {
@@ -242,7 +242,7 @@ pod "YOLayout/Box"
 
 ```
 
-![BoxView.png](https://raw.githubusercontent.com/YOLayout/YOLayout/examples/YOLayoutExample/YOLayoutExample/BoxView/BoxView.png)
+![BoxView.png](https://raw.githubusercontent.com/YOLayout/YOLayout/master/YOLayoutExample/YOLayoutExample/BoxView/BoxView.png)
 
 ## License
 
