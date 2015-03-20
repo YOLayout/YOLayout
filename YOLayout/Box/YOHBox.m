@@ -21,17 +21,47 @@
     CGFloat maxHeight = 0;
     NSArray *subviews = [yself subviews];
     for (id subview in subviews) {
-      CGRect viewFrame = [layout sizeToFitInFrame:CGRectMake(x, y, size.width, size.height) view:subview];
-      x += viewFrame.size.width;
-      maxHeight = MAX(viewFrame.size.height, maxHeight);
+      CGSize viewSize = [subview sizeThatFits:size];
+      viewSize.width = MAX(viewSize.width, self.minSize.width);
+      viewSize.height = MAX(viewSize.height, self.minSize.height);
+      [layout setFrame:CGRectMake(x, y, viewSize.width, viewSize.height) view:subview];
+      x += viewSize.width;
+      maxHeight = MAX(viewSize.height, maxHeight);
       if (++index != subviews.count) x += yself.spacing;
 
     }
     x += yself.insets.right;
     y += maxHeight + yself.insets.bottom;
 
+    // Re-position for alignment
+    CGFloat position = 0;
+    if (self.horizontalAlignment == YOHorizontalAlignmentRight) {
+      position = size.width - x - yself.insets.right;
+    } else if (self.horizontalAlignment == YOHorizontalAlignmentCenter) {
+      position = size.width/2.0 - x/2.0;
+    }
+
+    if (position > 0) {
+      for (id subview in subviews) {
+        CGRect frame = [subview frame];
+        frame.origin.x += position;
+        [layout setFrame:frame view:subview];
+      }
+    }
+
     return CGSizeMake(MAX(x, size.width), MAX(y, size.height));
   }];
+}
+
+- (void)setOptions:(NSDictionary *)options {
+  [super setOptions:options];
+  NSArray *minSize = [self parseOption:options[@"minSize"] isFloat:YES minCount:2];
+  self.minSize = CGSizeMake([minSize[0] floatValue], [minSize[1] floatValue]);
+
+  NSString *ha = options[@"horizontalAlignment"];
+  if ([ha isEqualToString:@"right"]) self.horizontalAlignment = YOHorizontalAlignmentRight;
+  else if ([ha isEqualToString:@"center"]) self.horizontalAlignment = YOHorizontalAlignmentCenter;
+  else if ([ha isEqualToString:@"left"]) self.horizontalAlignment = YOHorizontalAlignmentLeft;
 }
 
 @end

@@ -20,17 +20,26 @@
   return box;
 }
 
+- (NSArray *)parseOption:(NSString *)option isFloat:(BOOL)isFloat minCount:(NSInteger)minCount {
+  if (!option) return nil;
+
+  NSArray *split = [option componentsSeparatedByString:@","];
+  NSMutableArray *options = [NSMutableArray array];
+  for (NSString *o in split) {
+    if (isFloat) [options addObject:@([o floatValue])];
+    else [options addObject:@([o integerValue])];
+  }
+  if ([options count] < minCount) return nil;
+  return options;
+}
+
 - (void)setOptions:(NSDictionary *)options {
-  id insets = options[@"insets"];
+  NSArray *insets = [self parseOption:options[@"insets"] isFloat:YES minCount:1];
   if (insets) {
-    if ([insets isKindOfClass:NSArray.class]) {
-      if ([insets count] != 4) {
-        [NSException raise:NSInvalidArgumentException format:@"Invalid insets"];
-        return;
-      }
+    if ([insets count] == 4) {
       self.insets = UIEdgeInsetsMake([insets[0] floatValue], [insets[1] floatValue], [insets[2] floatValue], [insets[3] floatValue]);
     } else {
-      self.insets = UIEdgeInsetsMake([insets floatValue], [insets floatValue], [insets floatValue], [insets floatValue]);
+      self.insets = UIEdgeInsetsMake([insets[0] floatValue], [insets[0] floatValue], [insets[0] floatValue], [insets[0] floatValue]);
     }
   }
   self.spacing = [options[@"spacing"] floatValue];
