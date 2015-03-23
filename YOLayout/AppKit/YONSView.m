@@ -29,6 +29,10 @@
   return self;
 }
 
++ (instancetype)view {
+  return [[YOView alloc] init];
+}
+
 - (BOOL)isFlipped {
   return YES;
 }

@@ -21,7 +21,7 @@
     CGFloat maxHeight = 0;
     NSArray *subviews = [yself subviews];
     for (id subview in subviews) {
-      CGSize viewSize = [subview sizeThatFits:size];
+      CGSize viewSize = [subview sizeThatFits:CGSizeMake(size.width - x, size.height)];
       viewSize.width = MAX(viewSize.width, self.minSize.width);
       viewSize.height = MAX(viewSize.height, self.minSize.height);
       [layout setFrame:CGRectMake(x, y, viewSize.width, viewSize.height) view:subview];
@@ -38,7 +38,7 @@
     if (self.horizontalAlignment == YOHorizontalAlignmentRight) {
       position = size.width - x - yself.insets.right;
     } else if (self.horizontalAlignment == YOHorizontalAlignmentCenter) {
-      position = size.width/2.0 - x/2.0;
+      position = ceilf(size.width/2.0 - x/2.0);
     }
 
     if (position > 0) {
