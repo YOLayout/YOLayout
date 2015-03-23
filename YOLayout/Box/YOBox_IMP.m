@@ -23,11 +23,15 @@
 - (NSArray *)parseOption:(NSString *)option isFloat:(BOOL)isFloat minCount:(NSInteger)minCount {
   if (!option) return nil;
 
-  NSArray *split = [option componentsSeparatedByString:@","];
   NSMutableArray *options = [NSMutableArray array];
-  for (NSString *o in split) {
-    if (isFloat) [options addObject:@([o floatValue])];
-    else [options addObject:@([o integerValue])];
+  if ([option isKindOfClass:NSString.class]) {
+    NSArray *split = [option componentsSeparatedByString:@","];
+    for (NSString *o in split) {
+      if (isFloat) [options addObject:@([o floatValue])];
+      else [options addObject:@([o integerValue])];
+    }
+  } else {
+    [options addObject:option];
   }
   if ([options count] < minCount) return nil;
   return options;
