@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define YOBoxInsets(TOP, RIGHT, BOTTOM, LEFT) (@[@(TOP), @(LEFT), @(BOTTOM), @(RIGHT)])
-
 #if TARGET_OS_IPHONE
 #import "YOView.h"
 #else
@@ -23,6 +21,8 @@
 
 + (instancetype)box;
 + (instancetype)box:(NSDictionary *)options;
+
+- (NSArray *)parseOption:(NSString *)option isFloat:(BOOL)isFloat minCount:(NSInteger)minCount;
 
 - (void)setOptions:(NSDictionary *)options;
 
