@@ -200,7 +200,7 @@ it, simply add the following line to your Podfile:
 
 ## Box Model
 
-The `YOLayout/Box` subspec has a box model `YOVBox` and `YOHBox`. This is an example of an application of YOLayout that you might find useful.
+Using YOLayout we implemented views using a box model `YOVBox` and `YOHBox`. This is an example of an application of YOLayout.
 
 `YOVBox` is for vertical layout, and `YOHBox` is for horizontal layout. For example:
 
