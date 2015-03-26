@@ -18,6 +18,7 @@
 
 @property UIEdgeInsets insets;
 @property CGFloat spacing;
+@property CGSize minSize;
 
 + (instancetype)box;
 + (instancetype)box:(NSDictionary *)options;

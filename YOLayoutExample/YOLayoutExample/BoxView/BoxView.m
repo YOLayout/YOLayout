@@ -42,6 +42,14 @@
   [buttonsCenter addSubview:[self buttonWithText:@"E"]];
   [buttonsCenter addSubview:[self buttonWithText:@"F"]];
   [self addSubview:buttonsCenter];
+
+  YOBox *box = [YOBox box:@{@"insets": @"20", @"minSize": @"120,0"}];
+  [box addSubview:[self buttonWithText:@"Left"]];
+  YOHBox *right = [YOHBox box:@{@"spacing": @"10", @"horizontalAlignment": @"right"}];
+  [right addSubview:[self buttonWithText:@"Right1"]];
+  [right addSubview:[self buttonWithText:@"Right2"]];
+  [box addSubview:right];
+  [self addSubview:box];
 }
 
 - (UIButton *)buttonWithText:(NSString *)text {

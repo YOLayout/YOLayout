@@ -10,6 +10,44 @@
 
 @implementation YOBox
 
+- (void)viewInit {
+  [super viewInit];
+
+  // Default box layout, sizes to fit in a grid
+  YOSelf yself = self;
+  self.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
+    CGFloat x = yself.insets.left;
+    CGFloat y = yself.insets.top;
+    NSInteger index = 0;
+    BOOL wrap = NO;
+    CGSize itemSize;
+    CGFloat rowHeight = 0;
+    CGFloat columnWidth = 0;
+    for (id view in self.subviews) {
+      itemSize = [view sizeThatFits:CGSizeMake(size.width - yself.insets.right - x, size.height)];
+      itemSize.width = MAX(itemSize.width, yself.minSize.width);
+      itemSize.height = MAX(itemSize.height, yself.minSize.height);
+      rowHeight = MAX(rowHeight, itemSize.height);
+
+      wrap = (x + itemSize.width) > size.width;
+      if (wrap) {
+        columnWidth = MAX(columnWidth, x);
+        x = 0;
+        y += rowHeight + yself.spacing;
+      }
+
+      [layout setFrame:CGRectMake(x, y, itemSize.width, itemSize.height) view:view];
+
+      // If we didn't wrap on last item, then wrap
+      x += itemSize.width + yself.spacing;
+      index++;
+    }
+    y += rowHeight + yself.spacing + yself.insets.bottom;
+    columnWidth = MAX(columnWidth, x);
+    return CGSizeMake(columnWidth, y);
+  }];
+}
+
 + (instancetype)box {
   return [[self alloc] init];
 }
@@ -47,6 +85,9 @@
     }
   }
   self.spacing = [options[@"spacing"] floatValue];
+
+  NSArray *minSize = [self parseOption:options[@"minSize"] isFloat:YES minCount:2];
+  self.minSize = CGSizeMake([minSize[0] floatValue], [minSize[1] floatValue]);
 }
 
 @end

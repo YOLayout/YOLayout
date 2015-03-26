@@ -55,8 +55,6 @@
 
 - (void)setOptions:(NSDictionary *)options {
   [super setOptions:options];
-  NSArray *minSize = [self parseOption:options[@"minSize"] isFloat:YES minCount:2];
-  self.minSize = CGSizeMake([minSize[0] floatValue], [minSize[1] floatValue]);
 
   NSString *ha = options[@"horizontalAlignment"];
   if ([ha isEqualToString:@"right"]) self.horizontalAlignment = YOHorizontalAlignmentRight;

@@ -19,7 +19,6 @@ typedef NS_ENUM(NSInteger, YOHorizontalAlignment) {
 
 @interface YOHBox : YOBox
 
-@property CGSize minSize;
 @property YOHorizontalAlignment horizontalAlignment;
 
 @end
