@@ -68,16 +68,22 @@
 
 - (void)layoutView {
   NSAssert(_viewLayout, @"Missing layout instance");
-  [self setNeedsLayout];
+  [self setNeedsLayout:NO];
   [self layout];
 }
 
-- (void)setNeedsLayout {
+- (void)setNeedsLayout:(BOOL)layout {
   [_viewLayout setNeedsLayout];
   [self invalidateIntrinsicContentSize];
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [self layout];
-  });
+  if (layout) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [self layout];
+    });
+  }
+}
+
+- (void)setNeedsLayout {
+  [self setNeedsLayout:YES];
 }
 
 @end

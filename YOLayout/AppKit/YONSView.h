@@ -54,9 +54,17 @@
 - (void)sizeToFit;
 
 /*!
- Set needs layout.
+ Calls [self setNeedsLayout:YES];
  */
 - (void)setNeedsLayout;
+
+/*!
+ Set needs layout.
+ @param layout If yes, trigger layout to occur sometime in the future.
+ 
+ For immediate layout, use layoutView.
+ */
+- (void)setNeedsLayout:(BOOL)layout;
 
 /*!
  Force the layout, if using YOLayout.
