@@ -71,7 +71,11 @@ Here is an example of a view with an image, title label, and multi-line descript
 
 ![TableViewCell.png](https://raw.githubusercontent.com/YOLayout/YOLayout/master/YOLayoutExample/YOLayoutExample/DynamicTableViewCells/TableViewCell.png)
 
-If you're following along closely, you may have noticed that there's no reason you _need_ to create a new YOView subclass to use YOLayout. For simple views you can instantiate a YOView and set its layout without creating a new YOView subclass.
+- `viewLayout` performs layout and returns the size it requires. This unifies `layoutSubviews` and `sizeThatFits:` into a single method. This example returns the same width passed in but with a variable height. To make a view fill all size available you can return `size` (that was passed in).
+- `viewInit` is a unified initializer. `initWithFrame:` and `initWithCoder:` both call this method.
+- Layouts are block based allowing you to capture local references.
+- YOSelf weak reference helps prevent self retain cycle.
+- Since layout is block based, you can create multiple views with subviews and layouts all in a single method.
 
 Here is an example of a border layout, with a dynamic top and bottom view, and the center view fills the remaining space:
 
