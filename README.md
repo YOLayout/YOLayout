@@ -204,7 +204,7 @@ it, simply add the following line to your Podfile:
 
 ## Box Model
 
-Using YOLayout we implemented views using a box model `YOVBox` and `YOHBox`. This is an example of an application of YOLayout.
+Using YOLayout we implemented a box model (`YOVBox` and `YOHBox`). This is experimental.
 
 `YOVBox` is for vertical layout, and `YOHBox` is for horizontal layout. For example:
 
