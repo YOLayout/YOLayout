@@ -8,6 +8,10 @@
 
 #import "YOBox.h"
 
+@interface YOBox (View)
+@property NSString *identifier;
+@end
+
 @implementation YOBox
 
 - (void)viewInit {
@@ -27,8 +31,15 @@
       itemSize = [view sizeThatFits:CGSizeMake(size.width - yself.insets.right - x, size.height)];
       NSAssert(itemSize.width > 0, @"Item returned <= 0 width");
 
-      itemSize.width = MAX(itemSize.width, yself.minSize.width);
-      itemSize.height = MAX(itemSize.height, yself.minSize.height);
+      CGSize minSize = yself.minSize;
+      NSString *identifier = [view respondsToSelector:@selector(identifier)] ? [view identifier] : nil;
+      if (identifier) {
+        NSDictionary *viewOptions = yself.options[[view identifier]];
+        if (!!viewOptions[@"minSize"]) minSize = [self parseMinSize:viewOptions];
+      }
+
+      itemSize.width = MAX(itemSize.width, minSize.width);
+      itemSize.height = MAX(itemSize.height, minSize.height);
       rowHeight = MAX(rowHeight, itemSize.height);
 
       wrap = (x + itemSize.width) > size.width;
@@ -80,6 +91,7 @@
 }
 
 - (void)setOptions:(NSDictionary *)options {
+  _options = options;
   NSArray *insets = [self parseOption:options[@"insets"] isFloat:YES minCount:1];
   if (insets) {
     if ([insets count] == 4) {
@@ -90,8 +102,13 @@
   }
   self.spacing = [options[@"spacing"] floatValue];
 
+  self.minSize = [self parseMinSize:_options];
+}
+
+- (CGSize)parseMinSize:(NSDictionary *)options {
   NSArray *minSize = [self parseOption:options[@"minSize"] isFloat:YES minCount:2];
-  self.minSize = CGSizeMake([minSize[0] floatValue], [minSize[1] floatValue]);
+  if (!minSize) return CGSizeZero;
+  return CGSizeMake([minSize[0] floatValue], [minSize[1] floatValue]);
 }
 
 @end

@@ -19,6 +19,7 @@
 @property UIEdgeInsets insets;
 @property CGFloat spacing;
 @property CGSize minSize;
+@property (nonatomic) NSDictionary *options;
 
 + (instancetype)box;
 + (instancetype)box:(NSDictionary *)options;
@@ -26,5 +27,7 @@
 - (NSArray *)parseOption:(NSString *)option isFloat:(BOOL)isFloat minCount:(NSInteger)minCount;
 
 - (void)setOptions:(NSDictionary *)options;
+
+- (CGSize)parseMinSize:(NSDictionary *)options;
 
 @end

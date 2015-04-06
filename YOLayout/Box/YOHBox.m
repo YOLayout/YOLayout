@@ -22,8 +22,16 @@
     NSArray *subviews = [yself subviews];
     for (id subview in subviews) {
       CGSize viewSize = [subview sizeThatFits:CGSizeMake(size.width - x, size.height)];
-      viewSize.width = MAX(viewSize.width, self.minSize.width);
-      viewSize.height = MAX(viewSize.height, self.minSize.height);
+
+      CGSize minSize = yself.minSize;
+      NSString *identifier = [subview respondsToSelector:@selector(identifier)] ? [subview identifier] : nil;
+      if (identifier) {
+        NSDictionary *viewOptions = yself.options[identifier];
+        if (!!viewOptions[@"minSize"]) minSize = [self parseMinSize:viewOptions];
+      }
+
+      viewSize.width = MAX(viewSize.width, minSize.width);
+      viewSize.height = MAX(viewSize.height, minSize.height);
       [layout setFrame:CGRectMake(x, y, viewSize.width, viewSize.height) view:subview];
       x += viewSize.width;
       maxHeight = MAX(viewSize.height, maxHeight);
