@@ -31,15 +31,23 @@
       itemSize = [view sizeThatFits:CGSizeMake(size.width - yself.insets.right - x, size.height)];
       NSAssert(itemSize.width > 0, @"Item returned <= 0 width");
 
-      CGSize minSize = yself.minSize;
       NSString *identifier = [view respondsToSelector:@selector(identifier)] ? [view identifier] : nil;
+      CGSize minSize = yself.minSize;
       if (identifier) {
         NSDictionary *viewOptions = yself.options[[view identifier]];
         if (!!viewOptions[@"minSize"]) minSize = [self parseMinSize:viewOptions];
       }
 
+      CGSize maxSize = yself.maxSize;
+      if (identifier) {
+        NSDictionary *viewOptions = yself.options[[view identifier]];
+        if (!!viewOptions[@"maxSize"]) maxSize = [self parseMaxSize:viewOptions];
+      }
+
       itemSize.width = MAX(itemSize.width, minSize.width);
       itemSize.height = MAX(itemSize.height, minSize.height);
+      if (maxSize.width != 0) itemSize.width = MIN(itemSize.width, maxSize.width);
+      if (maxSize.height != 0) itemSize.height = MIN(itemSize.height, maxSize.height);
       rowHeight = MAX(rowHeight, itemSize.height);
 
       wrap = (x + itemSize.width) > size.width;
@@ -103,6 +111,13 @@
   self.spacing = [options[@"spacing"] floatValue];
 
   self.minSize = [self parseMinSize:_options];
+  self.maxSize = [self parseMaxSize:_options];
+}
+
+- (CGSize)parseMaxSize:(NSDictionary *)options {
+  NSArray *maxSize = [self parseOption:options[@"maxSize"] isFloat:YES minCount:2];
+  if (!maxSize) return CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX);
+  return CGSizeMake([maxSize[0] floatValue], [maxSize[1] floatValue]);
 }
 
 - (CGSize)parseMinSize:(NSDictionary *)options {

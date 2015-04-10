@@ -19,6 +19,7 @@
 @property UIEdgeInsets insets;
 @property CGFloat spacing;
 @property CGSize minSize;
+@property CGSize maxSize;
 @property (nonatomic) NSDictionary *options;
 
 + (instancetype)box;
@@ -29,5 +30,6 @@
 - (void)setOptions:(NSDictionary *)options;
 
 - (CGSize)parseMinSize:(NSDictionary *)options;
+- (CGSize)parseMaxSize:(NSDictionary *)options;
 
 @end
