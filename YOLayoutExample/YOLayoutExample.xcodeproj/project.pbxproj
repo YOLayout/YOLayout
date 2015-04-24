@@ -18,6 +18,9 @@
 		002535251AB39D9C00583913 /* YOBoxTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 002535241AB39D9C00583913 /* YOBoxTestView.m */; };
 		002535311AB7589200583913 /* BoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 002535301AB7589200583913 /* BoxView.m */; };
 		002535341AB7589D00583913 /* BoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002535331AB7589D00583913 /* BoxViewController.m */; };
+		0032AF9B1AEADFF000AF4532 /* YOBorderLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0032AF9A1AEADFF000AF4532 /* YOBorderLayout.m */; };
+		0032AF9C1AEADFF000AF4532 /* YOBorderLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0032AF9A1AEADFF000AF4532 /* YOBorderLayout.m */; };
+		0032AF9D1AEADFF000AF4532 /* YOBorderLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0032AF9A1AEADFF000AF4532 /* YOBorderLayout.m */; };
 		0056694C1A9673D800CA236E /* BorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0056694B1A9673D800CA236E /* BorderView.m */; };
 		0056694F1A9673E600CA236E /* BorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0056694E1A9673E600CA236E /* BorderViewController.m */; };
 		00D52F2C1A6F0B8A00DEB5F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F2B1A6F0B8A00DEB5F5 /* AppDelegate.m */; };
@@ -80,6 +83,8 @@
 		002535301AB7589200583913 /* BoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxView.m; sourceTree = "<group>"; };
 		002535321AB7589D00583913 /* BoxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxViewController.h; sourceTree = "<group>"; };
 		002535331AB7589D00583913 /* BoxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxViewController.m; sourceTree = "<group>"; };
+		0032AF991AEADFF000AF4532 /* YOBorderLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOBorderLayout.h; sourceTree = "<group>"; };
+		0032AF9A1AEADFF000AF4532 /* YOBorderLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOBorderLayout.m; sourceTree = "<group>"; };
 		0056694A1A9673D800CA236E /* BorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderView.h; sourceTree = "<group>"; };
 		0056694B1A9673D800CA236E /* BorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderView.m; sourceTree = "<group>"; };
 		0056694D1A9673E600CA236E /* BorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderViewController.h; sourceTree = "<group>"; };
@@ -194,6 +199,16 @@
 				002535301AB7589200583913 /* BoxView.m */,
 			);
 			path = BoxView;
+			sourceTree = "<group>";
+		};
+		0032AF981AEADFE600AF4532 /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				0032AF991AEADFF000AF4532 /* YOBorderLayout.h */,
+				0032AF9A1AEADFF000AF4532 /* YOBorderLayout.m */,
+			);
+			name = Layouts;
+			path = ../YOLayout/Layouts;
 			sourceTree = "<group>";
 		};
 		005669491A9673D800CA236E /* BorderView */ = {
@@ -367,6 +382,7 @@
 				00D52F461A6F0BA200DEB5F5 /* AppKit */,
 				00086CBB1A674B960000460F /* UIKit */,
 				002535161AB39A4200583913 /* Box */,
+				0032AF981AEADFE600AF4532 /* Layouts */,
 				00086CB81A6745010000460F /* YOLayout.h */,
 				42F5C3181A3CAF7A00E37B78 /* YOCGUtils.h */,
 				42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */,
@@ -519,6 +535,7 @@
 				0025351C1AB39A4200583913 /* YOHBox.m in Sources */,
 				00D52F491A6F0BA200DEB5F5 /* YONSView.m in Sources */,
 				00D52F2C1A6F0B8A00DEB5F5 /* AppDelegate.m in Sources */,
+				0032AF9D1AEADFF000AF4532 /* YOBorderLayout.m in Sources */,
 				00D52F521A6F2BA600DEB5F5 /* YONSTestView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -542,6 +559,7 @@
 				0056694F1A9673E600CA236E /* BorderViewController.m in Sources */,
 				0025351D1AB39A4200583913 /* YOVBox.m in Sources */,
 				426C0FE51A41714900F2577C /* TableViewController.m in Sources */,
+				0032AF9B1AEADFF000AF4532 /* YOBorderLayout.m in Sources */,
 				42F5C31F1A3CAF7A00E37B78 /* YOLayout_IMP.m in Sources */,
 				42C08D5C1A413749009B7E9E /* LogoView.m in Sources */,
 				4255D4A71AB35116004CB409 /* CircleLayoutView.swift in Sources */,
@@ -556,6 +574,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00086CBF1A674B960000460F /* YOView.m in Sources */,
+				0032AF9C1AEADFF000AF4532 /* YOBorderLayout.m in Sources */,
 				42F5C30E1A3CAF3E00E37B78 /* YOLayoutExampleTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

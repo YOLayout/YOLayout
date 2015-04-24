@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "YOLayout"
-  s.version      = "0.1.13"
+  s.version      = "0.1.14"
   s.summary      = "Layout framework."
   s.homepage     = "https://github.com/YOLayout/YOLayout"
   s.license      = "MIT"
@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 
   s.ios.platform = :ios, "7.0"
   s.ios.deployment_target = "7.0"
-  s.ios.source_files = "YOLayout/*.{h,m}", "YOLayout/UIKit/*.{h,m}", "YOLayout/Box/*.{h,m}"
+  s.ios.source_files = "YOLayout/*.{h,m}", "YOLayout/UIKit/*.{h,m}", "YOLayout/Box/*.{h,m}", "YOLayout/Layouts/*.{h,m}"
 
   s.osx.platform = :osx, "10.8"
   s.osx.deployment_target = "10.8"
-  s.osx.source_files = "YOLayout/*.{h,m}", "YOLayout/AppKit/*.{h,m}", "YOLayout/Box/*.{h,m}"
+  s.osx.source_files = "YOLayout/*.{h,m}", "YOLayout/AppKit/*.{h,m}", "YOLayout/Box/*.{h,m}", "YOLayout/Layouts/*.{h,m}"
 
 # TODO Fix in cocoapods 0.36.0
 #  s.subspec "Box" do |sub|

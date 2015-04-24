@@ -8,6 +8,8 @@
 
 #import "BorderView.h"
 
+#import "YOBorderLayout.h"
+
 @implementation BorderView
 
 - (void)viewInit {
@@ -39,29 +41,7 @@
   bottomView.backgroundColor = [UIColor orangeColor];
   [self addSubview:bottomView];
 
-  UIEdgeInsets margin = UIEdgeInsetsMake(20, 20, 20, 20);
-  CGFloat padding = 10;
-
-  self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
-    // Size inset by margin
-    CGSize sizeInset = CGSizeMake(size.width - margin.left - margin.right, size.height - margin.top - margin.bottom);
-
-    CGSize topSize = [topView sizeThatFits:sizeInset];
-    CGSize bottomSize = [bottomView sizeThatFits:sizeInset];
-
-    // Calculate the height to fill the center
-    CGFloat centerHeight = sizeInset.height - topSize.height - bottomSize.height - (padding * 2);
-
-    // Size and position the views
-    CGFloat y = margin.top;
-    y += [layout setFrame:CGRectMake(margin.left, y, sizeInset.width, topSize.height) view:topView].size.height + padding;
-
-    y += [layout setFrame:CGRectMake(margin.left, y, sizeInset.width, centerHeight) view:centerView].size.height + padding;
-
-    y += [layout setFrame:CGRectMake(margin.left, y, sizeInset.width, bottomSize.height) view:bottomView].size.height;
-    
-    return size;
-  }];
+  self.layout = [YOBorderLayout layoutWithCenter:centerView top:@[topView] bottom:@[bottomView] insets:UIEdgeInsetsMake(20, 20, 20, 20) spacing:10];
 }
 
 @end

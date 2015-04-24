@@ -27,17 +27,18 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
 @implementation YOLayout
 
 - (id)init {
-  [NSException raise:NSDestinationInvalidException format:@"Layout must be associated with a view; Use initWithLayoutBlock:"];
-  return nil;
+  if ((self = [super init])) {
+    _needsLayout = YES;
+    _needsSizing = YES;
+  }
+  return self;
 }
 
 - (id)initWithLayoutBlock:(YOLayoutBlock)layoutBlock {
   NSParameterAssert(layoutBlock);
 
-  if ((self = [super init])) {
+  if ((self = [self init])) {
     _layoutBlock = layoutBlock;
-    _needsLayout = YES;
-    _needsSizing = YES;
   }
   return self;
 }
