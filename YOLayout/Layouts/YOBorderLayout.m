@@ -31,8 +31,8 @@
     }
 
     CGFloat centerHeight = sizeInset.height - topSizeAll.height - bottomSizeAll.height;
-    if ([top count] > 0) centerHeight -= spacing;
-    if ([bottom count] > 0) centerHeight -= spacing;
+    if ([top count] > 0) centerHeight -= spacing * [top count];
+    if ([bottom count] > 0) centerHeight -= spacing * [bottom count];
 
     CGFloat y = insets.top;
     for (id topView in top) {
