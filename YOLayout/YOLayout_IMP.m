@@ -218,3 +218,20 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
 
 @end
 
+NSString *YONSStringFromCGRect(CGRect rect) {
+  return [NSString stringWithFormat:@"(%@, %@, %@, %@)", @(rect.origin.x), @(rect.origin.y), @(rect.size.width), @(rect.size.height)];
+}
+
+NSString *YONSStringFromCGSize(CGSize size) {
+  return [NSString stringWithFormat:@"(%@, %@)", @(size.width), @(size.height)];
+}
+
+
+CGRect YOCGRectApplyInsets(CGRect frame, UIEdgeInsets insets) {
+  CGRect f = frame;
+  f.origin.x += insets.left;
+  f.origin.y += insets.top;
+  f.size.width -= insets.left + insets.right;
+  f.size.height -= insets.top + insets.bottom;
+  return f;
+}

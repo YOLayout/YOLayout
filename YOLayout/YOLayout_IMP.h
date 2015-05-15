@@ -14,29 +14,6 @@
 
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
-#else
-typedef struct UIEdgeInsets {
-  CGFloat top, left, bottom, right;
-} UIEdgeInsets;
-
-extern const UIEdgeInsets UIEdgeInsetsZero;
-
-static inline UIEdgeInsets UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right) {
-  UIEdgeInsets insets = {top, left, bottom, right};
-  return insets;
-}
-
-static inline UIEdgeInsets UIEdgeInsetsAdd(UIEdgeInsets i1, UIEdgeInsets i2) {
-  return UIEdgeInsetsMake(i1.top + i2.top, i1.left + i2.left, i1.bottom + i2.bottom, i1.right + i2.right);
-}
-
-static inline NSString *YONSStringFromCGRect(CGRect rect) {
-  return [NSString stringWithFormat:@"(%@, %@, %@, %@)", @(rect.origin.x), @(rect.origin.y), @(rect.size.width), @(rect.size.height)];
-}
-
-static inline NSString *YONSStringFromCGSize(CGSize size) {
-  return [NSString stringWithFormat:@"(%@, %@)", @(size.width), @(size.height)];
-}
 #endif
 
 typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
@@ -344,3 +321,29 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
 + (YOLayoutBlock)fillLayout:(id)subview;
 
 @end
+
+
+#if !TARGET_OS_IPHONE
+
+typedef struct UIEdgeInsets {
+  CGFloat top, left, bottom, right;
+} UIEdgeInsets;
+
+extern const UIEdgeInsets UIEdgeInsetsZero;
+
+static inline UIEdgeInsets UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right) {
+  UIEdgeInsets insets = {top, left, bottom, right};
+  return insets;
+}
+
+static inline UIEdgeInsets UIEdgeInsetsAdd(UIEdgeInsets i1, UIEdgeInsets i2) {
+  return UIEdgeInsetsMake(i1.top + i2.top, i1.left + i2.left, i1.bottom + i2.bottom, i1.right + i2.right);
+}
+
+#endif
+
+NSString *YONSStringFromCGRect(CGRect rect);
+
+NSString *YONSStringFromCGSize(CGSize size);
+
+CGRect YOCGRectApplyInsets(CGRect frame, UIEdgeInsets insets);
