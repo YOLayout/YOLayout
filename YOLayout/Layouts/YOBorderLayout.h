@@ -12,8 +12,18 @@
 
 @interface YOBorderLayout : YOLayout
 
+@property UIEdgeInsets insets;
+@property CGFloat spacing;
 @property CGSize maxSize;
 
++ (instancetype)layout;
+
 + (instancetype)layoutWithCenter:(id)center top:(NSArray *)top bottom:(NSArray *)bottom insets:(UIEdgeInsets)insets spacing:(CGFloat)spacing;
+
+- (void)setCenter:(id)center;
+
+- (void)addToTop:(id)top;
+
+- (void)addToBottom:(id)bottom;
 
 @end
