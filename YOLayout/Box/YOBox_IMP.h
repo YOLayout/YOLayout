@@ -32,4 +32,6 @@
 - (CGSize)parseMinSize:(NSDictionary *)options;
 - (CGSize)parseMaxSize:(NSDictionary *)options;
 
+- (CGSize)parseSize:(NSDictionary *)options viewSize:(CGSize)viewSize inSize:(CGSize)inSize;
+
 @end

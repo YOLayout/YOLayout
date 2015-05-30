@@ -87,6 +87,11 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
 - (CGSize)sizeThatFits:(CGSize)size;
 
 /*!
+ Calculate size of a subview with options.
+ */
+- (CGSize)sizeThatFits:(CGSize)size view:(id)view options:(YOLayoutOptions)options;
+
+/*!
  Set frame for the (sub)view.
  If we are only sizing, this doesn't modify views frame.
  

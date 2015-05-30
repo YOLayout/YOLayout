@@ -80,6 +80,11 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
   return [self _layout:size sizing:YES];
 }
 
+- (CGSize)sizeThatFits:(CGSize)size view:(id)view options:(YOLayoutOptions)options {
+  CGRect frame = [self size:size inRect:CGRectMake(0, 0, size.width, size.height) view:view options:options];
+  return frame.size;
+}
+
 - (CGRect)sizeToFitVerticalInFrame:(CGRect)frame view:(id)view {
   return [self setFrame:frame view:view options:YOLayoutOptionsSizeToFitVertical];
 }
@@ -103,7 +108,12 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
 }
 
 - (CGRect)setSize:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
+  CGRect frame = [self size:size inRect:inRect view:view options:options];
+  [self setFrame:frame view:view];
+  return frame;
+}
 
+- (CGRect)size:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
   CGSize originalSize = size;
   BOOL sizeToFit = ((options & YOLayoutOptionsSizeToFitHorizontal) != 0)
     || ((options & YOLayoutOptionsSizeToFitVertical) != 0);
@@ -178,8 +188,6 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
   }
 
   CGRect frame = CGRectMake(p.x, p.y, size.width, size.height);
-  [self setFrame:frame view:view];
-
   return frame;
 }
 

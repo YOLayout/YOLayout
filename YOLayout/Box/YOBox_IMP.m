@@ -88,8 +88,11 @@
   if ([option isKindOfClass:NSString.class]) {
     NSArray *split = [option componentsSeparatedByString:@","];
     for (NSString *o in split) {
-      if (isFloat) [options addObject:@([o floatValue])];
-      else [options addObject:@([o integerValue])];
+      if (isFloat) {
+        [options addObject:@([o floatValue])];
+      } else {
+        [options addObject:@([o integerValue])];
+      }
     }
   } else {
     [options addObject:option];
@@ -118,6 +121,22 @@
   NSArray *maxSize = [self parseOption:options[@"maxSize"] isFloat:YES minCount:2];
   if (!maxSize) return CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX);
   return CGSizeMake([maxSize[0] floatValue], [maxSize[1] floatValue]);
+}
+
+- (CGFloat)parseFloat:(NSString *)str value:(CGFloat)value {
+  if (!str) return value;
+  if ([str hasSuffix:@"%"]) {
+    return [[str substringToIndex:str.length-1] floatValue] * 0.01 * value;
+  } else {
+    return [str floatValue];
+  }
+}
+
+- (CGSize)parseSize:(NSDictionary *)options viewSize:(CGSize)viewSize inSize:(CGSize)inSize {
+  if (!options) return viewSize;
+  viewSize.width = [self parseFloat:options[@"width"] value:viewSize.width];
+  viewSize.height = [self parseFloat:options[@"height"] value:viewSize.height];
+  return viewSize;
 }
 
 - (CGSize)parseMinSize:(NSDictionary *)options {
