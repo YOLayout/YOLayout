@@ -38,7 +38,6 @@
       if (++index != subviews.count) x += yself.spacing;
 
     }
-    x += yself.insets.right;
     y += maxHeight + yself.insets.bottom;
 
     // Re-position for alignment
