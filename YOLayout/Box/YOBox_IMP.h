@@ -14,16 +14,25 @@
 #import "YONSView.h"
 #endif
 
+typedef NS_ENUM(NSInteger, YOHorizontalAlignment) {
+  YOHorizontalAlignmentNone,
+  YOHorizontalAlignmentLeft,
+  YOHorizontalAlignmentCenter,
+  YOHorizontalAlignmentRight
+};
+
 @interface YOBox : YOView
 
 @property UIEdgeInsets insets;
 @property CGFloat spacing;
 @property CGSize minSize;
 @property CGSize maxSize;
+@property YOHorizontalAlignment horizontalAlignment;
 @property (nonatomic) NSDictionary *options;
 
 + (instancetype)box;
 + (instancetype)box:(NSDictionary *)options;
++ (instancetype)spacing:(CGSize)spacing;
 
 - (NSArray *)parseOption:(NSString *)option isFloat:(BOOL)isFloat minCount:(NSInteger)minCount;
 

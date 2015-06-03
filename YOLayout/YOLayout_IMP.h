@@ -318,12 +318,12 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
 + (YOLayout *)fill:(id)subview;
 
 /*!
- A layout block which makes the subview passed in the full size.
+ A layout which makes the subview passed in centered.
 
- @param subview Subview to layout
- @param Layout block
+ @param subview The subview to center
+ @param Layout
  */
-+ (YOLayoutBlock)fillLayout:(id)subview;
++ (YOLayout *)center:(id)subview;
 
 @end
 

@@ -81,6 +81,14 @@
   return box;
 }
 
++ (instancetype)spacing:(CGSize)spacing {
+  YOBox *box = [YOBox box];
+  box.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
+    return spacing;
+  }];
+  return box;
+}
+
 - (NSArray *)parseOption:(NSString *)option isFloat:(BOOL)isFloat minCount:(NSInteger)minCount {
   if (!option) return nil;
 
@@ -115,6 +123,11 @@
 
   self.minSize = [self parseMinSize:_options];
   self.maxSize = [self parseMaxSize:_options];
+
+  NSString *ha = options[@"horizontalAlignment"];
+  if ([ha isEqualToString:@"right"]) self.horizontalAlignment = YOHorizontalAlignmentRight;
+  else if ([ha isEqualToString:@"center"]) self.horizontalAlignment = YOHorizontalAlignmentCenter;
+  else if ([ha isEqualToString:@"left"]) self.horizontalAlignment = YOHorizontalAlignmentLeft;
 }
 
 - (CGSize)parseMaxSize:(NSDictionary *)options {

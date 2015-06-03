@@ -10,15 +10,6 @@
 
 #import "YOBox_IMP.h"
 
-typedef NS_ENUM(NSInteger, YOHorizontalAlignment) {
-  YOHorizontalAlignmentNone,
-  YOHorizontalAlignmentLeft,
-  YOHorizontalAlignmentCenter,
-  YOHorizontalAlignmentRight
-};
-
 @interface YOHBox : YOBox
-
-@property YOHorizontalAlignment horizontalAlignment;
 
 @end

@@ -37,9 +37,18 @@
       viewSize.width = MAX(viewSize.width, minSize.width);
       viewSize.height = MAX(viewSize.height, minSize.height);
 
-      if (maxSize.width != 0) size.width = MIN(size.width, maxSize.width);
+      if (maxSize.width != 0) viewSize.width = MIN(viewSize.width, maxSize.width);
 
-      y += [layout setFrame:CGRectMake(yself.insets.left, y, viewSize.width, viewSize.height) view:subview].size.height;
+      CGFloat x;
+      if (self.horizontalAlignment == YOHorizontalAlignmentRight) {
+        x = size.width - viewSize.width - yself.insets.right;
+      } else if (self.horizontalAlignment == YOHorizontalAlignmentCenter) {
+        x = ceilf(size.width/2.0 - viewSize.width/2.0);
+      } else {
+        x = yself.insets.left;
+      }
+
+      y += [layout setFrame:CGRectMake(x, y, viewSize.width, viewSize.height) view:subview].size.height;
 
       if (++index != subviews.count) y += yself.spacing;
     }

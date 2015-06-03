@@ -214,14 +214,18 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
 #pragma mark -
 
 + (YOLayout *)fill:(id)subview {
-  return [self layoutWithLayoutBlock:[YOLayout fillLayout:subview]];
-}
-
-+ (YOLayoutBlock)fillLayout:(id)subview {
-  return ^CGSize(id<YOLayout> layout, CGSize size) {
+  return [self layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
     [layout setFrame:CGRectMake(0, 0, size.width, size.height) view:subview];
     return size;
-  };
+  }];
+}
+
++ (YOLayout *)center:(id)subview {
+  return [self layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+    CGSize sizeThatFits = [subview sizeThatFits:size];
+    [layout centerWithSize:sizeThatFits frame:CGRectMake(0, 0, size.width, size.height) view:subview];
+    return size;
+  }];
 }
 
 @end

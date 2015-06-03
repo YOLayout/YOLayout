@@ -60,13 +60,4 @@
   }];
 }
 
-- (void)setOptions:(NSDictionary *)options {
-  [super setOptions:options];
-
-  NSString *ha = options[@"horizontalAlignment"];
-  if ([ha isEqualToString:@"right"]) self.horizontalAlignment = YOHorizontalAlignmentRight;
-  else if ([ha isEqualToString:@"center"]) self.horizontalAlignment = YOHorizontalAlignmentCenter;
-  else if ([ha isEqualToString:@"left"]) self.horizontalAlignment = YOHorizontalAlignmentLeft;
-}
-
 @end
