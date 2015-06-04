@@ -66,13 +66,22 @@
   return [[self.class alloc] init];
 }
 
++ (instancetype)layoutWithCenter:(id)center top:(NSArray *)top bottom:(NSArray *)bottom {
+  return [self layoutWithCenter:center top:top bottom:bottom insets:UIEdgeInsetsZero spacing:0];
+}
+
 + (instancetype)layoutWithCenter:(id)center top:(NSArray *)top bottom:(NSArray *)bottom insets:(UIEdgeInsets)insets spacing:(CGFloat)spacing {
+  return [self layoutWithCenter:center top:top bottom:bottom insets:insets spacing:spacing maxSize:CGSizeZero];
+}
+
++ (instancetype)layoutWithCenter:(id)center top:(NSArray *)top bottom:(NSArray *)bottom insets:(UIEdgeInsets)insets spacing:(CGFloat)spacing maxSize:(CGSize)maxSize {
   YOBorderLayout *borderLayout = [[self.class alloc] init];
   borderLayout.center = center;
   borderLayout.top = [top mutableCopy];
   borderLayout.bottom = [bottom mutableCopy];
   borderLayout.insets = insets;
   borderLayout.spacing = spacing;
+  borderLayout.maxSize = maxSize;
   return borderLayout;
 }
 

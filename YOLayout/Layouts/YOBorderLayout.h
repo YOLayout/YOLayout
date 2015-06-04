@@ -18,7 +18,9 @@
 
 + (instancetype)layout;
 
++ (instancetype)layoutWithCenter:(id)center top:(NSArray *)top bottom:(NSArray *)bottom;
 + (instancetype)layoutWithCenter:(id)center top:(NSArray *)top bottom:(NSArray *)bottom insets:(UIEdgeInsets)insets spacing:(CGFloat)spacing;
++ (instancetype)layoutWithCenter:(id)center top:(NSArray *)top bottom:(NSArray *)bottom insets:(UIEdgeInsets)insets spacing:(CGFloat)spacing maxSize:(CGSize)maxSize;
 
 - (void)setCenter:(id)center;
 
