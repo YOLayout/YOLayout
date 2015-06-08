@@ -1,6 +1,6 @@
 //
 //  YOHBox.m
-//  YOLayoutExample
+//  YOLayout
 //
 //  Created by Gabriel on 3/13/15.
 //  Copyright (c) 2015 YOLayout. All rights reserved.
@@ -12,22 +12,24 @@
 
 - (void)viewInit {
   [super viewInit];
+  self.viewLayout = [YOLayout layoutWithLayoutBlock:[YOHBox horizontalLayout:self]];
+}
 
-  YOSelf yself = self;
-  self.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
-    CGFloat x = yself.insets.left;
++ (YOLayoutBlock)horizontalLayout:(YOBox *)box {
+  return ^(id<YOLayout> layout, CGSize size) {
+    CGFloat x = box.insets.left;
     NSInteger index = 0;
-    CGFloat y = yself.insets.top;
+    CGFloat y = box.insets.top;
     CGFloat maxHeight = 0;
-    NSArray *subviews = [yself subviews];
+    NSArray *subviews = [box subviewsForLayout];
     for (id subview in subviews) {
       CGSize viewSize = [subview sizeThatFits:CGSizeMake(size.width - x, size.height)];
 
-      CGSize minSize = yself.minSize;
+      CGSize minSize = box.minSize;
       NSString *identifier = [subview respondsToSelector:@selector(identifier)] ? [subview identifier] : nil;
       if (identifier) {
-        NSDictionary *viewOptions = yself.options[identifier];
-        if (!!viewOptions[@"minSize"]) minSize = [self parseMinSize:viewOptions];
+        NSDictionary *viewOptions = box.options[identifier];
+        if (!!viewOptions[@"minSize"]) minSize = [box parseMinSize:viewOptions];
       }
 
       viewSize.width = MAX(viewSize.width, minSize.width);
@@ -35,16 +37,16 @@
       [layout setFrame:CGRectMake(x, y, viewSize.width, viewSize.height) view:subview];
       x += viewSize.width;
       maxHeight = MAX(viewSize.height, maxHeight);
-      if (++index != subviews.count) x += yself.spacing;
+      if (++index != subviews.count) x += box.spacing;
 
     }
-    y += maxHeight + yself.insets.bottom;
+    y += maxHeight + box.insets.bottom;
 
     // Re-position for alignment
     CGFloat position = 0;
-    if (self.horizontalAlignment == YOHorizontalAlignmentRight) {
-      position = size.width - x - yself.insets.right;
-    } else if (self.horizontalAlignment == YOHorizontalAlignmentCenter) {
+    if (box.horizontalAlignment == YOHorizontalAlignmentRight) {
+      position = size.width - x - box.insets.right;
+    } else if (box.horizontalAlignment == YOHorizontalAlignmentCenter) {
       position = ceilf(size.width/2.0 - x/2.0);
     }
 
@@ -57,7 +59,11 @@
     }
 
     return CGSizeMake(MAX(x, size.width), MAX(y, size.height));
-  }];
+  };
 }
 
 @end
+
+CGSize YOLayoutHorizontal(YOBox *box, YOLayout *layout, CGSize size) {
+  return [YOHBox horizontalLayout:box](layout, size);
+}

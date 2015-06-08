@@ -1,6 +1,6 @@
 //
 //  YOHBox.h
-//  YOLayoutExample
+//  YOLayout
 //
 //  Created by Gabriel on 3/13/15.
 //  Copyright (c) 2015 YOLayout. All rights reserved.
@@ -12,4 +12,8 @@
 
 @interface YOHBox : YOBox
 
++ (YOLayoutBlock)horizontalLayout:(YOBox *)box;
+
 @end
+
+CGSize YOLayoutVHorizontal(YOBox *box, YOLayout *layout, CGSize size);
