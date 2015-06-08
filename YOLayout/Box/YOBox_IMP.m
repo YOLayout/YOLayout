@@ -27,20 +27,22 @@
     CGSize itemSize;
     CGFloat rowHeight = 0;
     CGFloat columnWidth = 0;
-    for (id view in self.subviews) {
-      itemSize = [view sizeThatFits:CGSizeMake(size.width - yself.insets.right - x, size.height)];
+    NSArray *subviews = [self subviewsForLayout];
+    for (id subview in subviews) {
+      if (self.ignoreLayoutForHidden && [subview isHidden]) continue;
+      itemSize = [subview sizeThatFits:CGSizeMake(size.width - yself.insets.right - x, size.height)];
       NSAssert(itemSize.width > 0, @"Item returned <= 0 width");
 
-      NSString *identifier = [view respondsToSelector:@selector(identifier)] ? [view identifier] : nil;
+      NSString *identifier = [subview respondsToSelector:@selector(identifier)] ? [subview identifier] : nil;
       CGSize minSize = yself.minSize;
       if (identifier) {
-        NSDictionary *viewOptions = yself.options[[view identifier]];
+        NSDictionary *viewOptions = yself.options[[subview identifier]];
         if (!!viewOptions[@"minSize"]) minSize = [self parseMinSize:viewOptions];
       }
 
       CGSize maxSize = yself.maxSize;
       if (identifier) {
-        NSDictionary *viewOptions = yself.options[[view identifier]];
+        NSDictionary *viewOptions = yself.options[[subview identifier]];
         if (!!viewOptions[@"maxSize"]) maxSize = [self parseMaxSize:viewOptions];
       }
 
@@ -57,13 +59,13 @@
         y += rowHeight + yself.spacing;
       }
 
-      [layout setFrame:CGRectMake(x, y, itemSize.width, itemSize.height) view:view];
+      [layout setFrame:CGRectMake(x, y, itemSize.width, itemSize.height) view:subview];
 
       // If we didn't wrap on last item, then wrap
       x += itemSize.width;
       index++;
 
-      if (index < [self.subviews count]) x += yself.spacing;
+      if (index < [subviews count]) x += yself.spacing;
     }
     y += rowHeight + yself.insets.bottom;
     columnWidth = MAX(columnWidth, x);
@@ -156,6 +158,17 @@
   NSArray *minSize = [self parseOption:options[@"minSize"] isFloat:YES minCount:2];
   if (!minSize) return CGSizeZero;
   return CGSizeMake([minSize[0] floatValue], [minSize[1] floatValue]);
+}
+
+- (NSArray *)subviewsForLayout {
+  if (self.ignoreLayoutForHidden) {
+    NSMutableArray *subviews = [NSMutableArray arrayWithCapacity:self.subviews.count];
+    for (id subview in self.subviews) {
+      if (![subview isHidden]) [subviews addObject:subview];
+    }
+    return subviews;
+  }
+  return [self subviews];
 }
 
 @end

@@ -28,6 +28,7 @@ typedef NS_ENUM(NSInteger, YOHorizontalAlignment) {
 @property CGSize minSize;
 @property CGSize maxSize;
 @property YOHorizontalAlignment horizontalAlignment;
+@property BOOL ignoreLayoutForHidden; // Whether to skip layout for hidden subviews; Default: NO
 @property (nonatomic) NSDictionary *options;
 
 + (instancetype)box;
@@ -42,5 +43,7 @@ typedef NS_ENUM(NSInteger, YOHorizontalAlignment) {
 - (CGSize)parseMaxSize:(NSDictionary *)options;
 
 - (CGSize)parseSize:(NSDictionary *)options viewSize:(CGSize)viewSize inSize:(CGSize)inSize;
+
+- (NSArray *)subviewsForLayout;
 
 @end
