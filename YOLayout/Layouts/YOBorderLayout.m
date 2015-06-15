@@ -9,7 +9,6 @@
 #import "YOBorderLayout.h"
 
 @interface YOBorderLayout ()
-@property id center;
 @property NSMutableArray *top;
 @property NSMutableArray *bottom;
 @end
@@ -46,7 +45,11 @@
         y += [layout sizeToFitVerticalInFrame:CGRectMake(insets.left, y, size.width - insets.left - insets.right, 0) view:topView].size.height + spacing;
       }
 
-      y += [layout setFrame:CGRectMake(insets.left, y, sizeInset.width, centerHeight) view:yself.center].size.height + spacing;
+      if (yself.center) {
+        y += [layout setFrame:CGRectMake(insets.left, y, sizeInset.width, centerHeight) view:yself.center].size.height + spacing;
+      } else {
+        y += centerHeight;
+      }
 
       for (id bottomView in yself.bottom) {
         y += [layout sizeToFitVerticalInFrame:CGRectMake(insets.left, y, size.width - insets.left - insets.right, 0) view:bottomView].size.height + spacing;

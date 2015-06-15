@@ -16,13 +16,14 @@
 @property CGFloat spacing;
 @property CGSize maxSize;
 
+// Center view (fills all the space it can)
+@property id center;
+
 + (instancetype)layout;
 
 + (instancetype)layoutWithCenter:(id)center top:(NSArray *)top bottom:(NSArray *)bottom;
 + (instancetype)layoutWithCenter:(id)center top:(NSArray *)top bottom:(NSArray *)bottom insets:(UIEdgeInsets)insets spacing:(CGFloat)spacing;
 + (instancetype)layoutWithCenter:(id)center top:(NSArray *)top bottom:(NSArray *)bottom insets:(UIEdgeInsets)insets spacing:(CGFloat)spacing maxSize:(CGSize)maxSize;
-
-- (void)setCenter:(id)center;
 
 - (void)addToTop:(id)top;
 
