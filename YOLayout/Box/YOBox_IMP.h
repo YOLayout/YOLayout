@@ -32,6 +32,10 @@ typedef NS_ENUM(NSInteger, YOHorizontalAlignment) {
 @property BOOL debug; // Will display debug info on layout
 @property (nonatomic) NSDictionary *options;
 
+#if TARGET_OS_IPHONE
+@property NSString *identifier;
+#endif
+
 + (instancetype)box;
 + (instancetype)box:(NSDictionary *)options;
 + (instancetype)spacing:(CGSize)spacing;
