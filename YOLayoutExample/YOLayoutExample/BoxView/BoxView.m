@@ -14,7 +14,7 @@
   [super viewInit];
   self.backgroundColor = UIColor.whiteColor;
 
-  YOVBox *labelsView = [YOVBox box:@{@"spacing": @"10", @"insets": @"20,20,0,20"}];
+  YOVBox *labelsView = [YOVBox box:@{@"spacing": @(10), @"insets": @"20,20,0,20"}];
   UILabel *label1 = [[UILabel alloc] init];
   label1.text = @"Box Model Test";
   label1.font = [UIFont boldSystemFontOfSize:20];
@@ -28,7 +28,7 @@
   [labelsView addSubview:label2];
   [self addSubview:labelsView];
 
-  YOHBox *buttons = [YOHBox box:@{@"spacing": @"20", @"insets": @"10, 20, 10, 20", @"minSize": @"50,50", @"horizontalAlignment": @"right"}];
+  YOHBox *buttons = [YOHBox box:@{@"spacing": @(20), @"insets": @"10,20,10,20", @"minSize": @"50,50", @"horizontalAlignment": @"right"}];
   UIButton *button1 = [self buttonWithText:@"A"];
   [buttons addSubview:button1];
   UIButton *button2 = [self buttonWithText:@"B"];
@@ -37,15 +37,16 @@
   [buttons addSubview:button3];
   [self addSubview:buttons];
 
-  YOHBox *buttonsCenter = [YOHBox box:@{@"spacing": @"20", @"horizontalAlignment": @"center"}];
+  YOHBox *buttonsCenter = [YOHBox box:@{@"spacing": @(20), @"horizontalAlignment": @"center"}];
   [buttonsCenter addSubview:[self buttonWithText:@"D"]];
   [buttonsCenter addSubview:[self buttonWithText:@"E"]];
   [buttonsCenter addSubview:[self buttonWithText:@"F"]];
   [self addSubview:buttonsCenter];
 
-  YOBox *box = [YOBox box:@{@"insets": @"20", @"minSize": @"120,0"}];
-  [box addSubview:[self buttonWithText:@"Left"]];
-  YOHBox *right = [YOHBox box:@{@"spacing": @"10", @"horizontalAlignment": @"right"}];
+  YOBox *box = [YOBox box:@{@"insets": @(20), @"spacing": @(10), @"minSize": @"60,0"}];
+  [box addSubview:[self buttonWithText:@"Left1"]];
+  [box addSubview:[self buttonWithText:@"Left2"]];
+  YOHBox *right = [YOHBox box:@{@"spacing": @(10), @"horizontalAlignment": @"right"}];
   [right addSubview:[self buttonWithText:@"Right1"]];
   [right addSubview:[self buttonWithText:@"Right2"]];
   [box addSubview:right];

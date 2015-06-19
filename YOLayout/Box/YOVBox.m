@@ -12,6 +12,7 @@
 
 - (void)viewInit {
   [super viewInit];
+  self.identifier = @"VBox";
   self.viewLayout = [YOLayout layoutWithLayoutBlock:[YOVBox verticalLayout:self]];
 }
 
@@ -20,11 +21,13 @@
     CGFloat y = box.insets.top;
     NSInteger index = 0;
     NSArray *subviews = [box subviewsForLayout];
+    if (box.debug) NSLog(@"%@ layout %@", box.identifier, YONSStringFromCGSize(size));
     for (id subview in subviews) {
       if (box.ignoreLayoutForHidden && [subview isHidden]) continue;
       NSString *identifier = [subview respondsToSelector:@selector(identifier)] ? [subview identifier] : nil;
 
       CGSize viewSize = [layout sizeThatFits:CGSizeMake(size.width - box.insets.left - box.insets.right, 0) view:subview options:YOLayoutOptionsSizeToFitVertical];
+      if (box.debug) NSLog(@"- %@ %@", [subview identifier], YONSStringFromCGSize(viewSize));
 
       CGSize minSize = box.minSize;
       CGSize maxSize = box.maxSize;
@@ -52,7 +55,10 @@
 
       y += [layout setFrame:CGRectMake(x, y, viewSize.width, viewSize.height) view:subview].size.height;
 
-      if (++index != subviews.count) y += box.spacing;
+      if (++index != subviews.count) {
+        if (box.debug) NSLog(@"- Spacing %@", @(box.spacing));
+        y += box.spacing;
+      }
     }
     y += box.insets.bottom;
 
@@ -62,6 +68,7 @@
     size.width = MAX(size.width, minSize.width);
     size.height = MAX(size.height, minSize.height);
 
+    if (box.debug) NSLog(@"%@", YONSStringFromCGSize(size));
     return size;
   };
 }

@@ -161,14 +161,12 @@
 }
 
 - (NSArray *)subviewsForLayout {
-  if (self.ignoreLayoutForHidden) {
-    NSMutableArray *subviews = [NSMutableArray arrayWithCapacity:self.subviews.count];
-    for (id subview in self.subviews) {
-      if (![subview isHidden]) [subviews addObject:subview];
-    }
-    return subviews;
+  if (!self.ignoreLayoutForHidden) return [self subviews];
+  NSMutableArray *subviews = [NSMutableArray arrayWithCapacity:self.subviews.count];
+  for (id subview in self.subviews) {
+    if (![subview isHidden]) [subviews addObject:subview];
   }
-  return [self subviews];
+  return subviews;
 }
 
 @end

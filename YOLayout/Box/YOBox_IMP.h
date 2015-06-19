@@ -29,6 +29,7 @@ typedef NS_ENUM(NSInteger, YOHorizontalAlignment) {
 @property CGSize maxSize;
 @property YOHorizontalAlignment horizontalAlignment;
 @property BOOL ignoreLayoutForHidden; // Whether to skip layout for hidden subviews; Default: NO
+@property BOOL debug; // Will display debug info on layout
 @property (nonatomic) NSDictionary *options;
 
 + (instancetype)box;

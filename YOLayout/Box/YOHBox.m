@@ -12,6 +12,7 @@
 
 - (void)viewInit {
   [super viewInit];
+  self.identifier = @"HBox";
   self.viewLayout = [YOLayout layoutWithLayoutBlock:[YOHBox horizontalLayout:self]];
 }
 
@@ -22,8 +23,10 @@
     CGFloat y = box.insets.top;
     CGFloat maxHeight = 0;
     NSArray *subviews = [box subviewsForLayout];
+    if (box.debug) NSLog(@"%@ layout %@", box.identifier, YONSStringFromCGSize(size));
     for (id subview in subviews) {
-      CGSize viewSize = [subview sizeThatFits:CGSizeMake(size.width - x, size.height)];
+      CGSize viewSize = [subview sizeThatFits:CGSizeMake(size.width - x - box.insets.right, size.height)];
+      if (box.debug) NSLog(@"- %@ %@", [subview identifier], YONSStringFromCGSize(viewSize));
 
       CGSize minSize = box.minSize;
       NSString *identifier = [subview respondsToSelector:@selector(identifier)] ? [subview identifier] : nil;
@@ -58,7 +61,9 @@
       }
     }
 
-    return CGSizeMake(MAX(x, size.width), MAX(y, size.height));
+    size = CGSizeMake(MAX(x, size.width), MAX(y, size.height));
+    if (box.debug) NSLog(@"%@", YONSStringFromCGSize(size));
+    return size;
   };
 }
 
