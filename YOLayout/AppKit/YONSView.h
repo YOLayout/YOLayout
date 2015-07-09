@@ -54,17 +54,9 @@
 - (void)sizeToFit;
 
 /*!
- Calls [self setNeedsLayout:YES];
+ Invalidate the current layout.
  */
 - (void)setNeedsLayout;
-
-/*!
- Set needs layout.
- @param layout If yes, trigger layout to occur sometime in the future.
- 
- For immediate layout, use layoutView.
- */
-- (void)setNeedsLayout:(BOOL)layout;
 
 /*!
  Force the layout, if using YOLayout.
