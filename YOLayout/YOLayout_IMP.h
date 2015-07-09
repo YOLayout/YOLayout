@@ -310,7 +310,7 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
 #pragma mark -
 
 /*!
- A layout which makes the subview passed in the full size.
+ A layout which makes the specified subview fill the full size.
 
  @param subview The subview to layout
  @param Layout
@@ -318,12 +318,28 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
 + (YOLayout *)fill:(id)subview;
 
 /*!
- A layout which makes the subview passed in centered.
+ A layout which makes the specified subview centered.
 
  @param subview The subview to center
  @param Layout
  */
 + (YOLayout *)center:(id)subview;
+
+/*!
+ A layout which makes the specified subview size to fit vertically.
+
+ @param subview The subview to layout
+ @param Layout
+ */
++ (YOLayout *)fitVertical:(id)subview;
+
+/*!
+ A layout which makes the specified subview size to fit horizontally.
+
+ @param subview The subview to layout
+ @param Layout
+ */
++ (YOLayout *)fitHorizontal:(id)subview;
 
 @end
 

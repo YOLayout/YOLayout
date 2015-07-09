@@ -228,6 +228,22 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
   }];
 }
 
++ (YOLayout *)fitVertical:(id)subview {
+  return [self layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+    CGFloat y = 0;
+    y += [layout sizeToFitVerticalInFrame:CGRectMake(0, 0, size.width, size.height) view:subview].size.height;
+    return CGSizeMake(size.width, y);
+  }];
+}
+
++ (YOLayout *)fitHorizontal:(id)subview {
+  return [self layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+    CGFloat x = 0;
+    x += [layout sizeToFitHorizontalInFrame:CGRectMake(0, 0, size.width, size.height) view:subview].size.width;
+    return CGSizeMake(x, size.height);
+  }];
+}
+
 @end
 
 NSString *YONSStringFromCGRect(CGRect rect) {
