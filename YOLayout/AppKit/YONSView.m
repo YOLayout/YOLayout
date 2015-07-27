@@ -15,8 +15,14 @@
   // Don't add anything here, in case subclasses forget to call super
 }
 
+- (void)_viewInit {
+  self.autoresizesSubviews = NO;
+  self.translatesAutoresizingMaskIntoConstraints = NO;
+}
+
 - (id)initWithFrame:(CGRect)frame {
   if ((self = [super initWithFrame:frame])) {
+    [self _viewInit];
     [self viewInit];
   }
   return self;
@@ -24,6 +30,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
   if ((self = [super initWithCoder:aDecoder])) {
+    [self _viewInit];
     [self viewInit];
   }
   return self;
@@ -52,9 +59,11 @@
 
 - (void)layout {
   [super layout];
-  if (_viewLayout) {
-    [_viewLayout layoutSubviews:self.frame.size];
-  }
+  [self _layout];
+}
+
+- (void)_layout {
+  [_viewLayout layoutSubviews:self.frame.size];
 }
 
 - (void)sizeToFit {
@@ -68,16 +77,19 @@
 
 - (void)layoutView {
   NSAssert(_viewLayout, @"Missing layout instance");
-  [self invalidateLayout];
+  [self invalidateLayout:NO];
+  [self _layout];
 }
 
-- (void)invalidateLayout {
+- (void)invalidateLayout:(BOOL)layout {
   [_viewLayout setNeedsLayout];
-  [self layout];
+  if (layout) {
+    [self _layout];
+  }
 }
 
 - (void)setNeedsLayout {
-  [self invalidateLayout];
+  [self invalidateLayout:YES];
 }
 
 @end
