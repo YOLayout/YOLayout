@@ -1,5 +1,5 @@
 //
-//  YOBorderLayout.h
+//  YOVBorderLayout.h
 //  YOLayoutExample
 //
 //  Created by Gabriel on 4/24/15.
@@ -10,7 +10,7 @@
 
 #import "YOLayout_IMP.h"
 
-@interface YOBorderLayout : YOLayout
+@interface YOVBorderLayout : YOLayout
 
 @property UIEdgeInsets insets;
 @property CGFloat spacing;

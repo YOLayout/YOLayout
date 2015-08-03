@@ -8,40 +8,46 @@
 
 #import "BorderView.h"
 
-#import "YOBorderLayout.h"
+#import "YOVBorderLayout.h"
+#import "YOHBorderLayout.h"
 
 @implementation BorderView
 
 - (void)viewInit {
   [super viewInit];
-  self.backgroundColor = [UIColor lightGrayColor];
+  self.backgroundColor = UIColor.blackColor;
 
-  UILabel *topView = [[UILabel alloc] init];
-  topView.font = [UIFont systemFontOfSize:20];
-  topView.text = @"Top View";
-  topView.numberOfLines = 0;
-  topView.textAlignment = NSTextAlignmentCenter;
-  topView.backgroundColor = [UIColor redColor];
+  UILabel *topView = [self label:@"Top" backgroundColor:UIColor.redColor];
   [self addSubview:topView];
 
-  UILabel *centerView = [[UILabel alloc] init];
-  centerView.font = [UIFont systemFontOfSize:20];
-  centerView.text = @"Center View";
-  centerView.numberOfLines = 0;
-  centerView.textAlignment = NSTextAlignmentCenter;
-  centerView.backgroundColor = [UIColor blueColor];
-  centerView.textColor = [UIColor whiteColor];
+  YOView *centerView = [YOView view];
+  {
+    UILabel *leftLabel = [self label:@"Left" backgroundColor:UIColor.greenColor];
+    [centerView addSubview:leftLabel];
+    UILabel *centerLabel = [self label:@"Center" backgroundColor:UIColor.blueColor];
+    [centerView addSubview:centerLabel];
+    UILabel *rightLabel = [self label:@"Right" backgroundColor:UIColor.cyanColor];
+    [centerView addSubview:rightLabel];
+
+    centerView.viewLayout = [YOHBorderLayout layoutWithCenter:centerLabel left:@[leftLabel] right:@[rightLabel] insets:UIEdgeInsetsZero spacing:10];
+  }
   [self addSubview:centerView];
 
-  UILabel *bottomView = [[UILabel alloc] init];
-  bottomView.font = [UIFont systemFontOfSize:20];
-  bottomView.text = @"Bottom View";
-  bottomView.numberOfLines = 0;
-  bottomView.textAlignment = NSTextAlignmentCenter;
-  bottomView.backgroundColor = [UIColor orangeColor];
+  UILabel *bottomView = [self label:@"Bottom" backgroundColor:UIColor.orangeColor];
   [self addSubview:bottomView];
 
-  self.layout = [YOBorderLayout layoutWithCenter:centerView top:@[topView] bottom:@[bottomView] insets:UIEdgeInsetsMake(20, 20, 20, 20) spacing:10];
+  self.layout = [YOVBorderLayout layoutWithCenter:centerView top:@[topView] bottom:@[bottomView] insets:UIEdgeInsetsMake(20, 20, 20, 20) spacing:10];
+}
+
+- (UILabel *)label:(NSString *)text backgroundColor:(UIColor *)backgroundColor {
+  UILabel *label = [[UILabel alloc] init];
+  label.font = [UIFont systemFontOfSize:20];
+  label.text = text;
+  label.numberOfLines = 0;
+  label.textAlignment = NSTextAlignmentCenter;
+  label.backgroundColor = backgroundColor;
+  label.textColor = [UIColor whiteColor];
+  return label;
 }
 
 @end

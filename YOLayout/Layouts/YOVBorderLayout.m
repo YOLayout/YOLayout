@@ -1,19 +1,19 @@
 //
-//  YOBorderLayout.m
+//  YOVBorderLayout.m
 //  YOLayoutExample
 //
 //  Created by Gabriel on 4/24/15.
 //  Copyright (c) 2015 YOLayout. All rights reserved.
 //
 
-#import "YOBorderLayout.h"
+#import "YOVBorderLayout.h"
 
-@interface YOBorderLayout ()
+@interface YOVBorderLayout ()
 @property NSMutableArray *top;
 @property NSMutableArray *bottom;
 @end
 
-@implementation YOBorderLayout
+@implementation YOVBorderLayout
 
 - (instancetype)init {
   if ((self = [super init])) {
@@ -78,7 +78,7 @@
 }
 
 + (instancetype)layoutWithCenter:(id)center top:(NSArray *)top bottom:(NSArray *)bottom insets:(UIEdgeInsets)insets spacing:(CGFloat)spacing maxSize:(CGSize)maxSize {
-  YOBorderLayout *borderLayout = [[self.class alloc] init];
+  YOVBorderLayout *borderLayout = [[self.class alloc] init];
   borderLayout.center = center;
   borderLayout.top = [top mutableCopy];
   borderLayout.bottom = [bottom mutableCopy];
