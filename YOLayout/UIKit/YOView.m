@@ -15,6 +15,10 @@
 
 @implementation YOView
 
++ (instancetype)view {
+  return [[YOView alloc] init];
+}
+
 - (void)viewInit {
   // Don't add anything here, in case subclasses forget to call super
 }

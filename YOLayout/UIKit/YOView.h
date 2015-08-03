@@ -31,6 +31,9 @@
 
 @property YOLayout *viewLayout;
 
+// Creates empty view
++ (instancetype)view;
+
 /*!
  Subclasses can override this method to perform initialization tasks that occur during both initWithFrame: and initWithCoder:
  */
