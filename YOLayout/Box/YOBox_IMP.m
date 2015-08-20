@@ -83,10 +83,10 @@
   return box;
 }
 
-+ (instancetype)spacing:(CGSize)spacing {
++ (instancetype)boxWithSize:(CGSize)size {
   YOBox *box = [YOBox box];
-  box.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
-    return spacing;
+  box.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize s) {
+    return size;
   }];
   return box;
 }

@@ -38,7 +38,8 @@ typedef NS_ENUM(NSInteger, YOHorizontalAlignment) {
 
 + (instancetype)box;
 + (instancetype)box:(NSDictionary *)options;
-+ (instancetype)spacing:(CGSize)spacing;
+
++ (instancetype)boxWithSize:(CGSize)size;
 
 - (NSArray *)parseOption:(NSString *)option isFloat:(BOOL)isFloat minCount:(NSInteger)minCount;
 

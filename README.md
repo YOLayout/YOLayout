@@ -183,10 +183,9 @@ YOLayout, like most things, has trade-offs. We like using it especially for real
 
 But there are downsides:
 
-- You might find yourself hardcoding pixel values for things like padding, a lot.
-- If you are tweaking padding and positioning, you have to re-run the project to visualize those changes, whereas in Interface Builder you would see those changes immediately. (Unless your view is IB_DESIGNABLE which YOLayout supports.)
-- Autolayout works really well in certain cases and easier to read than manual layout code.
-- YOLayout is a custom framework whereas Interface Builder and AutoLayout are part of Apple and their SDK.
+- You might find yourself hardcoding pixel values for things like padding and insets.
+- With simple layouts AutoLayout can be easier.
+- YOLayout is a custom framework whereas Interface Builder and AutoLayout are part of Apple and their SDK, and so are better supported.
 
 And probably many more, feel free to tell us why you hate it, by submitting an [issue](https://github.com/YOLayout/YOLayout/issues).
 
@@ -204,7 +203,8 @@ it, simply add the following line to your Podfile:
 
 ## Box Model
 
-Using YOLayout we implemented a box model (`YOVBox` and `YOHBox`). This is experimental.
+Using YOLayout we implemented a box model (`YOVBox` and `YOHBox`), that supports some basic
+layout properties such as spacing, insets, horizontalAlignment, minSize, and maxSize.
 
 `YOVBox` is for vertical layout, and `YOHBox` is for horizontal layout. For example:
 
@@ -220,33 +220,42 @@ Using YOLayout we implemented a box model (`YOVBox` and `YOHBox`). This is exper
   [super viewInit];
   self.backgroundColor = UIColor.whiteColor;
 
+  // Labels stacked vertically (VBox)
   YOVBox *labelsView = [YOVBox box:@{@"spacing": @"10", @"insets": @"20,20,0,20"}];
-  UILabel *label1 = [[UILabel alloc] init];
-  label1.text = @"Box Model Test";
-  label1.font = [UIFont boldSystemFontOfSize:20];
-  label1.textAlignment = NSTextAlignmentCenter;
-  [labelsView addSubview:label1];
+  {
+    UILabel *label1 = [[UILabel alloc] init];
+    label1.text = @"Box Model Test";
+    label1.font = [UIFont boldSystemFontOfSize:20];
+    label1.textAlignment = NSTextAlignmentCenter;
+    [labelsView addSubview:label1];
 
-  UILabel *label2 = [[UILabel alloc] init];
-  label2.font = [UIFont systemFontOfSize:14];
-  label2.numberOfLines = 0;
-  label2.text = @"PBR&B Intelligentsia shabby chic. Messenger bag flexitarian cold-pressed VHS 90's. Tofu chillwave pour-over Marfa cold-pressed, kogi bespoke High Life semiotics readymade authentic wolf sriracha craft beer. Next level direct trade shabby chic vegan cliche. Mlkshk butcher church-key cornhole 3 wolf moon, YOLO cold-pressed cronut";
-  [labelsView addSubview:label2];
+    UILabel *label2 = [[UILabel alloc] init];
+    label2.font = [UIFont systemFontOfSize:14];
+    label2.numberOfLines = 0;
+    label2.text = @"PBR&B Intelligentsia shabby chic. Messenger bag flexitarian cold-pressed VHS 90's. Tofu chillwave pour-over Marfa cold-pressed, kogi bespoke High Life semiotics readymade authentic wolf sriracha craft beer. Next level direct trade shabby chic vegan cliche. Mlkshk butcher church-key cornhole 3 wolf moon, YOLO cold-pressed cronut";
+    [labelsView addSubview:label2];
+  }
   [self addSubview:labelsView];
 
-  YOHBox *buttons = [YOHBox box:@{@"spacing": @"20", @"insets": @"10, 20, 10, 20", @"minSize": @"50,50", @"horizontalAlignment": @"right"}];
-  UIButton *button1 = [self buttonWithText:@"A"];
-  [buttons addSubview:button1];
-  UIButton *button2 = [self buttonWithText:@"B"];
-  [buttons addSubview:button2];
-  UIButton *button3 = [self buttonWithText:@"C"];
-  [buttons addSubview:button3];
+  // Buttons with min size right aligned (HBox)
+  YOHBox *buttons = [YOHBox box:@{@"spacing": @"20", @"insets": @"10,20,10,20", @"minSize": @"50,50", @"horizontalAlignment": @"right"}];
+  {
+    UIButton *button1 = [self buttonWithText:@"A"];
+    [buttons addSubview:button1];
+    UIButton *button2 = [self buttonWithText:@"B"];
+    [buttons addSubview:button2];
+    UIButton *button3 = [self buttonWithText:@"C"];
+    [buttons addSubview:button3];
+  }
   [self addSubview:buttons];
 
+  // Buttons centered horizontally (HBox)
   YOHBox *buttonsCenter = [YOHBox box:@{@"spacing": @"20", @"horizontalAlignment": @"center"}];
-  [buttonsCenter addSubview:[self buttonWithText:@"D"]];
-  [buttonsCenter addSubview:[self buttonWithText:@"E"]];
-  [buttonsCenter addSubview:[self buttonWithText:@"F"]];
+  {
+    [buttonsCenter addSubview:[self buttonWithText:@"D"]];
+    [buttonsCenter addSubview:[self buttonWithText:@"E"]];
+    [buttonsCenter addSubview:[self buttonWithText:@"F"]];
+  }
   [self addSubview:buttonsCenter];
 }
 
@@ -264,6 +273,55 @@ Using YOLayout we implemented a box model (`YOVBox` and `YOHBox`). This is exper
 ```
 
 ![BoxView.png](https://raw.githubusercontent.com/YOLayout/YOLayout/master/YOLayoutExample/YOLayoutExample/BoxView/BoxView.png)
+
+## Border Layouts
+
+For border layouts, you can use `YOVBorderLayout` or `YOHBorderLayout`. For example,
+
+```objc
+@implementation BorderView
+
+- (void)viewInit {
+  [super viewInit];
+  self.backgroundColor = UIColor.blackColor;
+
+  UILabel *topView = [self label:@"Top" backgroundColor:UIColor.redColor];
+  [self addSubview:topView];
+
+  YOView *centerView = [YOView view];
+  {
+    UILabel *leftLabel = [self label:@"Left" backgroundColor:UIColor.greenColor];
+    [centerView addSubview:leftLabel];
+    UILabel *centerLabel = [self label:@"Center" backgroundColor:UIColor.blueColor];
+    [centerView addSubview:centerLabel];
+    UILabel *rightLabel = [self label:@"Right" backgroundColor:UIColor.cyanColor];
+    [centerView addSubview:rightLabel];
+
+    centerView.viewLayout = [YOHBorderLayout layoutWithCenter:centerLabel left:@[leftLabel] right:@[rightLabel] insets:UIEdgeInsetsZero spacing:10];
+  }
+  [self addSubview:centerView];
+
+  UILabel *bottomView = [self label:@"Bottom" backgroundColor:UIColor.orangeColor];
+  [self addSubview:bottomView];
+
+  self.layout = [YOVBorderLayout layoutWithCenter:centerView top:@[topView] bottom:@[bottomView] insets:UIEdgeInsetsMake(20, 20, 20, 20) spacing:10];
+}
+
+- (UILabel *)label:(NSString *)text backgroundColor:(UIColor *)backgroundColor {
+  UILabel *label = [[UILabel alloc] init];
+  label.font = [UIFont systemFontOfSize:20];
+  label.text = text;
+  label.numberOfLines = 0;
+  label.textAlignment = NSTextAlignmentCenter;
+  label.backgroundColor = backgroundColor;
+  label.textColor = [UIColor whiteColor];
+  return label;
+}
+
+@end
+```
+
+![BorderView.png](https://raw.githubusercontent.com/YOLayout/YOLayout/master/YOLayoutExample/YOLayoutExample/BorderView/BorderView.png)
 
 ## License
 
