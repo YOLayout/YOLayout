@@ -9,7 +9,7 @@ A frame-based layout framework that works with `UIView`, `NSView`, `CALayer`, an
 
 ## Usage
 
-Let's just jump into the code.
+Here is an example of a view with an image, title label, and multi-line description label with a dynamic height.
 
 ```objc
 // TableViewCellView.h
@@ -17,11 +17,7 @@ Let's just jump into the code.
 
 @interface TableViewCellView : YOView // Subclass YOView
 @end
-```
 
-Here is an example of a view with an image, title label, and multi-line description label with a dynamic height.
-
-```objc
 // TableViewCellView.m
 @interface TableViewCellView ()
 @property UILabel *titleLabel;
@@ -49,22 +45,21 @@ Here is an example of a view with an image, title label, and multi-line descript
 
   YOSelf yself = self;
   self.viewLayout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
-    UIEdgeInsets insets = UIEdgeInsetsMake(10, 10, 10, 10); // Insets for padding
-    CGFloat x = insets.left;
-    CGFloat y = insets.top;
+    CGFloat x = 10;
+    CGFloat y = 10;
 
     // imageView's size is set by the UIImage when using initWithImage:
     CGRect imageViewFrame = [layout setOrigin:CGPointMake(x, y) view:imageView options:0];
     x += imageViewFrame.size.width + 10;
 
-    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - insets.right, 0) view:yself.titleLabel].size.height;
-    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - insets.right, 1000) view:yself.descriptionLabel].size.height;
+    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - 10, 0) view:yself.titleLabel].size.height;
+    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - 10, 1000) view:yself.descriptionLabel].size.height;
 
     // Ensure the y position is at least as high as the image view
     y = MAX(y, (imageViewFrame.origin.y + imageViewFrame.size.height));
+    y += 10;
 
-    // The height depends on the height of the items in the layout
-    return CGSizeMake(size.width, y + insets.bottom);
+    return CGSizeMake(size.width, y);
   }];
 }
 ```
