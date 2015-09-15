@@ -26,7 +26,7 @@
       if (box.ignoreLayoutForHidden && [subview isHidden]) continue;
       NSString *identifier = [subview respondsToSelector:@selector(identifier)] ? [subview identifier] : nil;
 
-      CGSize viewSize = [layout sizeThatFits:CGSizeMake(size.width - box.insets.left - box.insets.right, size.height) view:subview options:YOLayoutOptionsSizeToFitVertical];
+      CGSize viewSize = [layout sizeThatFits:CGSizeMake(size.width - box.insets.left - box.insets.right, 0) view:subview options:YOLayoutOptionsSizeToFitVertical];
       if (box.debug) NSLog(@"- %@ %@", [subview identifier], YONSStringFromCGSize(viewSize));
 
       CGSize minSize = box.minSize;
