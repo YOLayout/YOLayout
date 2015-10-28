@@ -301,7 +301,6 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
 /*!
  Default layout.
 
- @param view View for layout (weak reference).
  @param layoutBlock Block containing layout code. See the discussion above the YOLayoutBlock typedef for more info.
  @result Layout
  */
