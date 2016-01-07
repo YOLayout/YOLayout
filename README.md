@@ -239,7 +239,7 @@ For border layouts, you can use `YOVBorderLayout` or `YOHBorderLayout`. For exam
   UILabel *bottomView = [self label:@"Bottom" backgroundColor:UIColor.orangeColor];
   [self addSubview:bottomView];
 
-  self.layout = [YOVBorderLayout layoutWithCenter:centerView top:@[topView] bottom:@[bottomView] insets:UIEdgeInsetsMake(20, 20, 20, 20) spacing:10];
+  self.viewLayout = [YOVBorderLayout layoutWithCenter:centerView top:@[topView] bottom:@[bottomView] insets:UIEdgeInsetsMake(20, 20, 20, 20) spacing:10];
 }
 
 - (UILabel *)label:(NSString *)text backgroundColor:(UIColor *)backgroundColor {
