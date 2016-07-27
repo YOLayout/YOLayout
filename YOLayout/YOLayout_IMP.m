@@ -26,6 +26,92 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
 
 @implementation YOLayout
 
+#pragma mark - Class Methods
+
++ (CGRect)Size:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
+  CGSize originalSize = size;
+  BOOL sizeToFit = ((options & YOLayoutOptionsSizeToFitHorizontal) != 0)
+      || ((options & YOLayoutOptionsSizeToFitVertical) != 0);
+
+  CGSize sizeThatFits = CGSizeZero;
+  if (sizeToFit) {
+    sizeThatFits = [view sizeThatFits:size];
+
+    // If size that fits returns a larger width, then we'll need to constrain it.
+    if (((options & YOLayoutOptionsConstrainWidth) != 0) && sizeThatFits.width > size.width) {
+      sizeThatFits.width = size.width;
+    }
+
+    // If size that fits returns a larger height, then we'll need to constrain it.
+    if (((options & YOLayoutOptionsConstrainHeight) != 0) && sizeThatFits.height > size.height) {
+      sizeThatFits.height = size.height;
+    }
+
+    // If size that fits returns a larger width or height, constrain it, but also maintain the aspect ratio from sizeThatFits
+    if (((options & YOLayoutOptionsConstrainSizeMaintainAspectRatio) != 0) && (sizeThatFits.height > size.height || sizeThatFits.width > size.width)) {
+      CGFloat aspectRatio = sizeThatFits.width / sizeThatFits.height;
+      // If we're going to constrain by width
+      if (sizeThatFits.width / size.width > sizeThatFits.height / size.height) {
+        sizeThatFits.width = size.width;
+        sizeThatFits.height = roundf(size.width / aspectRatio);
+        // If we're going to constrain by height
+      } else {
+        sizeThatFits.height = size.height;
+        sizeThatFits.width = roundf(size.height * aspectRatio);
+      }
+    }
+
+    if (sizeThatFits.width == 0 && ((options & YOLayoutOptionsDefaultWidth) != 0)) {
+      sizeThatFits.width = size.width;
+    }
+
+    if (sizeThatFits.height == 0 && ((options & YOLayoutOptionsDefaultHeight) != 0)) {
+      sizeThatFits.height = size.height;
+    }
+
+    size = sizeThatFits;
+  }
+
+  if ((options & YOLayoutOptionsSizeToFitHorizontal) == 0) {
+    size.width = originalSize.width;
+  }
+
+  if ((options & YOLayoutOptionsSizeToFitVertical) == 0) {
+    size.height = originalSize.height;
+  }
+
+  // If we passed in 0 for inRect height or width, then lets set it to the frame height or width.
+  // This usually happens if we are sizing to fit, and is needed to align below.
+  if (inRect.size.width == 0) inRect.size.width = size.width;
+  if (inRect.size.height == 0) inRect.size.height = size.height;
+
+  CGPoint p = inRect.origin;
+  if ((options & YOLayoutOptionsAlignCenterHorizontal) != 0) {
+    p.x += YOCGPointToCenterX(size, inRect.size).x;
+  }
+
+  if ((options & YOLayoutOptionsAlignCenterVertical) != 0) {
+    p.y += YOCGPointToCenterY(size, inRect.size).y;
+  }
+
+  if ((options & YOLayoutOptionsAlignRight) != 0) {
+    p.x = inRect.origin.x + inRect.size.width - size.width;
+  }
+
+  if ((options & YOLayoutOptionsAlignBottom) != 0) {
+    p.y = inRect.origin.y + inRect.size.height - size.height;
+  }
+
+  CGRect frame = CGRectMake(p.x, p.y, size.width, size.height);
+  return frame;
+}
+
++ (CGRect)FrameFromRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
+  return [self Size:inRect.size inRect:inRect view:view options:options];
+}
+
+#pragma mark - Lifecycle
+
 - (id)init {
   if ((self = [super init])) {
     _needsLayout = YES;
@@ -80,8 +166,10 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
   return [self _layout:size sizing:YES];
 }
 
+#pragma mark - Layout methods
+
 - (CGSize)sizeThatFits:(CGSize)size view:(id)view options:(YOLayoutOptions)options {
-  CGRect frame = [self size:size inRect:CGRectMake(0, 0, size.width, size.height) view:view options:options];
+  CGRect frame = [self.class Size:size inRect:CGRectMake(0, 0, size.width, size.height) view:view options:options];
   return frame.size;
 }
 
@@ -108,86 +196,8 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
 }
 
 - (CGRect)setSize:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
-  CGRect frame = [self size:size inRect:inRect view:view options:options];
+  CGRect frame = [self.class Size:size inRect:inRect view:view options:options];
   [self setFrame:frame view:view];
-  return frame;
-}
-
-- (CGRect)size:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
-  CGSize originalSize = size;
-  BOOL sizeToFit = ((options & YOLayoutOptionsSizeToFitHorizontal) != 0)
-    || ((options & YOLayoutOptionsSizeToFitVertical) != 0);
-
-  CGSize sizeThatFits = CGSizeZero;
-  if (sizeToFit) {
-    sizeThatFits = [view sizeThatFits:size];
-    
-    // If size that fits returns a larger width, then we'll need to constrain it.
-    if (((options & YOLayoutOptionsConstrainWidth) != 0) && sizeThatFits.width > size.width) {
-      sizeThatFits.width = size.width;
-    }
-
-    // If size that fits returns a larger height, then we'll need to constrain it.
-    if (((options & YOLayoutOptionsConstrainHeight) != 0) && sizeThatFits.height > size.height) {
-      sizeThatFits.height = size.height;
-    }
-
-    // If size that fits returns a larger width or height, constrain it, but also maintain the aspect ratio from sizeThatFits
-    if (((options & YOLayoutOptionsConstrainSizeMaintainAspectRatio) != 0) && (sizeThatFits.height > size.height || sizeThatFits.width > size.width)) {
-      CGFloat aspectRatio = sizeThatFits.width / sizeThatFits.height;
-      // If we're going to constrain by width
-      if (sizeThatFits.width / size.width > sizeThatFits.height / size.height) {
-        sizeThatFits.width = size.width;
-        sizeThatFits.height = roundf(size.width / aspectRatio);
-        // If we're going to constrain by height
-      } else {
-        sizeThatFits.height = size.height;
-        sizeThatFits.width = roundf(size.height * aspectRatio);
-      }
-    }
-
-    if (sizeThatFits.width == 0 && ((options & YOLayoutOptionsDefaultWidth) != 0)) {
-      sizeThatFits.width = size.width;
-    }
-    
-    if (sizeThatFits.height == 0 && ((options & YOLayoutOptionsDefaultHeight) != 0)) {
-      sizeThatFits.height = size.height;
-    }
-
-    size = sizeThatFits;
-  }
-  
-  if ((options & YOLayoutOptionsSizeToFitHorizontal) == 0) {
-    size.width = originalSize.width;
-  }
-  
-  if ((options & YOLayoutOptionsSizeToFitVertical) == 0) {
-    size.height = originalSize.height;
-  }
-
-  // If we passed in 0 for inRect height or width, then lets set it to the frame height or width.
-  // This usually happens if we are sizing to fit, and is needed to align below.
-  if (inRect.size.width == 0) inRect.size.width = size.width;
-  if (inRect.size.height == 0) inRect.size.height = size.height;
-
-  CGPoint p = inRect.origin;
-  if ((options & YOLayoutOptionsAlignCenterHorizontal) != 0) {
-    p.x += YOCGPointToCenterX(size, inRect.size).x;
-  }
-
-  if ((options & YOLayoutOptionsAlignCenterVertical) != 0) {
-    p.y += YOCGPointToCenterY(size, inRect.size).y;
-  }
-
-  if ((options & YOLayoutOptionsAlignRight) != 0) {
-    p.x = inRect.origin.x + inRect.size.width - size.width;
-  }
-
-  if ((options & YOLayoutOptionsAlignBottom) != 0) {
-    p.y = inRect.origin.y + inRect.size.height - size.height;
-  }
-
-  CGRect frame = CGRectMake(p.x, p.y, size.width, size.height);
   return frame;
 }
 
@@ -245,21 +255,3 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
 }
 
 @end
-
-NSString *YONSStringFromCGRect(CGRect rect) {
-  return [NSString stringWithFormat:@"(%@, %@, %@, %@)", @(rect.origin.x), @(rect.origin.y), @(rect.size.width), @(rect.size.height)];
-}
-
-NSString *YONSStringFromCGSize(CGSize size) {
-  return [NSString stringWithFormat:@"(%@, %@)", @(size.width), @(size.height)];
-}
-
-
-CGRect YOCGRectApplyInsets(CGRect frame, UIEdgeInsets insets) {
-  CGRect f = frame;
-  f.origin.x += insets.left;
-  f.origin.y += insets.top;
-  f.size.width -= insets.left + insets.right;
-  f.size.height -= insets.top + insets.bottom;
-  return f;
-}

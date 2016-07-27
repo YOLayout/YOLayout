@@ -72,6 +72,29 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
 @protocol YOLayout <NSObject>
 
 /*!
+ Calculate a (sub)view's frame.
+
+ @param inRect Default frame to set for the view
+ @param view View object should implement sizeThatFits:
+ @param options Options for setFrame; See YOLayoutOptions for more info
+ @result The calculated frame.
+ */
++ (CGRect)FrameFromRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options;
+
+/*!
+ Calculate a (sub)view's frame.
+
+ @param size Desired size (or size hint if using YOLayoutOptionsSizeToFit)
+ @param inRect Rect in which to position the view. `inRect.size` may be different than `size` when using this method with YOLayoutOptionsAlignCenter, YOLayoutOptionsAlignCenterVertical, YOLayoutOptionsAlignRight, etc.
+ @param view View object should implement sizeThatFits:
+ @param options Options for setFrame; See YOLayoutOptions for more info
+ @result The calculated frame.
+ */
++ (CGRect)Size:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options;
+
+
+
+/*!
  Layout the subviews.
  
  @param size Size to layout in
@@ -301,6 +324,7 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
 /*!
  Default layout.
 
+ @param view View for layout (weak reference).
  @param layoutBlock Block containing layout code. See the discussion above the YOLayoutBlock typedef for more info.
  @result Layout
  */
@@ -361,9 +385,3 @@ static inline UIEdgeInsets UIEdgeInsetsAdd(UIEdgeInsets i1, UIEdgeInsets i2) {
 }
 
 #endif
-
-NSString *YONSStringFromCGRect(CGRect rect);
-
-NSString *YONSStringFromCGSize(CGSize size);
-
-CGRect YOCGRectApplyInsets(CGRect frame, UIEdgeInsets insets);
