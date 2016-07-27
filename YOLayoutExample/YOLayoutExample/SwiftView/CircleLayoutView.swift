@@ -14,7 +14,7 @@ class CircleLayoutView: YOView {
         self.backgroundColor = UIColor(white: 0.96, alpha: 1)
 
         // Create a set of subviews
-        for i in 0...7 {
+        for _ in 0...7 {
             let imageView = UIImageView(image: UIImage(named: "information.png"))
             self.addSubview(imageView)
         }
