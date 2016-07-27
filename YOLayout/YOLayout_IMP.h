@@ -92,8 +92,6 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
  */
 + (CGRect)Size:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options;
 
-
-
 /*!
  Layout the subviews.
  
