@@ -28,7 +28,7 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
 
 #pragma mark - Class Methods
 
-+ (CGRect)Size:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
++ (CGRect)frameForView:(id)view size:(CGSize)size containerFrame:(CGRect)containerFrame options:(YOLayoutOptions)options {
   CGSize originalSize = size;
   BOOL sizeToFit = ((options & YOLayoutOptionsSizeToFitHorizontal) != 0)
       || ((options & YOLayoutOptionsSizeToFitVertical) != 0);
@@ -80,34 +80,34 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
     size.height = originalSize.height;
   }
 
-  // If we passed in 0 for inRect height or width, then lets set it to the frame height or width.
+  // If we passed in 0 for containerFrame height or width, then lets set it to the frame height or width.
   // This usually happens if we are sizing to fit, and is needed to align below.
-  if (inRect.size.width == 0) inRect.size.width = size.width;
-  if (inRect.size.height == 0) inRect.size.height = size.height;
+  if (containerFrame.size.width == 0) containerFrame.size.width = size.width;
+  if (containerFrame.size.height == 0) containerFrame.size.height = size.height;
 
-  CGPoint p = inRect.origin;
+  CGPoint p = containerFrame.origin;
   if ((options & YOLayoutOptionsAlignCenterHorizontal) != 0) {
-    p.x += YOCGPointToCenterX(size, inRect.size).x;
+    p.x += YOCGPointToCenterX(size, containerFrame.size).x;
   }
 
   if ((options & YOLayoutOptionsAlignCenterVertical) != 0) {
-    p.y += YOCGPointToCenterY(size, inRect.size).y;
+    p.y += YOCGPointToCenterY(size, containerFrame.size).y;
   }
 
   if ((options & YOLayoutOptionsAlignRight) != 0) {
-    p.x = inRect.origin.x + inRect.size.width - size.width;
+    p.x = containerFrame.origin.x + containerFrame.size.width - size.width;
   }
 
   if ((options & YOLayoutOptionsAlignBottom) != 0) {
-    p.y = inRect.origin.y + inRect.size.height - size.height;
+    p.y = containerFrame.origin.y + containerFrame.size.height - size.height;
   }
 
   CGRect frame = CGRectMake(p.x, p.y, size.width, size.height);
   return frame;
 }
 
-+ (CGRect)FrameFromRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
-  return [self Size:inRect.size inRect:inRect view:view options:options];
++ (CGRect)frameForView:(id)view containerFrame:(CGRect)containerFrame options:(YOLayoutOptions)options {
+  return [self frameForView:view size:containerFrame.size containerFrame:containerFrame options:options];
 }
 
 #pragma mark - Lifecycle
@@ -169,7 +169,7 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
 #pragma mark - Layout methods
 
 - (CGSize)sizeThatFits:(CGSize)size view:(id)view options:(YOLayoutOptions)options {
-  CGRect frame = [self.class Size:size inRect:CGRectMake(0, 0, size.width, size.height) view:view options:options];
+  CGRect frame = [self.class frameForView:view size:size containerFrame:CGRectMake(0, 0, size.width, size.height) options:options];
   return frame.size;
 }
 
@@ -196,7 +196,7 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
 }
 
 - (CGRect)setSize:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
-  CGRect frame = [self.class Size:size inRect:inRect view:view options:options];
+  CGRect frame = [self.class frameForView:view size:size containerFrame:inRect options:options];
   [self setFrame:frame view:view];
   return frame;
 }

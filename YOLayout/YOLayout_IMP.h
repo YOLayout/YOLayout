@@ -74,23 +74,23 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
 /*!
  Calculate a (sub)view's frame.
 
- @param inRect Default frame to set for the view
  @param view View object should implement sizeThatFits:
+ @param containerFrame Default frame to set for the view
  @param options Options for setFrame; See YOLayoutOptions for more info
  @result The calculated frame.
  */
-+ (CGRect)FrameFromRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options;
++ (CGRect)frameForView:(id)view containerFrame:(CGRect)containerFrame options:(YOLayoutOptions)options;
 
 /*!
  Calculate a (sub)view's frame.
 
- @param size Desired size (or size hint if using YOLayoutOptionsSizeToFit)
- @param inRect Rect in which to position the view. `inRect.size` may be different than `size` when using this method with YOLayoutOptionsAlignCenter, YOLayoutOptionsAlignCenterVertical, YOLayoutOptionsAlignRight, etc.
  @param view View object should implement sizeThatFits:
+ @param size Desired size (or size hint if using YOLayoutOptionsSizeToFit)
+ @param containerFrame Rect in which to position the view. `inRect.size` may be different than `size` when using this method with YOLayoutOptionsAlignCenter, YOLayoutOptionsAlignCenterVertical, YOLayoutOptionsAlignRight, etc.
  @param options Options for setFrame; See YOLayoutOptions for more info
  @result The calculated frame.
  */
-+ (CGRect)Size:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options;
++ (CGRect)frameForView:(id)view size:(CGSize)size containerFrame:(CGRect)containerFrame options:(YOLayoutOptions)options;
 
 /*!
  Layout the subviews.
