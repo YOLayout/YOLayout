@@ -28,14 +28,35 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
 
 #pragma mark - Class Methods
 
-+ (CGRect)frameForView:(id)view size:(CGSize)size containerRect:(CGRect)containerRect options:(YOLayoutOptions)options {
-  CGSize originalSize = size;
-  BOOL sizeToFit = ((options & YOLayoutOptionsSizeToFitHorizontal) != 0)
-      || ((options & YOLayoutOptionsSizeToFitVertical) != 0);
++ (CGRect)alignSize:(CGSize)size inRect:(CGRect)containerRect options:(YOLayoutOptions)options {
+  CGPoint p = containerRect.origin;
 
-  CGSize sizeThatFits = CGSizeZero;
+  if ((options & YOLayoutOptionsAlignCenterHorizontal) != 0) {
+    p.x += YOCGPointToCenterX(size, containerRect.size).x;
+  }
+
+  if ((options & YOLayoutOptionsAlignCenterVertical) != 0) {
+    p.y += YOCGPointToCenterY(size, containerRect.size).y;
+  }
+
+  if ((options & YOLayoutOptionsAlignRight) != 0) {
+    p.x = containerRect.origin.x + containerRect.size.width - size.width;
+  }
+
+  if ((options & YOLayoutOptionsAlignBottom) != 0) {
+    p.y = containerRect.origin.y + containerRect.size.height - size.height;
+  }
+
+  return CGRectMake(p.x, p.y, size.width, size.height);
+}
+
++ (CGSize)sizeThatFits:(CGSize)size view:(id)view options:(YOLayoutOptions)options {
+  CGSize originalSize = size;
+  BOOL sizeToFit = ((options & YOLayoutOptionsSizeToFitHorizontal) != 0) || ((options & YOLayoutOptionsSizeToFitVertical) != 0);
+
   if (sizeToFit) {
-    sizeThatFits = [view sizeThatFits:size];
+    NSAssert([view respondsToSelector:@selector(sizeThatFits:)], @"sizeThatFits: must be implemented on %@ for use with YOLayoutOptionsSizeToFit", view);
+    CGSize sizeThatFits = [view sizeThatFits:size];
 
     // If size that fits returns a larger width, then we'll need to constrain it.
     if (((options & YOLayoutOptionsConstrainWidth) != 0) && sizeThatFits.width > size.width) {
@@ -80,34 +101,22 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
     size.height = originalSize.height;
   }
 
-  // If we passed in 0 for containerRect height or width, then lets set it to the frame height or width.
-  // This usually happens if we are sizing to fit, and is needed to align below.
-  if (containerRect.size.width == 0) containerRect.size.width = size.width;
-  if (containerRect.size.height == 0) containerRect.size.height = size.height;
-
-  CGPoint p = containerRect.origin;
-  if ((options & YOLayoutOptionsAlignCenterHorizontal) != 0) {
-    p.x += YOCGPointToCenterX(size, containerRect.size).x;
-  }
-
-  if ((options & YOLayoutOptionsAlignCenterVertical) != 0) {
-    p.y += YOCGPointToCenterY(size, containerRect.size).y;
-  }
-
-  if ((options & YOLayoutOptionsAlignRight) != 0) {
-    p.x = containerRect.origin.x + containerRect.size.width - size.width;
-  }
-
-  if ((options & YOLayoutOptionsAlignBottom) != 0) {
-    p.y = containerRect.origin.y + containerRect.size.height - size.height;
-  }
-
-  CGRect frame = CGRectMake(p.x, p.y, size.width, size.height);
-  return frame;
+  return size;
 }
 
-+ (CGRect)frameForView:(id)view containerRect:(CGRect)containerRect options:(YOLayoutOptions)options {
-  return [self frameForView:view size:containerRect.size containerRect:containerRect options:options];
++ (CGRect)frameForView:(id)view size:(CGSize)size inRect:(CGRect)inRect options:(YOLayoutOptions)options {
+  size = [self sizeThatFits:size view:view options:options];
+
+  // If we passed in 0 for containerRect height or width, then lets set it to the frame height or width.
+  // This usually happens if we are sizing to fit, and is needed to align below.
+  if (inRect.size.width == 0) inRect.size.width = size.width;
+  if (inRect.size.height == 0) inRect.size.height = size.height;
+
+  return [self alignSize:size inRect:inRect options:options];
+}
+
++ (CGRect)frameForView:(id)view inRect:(CGRect)inRect options:(YOLayoutOptions)options {
+  return [self frameForView:view size:inRect.size inRect:inRect options:options];
 }
 
 #pragma mark - Lifecycle
@@ -168,11 +177,6 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
 
 #pragma mark - Layout methods
 
-- (CGSize)sizeThatFits:(CGSize)size view:(id)view options:(YOLayoutOptions)options {
-  CGRect frame = [self.class frameForView:view size:size containerRect:CGRectMake(0, 0, size.width, size.height) options:options];
-  return frame.size;
-}
-
 - (CGRect)sizeToFitVerticalInFrame:(CGRect)frame view:(id)view {
   return [self setFrame:frame view:view options:YOLayoutOptionsSizeToFitVertical];
 }
@@ -196,7 +200,7 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
 }
 
 - (CGRect)setSize:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options {
-  CGRect frame = [self.class frameForView:view size:size containerRect:inRect options:options];
+  CGRect frame = [self.class frameForView:view size:size inRect:inRect options:options];
   [self setFrame:frame view:view];
   return frame;
 }
@@ -219,39 +223,6 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
     }
   }
   return frame;
-}
-
-#pragma mark -
-
-+ (YOLayout *)fill:(id)subview {
-  return [self layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
-    [layout setFrame:CGRectMake(0, 0, size.width, size.height) view:subview];
-    return size;
-  }];
-}
-
-+ (YOLayout *)center:(id)subview {
-  return [self layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
-    CGSize sizeThatFits = [subview sizeThatFits:size];
-    [layout centerWithSize:sizeThatFits frame:CGRectMake(0, 0, size.width, size.height) view:subview];
-    return size;
-  }];
-}
-
-+ (YOLayout *)fitVertical:(id)subview {
-  return [self layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
-    CGFloat y = 0;
-    y += [layout sizeToFitVerticalInFrame:CGRectMake(0, 0, size.width, size.height) view:subview].size.height;
-    return CGSizeMake(size.width, y);
-  }];
-}
-
-+ (YOLayout *)fitHorizontal:(id)subview {
-  return [self layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
-    CGFloat x = 0;
-    x += [layout sizeToFitHorizontalInFrame:CGRectMake(0, 0, size.width, size.height) view:subview].size.width;
-    return CGSizeMake(x, size.height);
-  }];
 }
 
 @end
