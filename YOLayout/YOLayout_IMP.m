@@ -120,6 +120,7 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
 
   CGSize sizeThatFits = CGSizeZero;
   if (sizeToFit) {
+    NSAssert([view respondsToSelector:@selector(sizeThatFits:)], @"sizeThatFits: must be implemented on %@ for use with YOLayoutOptionsSizeToFit", view);
     sizeThatFits = [view sizeThatFits:size];
     
     // If size that fits returns a larger width, then we'll need to constrain it.
