@@ -79,7 +79,7 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
  @param options Options for setFrame; See YOLayoutOptions for more info
  @result The calculated frame.
  */
-+ (CGRect)frameForView:(id)view containerFrame:(CGRect)containerFrame options:(YOLayoutOptions)options;
++ (CGRect)frameForView:(id)view containerRect:(CGRect)containerRect options:(YOLayoutOptions)options;
 
 /*!
  Calculate a (sub)view's frame.
@@ -90,7 +90,7 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
  @param options Options for setFrame; See YOLayoutOptions for more info
  @result The calculated frame.
  */
-+ (CGRect)frameForView:(id)view size:(CGSize)size containerFrame:(CGRect)containerFrame options:(YOLayoutOptions)options;
++ (CGRect)frameForView:(id)view size:(CGSize)size containerRect:(CGRect)containerRect options:(YOLayoutOptions)options;
 
 /*!
  Layout the subviews.
