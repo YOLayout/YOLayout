@@ -13,13 +13,11 @@
 
 CGPoint YOCGPointToCenterX(CGSize size, CGSize inSize) {
   CGPoint p = CGPointMake(roundf((inSize.width - size.width) / 2.0f), 0);
-  if (p.x < 0.0f) p.x = 0.0f;
   return p;
 }
 
 CGPoint YOCGPointToCenterY(CGSize size, CGSize inSize) {
   CGPoint p = CGPointMake(0, roundf((inSize.height - size.height) / 2.0f));
-  if (p.y < 0.0f) p.y = 0.0f;
   return p;
 }
 
