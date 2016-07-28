@@ -54,6 +54,7 @@
 		42F5C30E1A3CAF3E00E37B78 /* YOLayoutExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C30D1A3CAF3E00E37B78 /* YOLayoutExampleTests.m */; };
 		42F5C31E1A3CAF7A00E37B78 /* YOCGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */; };
 		42F5C31F1A3CAF7A00E37B78 /* YOLayout_IMP.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C31B1A3CAF7A00E37B78 /* YOLayout_IMP.m */; };
+		94DD088CCB8B7B1E90B3CA61 /* YOLayout+PrefabLayouts.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DD05F0FB9B1A12AE1BF1FC /* YOLayout+PrefabLayouts.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +143,8 @@
 		42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOCGUtils.m; path = ../YOLayout/YOCGUtils.m; sourceTree = "<group>"; };
 		42F5C31A1A3CAF7A00E37B78 /* YOLayout_IMP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOLayout_IMP.h; path = ../YOLayout/YOLayout_IMP.h; sourceTree = "<group>"; };
 		42F5C31B1A3CAF7A00E37B78 /* YOLayout_IMP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOLayout_IMP.m; path = ../YOLayout/YOLayout_IMP.m; sourceTree = "<group>"; };
+		94DD05F0FB9B1A12AE1BF1FC /* YOLayout+PrefabLayouts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YOLayout+PrefabLayouts.m"; sourceTree = "<group>"; };
+		94DD0BE26A52DB4B1DD42115 /* YOLayout+PrefabLayouts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YOLayout+PrefabLayouts.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +215,8 @@
 				0032AF9A1AEADFF000AF4532 /* YOVBorderLayout.m */,
 				002E20D31B7017540093CB0F /* YOHBorderLayout.h */,
 				002E20D41B7017540093CB0F /* YOHBorderLayout.m */,
+				94DD05F0FB9B1A12AE1BF1FC /* YOLayout+PrefabLayouts.m */,
+				94DD0BE26A52DB4B1DD42115 /* YOLayout+PrefabLayouts.h */,
 			);
 			name = Layouts;
 			path = ../YOLayout/Layouts;
@@ -574,6 +579,7 @@
 				426C0FD51A416CBE00F2577C /* GridView.m in Sources */,
 				002535211AB39CDD00583913 /* YOBox_IMP.m in Sources */,
 				42F5C2F41A3CAF3E00E37B78 /* main.m in Sources */,
+				94DD088CCB8B7B1E90B3CA61 /* YOLayout+PrefabLayouts.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
