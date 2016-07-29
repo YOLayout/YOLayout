@@ -87,9 +87,21 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
 - (CGSize)sizeThatFits:(CGSize)size;
 
 /*!
- Calculate size of a subview with options.
+ If layout is required. Otherwise cached value may be returned.
+ This should be called when a views data changes.
  */
-- (CGSize)sizeThatFits:(CGSize)size view:(id)view options:(YOLayoutOptions)options;
+- (void)setNeedsLayout;
+
+/*!
+ For subclasses, in rare cases, if they need to know whether the layout will
+ be applied or not via setFrame:view:
+
+ @result YES if we are only sizing, NO if we are setting frames
+ */
+- (BOOL)isSizing;
+
+
+#pragma mark - Subview Layout Methods
 
 /*!
  Set frame for the (sub)view.
@@ -183,20 +195,6 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
  */
 - (CGRect)setSize:(CGSize)size view:(id)view options:(YOLayoutOptions)options;
 
-/*!
- If layout is required. Otherwise cached value may be returned.
- This should be called when a views data changes.
- */
-- (void)setNeedsLayout;
-
-/*!
- For subclasses, in rare cases, if they need to know whether the layout will
- be applied or not via setFrame:view:
- 
- @result YES if we are only sizing, NO if we are setting frames
- */
-- (BOOL)isSizing;
-
 @end
 
 
@@ -284,6 +282,47 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
 @property (copy) YOLayoutBlock layoutBlock;
 
 /*!
+ Calculate a (sub)view's frame.
+
+ @param view View object (should implement sizeThatFits: if sizing)
+ @param inRect Default frame to set for the view
+ @param options Options for setFrame; See YOLayoutOptions for more info
+ @result The calculated frame.
+ */
++ (CGRect)frameForView:(id)view inRect:(CGRect)inRect options:(YOLayoutOptions)options;
+
+/*!
+ Calculate a (sub)view's frame.
+
+ @param view View object should implement sizeThatFits:
+ @param size Desired size (or size hint if using YOLayoutOptionsSizeToFit)
+ @param inRect Rect in which to position the view. `inRect.size` may be different than `size` when using this method with YOLayoutOptionsAlignCenter, YOLayoutOptionsAlignCenterVertical, YOLayoutOptionsAlignRight, etc.
+ @param options Options for setFrame; See YOLayoutOptions for more info
+ @result The calculated frame.
+ */
++ (CGRect)frameForView:(id)view size:(CGSize)size inRect:(CGRect)inRect options:(YOLayoutOptions)options;
+
+/*!
+ Calculate a rect given a size and alignment options
+
+ @param size Size for output rect
+ @param inRect Bounding rect in which to position the size.
+ @param options Options for aligning; See YOLayoutOptions for more info
+ @result The calculated frame.
+ */
++ (CGRect)alignSize:(CGSize)size inRect:(CGRect)inRect options:(YOLayoutOptions)options;
+
+/*!
+ Calculate a (sub)view's size.
+
+ @param view View object that implements `sizeThatFits:`
+ @param size Size hint to pass to `sizeThatFits:`
+ @param options Options for sizing; See YOLayoutOptions for more info
+ @result The calculated frame.
+ */
++ (CGSize)sizeThatFits:(CGSize)size view:(id)view options:(YOLayoutOptions)options;
+
+/*!
  Set a custon/fixed size that fits.
  Override the size that is returned by sizeThatFits:(CGSize)size.
  Defaults to CGSizeZero, which is unset.
@@ -301,44 +340,11 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
 /*!
  Default layout.
 
+ @param view View for layout (weak reference).
  @param layoutBlock Block containing layout code. See the discussion above the YOLayoutBlock typedef for more info.
  @result Layout
  */
 + (YOLayout *)layoutWithLayoutBlock:(YOLayoutBlock)layoutBlock;
-
-#pragma mark -
-
-/*!
- A layout which makes the specified subview fill the full size.
-
- @param subview The subview to layout
- @param Layout
- */
-+ (YOLayout *)fill:(id)subview;
-
-/*!
- A layout which makes the specified subview centered.
-
- @param subview The subview to center
- @param Layout
- */
-+ (YOLayout *)center:(id)subview;
-
-/*!
- A layout which makes the specified subview size to fit vertically.
-
- @param subview The subview to layout
- @param Layout
- */
-+ (YOLayout *)fitVertical:(id)subview;
-
-/*!
- A layout which makes the specified subview size to fit horizontally.
-
- @param subview The subview to layout
- @param Layout
- */
-+ (YOLayout *)fitHorizontal:(id)subview;
 
 @end
 
@@ -361,9 +367,3 @@ static inline UIEdgeInsets UIEdgeInsetsAdd(UIEdgeInsets i1, UIEdgeInsets i2) {
 }
 
 #endif
-
-NSString *YONSStringFromCGRect(CGRect rect);
-
-NSString *YONSStringFromCGSize(CGSize size);
-
-CGRect YOCGRectApplyInsets(CGRect frame, UIEdgeInsets insets);

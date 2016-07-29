@@ -36,7 +36,7 @@ class SwiftViewController: UIViewController {
             y += layout.setFrame(CGRectMake(10, y, size.width - 20, 100), view: informationLabel, options:.SizeToFitVertical).size.height
             y += 5
 
-            layout.setFrame(CGRectMake(5, y, size.width - 10 , size.height - y - 5), view:swiftView, options:.SizeToFit | .AlignCenter)
+            layout.setFrame(CGRectMake(5, y, size.width - 10 , size.height - y - 5), view:swiftView, options:[.SizeToFit, .AlignCenter])
 
             return size
         })

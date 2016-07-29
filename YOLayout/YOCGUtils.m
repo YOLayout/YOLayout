@@ -13,13 +13,11 @@
 
 CGPoint YOCGPointToCenterX(CGSize size, CGSize inSize) {
   CGPoint p = CGPointMake(roundf((inSize.width - size.width) / 2.0f), 0);
-  if (p.x < 0.0f) p.x = 0.0f;
   return p;
 }
 
 CGPoint YOCGPointToCenterY(CGSize size, CGSize inSize) {
   CGPoint p = CGPointMake(0, roundf((inSize.height - size.height) / 2.0f));
-  if (p.y < 0.0f) p.y = 0.0f;
   return p;
 }
 
@@ -43,4 +41,21 @@ CGRect YOCGRectSetX(CGRect rect, CGFloat x) {
 CGRect YOCGRectSetY(CGRect rect, CGFloat y) {
   rect.origin.y = y;
   return rect;
+}
+
+NSString *YONSStringFromCGRect(CGRect rect) {
+  return [NSString stringWithFormat:@"(%@, %@, %@, %@)", @(rect.origin.x), @(rect.origin.y), @(rect.size.width), @(rect.size.height)];
+}
+
+NSString *YONSStringFromCGSize(CGSize size) {
+  return [NSString stringWithFormat:@"(%@, %@)", @(size.width), @(size.height)];
+}
+
+CGRect YOCGRectApplyInsets(CGRect frame, UIEdgeInsets insets) {
+  CGRect f = frame;
+  f.origin.x += insets.left;
+  f.origin.y += insets.top;
+  f.size.width -= insets.left + insets.right;
+  f.size.height -= insets.top + insets.bottom;
+  return f;
 }
