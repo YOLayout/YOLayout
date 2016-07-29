@@ -19,7 +19,7 @@ class CircleLayoutView: YOView {
             self.addSubview(imageView)
         }
 
-        self.layout = YOLayout(layoutBlock: { [unowned self] (layout : YOLayoutProtocol!, size) -> CGSize in
+        self.layout = YOLayout(layoutBlock: { [unowned self] (layout: YOLayout!, size) -> CGSize in
             var angle : CGFloat = 0;
             let center = CGPointMake(size.width / 2, size.height / 2)
             let subviewSize = CGSizeMake(44, 44)

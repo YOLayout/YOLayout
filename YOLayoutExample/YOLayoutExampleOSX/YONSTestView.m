@@ -39,22 +39,22 @@
   [_label3 setText:@"Text (right/bottom align) Seitan umami Brooklyn cold-pressed street art, forage heirloom. PBR&B typewriter salvia" font:[NSFont systemFontOfSize:16] color:[NSColor blackColor] alignment:NSRightTextAlignment];
   [self addSubview:_label3];
 
-  YOSelf yself = self;
-  self.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
+  __weak typeof(self) weakSelf = self;;
+  self.viewLayout = [YOLayout layoutWithLayoutBlock:^(YOLayout *layout, CGSize size) {
     CGFloat x = 20;
     CGFloat y = 60;
 
     // Size to fit vertically
-    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - 40, 0) view:yself.label1].size.height + 20;
+    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - 40, 0) view:weakSelf.label1].size.height + 20;
 
     // Center vertically
-    y += [layout centerWithSize:CGSizeMake(300, 44) frame:CGRectMake(x, y, size.width - 40, 44) view:yself.button1].size.height + 20;
+    y += [layout centerWithSize:CGSizeMake(300, 44) frame:CGRectMake(x, y, size.width - 40, 44) view:weakSelf.button1].size.height + 20;
 
     // Center with unknown height
-    y += [layout centerWithSize:CGSizeMake(400, 0) frame:CGRectMake(x, y, size.width - 40, 0) view:yself.label2].size.height + 20;
+    y += [layout centerWithSize:CGSizeMake(400, 0) frame:CGRectMake(x, y, size.width - 40, 0) view:weakSelf.label2].size.height + 20;
 
     // Align right bottom size to fit
-    y += [layout setSize:CGSizeMake(200, 0) inRect:CGRectMake(x, y, size.width - 40, 0) view:yself.label3 options:YOLayoutOptionsSizeToFit|YOLayoutOptionsAlignRight|YOLayoutOptionsAlignBottom].size.height + 20;
+    y += [layout setSize:CGSizeMake(200, 0) inRect:CGRectMake(x, y, size.width - 40, 0) view:weakSelf.label3 options:YOLayoutOptionsSizeToFit|YOLayoutOptionsAlignRight|YOLayoutOptionsAlignBottom].size.height + 20;
 
     return CGSizeMake(size.width, y);
   }];

@@ -17,22 +17,18 @@
  See YOLayout for more details.
 
       - (void)viewInit {
-         [super viewInit];
          UIView *subview = [[UIView alloc] init];
          [self addSubview:subview];
-         self.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
+         self.viewLayout = [YOLayout layoutWithLayoutBlock:^(YOLayout *layout, CGSize size) {
            [layout setFrame:CGRectMake(0, 0, size.width, 30) view:subview];
            return CGSizeMake(size.width, 30);
          }];
          self.backgroundColor = [UIColor whiteColor];
       }
  */
-@interface YOView : UIView <YOLayoutView> { }
+@interface YOView : UIView { }
 
-@property YOLayout *viewLayout;
-
-// Creates empty view
-+ (instancetype)view;
+@property YOLayout *layout;
 
 /*!
  Subclasses can override this method to perform initialization tasks that occur during both initWithFrame: and initWithCoder:
@@ -45,12 +41,5 @@
  This is also useful when using animations and setNeedsLayout + layoutIfNeeded don't work as expected.
  */
 - (void)layoutView;
-
-#pragma mark Attributes
-
-/*!
- Add a list of attributes that will call setNeedsDisplay and setNeedsLayout on change.
- */
-- (void)setAttributesNeedUpdate:(NSArray *)attributes;
 
 @end

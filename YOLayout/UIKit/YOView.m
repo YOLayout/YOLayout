@@ -9,15 +9,7 @@
 #import "YOView.h"
 #import "YOCGUtils.h"
 
-@interface YOView ()
-@property NSMutableArray *observeAttributes;
-@end
-
 @implementation YOView
-
-+ (instancetype)view {
-  return [[YOView alloc] init];
-}
 
 - (void)viewInit {
   // Don't add anything here, in case subclasses forget to call super
@@ -37,29 +29,8 @@
   return self;
 }
 
-- (void)dealloc {
-  for (NSString *attr in _observeAttributes) {
-    [self removeObserver:self forKeyPath:attr context:@"attributesNeedUpdate"];
-  }
-}
-
-- (void)setAttributesNeedUpdate:(NSArray *)attributes {
-  if (!_observeAttributes) _observeAttributes = [NSMutableArray array];
-  [_observeAttributes addObjectsFromArray:attributes];
-  for (NSString *attr in attributes) {
-    [self addObserver:self forKeyPath:attr options:NSKeyValueObservingOptionNew context:@"attributesNeedUpdate"];
-  }
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-  if ([_observeAttributes containsObject:keyPath]) {
-    [self setNeedsDisplay];
-    [self setNeedsLayout];
-  }
-}
-
 - (void)setFrame:(CGRect)frame {
-  if (_viewLayout && !YOCGSizeIsEqual(self.frame.size, frame.size)) [_viewLayout setNeedsLayout];
+  if (_layout && !YOCGSizeIsEqual(self.frame.size, frame.size)) [_layout setNeedsLayout];
   [super setFrame:frame];
 }
 
@@ -73,14 +44,14 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  if (_viewLayout) {
-    [_viewLayout layoutSubviews:self.frame.size];
+  if (_layout) {
+    [_layout layoutSubviews:self.frame.size];
   }
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
-  if (_viewLayout) {
-    return [_viewLayout sizeThatFits:size];
+  if (_layout) {
+    return [_layout sizeThatFits:size];
   }
   return [super sizeThatFits:size];
 }
@@ -88,25 +59,13 @@
 - (void)setNeedsLayout {
   [super setNeedsLayout];
   [self setNeedsDisplay];
-  [_viewLayout setNeedsLayout];
+  [_layout setNeedsLayout];
 }
-
-#pragma mark Layout
 
 - (void)layoutView {
-  NSAssert(_viewLayout, @"Missing layout instance");
-  [_viewLayout setNeedsLayout];
-  [_viewLayout layoutSubviews:self.frame.size];
-}
-
-#pragma Deprecated
-
-- (void)setLayout:(YOLayout *)layout {
-  self.viewLayout = layout;
-}
-
-- (YOLayout *)layout {
-  return self.viewLayout;
+  NSAssert(_layout, @"Missing layout instance");
+  [_layout setNeedsLayout];
+  [_layout layoutSubviews:self.frame.size];
 }
 
 @end

@@ -24,10 +24,10 @@
   _textView.textContainer.lineFragmentPadding = 0;
   [self addSubview:_textView];
 
-  YOSelf yself = self;
-  self.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
-    CGSize textSize = [YONSLabel sizeThatFits:size attributedString:yself.textView.attributedString];
-    [layout setFrame:CGRectIntegral(CGRectMake(0, size.height/2.0 - textSize.height/2.0, size.width, textSize.height + 20)) view:yself.textView];
+  __weak typeof(self) weakSelf = self;;
+  self.viewLayout = [YOLayout layoutWithLayoutBlock:^(YOLayout *layout, CGSize size) {
+    CGSize textSize = [YONSLabel sizeThatFits:size attributedString:weakSelf.textView.attributedString];
+    [layout setFrame:CGRectIntegral(CGRectMake(0, size.height/2.0 - textSize.height/2.0, size.width, textSize.height + 20)) view:weakSelf.textView];
     return size;
   }];
 }

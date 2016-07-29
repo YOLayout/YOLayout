@@ -9,6 +9,8 @@
 #import "YOLayout.h"
 
 IB_DESIGNABLE
-@interface LogoView : YOView <YODrawableView>
+@interface LogoView : YOView
+
+- (void)drawInRect:(CGRect)rect;
 
 @end

@@ -10,9 +10,8 @@
 #import "LogoView.h"
 #import "TableViewController.h"
 #import "DrawableViewController.h"
-#import "BorderViewController.h"
-#import "BoxViewController.h"
 #import "YOLayoutExample-swift.h"
+#import "NestedLayoutView.h"
 
 @interface LayoutExampleTableViewController ()
 
@@ -33,7 +32,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -51,18 +50,13 @@
             break;
 
         case 2:
-            cell.textLabel.text = @"Border Layout Example";
-            cell.detailTextLabel.text = @"Dynamic top and bottom view with center filling the remaining space.";
+            cell.textLabel.text = @"Swift Example";
+            cell.detailTextLabel.text = @"Use YOLayout with swift";
             break;
 
         case 3:
-            cell.textLabel.text = @"Box Layout Example";
-            cell.detailTextLabel.text = @"VBox and HBox";
-            break;
-
-        case 4:
-            cell.textLabel.text = @"Swift Example";
-            cell.detailTextLabel.text = @"Use YOLayout with swift";
+            cell.textLabel.text = @"Nested Layout";
+            cell.detailTextLabel.text = @"YOLayouts inside your YOLayouts";
             break;
 
         default:
@@ -89,21 +83,17 @@
         }
         case 2:
         {
-            BorderViewController *borderViewController = [[BorderViewController alloc] init];
-            [self.navigationController pushViewController:borderViewController animated:YES];
+            SwiftViewController *swiftViewController = [[SwiftViewController alloc] init];
+            [self.navigationController pushViewController:swiftViewController animated:YES];
             break;
         }
         case 3:
         {
-            BoxViewController *boxViewController = [[BoxViewController alloc] init];
-            [self.navigationController pushViewController:boxViewController animated:YES];
-            break;
-        }
-
-        case 4:
-        {
-            SwiftViewController *swiftViewController = [[SwiftViewController alloc] init];
-            [self.navigationController pushViewController:swiftViewController animated:YES];
+            UIViewController *viewController = [[UIViewController alloc] init];
+            viewController.edgesForExtendedLayout = UIRectEdgeNone;
+            NestedLayoutView *view = [[NestedLayoutView alloc] init];
+            viewController.view = view;
+            [self.navigationController pushViewController:viewController animated:YES];
             break;
         }
         default:

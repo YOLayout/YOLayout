@@ -9,12 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 
-#define YOWeakObject(o) __typeof__(o) __weak
-#define YOSelf YOWeakObject(self)
-
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
 #endif
+
+@class YOLayout;
 
 typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
   YOLayoutOptionsNone = 0,
@@ -66,162 +65,10 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
   YOLayoutOptionsAlignRight = 1 << 12,
   //! After sizing, aligns the view with the bottom of the passed in rect
   YOLayoutOptionsAlignBottom = 1 << 13,
+
+  //! After sizing and positioning, potentially flip the x value for a RTL layout
+  YOLayoutOptionsRTLIfNeeded = 1 << 14,
 };
-
-
-@protocol YOLayout <NSObject>
-
-/*!
- Layout the subviews.
- 
- @param size Size to layout in
- */
-- (CGSize)layoutSubviews:(CGSize)size;
-
-/*!
- Size that fits.
- 
- @param size Size to layout in; Should have a width specified.
- @result The size needed to display the view
- */
-- (CGSize)sizeThatFits:(CGSize)size;
-
-/*!
- If layout is required. Otherwise cached value may be returned.
- This should be called when a views data changes.
- */
-- (void)setNeedsLayout;
-
-/*!
- For subclasses, in rare cases, if they need to know whether the layout will
- be applied or not via setFrame:view:
-
- @result YES if we are only sizing, NO if we are setting frames
- */
-- (BOOL)isSizing;
-
-
-#pragma mark - Subview Layout Methods
-
-/*!
- Set frame for the (sub)view.
- If we are only sizing, this doesn't modify views frame.
- 
- @param frame Frame
- @param view View should conform to YOLView informal protocol.
- */
-- (CGRect)setFrame:(CGRect)frame view:(id)view;
-
-/*!
- Size to fit the view.
- If we are only sizing, this doesn't modify views frame.
- 
- @param frame Frame
- @param view View should conform to YOLView informal protocol.
- @result The view frame.
- */
-- (CGRect)sizeToFitInFrame:(CGRect)frame view:(id)view;
-
-/*!
- Size to fit the view vertically.
- If we are only sizing, this doesn't modify views frame.
-
- @param frame Frame
- @param view View should conform to YOLView informal protocol.
- @result The view frame.
- */
-- (CGRect)sizeToFitVerticalInFrame:(CGRect)frame view:(id)view;
-
-/*!
- Size to fit the view horizontally.
- If we are only sizing, this doesn't modify views frame.
-
- @param frame Frame
- @param view View should conform to YOLView informal protocol.
- @result The view frame.
- */
-- (CGRect)sizeToFitHorizontalInFrame:(CGRect)frame view:(id)view;
-
-/*!
- Set the (sub)view frame.
- If we are only sizing, this doesn't modify views frame.
-
- @param frame Frame
- @param view View should conform to YOLView informal protocol.
- @param options Options for setFrame; See YOLayoutOptions for more info
- @result The view frame.
- */
-- (CGRect)setFrame:(CGRect)frame view:(id)view options:(YOLayoutOptions)options;
-
-/*!
- Center view with size in frame.
- 
- If the desired size.height == 0, then it will size to fit vertically using the specified width.
- If the desired size.width == 0, then it will size to fit horizontally using the specified height.
- 
- @param size Desired size (or desired width and/or height)
- @param frame In frame
- @param view View
- @result The view frame.
- */
-- (CGRect)centerWithSize:(CGSize)size frame:(CGRect)frame view:(id)view;
-
-/*!
- Set the size in rect with options.
- 
- @param size Desired size (or size hint if using YOLayoutOptionsSizeToFit)
- @param inRect Rect in which to position the view. `inRect.size` may be different than `size` when using this method with YOLayoutOptionsAlignCenter, YOLayoutOptionsAlignCenterVertical, YOLayoutOptionsAlignRight, etc.
- @param view View
- @param options Options See YOLayoutOptions for more info
- @result The view frame.
- */
-- (CGRect)setSize:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options;
-
-/*!
- Set origin. Same as setFrame:view: but uses the existing view.frame.size.
-
- @param origin Origin
- @param view View
- @param options Options
- */
-- (CGRect)setOrigin:(CGPoint)origin view:(id)view options:(YOLayoutOptions)options;
-
-/*!
- Set size. Same as setFrame:view: but uses the existing view.frame.origin.
- 
- @param size Size
- @param view View
- @param options Options
- */
-- (CGRect)setSize:(CGSize)size view:(id)view options:(YOLayoutOptions)options;
-
-@end
-
-
-/*
- UIViews can implement this protocol, to enable custom layouts.
- */
-@protocol YOLayoutView <NSObject>
-
-/*!
- Layout object belonging to the class implementing this protocol.
- */
-@property id <YOLayout>layout;
-
-@end
-
-
-/*!
- UIViews can also use custom layouts even if they aren't in the view hierarchy (can't do that with Auto Layout!). This protocol presents a convention for how to create drawable views. To create a drawable view, simply create a YOView that implements drawInRect:. Then superviews can draw the view in their drawRect method.
- */
-@protocol YODrawableView <YOLayoutView>
-
-/*!
- @result Draw the drawable
- */
-- (void)drawInRect:(CGRect)rect;
-
-@end
 
 
 /*!
@@ -238,7 +85,7 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
  @param size Size to layout in
  @result size Size of the view being laid out
  */
-typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
+typedef CGSize (^YOLayoutBlock)(YOLayout *layout, CGSize size);
 
 
 /*!
@@ -275,95 +122,93 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
  You can combine YOLayoutOptionsSizeToFit, YOLayoutOptionsConstraintWidth, and YOLayoutOptionsDefaultWidth to make sure
  a view sizes to fit with max and default width (when 0).
  */
-@interface YOLayout : NSObject <YOLayout>
+@interface YOLayout : NSObject
 
+//! Whether the current layout instance is just sizing or setting frames
 @property (readonly, getter=isSizing) BOOL sizing;
+
 //! Block containing logic to layout or size the current view. See the discussion above the YOLayoutBlock typedef for more info.
 @property (copy) YOLayoutBlock layoutBlock;
 
 /*!
- Calculate a (sub)view's frame.
-
- @param view View object (should implement sizeThatFits: if sizing)
- @param inRect Default frame to set for the view
- @param options Options for setFrame; See YOLayoutOptions for more info
- @result The calculated frame.
- */
-+ (CGRect)frameForView:(id)view inRect:(CGRect)inRect options:(YOLayoutOptions)options;
-
-/*!
- Calculate a (sub)view's frame.
-
- @param view View object should implement sizeThatFits:
- @param size Desired size (or size hint if using YOLayoutOptionsSizeToFit)
- @param inRect Rect in which to position the view. `inRect.size` may be different than `size` when using this method with YOLayoutOptionsAlignCenter, YOLayoutOptionsAlignCenterVertical, YOLayoutOptionsAlignRight, etc.
- @param options Options for setFrame; See YOLayoutOptions for more info
- @result The calculated frame.
- */
-+ (CGRect)frameForView:(id)view size:(CGSize)size inRect:(CGRect)inRect options:(YOLayoutOptions)options;
-
-/*!
- Calculate a rect given a size and alignment options
-
- @param size Size for output rect
- @param inRect Bounding rect in which to position the size.
- @param options Options for aligning; See YOLayoutOptions for more info
- @result The calculated frame.
- */
-+ (CGRect)alignSize:(CGSize)size inRect:(CGRect)inRect options:(YOLayoutOptions)options;
-
-/*!
- Calculate a (sub)view's size.
-
- @param view View object that implements `sizeThatFits:`
- @param size Size hint to pass to `sizeThatFits:`
- @param options Options for sizing; See YOLayoutOptions for more info
- @result The calculated frame.
- */
-+ (CGSize)sizeThatFits:(CGSize)size view:(id)view options:(YOLayoutOptions)options;
-
-/*!
- Set a custon/fixed size that fits.
- Override the size that is returned by sizeThatFits:(CGSize)size.
- Defaults to CGSizeZero, which is unset.
- If height is not set (is 0), then we will use this size value for sizeThatFits:.
- */
-@property CGSize sizeThatFits;
-
-/*!
- Create layout.
-
- @param layoutBlock Block containing layout code. See the discussion above the YOLayoutBlock typedef for more info.
- */
-- (id)initWithLayoutBlock:(YOLayoutBlock)layoutBlock;
-
-/*!
  Default layout.
-
+ 
  @param view View for layout (weak reference).
  @param layoutBlock Block containing layout code. See the discussion above the YOLayoutBlock typedef for more info.
  @result Layout
  */
 + (YOLayout *)layoutWithLayoutBlock:(YOLayoutBlock)layoutBlock;
 
+#pragma mark - Layout methods
+
+/*!
+ Layout the subviews.
+ 
+ @param size Size to layout in
+ */
+- (CGSize)layoutSubviews:(CGSize)size;
+
+/*!
+ Size that fits.
+ 
+ @param size Size to layout in.
+ @result The size needed to display the view
+ */
+- (CGSize)sizeThatFits:(CGSize)size;
+
+/*!
+ If layout is required. Otherwise cached value may be returned.
+ This should be called when a views data changes.
+ */
+- (void)setNeedsLayout;
+
+/*!
+ For subclasses, in rare cases, if they need to know whether the layout will
+ be applied or not via setFrame:view:
+ 
+ @result YES if we are only sizing, NO if we are setting frames
+ */
+- (BOOL)isSizing;
+
+/*!
+ YOLayout can layout YOLayouts. To do this, YOLayout must, itself, be able to accept a frame.
+ All subviews of the layout are offset by the frame's origin. Yo dawg I heard you like YOLayouts...
+ 
+ @param frame Frame to layout in.
+ */
+- (void)setFrame:(CGRect)frame;
+
+#pragma mark - Subview Layout Methods
+
+/*!
+ Set frame for the (sub)view.
+ If we are only sizing, this doesn't modify views frame.
+ 
+ @param frame Frame
+ @param view View should conform to YOLView informal protocol.
+ */
+- (CGRect)setFrame:(CGRect)frame view:(id)view;
+
+/*!
+ Set the (sub)view frame.
+ If we are only sizing, this doesn't modify views frame.
+ 
+ @param frame Frame
+ @param view View should conform to YOLView informal protocol.
+ @param options Options for setFrame; See YOLayoutOptions for more info
+ @result The view frame.
+ */
+- (CGRect)setFrame:(CGRect)frame view:(id)view options:(YOLayoutOptions)options;
+
+/*!
+ Set the size in rect with options.
+ 
+ @param size Desired size (or size hint if using YOLayoutOptionsSizeToFit)
+ @param inRect Rect in which to position the view. `inRect.size` may be different than `size` when using this method with YOLayoutOptionsAlignCenter, YOLayoutOptionsAlignCenterVertical, YOLayoutOptionsAlignRight, etc.
+ @param view View
+ @param options Options See YOLayoutOptions for more info
+ @result The view frame.
+ */
+- (CGRect)setSize:(CGSize)size inRect:(CGRect)inRect view:(id)view options:(YOLayoutOptions)options;
+
 @end
-
-
-#if !TARGET_OS_IPHONE
-
-typedef struct UIEdgeInsets {
-  CGFloat top, left, bottom, right;
-} UIEdgeInsets;
-
-extern const UIEdgeInsets UIEdgeInsetsZero;
-
-static inline UIEdgeInsets UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right) {
-  UIEdgeInsets insets = {top, left, bottom, right};
-  return insets;
-}
-
-static inline UIEdgeInsets UIEdgeInsetsAdd(UIEdgeInsets i1, UIEdgeInsets i2) {
-  return UIEdgeInsetsMake(i1.top + i2.top, i1.left + i2.left, i1.bottom + i2.bottom, i1.right + i2.right);
-}
-
-#endif
