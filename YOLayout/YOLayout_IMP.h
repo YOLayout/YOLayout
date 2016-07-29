@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import "YOCGUtils.h"
 
 #define YOWeakObject(o) __typeof__(o) __weak
 #define YOSelf YOWeakObject(self)
@@ -347,23 +348,3 @@ typedef CGSize (^YOLayoutBlock)(id<YOLayout> layout, CGSize size);
 + (YOLayout *)layoutWithLayoutBlock:(YOLayoutBlock)layoutBlock;
 
 @end
-
-
-#if !TARGET_OS_IPHONE
-
-typedef struct UIEdgeInsets {
-  CGFloat top, left, bottom, right;
-} UIEdgeInsets;
-
-extern const UIEdgeInsets UIEdgeInsetsZero;
-
-static inline UIEdgeInsets UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right) {
-  UIEdgeInsets insets = {top, left, bottom, right};
-  return insets;
-}
-
-static inline UIEdgeInsets UIEdgeInsetsAdd(UIEdgeInsets i1, UIEdgeInsets i2) {
-  return UIEdgeInsetsMake(i1.top + i2.top, i1.left + i2.left, i1.bottom + i2.bottom, i1.right + i2.right);
-}
-
-#endif
