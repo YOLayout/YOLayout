@@ -43,8 +43,8 @@ Here is an example of a view with an image, title label, and multi-line descript
   self.descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
   [self addSubview:self.descriptionLabel];
 
-  YOSelf yself = self;
-  self.viewLayout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+  __weak typeof(self) weakSelf = self;;
+  self.viewLayout = [YOLayout layoutWithLayoutBlock:^CGSize(YOLayout *layout, CGSize size) {
     CGFloat x = 10;
     CGFloat y = 10;
 
@@ -52,8 +52,8 @@ Here is an example of a view with an image, title label, and multi-line descript
     CGRect imageViewFrame = [layout setOrigin:CGPointMake(x, y) view:imageView options:0];
     x += imageViewFrame.size.width + 10;
 
-    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - 10, 0) view:yself.titleLabel].size.height;
-    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - 10, 1000) view:yself.descriptionLabel].size.height;
+    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - 10, 0) view:weakSelf.titleLabel].size.height;
+    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - 10, 1000) view:weakSelf.descriptionLabel].size.height;
 
     // Ensure the y position is at least as high as the image view
     y = MAX(y, (imageViewFrame.origin.y + imageViewFrame.size.height));

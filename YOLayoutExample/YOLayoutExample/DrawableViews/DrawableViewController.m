@@ -51,7 +51,7 @@
     GridView *gridView = [[GridView alloc] init];
     [view addSubview:gridView];
     
-    view.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+    view.layout = [YOLayout layoutWithLayoutBlock:^CGSize(YOLayout *layout, CGSize size) {
         UIEdgeInsets insets = UIEdgeInsetsMake(10, 10, 10, 10);
         CGFloat x = insets.left;
         CGFloat y = insets.right;

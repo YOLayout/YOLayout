@@ -9,6 +9,18 @@
 #import "YOLayout.h"
 
 /*!
+ UIViews can also use custom layouts even if they aren't in the view hierarchy (can't do that with Auto Layout!). This protocol presents a convention for how to create drawable views. To create a drawable view, simply create a YOView that implements drawInRect:. Then superviews can draw the view in their drawRect method.
+ */
+@protocol YODrawableView
+
+/*!
+ @result Draw the drawable
+ */
+- (void)drawInRect:(CGRect)rect;
+
+@end
+
+/*!
  A view that uses YOLayout to lay out drawable subviews in a grid based on the width.
  
  YOLayout is unique in that it doesn't require views to be in the view hierarchy in order to lay them out. This means you can create layouts using YOLayout like normal, then render your drawable 'subviews' in `drawRect:`. This makes for a super easy way to mix and match views in the view hierarchy and views drawn in `drawRect:`. In scroll views, using `drawRect:` can sometimes perform better when you have many subviews.

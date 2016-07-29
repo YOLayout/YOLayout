@@ -30,7 +30,7 @@ class SwiftViewController: UIViewController {
         // Use a simple container view to hold the informationLabel and the circleView after it sizes to fit
         let containerView = YOView()
         containerView.backgroundColor = UIColor.whiteColor()
-        containerView.layout = YOLayout(layoutBlock: { (layout: YOLayoutProtocol!, size) -> CGSize in
+        containerView.layout = YOLayout(layoutBlock: { (layout: YOLayout, size) -> CGSize in
             var y : CGFloat = 10;
 
             y += layout.setFrame(CGRectMake(10, y, size.width - 20, 100), view: informationLabel, options:.SizeToFitVertical).size.height

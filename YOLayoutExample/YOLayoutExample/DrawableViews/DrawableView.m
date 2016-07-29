@@ -8,6 +8,7 @@
 
 #import "DrawableView.h"
 #import "LogoView.h"
+#import "YOLayout+Logic.h"
 
 @interface DrawableView ()
 @property (strong, nonatomic) NSMutableArray *drawableSubviews;
@@ -29,7 +30,7 @@
     }
 
     // Instantiate the layout
-    self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+    self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(YOLayout *layout, CGSize size) {
         CGFloat x = 0;
         CGFloat y = 0;
         CGFloat maxWidth = 0;
@@ -37,8 +38,10 @@
         // Lay out each view at 150pt wide with as many columns as will fit and as many rows as necessary
         CGFloat subviewWidth = 150;
         for (UIView *subview in self.drawableSubviews) {
-            CGSize subviewSize = [layout sizeToFitVerticalInFrame:CGRectMake(x, y, subviewWidth, 0) view:subview].size;
-            x += subviewSize.width;
+
+          CGSize subviewSize = [layout setFrame:CGRectMake(x, y, subviewWidth, 0) view:subview options:YOLayoutOptionsSizeToFitVertical].size;
+
+          x += subviewSize.width;
             // Wrap when there's not enough horizontal space to render another view
             if ((x + subviewWidth) > size.width && ![subview isEqual:[self.drawableSubviews lastObject]]) {
                 y += subviewSize.height;

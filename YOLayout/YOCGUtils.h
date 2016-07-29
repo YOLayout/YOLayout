@@ -36,14 +36,8 @@ CGPoint YOCGPointToCenterX(CGSize size, CGSize inSize);
 
 CGPoint YOCGPointToCenterY(CGSize size, CGSize inSize);
 
+BOOL YOCGPointIsEqual(CGPoint p1, CGPoint p2);
+
 BOOL YOCGSizeIsEqual(CGSize size1, CGSize size2);
 
 BOOL YOCGRectIsEqual(CGRect rect1, CGRect rect2);
-
-CGRect YOCGRectSetY(CGRect rect, CGFloat y);
-
-NSString *YONSStringFromCGRect(CGRect rect);
-
-NSString *YONSStringFromCGSize(CGSize size);
-
-CGRect YOCGRectApplyInsets(CGRect frame, UIEdgeInsets insets);
