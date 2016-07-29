@@ -28,23 +28,23 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
 
 #pragma mark - Class Methods
 
-+ (CGRect)alignSize:(CGSize)size inRect:(CGRect)containerRect options:(YOLayoutOptions)options {
-  CGPoint p = containerRect.origin;
++ (CGRect)alignSize:(CGSize)size inRect:(CGRect)inRect options:(YOLayoutOptions)options {
+  CGPoint p = inRect.origin;
 
   if ((options & YOLayoutOptionsAlignCenterHorizontal) != 0) {
-    p.x += YOCGPointToCenterX(size, containerRect.size).x;
+    p.x += YOCGPointToCenterX(size, inRect.size).x;
   }
 
   if ((options & YOLayoutOptionsAlignCenterVertical) != 0) {
-    p.y += YOCGPointToCenterY(size, containerRect.size).y;
+    p.y += YOCGPointToCenterY(size, inRect.size).y;
   }
 
   if ((options & YOLayoutOptionsAlignRight) != 0) {
-    p.x = containerRect.origin.x + containerRect.size.width - size.width;
+    p.x = inRect.origin.x + inRect.size.width - size.width;
   }
 
   if ((options & YOLayoutOptionsAlignBottom) != 0) {
-    p.y = containerRect.origin.y + containerRect.size.height - size.height;
+    p.y = inRect.origin.y + inRect.size.height - size.height;
   }
 
   return CGRectMake(p.x, p.y, size.width, size.height);
@@ -107,7 +107,7 @@ const UIEdgeInsets UIEdgeInsetsZero = {0, 0, 0, 0};
 + (CGRect)frameForView:(id)view size:(CGSize)size inRect:(CGRect)inRect options:(YOLayoutOptions)options {
   size = [self sizeThatFits:size view:view options:options];
 
-  // If we passed in 0 for containerRect height or width, then lets set it to the frame height or width.
+  // If we passed in 0 for inRect height or width, then lets set it to the frame height or width.
   // This usually happens if we are sizing to fit, and is needed to align below.
   if (inRect.size.width == 0) inRect.size.width = size.width;
   if (inRect.size.height == 0) inRect.size.height = size.height;
