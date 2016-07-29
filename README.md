@@ -44,7 +44,7 @@ Here is an example of a view with an image, title label, and multi-line descript
   [self addSubview:self.descriptionLabel];
 
   YOSelf yself = self;
-  self.viewLayout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+  self.viewLayout = [YOLayout layoutWithLayoutBlock:^CGSize(YOLayout *layout, CGSize size) {
     CGFloat x = 10;
     CGFloat y = 10;
 

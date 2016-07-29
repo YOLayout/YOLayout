@@ -8,7 +8,7 @@
 
 #import "YOLayout.h"
 
-@interface TableViewCellView : YOView
+@interface TableViewCellView : UIView
 @end
 
 

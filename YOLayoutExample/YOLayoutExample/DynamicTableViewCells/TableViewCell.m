@@ -7,18 +7,24 @@
 //
 
 #import "TableViewCell.h"
+#import "UIView+YOLayoutView.h"
 
 @interface TableViewCellView ()
 @property UILabel *titleLabel;
 @property UILabel *descriptionLabel;
+@property UIImageView *imageView;
 @end
 
 @implementation TableViewCellView
 
++ (void)load {
+    [self initLayout];
+}
+
 - (void)viewInit {
   [super viewInit];
-  UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"information.png"]];
-  [self addSubview:imageView];
+  self.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"information.png"]];
+  [self addSubview:self.imageView];
   
   self.titleLabel = [[UILabel alloc] init];
   self.titleLabel.numberOfLines = 1;
@@ -31,25 +37,24 @@
   self.descriptionLabel.numberOfLines = 0; // Multi-line label (word wrapping
   self.descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
   [self addSubview:self.descriptionLabel];
+}
 
-  YOSelf yself = self;
-  self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+- (CGSize)layoutWithLayout:(YOLayout *)layout size:(CGSize)size {
     CGFloat x = 10;
     CGFloat y = 10;
     
     // imageView's size is set by the UIImage when using initWithImage:
-    CGRect imageViewFrame = [layout setOrigin:CGPointMake(x, y) view:imageView options:0];
+    CGRect imageViewFrame = [layout setOrigin:CGPointMake(x, y) view:self.imageView options:0];
     x += imageViewFrame.size.width + 10;
-
-    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - 10, 0) view:yself.titleLabel].size.height;
-    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - 10, 1000) view:yself.descriptionLabel].size.height;
-
+    
+    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - 10, 0) view:self.titleLabel].size.height;
+    y += [layout sizeToFitVerticalInFrame:CGRectMake(x, y, size.width - x - 10, 1000) view:self.descriptionLabel].size.height;
+    
     // Ensure the y position is at least as high as the image view
     y = MAX(y, (imageViewFrame.origin.y + imageViewFrame.size.height));
     y += 10;
-
+    
     return CGSizeMake(size.width, y);
-  }];
 }
 
 - (void)setText:(NSString *)text description:(NSString *)description {

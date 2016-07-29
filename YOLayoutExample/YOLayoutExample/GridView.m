@@ -19,7 +19,7 @@
         [self addSubview:logoView];
     }
     
-    self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(id<YOLayout> layout, CGSize size) {
+    self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(YOLayout *layout, CGSize size) {
         CGFloat x = 0;
         CGFloat y = 0;
         CGFloat maxWidth = 0;

@@ -40,7 +40,7 @@
   [self addSubview:_label3];
 
   YOSelf yself = self;
-  self.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
+  self.viewLayout = [YOLayout layoutWithLayoutBlock:^(YOLayout *layout, CGSize size) {
     CGFloat x = 20;
     CGFloat y = 60;
 

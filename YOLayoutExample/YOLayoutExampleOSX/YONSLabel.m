@@ -25,7 +25,7 @@
   [self addSubview:_textView];
 
   YOSelf yself = self;
-  self.viewLayout = [YOLayout layoutWithLayoutBlock:^(id<YOLayout> layout, CGSize size) {
+  self.viewLayout = [YOLayout layoutWithLayoutBlock:^(YOLayout *layout, CGSize size) {
     CGSize textSize = [YONSLabel sizeThatFits:size attributedString:yself.textView.attributedString];
     [layout setFrame:CGRectIntegral(CGRectMake(0, size.height/2.0 - textSize.height/2.0, size.width, textSize.height + 20)) view:yself.textView];
     return size;

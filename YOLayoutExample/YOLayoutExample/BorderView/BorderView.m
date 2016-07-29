@@ -20,7 +20,7 @@
   UILabel *topView = [self label:@"Top" backgroundColor:UIColor.redColor];
   [self addSubview:topView];
 
-  YOView *centerView = [YOView view];
+  YOView *centerView = [YOView new];
   {
     UILabel *leftLabel = [self label:@"Left" backgroundColor:UIColor.greenColor];
     [centerView addSubview:leftLabel];
@@ -29,7 +29,7 @@
     UILabel *rightLabel = [self label:@"Right" backgroundColor:UIColor.cyanColor];
     [centerView addSubview:rightLabel];
 
-    centerView.viewLayout = [YOHBorderLayout layoutWithCenter:centerLabel left:@[leftLabel] right:@[rightLabel] insets:UIEdgeInsetsZero spacing:10];
+    centerView.layout = [YOHBorderLayout layoutWithCenter:centerLabel left:@[leftLabel] right:@[rightLabel] insets:UIEdgeInsetsZero spacing:10];
   }
   [self addSubview:centerView];
 
