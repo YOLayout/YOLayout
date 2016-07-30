@@ -24,8 +24,7 @@ class CircleLayoutView: YOView {
             let center = CGPointMake(size.width / 2, size.height / 2)
             let subviewSize = CGSizeMake(44, 44)
 
-            // TODO: Switch this to `let` when Swift 1.2 is officially released
-            var radius : CGFloat;
+            let radius : CGFloat;
             if (size.width < size.height) {
                 radius = size.width / 2 - subviewSize.width / 2
             } else {

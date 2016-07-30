@@ -24,7 +24,7 @@
   [self addSubview:titleLabel];
 
   UILabel *descriptionLabel = [[UILabel alloc] init];
-  descriptionLabel.text = @"This is the description label that's longer and wraps to multiple lines so that you can see how the imageView is able to vertically center on the two labels grouped together in a nested layout.";
+  descriptionLabel.text = @"This is the description label that's longer and wraps to multiple lines so that you can see how the imageView is able to vertically center on the two labels grouped together in a nested layout. This view also gracefully flips for right-to-left locales.";
   descriptionLabel.font = [UIFont systemFontOfSize:16];
   descriptionLabel.numberOfLines = 0; // Multi-line label (word wrapping
   descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;

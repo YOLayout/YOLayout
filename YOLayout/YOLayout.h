@@ -140,8 +140,6 @@ typedef CGSize (^YOLayoutBlock)(YOLayout * _Nonnull layout, CGSize size);
  */
 + (YOLayout * _Nonnull)layoutWithLayoutBlock:(YOLayoutBlock _Nonnull)layoutBlock;
 
-- (instancetype _Nonnull)initWithLayoutBlock:(YOLayoutBlock _Nonnull)layoutBlock;
-
 #pragma mark - Layout methods
 
 /*!

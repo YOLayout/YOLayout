@@ -28,7 +28,7 @@
 
   self.descriptionLabel = [[UILabel alloc] init];
   self.descriptionLabel.font = [UIFont systemFontOfSize:16];
-  self.descriptionLabel.numberOfLines = 0; // Multi-line label (word wrapping
+  self.descriptionLabel.numberOfLines = 0;
   self.descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
   [self addSubview:self.descriptionLabel];
 
@@ -38,7 +38,7 @@
     CGFloat y = 10;
     
     // imageView's size is set by the UIImage when using initWithImage:
-      CGRect imageViewFrame = [layout setFrame:CGRectMake(x, y, imageView.image.size.width, imageView.image.size.height) view:imageView options:YOLayoutOptionsFlipIfNeededForRTL];
+    CGRect imageViewFrame = [layout setFrame:CGRectMake(x, y, imageView.image.size.width, imageView.image.size.height) view:imageView options:YOLayoutOptionsFlipIfNeededForRTL];
     x += imageViewFrame.size.width + 10;
 
     y += [layout setFrame:CGRectMake(x, y, size.width - x - 10, 0) view:weakSelf.titleLabel options:YOLayoutOptionsSizeToFitVertical | YOLayoutOptionsFlipIfNeededForRTL].size.height;
