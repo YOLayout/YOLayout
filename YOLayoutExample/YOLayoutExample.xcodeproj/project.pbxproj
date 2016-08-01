@@ -40,6 +40,7 @@
 		42F5C30E1A3CAF3E00E37B78 /* YOLayoutExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C30D1A3CAF3E00E37B78 /* YOLayoutExampleTests.m */; };
 		42F5C31E1A3CAF7A00E37B78 /* YOCGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */; };
 		42F5C31F1A3CAF7A00E37B78 /* YOLayout_IMP.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F5C31B1A3CAF7A00E37B78 /* YOLayout_IMP.m */; };
+		8E8A3BEE1D4FD07100E03A91 /* UIView+YOView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8A3BED1D4FD07100E03A91 /* UIView+YOView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,8 @@
 		42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOCGUtils.m; path = ../YOLayout/YOCGUtils.m; sourceTree = "<group>"; };
 		42F5C31A1A3CAF7A00E37B78 /* YOLayout_IMP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOLayout_IMP.h; path = ../YOLayout/YOLayout_IMP.h; sourceTree = "<group>"; };
 		42F5C31B1A3CAF7A00E37B78 /* YOLayout_IMP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOLayout_IMP.m; path = ../YOLayout/YOLayout_IMP.m; sourceTree = "<group>"; };
+		8E8A3BEC1D4FD07100E03A91 /* UIView+YOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+YOView.h"; path = "../YOLayout/UIView+YOView.h"; sourceTree = "<group>"; };
+		8E8A3BED1D4FD07100E03A91 /* UIView+YOView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+YOView.m"; path = "../YOLayout/UIView+YOView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +314,8 @@
 				42F5C31B1A3CAF7A00E37B78 /* YOLayout_IMP.m */,
 				29FDBEB51D4B12E6008ED9FD /* YOLayout+Logic.h */,
 				29FDBEB61D4B12E6008ED9FD /* YOLayout+Logic.m */,
+				8E8A3BEC1D4FD07100E03A91 /* UIView+YOView.h */,
+				8E8A3BED1D4FD07100E03A91 /* UIView+YOView.m */,
 			);
 			name = YOLayout;
 			sourceTree = "<group>";
@@ -479,6 +484,7 @@
 				4255D4A71AB35116004CB409 /* CircleLayoutView.swift in Sources */,
 				426C0FD51A416CBE00F2577C /* GridView.m in Sources */,
 				42F5C2F41A3CAF3E00E37B78 /* main.m in Sources */,
+				8E8A3BEE1D4FD07100E03A91 /* UIView+YOView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
