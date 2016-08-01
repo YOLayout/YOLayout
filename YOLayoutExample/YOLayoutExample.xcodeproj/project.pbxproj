@@ -20,6 +20,7 @@
 		00D52F581A6F2C6100DEB5F5 /* YONSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F561A6F2C6100DEB5F5 /* YONSLabel.m */; };
 		00D52F5B1A6F2CA200DEB5F5 /* YONSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D52F5A1A6F2CA200DEB5F5 /* YONSButton.m */; };
 		293D32F71D4B166C0023ABF6 /* NestedLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 293D32F61D4B166C0023ABF6 /* NestedLayoutView.m */; };
+		298BFD411D5116B800C40D81 /* UIView+YOLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 298BFD401D5116B800C40D81 /* UIView+YOLayout.m */; };
 		29FDBEB71D4B12E6008ED9FD /* YOLayout+Logic.m in Sources */ = {isa = PBXBuildFile; fileRef = 29FDBEB61D4B12E6008ED9FD /* YOLayout+Logic.m */; };
 		4255D4A71AB35116004CB409 /* CircleLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4255D4A51AB35116004CB409 /* CircleLayoutView.swift */; };
 		4255D4A81AB35116004CB409 /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4255D4A61AB35116004CB409 /* SwiftViewController.swift */; };
@@ -75,6 +76,8 @@
 		00D52F5A1A6F2CA200DEB5F5 /* YONSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YONSButton.m; sourceTree = "<group>"; };
 		293D32F51D4B166C0023ABF6 /* NestedLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NestedLayoutView.h; path = NestedLayout/NestedLayoutView.h; sourceTree = "<group>"; };
 		293D32F61D4B166C0023ABF6 /* NestedLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NestedLayoutView.m; path = NestedLayout/NestedLayoutView.m; sourceTree = "<group>"; };
+		298BFD3F1D5116B800C40D81 /* UIView+YOLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YOLayout.h"; sourceTree = "<group>"; };
+		298BFD401D5116B800C40D81 /* UIView+YOLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YOLayout.m"; sourceTree = "<group>"; };
 		29FDBEB51D4B12E6008ED9FD /* YOLayout+Logic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "YOLayout+Logic.h"; path = "../YOLayout/YOLayout+Logic.h"; sourceTree = "<group>"; };
 		29FDBEB61D4B12E6008ED9FD /* YOLayout+Logic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "YOLayout+Logic.m"; path = "../YOLayout/YOLayout+Logic.m"; sourceTree = "<group>"; };
 		4255D4A41AB35115004CB409 /* YOLayoutExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YOLayoutExample-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 			children = (
 				00086CBC1A674B960000460F /* YOView.h */,
 				00086CBD1A674B960000460F /* YOView.m */,
+				298BFD3F1D5116B800C40D81 /* UIView+YOLayout.h */,
+				298BFD401D5116B800C40D81 /* UIView+YOLayout.m */,
 			);
 			name = UIKit;
 			path = ../YOLayout/UIKit;
@@ -472,6 +477,7 @@
 				29FDBEB71D4B12E6008ED9FD /* YOLayout+Logic.m in Sources */,
 				293D32F71D4B166C0023ABF6 /* NestedLayoutView.m in Sources */,
 				426C0FE51A41714900F2577C /* TableViewController.m in Sources */,
+				298BFD411D5116B800C40D81 /* UIView+YOLayout.m in Sources */,
 				42F5C31F1A3CAF7A00E37B78 /* YOLayout.m in Sources */,
 				42C08D5C1A413749009B7E9E /* LogoView.m in Sources */,
 				4255D4A71AB35116004CB409 /* CircleLayoutView.swift in Sources */,
