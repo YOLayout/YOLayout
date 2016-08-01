@@ -92,7 +92,12 @@
   if (!_sizing) {
 
     CGRect frameToSet = frame;
-    if (((options & YOLayoutOptionsFlipIfNeededForRTL) != 0) && ([UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft)) {
+#if TARGET_OS_IPHONE
+    BOOL RTL = [UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft;
+#else
+    BOOL RTL = [NSApplication sharedApplication].userInterfaceLayoutDirection == NSUserInterfaceLayoutDirectionRightToLeft;
+#endif
+    if (((options & YOLayoutOptionsFlipIfNeededForRTL) != 0) && RTL) {
       // Flip for RTL using this layout's size as the parent
       // QQ: Does this handle all the cases we need it to?
       CGFloat x = _cachedSize.width - (frame.origin.x + frame.size.width);

@@ -207,4 +207,8 @@ typedef CGSize (^YOLayoutBlock)(YOLayout * _Nonnull layout, CGSize size);
 @end
 
 // Because YOView depends on YOLayout, it must be imported after YOLayout is defined
+#if TARGET_OS_IPHONE
 #import "YOView.h"
+#else
+#import "YONSView.h"
+#endif
