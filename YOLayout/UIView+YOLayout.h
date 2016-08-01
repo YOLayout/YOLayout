@@ -1,5 +1,5 @@
 //
-//  UIView+YOView.h
+//  UIView+YOLayout.h
 //  YOLayoutExample
 //
 //  Created by Lucas Yan on 8/1/16.
@@ -10,11 +10,11 @@
 
 @class YOLayout;
 
-@interface UIView (YOView)
+@interface UIView (YOLayout)
 
 @property (nonatomic) YOLayout *layout;
 
-+ (void)initLayout;
++ (void)useYOLayout;
 - (CGSize)layoutWithLayout:(YOLayout *)layout size:(CGSize)size;
 - (void)viewInit;
 - (void)layoutView;

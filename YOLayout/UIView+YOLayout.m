@@ -1,21 +1,21 @@
 //
-//  UIView+YOView.m
+//  UIView+YOLayout.m
 //  YOLayoutExample
 //
 //  Created by Lucas Yan on 8/1/16.
 //  Copyright © 2016 YOLayout. All rights reserved.
 //
 
-#import "UIView+YOView.h"
+#import "UIView+YOLayout.h"
 #import <objc/runtime.h>
 #import "YOLayout.h"
 #import "YOCGUtils.h"
 
 static char kAssociatedLayoutKey;
 
-@implementation UIView (YOView)
+@implementation UIView (YOLayout)
 
-+ (void)initLayout {
++ (void)useYOLayout {
   [self exchangeImplementation:@selector(initWithFrame:) withImplementation:@selector(_initWithFrame:)];
   [self exchangeImplementation:@selector(initWithCoder:) withImplementation:@selector(_initWithCoder:)];
   [self exchangeImplementation:@selector(setFrame:) withImplementation:@selector(_setFrame:)];
