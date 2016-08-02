@@ -11,7 +11,7 @@
 #import "YOLayout.h"
 #import "YOCGUtils.h"
 
-static char kAssociatedLayoutKey;
+static char kUIViewAssociatedLayoutKey;
 
 @implementation UIView (YOLayout)
 
@@ -28,17 +28,10 @@ static char kAssociatedLayoutKey;
   Method originalMethod = class_getInstanceMethod(self, originalImplementation);
   Method swizzledMethod = class_getInstanceMethod(self, replacementImplementation);
   
-  BOOL didAddMethod =
-  class_addMethod(self,
-      originalImplementation,
-      method_getImplementation(swizzledMethod),
-      method_getTypeEncoding(swizzledMethod));
+  BOOL didAddMethod = class_addMethod(self, originalImplementation, method_getImplementation(swizzledMethod),method_getTypeEncoding(swizzledMethod));
   
   if (didAddMethod) {
-    class_replaceMethod(self,
-      replacementImplementation,
-      method_getImplementation(originalMethod),
-      method_getTypeEncoding(originalMethod));
+    class_replaceMethod(self, replacementImplementation, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
   } else {
     method_exchangeImplementations(originalMethod, swizzledMethod);
   }
@@ -48,27 +41,15 @@ static char kAssociatedLayoutKey;
   
 }
 
-- (CGSize)layoutWithLayout:(YOLayout *)layout size:(CGSize)size {
-  return CGSizeZero;
-}
-
 - (void)layoutView {
   [self.layout setNeedsLayout];
   [self.layout layoutSubviews:self.frame.size];
-}
-
-- (void)setupDefaultLayout {
-  __weak typeof(self) weakSelf = self;
-  self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(YOLayout *layout, CGSize size) {
-    return [weakSelf layoutWithLayout:layout size:size];
-  }];
 }
 
 #pragma mark Overriden Methods
 
 - (id)_initWithFrame:(CGRect)frame {
   if ((self = [self _initWithFrame:frame])) {
-    [self setupDefaultLayout];
     [self viewInit];
   }
   return self;
@@ -76,7 +57,6 @@ static char kAssociatedLayoutKey;
 
 - (id)_initWithCoder:(NSCoder *)aDecoder {
   if ((self = [self _initWithCoder:aDecoder])) {
-    [self setupDefaultLayout];
     [self viewInit];
   }
   return self;
@@ -109,11 +89,11 @@ static char kAssociatedLayoutKey;
 #pragma mark Getter/Setter
 
 - (void)setLayout:(YOLayout *)layout {
-  objc_setAssociatedObject(self, &kAssociatedLayoutKey, layout, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+  objc_setAssociatedObject(self, &kUIViewAssociatedLayoutKey, layout, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (YOLayout *)layout {
-  return objc_getAssociatedObject(self, &kAssociatedLayoutKey);
+  return objc_getAssociatedObject(self, &kUIViewAssociatedLayoutKey);
 }
 
 @end

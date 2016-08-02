@@ -6,7 +6,7 @@
 //  Copyright © 2016 YOLayout. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @class YOLayout;
 
@@ -15,7 +15,6 @@
 @property (nonatomic) YOLayout *layout;
 
 + (void)useYOLayout;
-- (CGSize)layoutWithLayout:(YOLayout *)layout size:(CGSize)size;
 - (void)viewInit;
 - (void)layoutView;
 
