@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 YOLayout. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreGraphics/CoreGraphics.h>
+@import Foundation;
+@import CoreGraphics;
 
 @class YOLayout;
 

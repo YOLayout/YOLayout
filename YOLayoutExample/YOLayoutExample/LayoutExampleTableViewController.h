@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 YOLayout. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 //! This is not a real YOLayout example. It's just the menu for the example app. This is not the class you are looking for.
 @interface LayoutExampleTableViewController : UITableViewController

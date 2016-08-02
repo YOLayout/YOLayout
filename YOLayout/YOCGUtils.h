@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 YOLayout. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreGraphics/CoreGraphics.h>
+@import Foundation;
+@import CoreGraphics;
 
 #if !TARGET_OS_IPHONE
 
@@ -27,7 +27,7 @@ static inline UIEdgeInsets UIEdgeInsetsAdd(UIEdgeInsets i1, UIEdgeInsets i2) {
 }
 #else
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 #endif
 

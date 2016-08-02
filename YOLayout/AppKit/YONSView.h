@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 YOLayout. All rights reserved.
 //
 
-#import <AppKit/AppKit.h>
+@import AppKit;
 #import "YOLayout.h"
 
 /*!
