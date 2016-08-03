@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 #import "YOLayout.h"
 #import "YOCGUtils.h"
+#import "YOLayout+Internal.h"
 
 static char kUIViewAssociatedLayoutKey;
 
@@ -18,18 +19,18 @@ static char kUIViewAssociatedLayoutKey;
 + (void)useYOLayout {
   [self exchangeImplementation:@selector(initWithFrame:) withImplementation:@selector(_initWithFrame:)];
   [self exchangeImplementation:@selector(initWithCoder:) withImplementation:@selector(_initWithCoder:)];
-  [self exchangeImplementation:@selector(setFrame:) withImplementation:@selector(_setFrame:)];
-  [self exchangeImplementation:@selector(layoutSubviews) withImplementation:@selector(_layoutSubviews)];
-  [self exchangeImplementation:@selector(sizeThatFits:) withImplementation:@selector(_sizeThatFits:)];
-  [self exchangeImplementation:@selector(setNeedsLayout) withImplementation:@selector(_setNeedsLayout)];
+  [self exchangeImplementation:@selector(setFrame:) withImplementation:@selector(yo_setFrame:)];
+  [self exchangeImplementation:@selector(layoutSubviews) withImplementation:@selector(yo_layoutSubviews)];
+  [self exchangeImplementation:@selector(sizeThatFits:) withImplementation:@selector(yo_sizeThatFits:)];
+  [self exchangeImplementation:@selector(setNeedsLayout) withImplementation:@selector(yo_setNeedsLayout)];
 }
 
 + (void)exchangeImplementation:(SEL)originalImplementation withImplementation:(SEL)replacementImplementation {
   Method originalMethod = class_getInstanceMethod(self, originalImplementation);
   Method swizzledMethod = class_getInstanceMethod(self, replacementImplementation);
-  
+
   BOOL didAddMethod = class_addMethod(self, originalImplementation, method_getImplementation(swizzledMethod),method_getTypeEncoding(swizzledMethod));
-  
+
   if (didAddMethod) {
     class_replaceMethod(self, replacementImplementation, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
   } else {
@@ -38,7 +39,7 @@ static char kUIViewAssociatedLayoutKey;
 }
 
 - (void)viewInit {
-  
+
 }
 
 - (void)layoutView {
@@ -62,28 +63,28 @@ static char kUIViewAssociatedLayoutKey;
   return self;
 }
 
-- (void)_setFrame:(CGRect)frame {
+- (void)yo_setFrame:(CGRect)frame {
   if (!YOCGSizeIsEqual(self.frame.size, frame.size)) [self.layout setNeedsLayout];
-  [self _setFrame:frame];
+  [self yo_setFrame:frame];
 }
 
-- (void)_setNeedsLayout {
+- (void)yo_setNeedsLayout {
   [self.layout setNeedsLayout];
   [self.layout layoutSubviews:self.frame.size];
 }
 
 #pragma mark Layout
 
-- (void)_layoutSubviews {
-  [self _layoutSubviews];
+- (void)yo_layoutSubviews {
+  [self yo_layoutSubviews];
   [self.layout layoutSubviews:self.frame.size];
 }
 
-- (CGSize)_sizeThatFits:(CGSize)size {
+- (CGSize)yo_sizeThatFits:(CGSize)size {
   if (self.layout) {
     return [self.layout sizeThatFits:size];
   }
-  return [self _sizeThatFits:size];
+  return [self yo_sizeThatFits:size];
 }
 
 #pragma mark Getter/Setter

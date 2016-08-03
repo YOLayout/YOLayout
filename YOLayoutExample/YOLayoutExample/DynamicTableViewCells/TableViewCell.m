@@ -19,7 +19,7 @@
   [super viewInit];
   UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"information.png"]];
   [self addSubview:imageView];
-  
+
   self.titleLabel = [[UILabel alloc] init];
   self.titleLabel.numberOfLines = 1;
   self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -36,7 +36,7 @@
   self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(YOLayout *layout, CGSize size) {
     CGFloat x = 10;
     CGFloat y = 10;
-    
+
     // imageView's size is set by the UIImage when using initWithImage:
     CGRect imageViewFrame = [layout setFrame:CGRectMake(x, y, imageView.image.size.width, imageView.image.size.height) view:imageView options:YOLayoutOptionsFlipIfNeededForRTL];
     x += imageViewFrame.size.width + 10;

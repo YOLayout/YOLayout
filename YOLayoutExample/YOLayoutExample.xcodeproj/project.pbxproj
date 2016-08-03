@@ -74,6 +74,7 @@
 		00D52F5A1A6F2CA200DEB5F5 /* YONSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YONSButton.m; sourceTree = "<group>"; };
 		293D32F51D4B166C0023ABF6 /* NestedLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NestedLayoutView.h; path = NestedLayout/NestedLayoutView.h; sourceTree = "<group>"; };
 		293D32F61D4B166C0023ABF6 /* NestedLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NestedLayoutView.m; path = NestedLayout/NestedLayoutView.m; sourceTree = "<group>"; };
+		2945CBEE1D517E1F00A39C3B /* YOLayout+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "YOLayout+Internal.h"; path = "../YOLayout/YOLayout+Internal.h"; sourceTree = "<group>"; };
 		298BFD3F1D5116B800C40D81 /* UIView+YOLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YOLayout.h"; sourceTree = "<group>"; };
 		298BFD401D5116B800C40D81 /* UIView+YOLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YOLayout.m"; sourceTree = "<group>"; };
 		29ED11211D4C3DCF009E73DB /* YONSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YONSView.h; path = ../YOLayout/AppKit/YONSView.h; sourceTree = "<group>"; };
@@ -322,6 +323,7 @@
 				42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */,
 				29FDBEB51D4B12E6008ED9FD /* YOLayout+Logic.h */,
 				29FDBEB61D4B12E6008ED9FD /* YOLayout+Logic.m */,
+				2945CBEE1D517E1F00A39C3B /* YOLayout+Internal.h */,
 			);
 			name = YOLayout;
 			sourceTree = "<group>";

@@ -11,7 +11,7 @@
 
 /*!
  View with custom, programatic layout (via YOLayout).
- 
+
  Instead of subclassing UIView, you can subclass YOView and set the layout property.
  See YOLayout for more details.
 

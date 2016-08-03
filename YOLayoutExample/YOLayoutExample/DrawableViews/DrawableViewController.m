@@ -27,7 +27,7 @@
     // For simple views that have static content, but dynamic layouts, you don't even have to subclass YOView, you can create the view and layout inline.
     YOView *view = [[YOView alloc] init];
     view.backgroundColor = [UIColor whiteColor];
-    
+
     UILabel *label = [[UILabel alloc] init];
     label.text = @"The following view draws 10 logos in drawRect: based on the available width. Try rotating into landscape and see how the grid changes";
     label.numberOfLines = 0;
@@ -50,7 +50,7 @@
 
     GridView *gridView = [[GridView alloc] init];
     [view addSubview:gridView];
-    
+
     view.layout = [YOLayout layoutWithLayoutBlock:^CGSize(YOLayout *layout, CGSize size) {
         UIEdgeInsets insets = UIEdgeInsetsMake(10, 10, 10, 10);
         CGFloat x = insets.left;

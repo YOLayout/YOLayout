@@ -238,13 +238,13 @@
     [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(rect) + 0.29500 * CGRectGetWidth(rect), CGRectGetMinY(rect) + 0.23887 * CGRectGetHeight(rect))];
     [bezierPath closePath];
     bezierPath.miterLimit = 4;
-    
+
     bezierPath.usesEvenOddFillRule = YES;
-    
+
     [color1 setFill];
     [bezierPath fill];
-    
-    
+
+
     //// horizontal-lines-5
     {
         //// Bezier 2 Drawing
@@ -350,11 +350,11 @@
         [bezier2Path addLineToPoint: CGPointMake(CGRectGetMinX(rect) + 0.00177 * CGRectGetWidth(rect), CGRectGetMinY(rect) + 0.90000 * CGRectGetHeight(rect))];
         [bezier2Path closePath];
         bezier2Path.miterLimit = 4;
-        
+
         bezier2Path.lineCapStyle = kCGLineCapSquare;
-        
+
         bezier2Path.usesEvenOddFillRule = YES;
-        
+
         [color2 setStroke];
         bezier2Path.lineWidth = 0.5;
         [bezier2Path stroke];
@@ -362,7 +362,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    [self drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];    
+    [self drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 }
 
 @end

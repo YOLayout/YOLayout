@@ -11,11 +11,15 @@
 #import "YOCGUtils.h"
 
 @interface YOLayout ()
+
+//! Block containing logic to layout or size the current view. See the discussion above the YOLayoutBlock typedef for more info.
+@property (copy, nonnull) YOLayoutBlock layoutBlock;
 @property BOOL needsLayout;
 @property BOOL needsSizing;
 @property CGSize cachedSize;
 @property CGSize cachedLayoutSize;
 @property (nonatomic) CGRect frame;
+
 @end
 
 

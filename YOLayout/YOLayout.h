@@ -64,7 +64,7 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
   YOLayoutOptionsAlignBottom = 1 << 13,
 
   // INTERNATIONALIZATION
-  //! After sizing and positioning, potentially flip the x value for a RTL layout
+  //! After sizing and positioning, potentially flip the x value for a right-to-left layout
   YOLayoutOptionsFlipIfNeededForRTL = 1 << 14,
 };
 
@@ -129,9 +129,6 @@ typedef CGSize (^YOLayoutBlock)(YOLayout * _Nonnull layout, CGSize size);
  */
 @property (readonly, getter=isSizing) BOOL sizing;
 
-//! Block containing logic to layout or size the current view. See the discussion above the YOLayoutBlock typedef for more info.
-@property (copy, nonnull) YOLayoutBlock layoutBlock;
-
 /*!
  Initialize a YOLayout instance.
 
@@ -139,37 +136,6 @@ typedef CGSize (^YOLayoutBlock)(YOLayout * _Nonnull layout, CGSize size);
  @result Layout
  */
 + (YOLayout * _Nonnull)layoutWithLayoutBlock:(YOLayoutBlock _Nonnull)layoutBlock;
-
-#pragma mark - Layout methods
-
-/*!
- Layout the subviews.
-
- @param size Size to layout in
- */
-- (CGSize)layoutSubviews:(CGSize)size;
-
-/*!
- Size that fits.
-
- @param size Size to layout in.
- @result The size needed to display the view
- */
-- (CGSize)sizeThatFits:(CGSize)size;
-
-/*!
- If layout is required. Otherwise cached value may be returned.
- This should be called when a views data changes.
- */
-- (void)setNeedsLayout;
-
-/*!
- YOLayout can layout YOLayouts. To do this, YOLayout must, itself, be able to accept a frame.
- All subviews of the layout are offset by the frame's origin. Yo dawg I heard you like YOLayouts...
-
- @param frame Frame to layout in.
- */
-- (void)setFrame:(CGRect)frame;
 
 #pragma mark - Subview Layout Methods
 

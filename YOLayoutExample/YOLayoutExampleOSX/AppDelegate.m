@@ -18,7 +18,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   YOView *contentView = [YOView new];
-    
+
   YONSTestView *testView1 = [[YONSTestView alloc] init];
   [contentView addSubview:testView1];
 
@@ -26,7 +26,7 @@
     [layout setFrame:CGRectMake(0, 0, size.width, 0) view:testView1 options:YOLayoutOptionsSizeToFitVertical];
     return size;
   }];
-  
+
   _window = [self windowForContentView:contentView];
   [_window makeKeyAndOrderFront:nil];
 }

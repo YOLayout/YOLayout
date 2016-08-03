@@ -18,12 +18,12 @@
         logoView.backgroundColor = [UIColor colorWithWhite:0.97 alpha:1.0];
         [self addSubview:logoView];
     }
-    
+
     self.layout = [YOLayout layoutWithLayoutBlock:^CGSize(YOLayout *layout, CGSize size) {
         CGFloat x = 0;
         CGFloat y = 0;
         CGFloat maxWidth = 0;
-        
+
         // Lay out each view at 150pt wide with as many columns as will fit and as many rows as necessary
         CGFloat subviewWidth = 150;
         for (UIView *subview in self.subviews) {
