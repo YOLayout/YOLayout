@@ -66,6 +66,10 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
   // INTERNATIONALIZATION
   //! After sizing and positioning, potentially flip the x value for a right-to-left layout
   YOLayoutOptionsFlipIfNeededForRTL = 1 << 14,
+
+  // ROUNDING
+  //! After sizing and positioning, don't round to the nearest pixel. By default YOLayout uses the screen's scale to round to the nearest pixel.
+  YOLayoutOptionsDisablePixelRounding = 1 << 15,
 };
 
 

@@ -19,3 +19,11 @@ BOOL YOCGPointIsEqual(CGPoint p1, CGPoint p2);
 BOOL YOCGSizeIsEqual(CGSize size1, CGSize size2);
 
 BOOL YOCGRectIsEqual(CGRect rect1, CGRect rect2);
+
+CGFloat YOCGFloatPixelRound(CGFloat value);
+
+CGRect YOCGRectPixelRound(CGRect rect);
+
+CGSize YOCGSizePixelRound(CGSize size);
+
+CGPoint YOCGPointPixelRound(CGPoint point);

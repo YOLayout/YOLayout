@@ -30,7 +30,13 @@
     p.y = inRect.origin.y + inRect.size.height - size.height;
   }
 
-  return CGRectMake(p.x, p.y, size.width, size.height);
+  // Pixel round if necessary
+  CGRect rect = CGRectMake(p.x, p.y, size.width, size.height);
+  if ((options & YOLayoutOptionsDisablePixelRounding) == 0) {
+    rect.origin = YOCGPointPixelRound(rect.origin);
+  }
+
+  return rect;
 }
 
 + (CGSize)sizeThatFits:(CGSize)size view:(id)view options:(YOLayoutOptions)options {
@@ -57,11 +63,11 @@
       // If we're going to constrain by width
       if (sizeThatFits.width / size.width > sizeThatFits.height / size.height) {
         sizeThatFits.width = size.width;
-        sizeThatFits.height = roundf(size.width / aspectRatio);
+        sizeThatFits.height = size.width / aspectRatio;
         // If we're going to constrain by height
       } else {
         sizeThatFits.height = size.height;
-        sizeThatFits.width = roundf(size.height * aspectRatio);
+        sizeThatFits.width = size.height * aspectRatio;
       }
     }
 
@@ -82,6 +88,11 @@
 
   if ((options & YOLayoutOptionsSizeToFitVertical) == 0) {
     size.height = originalSize.height;
+  }
+
+  // Pixel round if necessary
+  if ((options & YOLayoutOptionsDisablePixelRounding) == 0) {
+    size = YOCGSizePixelRound(size);
   }
 
   return size;

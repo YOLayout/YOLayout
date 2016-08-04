@@ -7,17 +7,22 @@
 //
 
 #include "YOCGUtils.h"
+#if TARGET_OS_IPHONE
+@import UIKit;
+#else
+@import AppKit;
+#endif
 
 
 #define YOCGIsEqualWithAccuracy(n1, n2, accuracy) (n1 >= (n2-accuracy) && n1 <= (n2+accuracy))
 
 CGPoint YOCGPointToCenterX(CGSize size, CGSize inSize) {
-  CGPoint p = CGPointMake(roundf((inSize.width - size.width) / 2.0f), 0);
+  CGPoint p = CGPointMake((inSize.width - size.width) / 2.0f, 0);
   return p;
 }
 
 CGPoint YOCGPointToCenterY(CGSize size, CGSize inSize) {
-  CGPoint p = CGPointMake(0, roundf((inSize.height - size.height) / 2.0f));
+  CGPoint p = CGPointMake(0, (inSize.height - size.height) / 2.0f);
   return p;
 }
 
@@ -31,4 +36,25 @@ BOOL YOCGSizeIsEqual(CGSize size1, CGSize size2) {
 
 BOOL YOCGRectIsEqual(CGRect rect1, CGRect rect2) {
   return (YOCGPointIsEqual(rect1.origin, rect2.origin) && YOCGSizeIsEqual(rect1.size, rect2.size));
+}
+
+inline CGFloat YOCGFloatPixelRound(CGFloat value) {
+#if TARGET_OS_IPHONE
+    CGFloat scale = [[UIScreen mainScreen] scale];
+#else
+    CGFloat scale = [[NSScreen mainScreen] backingScaleFactor];
+#endif
+    return roundf(value * scale) / scale;
+}
+
+inline CGRect YOCGRectPixelRound(CGRect rect) {
+  return CGRectMake(YOCGFloatPixelRound(rect.origin.x), YOCGFloatPixelRound(rect.origin.y), YOCGFloatPixelRound(rect.size.width), YOCGFloatPixelRound(rect.size.height));
+}
+
+inline CGSize YOCGSizePixelRound(CGSize size) {
+    return CGSizeMake(YOCGFloatPixelRound(size.width), YOCGFloatPixelRound(size.height));
+}
+
+inline CGPoint YOCGPointPixelRound(CGPoint point) {
+  return CGPointMake(YOCGFloatPixelRound(point.x), YOCGFloatPixelRound(point.y));
 }
