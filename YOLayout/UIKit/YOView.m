@@ -12,42 +12,40 @@
 
 @implementation YOView
 
+#pragma mark Shared Initializer
+
 - (void)viewInit {
   // Don't add anything here, in case subclasses forget to call super
 }
 
 - (id)initWithFrame:(CGRect)frame {
-  if ((self = [super initWithFrame:frame])) {
+  self = [super initWithFrame:frame];
+  if (self) {
     [self viewInit];
   }
   return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-  if ((self = [super initWithCoder:aDecoder])) {
+  self = [super initWithCoder:aDecoder];
+  if (self) {
     [self viewInit];
   }
   return self;
 }
 
+#pragma mark Layout
+
 - (void)setFrame:(CGRect)frame {
-  if (_layout && !YOCGSizeIsEqual(self.frame.size, frame.size)) [_layout setNeedsLayout];
+  if (_layout && !YOCGSizeIsEqual(self.frame.size, frame.size)) {
+    [_layout setNeedsLayout];
+  }
   [super setFrame:frame];
 }
 
-- (void)addSubview:(UIView *)subview {
-  NSAssert([subview superview] != self, @"View is already added to this view");
-  NSAssert(![subview superview], @"View already has a superview. You should call removeFromSuperview first.");
-  [super addSubview:subview];
-}
-
-#pragma mark Layout
-
 - (void)layoutSubviews {
   [super layoutSubviews];
-  if (_layout) {
-    [_layout layoutSubviews:self.frame.size];
-  }
+  [_layout layoutSubviews:self.frame.size];
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
@@ -59,7 +57,6 @@
 
 - (void)setNeedsLayout {
   [super setNeedsLayout];
-  [self setNeedsDisplay];
   [_layout setNeedsLayout];
 }
 

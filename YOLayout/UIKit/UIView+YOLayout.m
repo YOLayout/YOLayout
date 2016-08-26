@@ -16,16 +16,18 @@ static char kUIViewAssociatedLayoutKey;
 
 @implementation UIView (YOLayout)
 
+#pragma mark Swizzling
+
 + (void)useYOLayout {
-  [self exchangeImplementation:@selector(initWithFrame:) withImplementation:@selector(_initWithFrame:)];
-  [self exchangeImplementation:@selector(initWithCoder:) withImplementation:@selector(_initWithCoder:)];
-  [self exchangeImplementation:@selector(setFrame:) withImplementation:@selector(yo_setFrame:)];
-  [self exchangeImplementation:@selector(layoutSubviews) withImplementation:@selector(yo_layoutSubviews)];
-  [self exchangeImplementation:@selector(sizeThatFits:) withImplementation:@selector(yo_sizeThatFits:)];
-  [self exchangeImplementation:@selector(setNeedsLayout) withImplementation:@selector(yo_setNeedsLayout)];
+  [self yo_exchangeImplementation:@selector(initWithFrame:) withImplementation:@selector(_initWithFrame:)];
+  [self yo_exchangeImplementation:@selector(initWithCoder:) withImplementation:@selector(_initWithCoder:)];
+  [self yo_exchangeImplementation:@selector(setFrame:) withImplementation:@selector(yo_setFrame:)];
+  [self yo_exchangeImplementation:@selector(layoutSubviews) withImplementation:@selector(yo_layoutSubviews)];
+  [self yo_exchangeImplementation:@selector(sizeThatFits:) withImplementation:@selector(yo_sizeThatFits:)];
+  [self yo_exchangeImplementation:@selector(setNeedsLayout) withImplementation:@selector(yo_setNeedsLayout)];
 }
 
-+ (void)exchangeImplementation:(SEL)originalImplementation withImplementation:(SEL)replacementImplementation {
++ (void)yo_exchangeImplementation:(SEL)originalImplementation withImplementation:(SEL)replacementImplementation {
   Method originalMethod = class_getInstanceMethod(self, originalImplementation);
   Method swizzledMethod = class_getInstanceMethod(self, replacementImplementation);
 
@@ -38,43 +40,46 @@ static char kUIViewAssociatedLayoutKey;
   }
 }
 
+#pragma mark Associated Getter/Setter
+
+- (void)setLayout:(YOLayout *)layout {
+  objc_setAssociatedObject(self, &kUIViewAssociatedLayoutKey, layout, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (YOLayout *)layout {
+  return objc_getAssociatedObject(self, &kUIViewAssociatedLayoutKey);
+}
+
+#pragma mark Shared Initializer
+
 - (void)viewInit {
-
+  // Don't add anything here, in case subclasses forget to call super
 }
-
-- (void)layoutView {
-  [self.layout setNeedsLayout];
-  [self.layout layoutSubviews:self.frame.size];
-}
-
-#pragma mark Overriden Methods
 
 - (id)_initWithFrame:(CGRect)frame {
-  if ((self = [self _initWithFrame:frame])) {
+  self = [self _initWithFrame:frame];
+  if (self) {
     [self viewInit];
   }
   return self;
 }
 
 - (id)_initWithCoder:(NSCoder *)aDecoder {
-  if ((self = [self _initWithCoder:aDecoder])) {
+  self = [self _initWithCoder:aDecoder];
+  if (self) {
     [self viewInit];
   }
   return self;
 }
 
+#pragma mark Layout
+
 - (void)yo_setFrame:(CGRect)frame {
-  if (!YOCGSizeIsEqual(self.frame.size, frame.size)) [self.layout setNeedsLayout];
+  if (self.layout && !YOCGSizeIsEqual(self.frame.size, frame.size)) {
+    [self.layout setNeedsLayout];
+  }
   [self yo_setFrame:frame];
 }
-
-- (void)yo_setNeedsLayout {
-  [self yo_setNeedsLayout];
-  [self setNeedsDisplay];
-  [self.layout setNeedsLayout];
-}
-
-#pragma mark Layout
 
 - (void)yo_layoutSubviews {
   [self yo_layoutSubviews];
@@ -88,14 +93,15 @@ static char kUIViewAssociatedLayoutKey;
   return [self yo_sizeThatFits:size];
 }
 
-#pragma mark Getter/Setter
-
-- (void)setLayout:(YOLayout *)layout {
-  objc_setAssociatedObject(self, &kUIViewAssociatedLayoutKey, layout, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)yo_setNeedsLayout {
+  [self yo_setNeedsLayout];
+  [self.layout setNeedsLayout];
 }
 
-- (YOLayout *)layout {
-  return objc_getAssociatedObject(self, &kUIViewAssociatedLayoutKey);
+- (void)layoutView {
+  NSAssert(self.layout, @"Missing layout instance");
+  [self.layout setNeedsLayout];
+  [self.layout layoutSubviews:self.frame.size];
 }
 
 @end
