@@ -69,8 +69,9 @@ static char kUIViewAssociatedLayoutKey;
 }
 
 - (void)yo_setNeedsLayout {
+  [self yo_setNeedsLayout];
+  [self setNeedsDisplay];
   [self.layout setNeedsLayout];
-  [self.layout layoutSubviews:self.frame.size];
 }
 
 #pragma mark Layout
