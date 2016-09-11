@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "YOLayout"
-  s.version      = "0.2.13"
+  s.version      = "0.2.14"
   s.summary      = "Layout framework."
   s.homepage     = "https://github.com/YOLayout/YOLayout"
   s.license      = "MIT"
@@ -19,11 +19,9 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
 
-  s.ios.platform = :ios, "7.0"
   s.ios.deployment_target = "7.0"
   s.ios.source_files = "YOLayout/*.{h,m}", "YOLayout/UIKit/*.{h,m}", "YOLayout/Box/*.{h,m}", "YOLayout/Layouts/*.{h,m}"
 
-  s.osx.platform = :osx, "10.8"
   s.osx.deployment_target = "10.8"
   s.osx.source_files = "YOLayout/*.{h,m}", "YOLayout/AppKit/*.{h,m}", "YOLayout/Box/*.{h,m}", "YOLayout/Layouts/*.{h,m}"
 
