@@ -176,7 +176,7 @@ typedef CGSize (^YOLayoutBlock)(YOLayout * _Nonnull layout, CGSize size);
 
 #pragma mark - Localization
 
-- (void)setIsRTLEnvironment:(BOOL)isRTLEnvironment;
++ (void)setIsRTLEnvironment:(BOOL)isRTLEnvironment;
 
 @end
 

@@ -9,6 +9,9 @@
 #import "YOLayout.h"
 #import "YOLayout+Logic.h"
 #import "YOCGUtils.h"
+#import <objc/runtime.h>
+
+static char kYOLayoutAssociatedKeyIsRTLEnvironment;
 
 @interface YOLayout ()
 
@@ -19,7 +22,6 @@
 @property CGSize cachedSize;
 @property CGSize cachedLayoutSize;
 @property (nonatomic) CGRect frame;
-@property (nonatomic, nullable) NSNumber *isRTLEnvironmentNumber;
 
 @end
 
@@ -101,8 +103,9 @@
 
       // Determine if the current environment is right-to-left
       BOOL isRTL;
-      if (self.isRTLEnvironmentNumber) {
-        isRTL = self.isRTLEnvironmentNumber.boolValue;
+      NSNumber *isRTLEnvironmentNumber = [self.class isRTLEnvironmentNumber];
+      if (isRTLEnvironmentNumber) {
+        isRTL = isRTLEnvironmentNumber.boolValue;
       } else {
         // Try to determine right-to-left automatically
 #if ONLY_EXTENSION_SAFE_APIS
@@ -162,8 +165,12 @@
 
 #pragma mark - Localization
 
-- (void)setIsRTLEnvironment:(BOOL)isRTLEnvironment {
-  self.isRTLEnvironmentNumber = @(isRTLEnvironment);
++ (void)setIsRTLEnvironment:(BOOL)isRTLEnvironment {
+  objc_setAssociatedObject(self, &kYOLayoutAssociatedKeyIsRTLEnvironment, @(isRTLEnvironment), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
++ (NSNumber *)isRTLEnvironmentNumber {
+  return objc_getAssociatedObject(self, &kYOLayoutAssociatedKeyIsRTLEnvironment);
 }
 
 @end
