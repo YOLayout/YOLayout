@@ -54,11 +54,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00086CB81A6745010000460F /* YOLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOLayout.h; path = ../YOLayout/YOLayout.h; sourceTree = "<group>"; };
+		00086CB81A6745010000460F /* YOLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; name = YOLayout.h; path = ../YOLayout/YOLayout.h; sourceTree = "<group>"; tabWidth = 2; };
 		00086CB91A6745970000460F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		00086CBA1A674A080000460F /* YOLayout.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = YOLayout.podspec; path = ../YOLayout.podspec; sourceTree = "<group>"; };
-		00086CBC1A674B960000460F /* YOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOView.h; sourceTree = "<group>"; };
-		00086CBD1A674B960000460F /* YOView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOView.m; sourceTree = "<group>"; };
+		00086CBC1A674B960000460F /* YOView.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = YOView.h; sourceTree = "<group>"; tabWidth = 2; };
+		00086CBD1A674B960000460F /* YOView.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = YOView.m; sourceTree = "<group>"; tabWidth = 2; };
 		00D52F261A6F0B8A00DEB5F5 /* YOLayoutExampleOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YOLayoutExampleOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D52F291A6F0B8A00DEB5F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00D52F2A1A6F0B8A00DEB5F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -74,13 +74,13 @@
 		00D52F5A1A6F2CA200DEB5F5 /* YONSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YONSButton.m; sourceTree = "<group>"; };
 		293D32F51D4B166C0023ABF6 /* NestedLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NestedLayoutView.h; path = NestedLayout/NestedLayoutView.h; sourceTree = "<group>"; };
 		293D32F61D4B166C0023ABF6 /* NestedLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NestedLayoutView.m; path = NestedLayout/NestedLayoutView.m; sourceTree = "<group>"; };
-		2945CBEE1D517E1F00A39C3B /* YOLayout+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "YOLayout+Internal.h"; path = "../YOLayout/YOLayout+Internal.h"; sourceTree = "<group>"; };
-		298BFD3F1D5116B800C40D81 /* UIView+YOLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YOLayout.h"; sourceTree = "<group>"; };
-		298BFD401D5116B800C40D81 /* UIView+YOLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YOLayout.m"; sourceTree = "<group>"; };
-		29ED11211D4C3DCF009E73DB /* YONSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YONSView.h; path = ../YOLayout/AppKit/YONSView.h; sourceTree = "<group>"; };
-		29ED11221D4C3DCF009E73DB /* YONSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YONSView.m; path = ../YOLayout/AppKit/YONSView.m; sourceTree = "<group>"; };
-		29FDBEB51D4B12E6008ED9FD /* YOLayout+Logic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "YOLayout+Logic.h"; path = "../YOLayout/YOLayout+Logic.h"; sourceTree = "<group>"; };
-		29FDBEB61D4B12E6008ED9FD /* YOLayout+Logic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "YOLayout+Logic.m"; path = "../YOLayout/YOLayout+Logic.m"; sourceTree = "<group>"; };
+		2945CBEE1D517E1F00A39C3B /* YOLayout+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; name = "YOLayout+Internal.h"; path = "../YOLayout/YOLayout+Internal.h"; sourceTree = "<group>"; tabWidth = 2; };
+		298BFD3F1D5116B800C40D81 /* UIView+YOLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = "UIView+YOLayout.h"; sourceTree = "<group>"; tabWidth = 2; };
+		298BFD401D5116B800C40D81 /* UIView+YOLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = "UIView+YOLayout.m"; sourceTree = "<group>"; tabWidth = 2; };
+		29ED11211D4C3DCF009E73DB /* YONSView.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; name = YONSView.h; path = ../YOLayout/AppKit/YONSView.h; sourceTree = "<group>"; tabWidth = 2; };
+		29ED11221D4C3DCF009E73DB /* YONSView.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; name = YONSView.m; path = ../YOLayout/AppKit/YONSView.m; sourceTree = "<group>"; tabWidth = 2; };
+		29FDBEB51D4B12E6008ED9FD /* YOLayout+Logic.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; name = "YOLayout+Logic.h"; path = "../YOLayout/YOLayout+Logic.h"; sourceTree = "<group>"; tabWidth = 2; };
+		29FDBEB61D4B12E6008ED9FD /* YOLayout+Logic.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; name = "YOLayout+Logic.m"; path = "../YOLayout/YOLayout+Logic.m"; sourceTree = "<group>"; tabWidth = 2; };
 		4255D4A41AB35115004CB409 /* YOLayoutExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YOLayoutExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		4255D4A51AB35116004CB409 /* CircleLayoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleLayoutView.swift; path = SwiftView/CircleLayoutView.swift; sourceTree = "<group>"; };
 		4255D4A61AB35116004CB409 /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftViewController.swift; path = SwiftView/SwiftViewController.swift; sourceTree = "<group>"; };
@@ -111,9 +111,9 @@
 		42F5C3071A3CAF3E00E37B78 /* YOLayoutExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YOLayoutExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		42F5C30C1A3CAF3E00E37B78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42F5C30D1A3CAF3E00E37B78 /* YOLayoutExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YOLayoutExampleTests.m; sourceTree = "<group>"; };
-		42F5C3181A3CAF7A00E37B78 /* YOCGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOCGUtils.h; path = ../YOLayout/YOCGUtils.h; sourceTree = "<group>"; };
-		42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOCGUtils.m; path = ../YOLayout/YOCGUtils.m; sourceTree = "<group>"; };
-		42F5C31B1A3CAF7A00E37B78 /* YOLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOLayout.m; path = ../YOLayout/YOLayout.m; sourceTree = "<group>"; };
+		42F5C3181A3CAF7A00E37B78 /* YOCGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; name = YOCGUtils.h; path = ../YOLayout/YOCGUtils.h; sourceTree = "<group>"; tabWidth = 2; };
+		42F5C3191A3CAF7A00E37B78 /* YOCGUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; name = YOCGUtils.m; path = ../YOLayout/YOCGUtils.m; sourceTree = "<group>"; tabWidth = 2; };
+		42F5C31B1A3CAF7A00E37B78 /* YOLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; name = YOLayout.m; path = ../YOLayout/YOLayout.m; sourceTree = "<group>"; tabWidth = 2; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -390,7 +390,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = YOLayout;
 				TargetAttributes = {
 					00D52F251A6F0B8A00DEB5F5 = {
@@ -398,6 +398,7 @@
 					};
 					42F5C2ED1A3CAF3E00E37B78 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0800;
 					};
 					42F5C3061A3CAF3E00E37B78 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -540,6 +541,7 @@
 				INFOPLIST_FILE = YOLayoutExampleOSX/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.rel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -555,6 +557,7 @@
 				INFOPLIST_FILE = YOLayoutExampleOSX/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.rel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -573,15 +576,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -615,8 +622,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -624,6 +633,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -633,6 +643,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -643,11 +654,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"ONLY_EXTENSION_SAFE_APIS=1",
+				);
 				INFOPLIST_FILE = YOLayoutExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.YOLayout.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "YOLayoutExample/YOLayoutExample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -658,8 +676,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = YOLayoutExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.YOLayout.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "YOLayoutExample/YOLayoutExample-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -677,6 +697,7 @@
 				);
 				INFOPLIST_FILE = YOLayoutExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.YOLayout.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YOLayoutExample.app/YOLayoutExample";
 			};
@@ -692,6 +713,7 @@
 				);
 				INFOPLIST_FILE = YOLayoutExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.YOLayout.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YOLayoutExample.app/YOLayoutExample";
 			};

@@ -21,8 +21,8 @@ class CircleLayoutView: YOView {
 
         self.layout = YOLayout(layoutBlock: { [unowned self] (layout: YOLayout, size) -> CGSize in
             var angle : CGFloat = 0;
-            let center = CGPointMake(size.width / 2, size.height / 2)
-            let subviewSize = CGSizeMake(44, 44)
+            let center = CGPoint(x: size.width / 2, y: size.height / 2)
+            let subviewSize = CGSize(width: 44, height: 44)
 
             let radius : CGFloat;
             if (size.width < size.height) {
@@ -33,16 +33,16 @@ class CircleLayoutView: YOView {
 
             // Lay out subviews in a circle around center
             for subview in self.subviews {
-                let subviewCenter = CGPointMake(center.x + radius * CGFloat(cosf(Float(angle))), center.y + radius * CGFloat(sinf(Float(angle))))
-                layout.setFrame(CGRectMake(subviewCenter.x - subviewSize.width / 2, subviewCenter.y - subviewSize.height / 2, subviewSize.width, subviewSize.height), view:subview)
+                let subviewCenter = CGPoint(x: center.x + radius * CGFloat(cosf(Float(angle))), y: center.y + radius * CGFloat(sinf(Float(angle))))
+                layout.setFrame(CGRect(x: subviewCenter.x - subviewSize.width / 2, y: subviewCenter.y - subviewSize.height / 2, width: subviewSize.width, height: subviewSize.height), view:subview)
                 angle += CGFloat(M_PI_4)
             }
 
             // Always lay out in a square contained by size (aspect fit)
             if (size.width < size.height) {
-                return CGSizeMake(size.width, size.width)
+                return CGSize(width: size.width, height: size.width)
             } else {
-                return CGSizeMake(size.height, size.height)
+                return CGSize(width: size.height, height: size.height)
             }
         })
     }
