@@ -174,6 +174,10 @@ typedef CGSize (^YOLayoutBlock)(YOLayout * _Nonnull layout, CGSize size);
  */
 - (CGRect)setSize:(CGSize)size inRect:(CGRect)inRect view:(id _Nonnull)view options:(YOLayoutOptions)options;
 
+#pragma mark - Localization
+
+- (void)setIsRTLEnvironment:(BOOL)isRTLEnvironment;
+
 @end
 
 // Because YOView depends on YOLayout, it must be imported after YOLayout is defined

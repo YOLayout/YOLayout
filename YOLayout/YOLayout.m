@@ -19,6 +19,7 @@
 @property CGSize cachedSize;
 @property CGSize cachedLayoutSize;
 @property (nonatomic) CGRect frame;
+@property (nonatomic, nullable) NSNumber *isRTLEnvironmentNumber;
 
 @end
 
@@ -96,16 +97,42 @@
   if (!_sizing) {
 
     CGRect frameToSet = frame;
-#if TARGET_OS_IPHONE
-    BOOL RTL = [UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft;
-#else
-    BOOL RTL = [NSApplication sharedApplication].userInterfaceLayoutDirection == NSUserInterfaceLayoutDirectionRightToLeft;
+    if ((options & YOLayoutOptionsFlipIfNeededForRTL) != 0) {
+
+      // Determine if the current environment is right-to-left
+      BOOL isRTL;
+      if (self.isRTLEnvironmentNumber) {
+        isRTL = self.isRTLEnvironmentNumber.boolValue;
+      } else {
+        // Try to determine right-to-left automatically
+#if ONLY_EXTENSION_SAFE_APIS
+        // iOS9 UIKit/UIView only
+        // Note that this only works if you're using UIView. If you want to use RTL with a CALayer or other non-UIView class in an app extension, you'll need to setIsRTLEnvironment: in advance.
+        // TODO: Use the similar `view.userInterfaceLayoutDirection` API for Mac/NSView
+        if ([view isKindOfClass:[UIView class]] && [view respondsToSelector:@selector(semanticContentAttribute)]) {
+          isRTL = [UIView userInterfaceLayoutDirectionForSemanticContentAttribute:((UIView *)view).semanticContentAttribute] == UIUserInterfaceLayoutDirectionRightToLeft;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_9_0 && DEBUG
+          NSLog(@"WARNING: YOLayout is using iOS9-only APIs to determine whether layout should be RightToLeft, but your Deployment Target is < iOS9. You may want to use setIsRTLEnvironment: instead.");
 #endif
-    if (((options & YOLayoutOptionsFlipIfNeededForRTL) != 0) && RTL) {
-      // Flip for RTL using this layout's size as the parent
-      // QQ: Does this handle all the cases we need it to?
-      CGFloat x = _cachedSize.width - (frame.origin.x + frame.size.width);
-      frameToSet.origin.x = x;
+        } else {
+#if DEBUG
+          NSLog(@"WARNING: YOLayout was unable to determine if the layout is in a right-to-left environment. You probably want to call setIsRTLEnvironment: in advance. Assuming left-to-right layout.");
+#endif
+        }
+#else
+#if TARGET_OS_IPHONE
+        isRTL = [UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft;
+#else
+        isRTL = [NSApplication sharedApplication].userInterfaceLayoutDirection == NSUserInterfaceLayoutDirectionRightToLeft;
+#endif
+#endif
+      }
+
+      if (isRTL) {
+        // Flip for RTL using this layout's size as the parent
+        CGFloat x = _cachedSize.width - (frame.origin.x + frame.size.width);
+        frameToSet.origin.x = x;
+      }
     }
 
     // If this layout object itself has a frame, offset the subview accordingly
@@ -131,6 +158,12 @@
 
 - (CGRect)setFrame:(CGRect)frame view:(id)view {
   return [self setFrame:frame view:view options:YOLayoutOptionsNone];
+}
+
+#pragma mark - Localization
+
+- (void)setIsRTLEnvironment:(BOOL)isRTLEnvironment {
+  self.isRTLEnvironmentNumber = @(isRTLEnvironment);
 }
 
 @end
