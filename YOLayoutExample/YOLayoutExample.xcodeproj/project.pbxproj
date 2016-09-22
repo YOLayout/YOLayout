@@ -30,7 +30,6 @@
 		426C0FCF1A41629200F2577C /* LayoutExampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FCE1A41629200F2577C /* LayoutExampleTableViewController.m */; };
 		426C0FD51A416CBE00F2577C /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FD41A416CBE00F2577C /* GridView.m */; };
 		426C0FE11A41714900F2577C /* DrawableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FD81A41714900F2577C /* DrawableView.m */; };
-		426C0FE21A41714900F2577C /* DrawableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426C0FD91A41714900F2577C /* DrawableView.xib */; };
 		426C0FE31A41714900F2577C /* DrawableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FDB1A41714900F2577C /* DrawableViewController.m */; };
 		426C0FE41A41714900F2577C /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FDE1A41714900F2577C /* TableViewCell.m */; };
 		426C0FE51A41714900F2577C /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426C0FE01A41714900F2577C /* TableViewController.m */; };
@@ -75,6 +74,7 @@
 		293D32F51D4B166C0023ABF6 /* NestedLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NestedLayoutView.h; path = NestedLayout/NestedLayoutView.h; sourceTree = "<group>"; };
 		293D32F61D4B166C0023ABF6 /* NestedLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NestedLayoutView.m; path = NestedLayout/NestedLayoutView.m; sourceTree = "<group>"; };
 		2945CBEE1D517E1F00A39C3B /* YOLayout+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; name = "YOLayout+Internal.h"; path = "../YOLayout/YOLayout+Internal.h"; sourceTree = "<group>"; tabWidth = 2; };
+		295B5A861D93B30A00194CA8 /* CircleLayoutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleLayoutView.xib; sourceTree = "<group>"; };
 		298BFD3F1D5116B800C40D81 /* UIView+YOLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = "UIView+YOLayout.h"; sourceTree = "<group>"; tabWidth = 2; };
 		298BFD401D5116B800C40D81 /* UIView+YOLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = "UIView+YOLayout.m"; sourceTree = "<group>"; tabWidth = 2; };
 		29ED11211D4C3DCF009E73DB /* YONSView.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; name = YONSView.h; path = ../YOLayout/AppKit/YONSView.h; sourceTree = "<group>"; tabWidth = 2; };
@@ -203,6 +203,7 @@
 			children = (
 				4255D4A51AB35116004CB409 /* CircleLayoutView.swift */,
 				4255D4A61AB35116004CB409 /* SwiftViewController.swift */,
+				295B5A861D93B30A00194CA8 /* CircleLayoutView.xib */,
 			);
 			name = SwiftView;
 			sourceTree = "<group>";
@@ -443,7 +444,6 @@
 				426C0FCA1A41606800F2577C /* information.png in Resources */,
 				426C0FCB1A41606800F2577C /* information@2x.png in Resources */,
 				426C0FCC1A41606800F2577C /* information@3x.png in Resources */,
-				426C0FE21A41714900F2577C /* DrawableView.xib in Resources */,
 				426C0FE71A41725000F2577C /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

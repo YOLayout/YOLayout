@@ -19,6 +19,7 @@
 - (void)viewInit {
     [super viewInit];
     self.backgroundColor = [UIColor whiteColor];
+    self.contentMode = UIViewContentModeRedraw;
 
     // Storage for our drawable views
     self.drawableSubviews = [[NSMutableArray alloc] init];
