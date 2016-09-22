@@ -11,7 +11,8 @@
 /*!
  Internal, private-ish methods for YOLayout.
 
- Generally, YOLayout users won't need to use, or think about these methods.
+ Generally, YOLayout users won't need to use, or think about these methods, but you can choose
+ to import this file if you want to do something fancy.
  */
 @interface YOLayout (Internal)
 

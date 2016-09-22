@@ -64,13 +64,45 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
   YOLayoutOptionsAlignBottom = 1 << 13,
 
   // INTERNATIONALIZATION
-  //! After sizing and positioning, potentially flip the x value for a right-to-left layout
+  /*!
+   After sizing and positioning, potentially flip the x value of a subview for a right-to-left layout when setting frame.
+
+   Subview layout methods (e.g. setFrame:view:options) will continue to return the unflipped frame in order to simplify layout math. The flipped frame, however, will be applied when setting the subview's frame.
+
+   This uses the width of the superview to determine how to flip views, avoiding the need to pass in a separate containerWidth parameter.
+   */
   YOLayoutOptionsFlipIfNeededForRTL = 1 << 14,
 
   // ROUNDING
   //! After sizing and positioning, don't round to the nearest pixel. By default YOLayout uses the screen's scale to round to the nearest pixel.
   YOLayoutOptionsDisablePixelRounding = 1 << 15,
 };
+
+
+/*!
+ Informal protocol for view-like objects that can be laid out with YOLayout.
+ */
+@protocol YOLayoutableView <NSObject>
+
+/*!
+ Set the position of this 'view'.
+
+ @param frame CGRect representing the position of this 'view'
+ */
+- (void)setFrame:(CGRect)frame;
+
+@optional
+
+/*!
+ Asks the 'view' to calculate and return the size that best fits the specified size.
+ This must be implemented if using this view with the YOLayoutOptionsSizeToFit* set of options.
+
+ @param size Size for which the view should calculate its best-fitting size.
+ @result Size that best fits the receiver’s content.
+ */
+- (CGSize)sizeThatFits:(CGSize)size;
+
+@end
 
 
 /*!
@@ -83,7 +115,7 @@ typedef NS_OPTIONS (NSUInteger, YOLayoutOptions) {
 
  @param layout Layout
  @param size Size to layout in
- @result size Size of the view being laid out
+ @result Size of the view being laid out
  */
 typedef CGSize (^YOLayoutBlock)(YOLayout * _Nonnull layout, CGSize size);
 

@@ -122,13 +122,13 @@ static char kYOLayoutAssociatedKeyIsRTLEnvironment;
           NSLog(@"WARNING: YOLayout was unable to determine if the layout is in a right-to-left environment. You probably want to call setIsRTLEnvironment: in advance. Assuming left-to-right layout.");
 #endif
         }
-#else
+#else // !ONLY_EXTENSION_SAFE_APIS
 #if TARGET_OS_IPHONE
         isRTL = [UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft;
 #else
         isRTL = [NSApplication sharedApplication].userInterfaceLayoutDirection == NSUserInterfaceLayoutDirectionRightToLeft;
 #endif
-#endif
+#endif // ONLY_EXTENSION_SAFE_APIS
       }
 
       if (isRTL) {
