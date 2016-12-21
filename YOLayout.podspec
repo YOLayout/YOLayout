@@ -19,8 +19,12 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
 
+  uikit_files = "YOLayout/*.{h,m}", "YOLayout/UIKit/*.{h,m}", "YOLayout/Box/*.{h,m}", "YOLayout/Layouts/*.{h,m}"
   s.ios.deployment_target = "7.0"
-  s.ios.source_files = "YOLayout/*.{h,m}", "YOLayout/UIKit/*.{h,m}", "YOLayout/Box/*.{h,m}", "YOLayout/Layouts/*.{h,m}"
+  s.ios.source_files = uikit_files
+
+  s.tvos.deployment_target = "9.0"
+  s.tvos.source_files = uikit_files
 
   s.osx.deployment_target = "10.8"
   s.osx.source_files = "YOLayout/*.{h,m}", "YOLayout/AppKit/*.{h,m}", "YOLayout/Box/*.{h,m}", "YOLayout/Layouts/*.{h,m}"
